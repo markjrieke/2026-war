@@ -1,0 +1,17 @@
+[project]
+name = "war"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "markjrieke",email = "markjrieke@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "polars (>=1.30.0,<2.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
