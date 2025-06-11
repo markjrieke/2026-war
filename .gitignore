@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+.python-version
 build/
 develop-eggs/
 dist/
@@ -192,3 +193,9 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# Proprietary data sources
+*private/
+
+# OS wonk
+.DS_Store
