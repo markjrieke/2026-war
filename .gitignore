@@ -199,3 +199,12 @@ cython_debug/
 
 # OS wonk
 .DS_Store
+
+# Model files
+exe/
+
+# Tempfiles / directories
+tmp/
+temp/
+tmp.*
+temp.*
