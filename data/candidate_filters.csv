@@ -1280,7 +1280,7 @@ cycle,state_name,district,state,seat,party,candidate,politician_id,exclusions,ro
 2000,Utah,3,UT,3,REP,Chris Cannon,9935,,1279,
 2000,Vermont,1,VT,1,DEM,Pete Diamondstone,6317,x,1280,1280
 2000,Vermont,1,VT,1,GRT,Jack Albert Rogers,14760,x,1281,1281
-2000,Vermont,1,VT,1,IND,Bernie Sanders,37,,1282,
+2000,Vermont,1,VT,1,DEM,Bernie Sanders,37,,1282,
 2000,Vermont,1,VT,1,IND,Stewart Skrill,14761,x,1283,1283
 2000,Vermont,1,VT,1,LIB,Daniel H. Krymkowski,14759,x,1284,1284
 2000,Vermont,1,VT,1,REP,Karen Ann Kerin,14762,,1285,
@@ -2470,7 +2470,7 @@ cycle,state_name,district,state,seat,party,candidate,politician_id,exclusions,ro
 2002,Utah,3,UT,3,LIB,Kitty K. Burton,14020,x,2469,2469
 2002,Utah,3,UT,3,REP,Chris Cannon,9935,,2470,
 2002,Vermont,1,VT,1,GRT,Fawn Skinner,15282,x,2471,2471
-2002,Vermont,1,VT,1,IND,Bernie Sanders,37,,2472,
+2002,Vermont,1,VT,1,DEM,Bernie Sanders,37,,2472,
 2002,Vermont,1,VT,1,LBU,Jane E. Newton,5925,x,2473,2473
 2002,Vermont,1,VT,1,LIB,Daniel H. Krymkowski,14759,x,2474,2474
 2002,Vermont,1,VT,1,REP,William H. Meub,15283,,2475,
@@ -3597,7 +3597,7 @@ cycle,state_name,district,state,seat,party,candidate,politician_id,exclusions,ro
 2004,Utah,3,UT,3,PCH,Curtis Darrell James,11498,x,3596,3596
 2004,Utah,3,UT,3,REP,Chris Cannon,9935,,3597,
 2004,Vermont,1,VT,1,DEM,Larry Drown,15713,x,3598,3598
-2004,Vermont,1,VT,1,IND,Bernie Sanders,37,,3599,
+2004,Vermont,1,VT,1,DEM,Bernie Sanders,37,,3599,
 2004,Vermont,1,VT,1,LBU,Jane E. Newton,5925,x,3600,3600
 2004,Vermont,1,VT,1,REP,Gregory T. Parke,15714,,3601,
 2004,Virginia,1,VA,1,IND,William A. Lee,15702,x,3602,3602
@@ -11216,7 +11216,7 @@ cycle,state_name,district,state,seat,party,candidate,politician_id,exclusions,ro
 2018,Mississippi,2,MS,2,DEM,Bennie G. Thompson,3017,,11215,
 2018,Mississippi,2,MS,2,IND,Troy Ray,4466,x,11216,11216
 2018,Mississippi,2,MS,2,REF,Irving Harris,8695,x,11217,11217
-2018,Mississippi,3,MS,3,DEM,Mary Brannon,8697,,11218,
+2018,Mississippi,3,MS,3,DEM,Michael Evans,123456789,,11218,
 2018,Mississippi,3,MS,3,REF,Matthew Holland,13228,x,11219,11219
 2018,Mississippi,3,MS,3,REP,Michael Guest,8698,,11220,
 2018,Mississippi,4,MS,4,DEM,Jeramey Anderson,8699,,11221,
