@@ -10,7 +10,9 @@ requires-python = ">=3.13"
 dependencies = [
     "polars (>=1.30.0,<2.0.0)",
     "cmdstanpy (>=1.2.5,<2.0.0)",
-    "arviz (>=0.21.0,<0.22.0)"
+    "arviz (>=0.21.0,<0.22.0)",
+    "plotnine (>=0.14.6,<0.15.0)",
+    "pyarrow (>=20.0.0,<21.0.0)"
 ]
 
 
