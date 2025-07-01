@@ -3,6 +3,8 @@
 ## 2025-07-04
 
 * handle vacancies, third party incumbents who caucus with dems/reps
+* handle cases when incumbent party != winning party from last election. most of the time, this is just due to special elections between house elections, so is fine, but did have to swap a few incumbent parties around.
+* add indicator for whether (or not) the incumbent was running
 
 ## 2025-06-27
 
@@ -28,6 +30,3 @@ I'm working from an existing dataset --- thankfully, that means that I won't nee
 I don't have a strict timeline for this project (well, I suppose I need to have it done ahead of the 2026 midterms, but those are *lightyears* away at the moment). Ideally around November, I guess? Anyway, this week, I setup a super minimal dev model and put together some of the package infrastructure.
 
 [^1]: There's this weird throughline in which a [model I put together for *Um, Actually*](https://www.thedatadiary.net/posts/2024-10-06-actually/) was a pretty solid base for building a March Madness model, which in turn ends up being a pretty solid base for this model. Just a weird set of connections, man!
-
-* Setup project
-* a (very minimal) dev model
