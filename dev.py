@@ -25,7 +25,7 @@ filters = (
     ])
 )
 
-cid = (
+all_candidates = (
     filters
     .join(
         house.select(['cycle', 'state_name', 'district']),
@@ -35,8 +35,32 @@ cid = (
     .unique('politician_id')
     .sort(['candidate', 'politician_id'])
     .select(['candidate', 'politician_id'])
-    .with_row_index('cid')
-    .with_columns(cid = pl.col.cid + 1)
+)
+
+(
+    filters
+    .join(
+        house.select([
+            'cycle', 'state_name', 'district',
+            'incumbent_party', 'pct'
+        ]),
+        on=['cycle', 'state_name', 'district'],
+        how='inner'
+    )
+    .select(pl.selectors.exclude('candidate'))
+    .pivot(on='party', values='politician_id')
+    .join(all_candidates, left_on='DEM', right_on='politician_id')
+    .rename({'candidate': 'candidate_dem'})
+    .join(all_candidates, left_on='REP', right_on='politician_id')
+    .rename({'candidate': 'candidate_rep'})
+    .rename({
+        'DEM': 'pid_dem',
+        'REP': 'pid_rep'
+    })
+    .with_columns(
+        (pl.col.pct >= 0.5).alias('inc_dem'),
+        (pl.col.pct < 0.5).alias('inc_rep')
+    )
 )
 
 candidates = (
@@ -64,6 +88,20 @@ candidates = (
 (
     house
     .join(candidates, on=['cycle', 'state_name', 'district'])
+)
+
+cid = (
+    filters
+    .join(
+        house.select(['cycle', 'state_name', 'district']),
+        on=['cycle', 'state_name', 'district'],
+        how='inner'
+    )
+    .unique('politician_id')
+    .sort(['candidate', 'politician_id'])
+    .select(['candidate', 'politician_id'])
+    .with_row_index('cid')
+    .with_columns(cid = pl.col.cid + 1)
 )
 
 # blegh ------------------------------------------------------------------------

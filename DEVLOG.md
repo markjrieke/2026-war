@@ -4,7 +4,7 @@
 
 * handle vacancies, third party incumbents who caucus with dems/reps
 * handle cases when incumbent party != winning party from last election. most of the time, this is just due to special elections between house elections, so is fine, but did have to swap a few incumbent parties around.
-* add indicator for whether (or not) the incumbent was running
+* add indicator for whether (or not) the incumbent was running (necessary for how I want to configure the dev model)
 
 ## 2025-06-27
 
