@@ -2,9 +2,14 @@
 
 ## 2025-07-04
 
-* handle vacancies, third party incumbents who caucus with dems/reps
-* handle cases when incumbent party != winning party from last election. most of the time, this is just due to special elections between house elections, so is fine, but did have to swap a few incumbent parties around.
-* add indicator for whether (or not) the incumbent was running (necessary for how I want to configure the dev model)
+I started to get into some more dev model work this past week, but realized I needed to make some more data updates in order to continue. Some of these I may have been able to write a scraper or interface to some API to automate a bit, but there are so many edge cases (and the source data sometimes is self-conflicting) that I feel better just going through it manually. Anyway, this past week has been wholly focused on incumbents:
+
+* Handling the coding of the incumbent parties when a seat was vacant (i.e., what was the party of the candidate *prior to* the vacancy).
+* Handling third party incumbents who caucus with either the democrats or republicans (e.g., Bernie Sanders).
+* Handling cases when the incumbent party *is not* the winning party from the previous election. The majority of the time, this is just due to special elections in between generals, so is fine, but I did have to swap a few incorrectly encoded incumbent parties around.
+* Adding indicators for whether (or not) the incumbent candidate is running.
+
+The last item is necessary for how (I'm thinking) I want to write the model. In addition to including an `incumbent_running` parameter, I'm thinking of modeling the incumbent party's two-party voteshare margin as a function of candidates. I'll likely continue this last item bit by bit over the next week.
 
 ## 2025-06-27
 
