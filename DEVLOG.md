@@ -2,7 +2,7 @@
 
 ## 2025-07-04
 
-I started to get into some more dev model work this past week, but realized I needed to make some more data updates in order to continue. Some of these I may have been able to write a scraper or interface to some API to automate a bit, but there are so many edge cases (and the source data sometimes is self-conflicting) that I feel better just going through it manually. Anyway, this past week has been wholly focused on incumbents:
+I started to get into some more dev model work this past week, but realized I needed to make some more data updates in order to continue. Some of these I may have been able to write a scraper or interface to some API to automate a bit, but there are so many edge cases (and the source data from the sites I'd scrape sometimes is self-conflicting) that I feel better just going through it manually. Anyway, this past week has been wholly focused on incumbents:
 
 * Handling the coding of the incumbent parties when a seat was vacant (i.e., what was the party of the candidate *prior to* the vacancy).
 * Handling third party incumbents who caucus with either the democrats or republicans (e.g., Bernie Sanders).
