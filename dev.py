@@ -63,6 +63,30 @@ all_candidates = (
     )
 )
 
+tmp = (
+    house
+    .with_columns(
+        pl.when(pl.col.incumbent_party == 'DEM')
+        .then(pl.col.pct)
+        .otherwise(1 - pl.col.pct)
+        .alias('pct')
+    )
+)
+
+(
+    gg.ggplot(
+        tmp.with_columns(pl.concat_str(['state_name', 'district'], separator='-').alias('cd')),
+        gg.aes(
+            x='cycle',
+            y='pct',
+            group='cd'
+        )
+    ) +
+    gg.geom_line(alpha=0.25) +
+    gg.facet_wrap(facets='state_name') +
+    gg.theme_xkcd()
+).show()
+
 candidates = (
     filters
     .join(
