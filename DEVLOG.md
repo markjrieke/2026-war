@@ -1,5 +1,9 @@
 # DEVLOG
 
+## 2025-07-11
+
+More of the same, just working through flagging incumbents --- it's been taking a bit longer than expected due to \~work-related-stuff\~. I should ideally finish that up this weekend.
+
 ## 2025-07-04
 
 I started to get into some more dev model work this past week, but realized I needed to make some more data updates in order to continue. Some of these I may have been able to write a scraper or interface to some API to automate a bit, but there are so many edge cases (and the source data from the sites I'd scrape sometimes is self-conflicting) that I feel better just going through it manually. Anyway, this past week has been wholly focused on incumbents:
