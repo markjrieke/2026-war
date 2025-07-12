@@ -4,6 +4,13 @@
 
 More of the same, just working through flagging incumbents --- it's been taking a bit longer than expected due to \~work-related-stuff\~. I should ideally finish that up this weekend.
 
+I was talking to a coworker earlier --- just shooting the breeze about how our brains work with project planning --- and I realized that I tend to work best if I have a hard deadline that I then work *backwards* from. I haven't yet had a hard deadline for this project, so I've been more \~whimsical\~ with working through it. To keep me on some semblance of a schedule, I'm going to try to release this project in early November, roughly 1 year ahead of the 2026 midterms. That gives me the loose following schedule:
+
+* **July**: Finish data validation and updates.
+* **August**: Model iteration and fit.
+* **September**: Site graphics / start writing articles for SIN / DD.
+* **October**: Finish articles, iterate through feedback / review comments.
+
 ## 2025-07-04
 
 I started to get into some more dev model work this past week, but realized I needed to make some more data updates in order to continue. Some of these I may have been able to write a scraper or interface to some API to automate a bit, but there are so many edge cases (and the source data from the sites I'd scrape sometimes is self-conflicting) that I feel better just going through it manually. Anyway, this past week has been wholly focused on incumbents:
