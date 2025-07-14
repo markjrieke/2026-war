@@ -13,7 +13,8 @@ house = (
     )
     .filter(pl.col.uncontested == 0)
     .select([
-        'cycle', 'state_name', 'district', 'incumbent_party', 'pct'
+        'cycle', 'state_name', 'district', 'incumbent_party', 'pct',
+        'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic'
     ])
 )
 
@@ -61,16 +62,8 @@ house = (
         .alias('incumbent_party')
     )
     .with_columns(
-        pl.when(pl.col.incumbent_party == 'REP')
-        .then((1 - pl.col.pct - 0.5) * 2)
-        .otherwise((pl.col.pct - 0.5) * 2)
-        .alias('inc_margin'),
-        pl.when(pl.col.incumbent_party == 'DEM')
-        .then(pl.col.is_incumbent_DEM)
-        .otherwise(pl.col.is_incumbent_REP)
-        .alias('inc_running')
+        pl.col.pct.sub(0.5).mul(2).alias('margin')
     )
-    .select(pl.selectors.exclude(pl.selectors.starts_with('is_')))
     .select(pl.selectors.exclude('pct'))
 )
 
@@ -81,11 +74,7 @@ winners = (
         pl.col.cycle,
         pl.col.state_name,
         pl.col.district,
-        pl.when((pl.col.incumbent_party == 'DEM') &
-                (pl.col.inc_margin > 0))
-        .then(pl.col.candidate_DEM)
-        .when((pl.col.incumbent_party == 'REP') &
-              (pl.col.inc_margin < 0))
+        pl.when(pl.col.margin >= 0)
         .then(pl.col.candidate_DEM)
         .otherwise(pl.col.candidate_REP)
         .alias('candidate')
@@ -107,11 +96,9 @@ incumbents = (
         pl.col.cycle,
         pl.col.state_name,
         pl.col.district,
-        pl.when((pl.col.incumbent_party == 'DEM') &
-                (pl.col.inc_running))
+        pl.when(pl.col.is_incumbent_DEM)
         .then(pl.col.candidate_DEM)
-        .when((pl.col.incumbent_party == 'REP') &
-              (pl.col.inc_running))
+        .when(pl.col.is_incumbent_REP)
         .then(pl.col.candidate_REP)
         .alias('candidate')
     )
@@ -185,44 +172,28 @@ house = (
     .rename({'cid': 'cid_REP'})
 )
 
-# Frame candidates & IDs in terms of incumbency
-house = (
-    house
-    .with_columns(
-        pl.when(pl.col.incumbent_party == 'DEM')
-        .then(pl.col.candidate_DEM)
-        .otherwise(pl.col.candidate_REP)
-        .alias('inc_party_candidate'),
-        pl.when(pl.col.incumbent_party == 'DEM')
-        .then(pl.col.candidate_REP)
-        .otherwise(pl.col.candidate_DEM)
-        .alias('opp_party_candidate'),
-        pl.when(pl.col.incumbent_party == 'DEM')
-        .then(pl.col.cid_DEM)
-        .otherwise(pl.col.cid_REP)
-        .alias('inc_cid'),
-        pl.when(pl.col.incumbent_party == 'DEM')
-        .then(pl.col.cid_REP)
-        .otherwise(pl.col.cid_DEM)
-        .alias('opp_cid')
-    )
-    .select(pl.selectors.exclude(pl.selectors.ends_with('_DEM')))
-    .select(pl.selectors.exclude(pl.selectors.ends_with('_REP')))
-)
+fixed_effects = [
+    'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
+    'is_incumbent_DEM', 'is_incumbent_REP'
+]
 
 stan_data = {
     'N': house.shape[0],
     'C': cids.unique('cid').shape[0],
-    'Y': house['inc_margin'].to_numpy(),
-    'cid': house['inc_cid', 'opp_cid'].to_numpy(),
-    'alpha_mu': 0.05,
+    'F': len(fixed_effects),
+    'X': house.select(fixed_effects).to_numpy(),
+    'Y': house['margin'].to_numpy(),
+    'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
+    'alpha_mu': 0,
     'alpha_sigma': 0.10,
+    'beta_mu': 0,
+    'beta_sigma': 0.10,
     'sigma_sigma': 0.10,
     'sigma_c_sigma': 0.10
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_02.stan',
+    stan_file='stan/dev_03.stan',
     dir='exe'
 )
 
@@ -241,8 +212,50 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     house_az
     .posterior
     .beta_c
-    .sel(beta_c_dim_0=809)
+    .sel(beta_c_dim_0=810)
     .quantile(q=[0.025, 0.5, 0.975])
 )
+
+tmp = (
+    pl.from_pandas(
+        house_fit
+        .draws_pd('beta_c')
+    )
+    .with_row_index('.draw')
+    .unpivot(
+        pl.selectors.starts_with('beta'),
+        index='.draw',
+        variable_name='cid',
+        value_name='beta_c'
+    )
+    .group_by('cid')
+    .agg(pl.implode('beta_c'))
+    .with_columns(
+        pl.col.cid.str.replace_all('beta_c\\[|\\]', '').cast(pl.Int64)
+    )
+    .join(
+        cids.filter(pl.col.cid != 1),
+        on='cid',
+        how='left'
+    )
+    .with_columns(
+        pl.col.beta_c.map_elements(
+            lambda x: x.mean()
+        ).alias('mean')
+    )
+    .sort('mean', descending=True)
+)
+
+(
+    gg.ggplot(
+        data=tmp,
+        mapping=gg.aes(
+            x='mean'
+        )
+    ) +
+    gg.geom_histogram(bins=40) +
+    gg.theme_538()
+).show()
+
 
 clean_dir()
