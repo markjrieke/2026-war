@@ -14,8 +14,19 @@ house = (
     .filter(pl.col.uncontested == 0)
     .select([
         'cycle', 'state_name', 'district', 'incumbent_party', 'pct',
-        'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic'
+        'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
+        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two'
     ])
+    .join(
+        pl.read_csv('data/presidential_party.csv'),
+        on='cycle',
+        how='left'
+    )
+    .with_columns(
+        (pl.col.incumbent_party == pl.col.presidential_party)
+        .alias('inc_party_same_party_pres')
+    )
+    .select(pl.selectors.exclude('presidential_party'))
 )
 
 # Map candidates to races
@@ -174,7 +185,8 @@ house = (
 
 fixed_effects = [
     'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-    'is_incumbent_DEM', 'is_incumbent_REP'
+    'is_incumbent_DEM', 'is_incumbent_REP', 'inc_party_same_party_pres',
+    'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two'
 ]
 
 stan_data = {
@@ -185,16 +197,16 @@ stan_data = {
     'Y': house['margin'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'alpha_mu': 0,
-    'alpha_sigma': 0.01,
+    'alpha_sigma': 0.1,
     'beta_mu': 0,
-    'beta_sigma': 0.025,
+    'beta_sigma': 0.25,
     'sigma_sigma': 0.025,
     'sigma_c_sigma': 0.025,
     'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_04.stan',
+    stan_file='stan/dev_05.stan',
     dir='exe'
 )
 
@@ -205,6 +217,8 @@ house_fit = house_model.sample(
     chains=8,
     parallel_chains=8
 )
+
+print(house_fit.diagnose())
 
 # house_az = az.from_cmdstanpy(posterior=house_fit)
 
@@ -266,45 +280,12 @@ pred = (
         x='margin',
         y='Y_rep_med',
         ymin='Y_rep_low',
-        ymax='Y_rep_high',
+        ymax='Y_rep_high'
     )) + 
-    gg.geom_pointrange(alpha=0.05)
+    gg.geom_pointrange(alpha=0.05) +
+    gg.facet_wrap(facets='cycle') +
+    gg.geom_abline(linetype='dashed', color='red')
 ).show()
 
-(
-    pl.from_pandas(house_fit.draws_pd('mu'))
-    .with_row_index('.draw')
-    .unpivot(
-        pl.selectors.starts_with('mu'),
-        index='.draw',
-        variable_name='rowid',
-        value_name='mu'
-    )
-    .group_by('rowid')
-    .agg(pl.implode('mu'))
-    .with_columns(
-        pl.col.rowid.str.replace_all('mu\\[|\\]', '').cast(pl.Int64)
-    )
-    .sort('rowid')
-    .hstack(house)
-    .with_columns(
-        pl.col.mu.map_elements(lambda x: x.mean()).alias('mean')
-    ) >>
-    gg.ggplot(gg.aes(x='margin', y='mean')) + 
-    gg.geom_point(
-        gg.aes(color='incumbent_party'),
-        alpha=0.25
-    ) +
-    gg.geom_smooth(color='royalblue') +
-    gg.facet_wrap(facets='cycle')
-).show()
-
-summary = az.summary(house_az)
-(
-    pl.from_pandas(summary, include_index=True)
-    .rename({'None': 'variable'})
-    .filter(pl.col.variable.str.contains('mu'))
-    .sort(pl.col.mean.abs(), descending=True)
-)
 
 clean_dir()
