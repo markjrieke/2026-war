@@ -185,15 +185,16 @@ stan_data = {
     'Y': house['margin'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'alpha_mu': 0,
-    'alpha_sigma': 0.10,
+    'alpha_sigma': 0.01,
     'beta_mu': 0,
-    'beta_sigma': 0.10,
-    'sigma_sigma': 0.10,
-    'sigma_c_sigma': 0.10
+    'beta_sigma': 0.025,
+    'sigma_sigma': 0.025,
+    'sigma_c_sigma': 0.025,
+    'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_03.stan',
+    stan_file='stan/dev_04.stan',
     dir='exe'
 )
 
@@ -205,57 +206,105 @@ house_fit = house_model.sample(
     parallel_chains=8
 )
 
-house_az = az.from_cmdstanpy(posterior=house_fit)
+# house_az = az.from_cmdstanpy(posterior=house_fit)
 
-# ~aoc as example candidate
+# # ~aoc as example candidate
+# (
+#     house_az
+#     .posterior
+#     .beta_c
+#     .sel(beta_c_dim_0=809)
+#     .quantile(q=[0.025, 0.5, 0.975])
+# )
+
 (
-    house_az
-    .posterior
-    .beta_c
-    .sel(beta_c_dim_0=810)
-    .quantile(q=[0.025, 0.5, 0.975])
-)
-
-tmp = (
-    pl.from_pandas(
-        house_fit
-        .draws_pd('beta_c')
-    )
+    pl.from_pandas(house_fit.draws_pd('Y_rep'))
     .with_row_index('.draw')
     .unpivot(
-        pl.selectors.starts_with('beta'),
+        pl.selectors.starts_with('Y_rep'),
         index='.draw',
-        variable_name='cid',
-        value_name='beta_c'
+        variable_name='rowid',
+        value_name='Y_rep'
     )
-    .group_by('cid')
-    .agg(pl.implode('beta_c'))
+    .group_by('rowid')
+    .agg(pl.implode('Y_rep'))
     .with_columns(
-        pl.col.cid.str.replace_all('beta_c\\[|\\]', '').cast(pl.Int64)
+        pl.col.rowid.str.replace_all('Y_rep\\[|\\]', '').cast(pl.Int64)
     )
-    .join(
-        cids.filter(pl.col.cid != 1),
-        on='cid',
-        how='left'
+    .slice(offset=0, length=1)
+    .explode('Y_rep') >>
+    gg.ggplot(gg.aes(x='Y_rep')) +
+    gg.geom_density()
+).show()
+
+pred = (
+    pl.from_pandas(house_fit.draws_pd('Y_rep'))
+    .with_row_index('.draw')
+    .unpivot(
+        pl.selectors.starts_with('Y_rep'),
+        index='.draw',
+        variable_name='rowid',
+        value_name='Y_rep'
     )
+    .group_by('rowid')
+    .agg(pl.implode('Y_rep'))
     .with_columns(
-        pl.col.beta_c.map_elements(
-            lambda x: x.mean()
-        ).alias('mean')
+        pl.col.rowid.str.replace_all('Y_rep\\[|\\]', '').cast(pl.Int64)
     )
-    .sort('mean', descending=True)
+    .sort('rowid')
+    .hstack(house)
+    .with_columns(
+        pl.col.Y_rep.map_elements(lambda x: x.median()).alias('Y_rep_med'),
+        pl.col.Y_rep.map_elements(lambda x: x.quantile(0.05)).alias('Y_rep_low'),
+        pl.col.Y_rep.map_elements(lambda x: x.quantile(0.95)).alias('Y_rep_high')
+    )
 )
 
 (
-    gg.ggplot(
-        data=tmp,
-        mapping=gg.aes(
-            x='mean'
-        )
-    ) +
-    gg.geom_histogram(bins=40) +
-    gg.theme_538()
+    pred >>
+    gg.ggplot(gg.aes(
+        x='margin',
+        y='Y_rep_med',
+        ymin='Y_rep_low',
+        ymax='Y_rep_high',
+    )) + 
+    gg.geom_pointrange(alpha=0.05)
 ).show()
 
+(
+    pl.from_pandas(house_fit.draws_pd('mu'))
+    .with_row_index('.draw')
+    .unpivot(
+        pl.selectors.starts_with('mu'),
+        index='.draw',
+        variable_name='rowid',
+        value_name='mu'
+    )
+    .group_by('rowid')
+    .agg(pl.implode('mu'))
+    .with_columns(
+        pl.col.rowid.str.replace_all('mu\\[|\\]', '').cast(pl.Int64)
+    )
+    .sort('rowid')
+    .hstack(house)
+    .with_columns(
+        pl.col.mu.map_elements(lambda x: x.mean()).alias('mean')
+    ) >>
+    gg.ggplot(gg.aes(x='margin', y='mean')) + 
+    gg.geom_point(
+        gg.aes(color='incumbent_party'),
+        alpha=0.25
+    ) +
+    gg.geom_smooth(color='royalblue') +
+    gg.facet_wrap(facets='cycle')
+).show()
+
+summary = az.summary(house_az)
+(
+    pl.from_pandas(summary, include_index=True)
+    .rename({'None': 'variable'})
+    .filter(pl.col.variable.str.contains('mu'))
+    .sort(pl.col.mean.abs(), descending=True)
+)
 
 clean_dir()
