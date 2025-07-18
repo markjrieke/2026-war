@@ -181,6 +181,9 @@ house = (
     )
     .select(pl.selectors.exclude('politician_id'))
     .rename({'cid': 'cid_REP'})
+    .with_columns(
+        pl.col.cycle.rank('dense').alias('eid')
+    )
 )
 
 fixed_effects = [
@@ -191,22 +194,24 @@ fixed_effects = [
 
 stan_data = {
     'N': house.shape[0],
+    'E': house.unique('eid').shape[0],
     'C': cids.unique('cid').shape[0],
     'F': len(fixed_effects),
     'X': house.select(fixed_effects).to_numpy(),
     'Y': house['margin'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
+    'eid': house['eid'].to_numpy(),
     'alpha_mu': 0,
     'alpha_sigma': 0.1,
     'beta_mu': 0,
     'beta_sigma': 0.25,
-    'sigma_sigma': 0.025,
+    'sigma_sigma': 0.1,
     'sigma_c_sigma': 0.025,
     'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_05.stan',
+    stan_file='stan/dev_06.stan',
     dir='exe'
 )
 
@@ -220,16 +225,18 @@ house_fit = house_model.sample(
 
 print(house_fit.diagnose())
 
-# house_az = az.from_cmdstanpy(posterior=house_fit)
+house_az = az.from_cmdstanpy(posterior=house_fit)
+
+az.summary(house_az, 'sigma_e')
 
 # # ~aoc as example candidate
-# (
-#     house_az
-#     .posterior
-#     .beta_c
-#     .sel(beta_c_dim_0=809)
-#     .quantile(q=[0.025, 0.5, 0.975])
-# )
+(
+    house_az
+    .posterior
+    .beta_c
+    .sel(beta_c_dim_0=809)
+    .quantile(q=[0.025, 0.5, 0.975])
+)
 
 (
     pl.from_pandas(house_fit.draws_pd('Y_rep'))
@@ -250,6 +257,52 @@ print(house_fit.diagnose())
     gg.ggplot(gg.aes(x='Y_rep')) +
     gg.geom_density()
 ).show()
+
+candidate_obs = (
+    house
+    .select(pl.selectors.starts_with('cid'))
+    .unpivot(on=pl.selectors.all(), value_name='cid')
+    .group_by('cid')
+    .agg(pl.len().alias('n'))
+    .join(cids, on='cid', how='left')
+    .select(['cid', 'candidate', 'n'])
+    .sort('cid')
+    .filter(pl.col.cid != 1)
+    .filter(pl.col.n > 1)
+)
+
+(
+    pl.from_pandas(house_fit.draws_pd('beta_c'))
+    .with_row_index('.draw')
+    .unpivot(
+        pl.selectors.starts_with('beta_c'),
+        index='.draw',
+        variable_name='cid',
+        value_name='beta_c'
+    )
+    .group_by('cid')
+    .agg(pl.implode('beta_c'))
+    .with_columns(
+        pl.col.cid.str.replace_all('beta_c\\[|\\]', '').cast(pl.Int64)
+    )
+    .join(cids, on='cid', how='left')
+    .with_columns(
+        pl.col.beta_c.map_elements(lambda x: x.median()).alias('skill_med'),
+        pl.col.beta_c.map_elements(lambda x: x.quantile(0.05)).alias('skill_low'),
+        pl.col.beta_c.map_elements(lambda x: x.quantile(0.95)).alias('skill_high')
+    )
+    .filter(pl.col.cid == 1)
+    # .join(candidate_obs, on=['cid', 'candidate'], how='inner')
+    # .sample(n=30) >>
+    # gg.ggplot(gg.aes(
+    #     x='reorder(candidate, skill_med)',
+    #     y='skill_med',
+    #     ymin='skill_low',
+    #     ymax='skill_high'
+    # )) +
+    # gg.geom_pointrange() +
+    # gg.coord_flip()
+)
 
 pred = (
     pl.from_pandas(house_fit.draws_pd('Y_rep'))
@@ -283,8 +336,25 @@ pred = (
         ymax='Y_rep_high'
     )) + 
     gg.geom_pointrange(alpha=0.05) +
-    gg.facet_wrap(facets='cycle') +
+    gg.facet_wrap(facets='cycle') + 
     gg.geom_abline(linetype='dashed', color='red')
+).show()
+
+(
+    pred
+    .with_columns(
+        ((pl.col.margin > pl.col.Y_rep_low) &
+         (pl.col.margin < pl.col.Y_rep_high)).alias('in')
+    )
+    .group_by(['cycle', 'in'])
+    .agg(pl.len().alias('n'))
+    .with_columns(
+        (pl.col.n / pl.col.n.sum().over('cycle')).alias('pct')
+    )
+    .filter(pl.col('in'))
+    .sort('cycle') >>
+    gg.ggplot(gg.aes(x='cycle', y='pct')) + 
+    gg.geom_point()
 ).show()
 
 
