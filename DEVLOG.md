@@ -1,5 +1,9 @@
 # DEVLOG
 
+## 2025-07-18
+
+Well, I have just realized that I will need to *radically* update the schedule that I initially shared last week --- for personal reasons, I'll need to finish everything by end of August (and ideally ahead of then). This should be doable --- I have, for the most part, finished up the validation piece that was supposed to take me through end of July, and have made some meaningful progress iterating through models. If I can finish up the modeling piece in the first few weeks of August, I honestly should be able to bang out the graphics in a day and the posts in a week.
+
 ## 2025-07-11
 
 More of the same, just working through flagging incumbents --- it's been taking a bit longer than expected due to \~work-related-stuff\~. I should ideally finish that up this weekend.
