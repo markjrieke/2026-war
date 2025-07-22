@@ -203,15 +203,16 @@ stan_data = {
     'eid': house['eid'].to_numpy(),
     'alpha_mu': 0,
     'alpha_sigma': 0.1,
-    'beta_v_mu': 0,
-    'beta_v_sigma': 0.25,
+    'beta_v0_mu': 0,
+    'beta_v0_sigma': 0.25,
+    'sigma_v_sigma': 0.1,
     'sigma_c_sigma': 0.025,
     'sigma_e_sigma': 0.1,
     'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_07.stan',
+    stan_file='stan/dev_08.stan',
     dir='exe'
 )
 
@@ -227,7 +228,28 @@ print(house_fit.diagnose())
 
 house_az = az.from_cmdstanpy(posterior=house_fit)
 
-az.summary(house_az, 'beta_v')
+(
+    pl.from_pandas(az.summary(house_az, 'beta_v'), include_index=True)
+    .rename({'None': 'variable'})
+    .with_columns(
+        pl.col.variable.str.replace_all('beta_v\\[|\\]', '')
+    )
+    .with_columns(
+        pl.col.variable.str.split(by=', ')
+    )
+    .with_columns(
+        pl.col.variable.map_elements(lambda x: x[0]).cast(pl.Int64).alias('parameter'),
+        pl.col.variable.map_elements(lambda x: x[1]).cast(pl.Int64).alias('eid')
+    ) >>
+    gg.ggplot(gg.aes(
+            x='eid',
+            y='mean',
+            ymin='hdi_3%',
+            ymax='hdi_97%'
+    )) + 
+    gg.geom_ribbon(alpha=0.25) +
+    gg.facet_wrap(facets='parameter')
+).show()
 
 # # ~aoc as example candidate
 (
