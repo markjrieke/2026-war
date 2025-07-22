@@ -203,15 +203,15 @@ stan_data = {
     'eid': house['eid'].to_numpy(),
     'alpha_mu': 0,
     'alpha_sigma': 0.1,
-    'beta_mu': 0,
-    'beta_sigma': 0.25,
-    'sigma_sigma': 0.1,
+    'beta_v_mu': 0,
+    'beta_v_sigma': 0.25,
     'sigma_c_sigma': 0.025,
+    'sigma_e_sigma': 0.1,
     'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_06.stan',
+    stan_file='stan/dev_07.stan',
     dir='exe'
 )
 
@@ -227,7 +227,7 @@ print(house_fit.diagnose())
 
 house_az = az.from_cmdstanpy(posterior=house_fit)
 
-az.summary(house_az, 'sigma_e')
+az.summary(house_az, 'beta_v')
 
 # # ~aoc as example candidate
 (
