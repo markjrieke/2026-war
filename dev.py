@@ -13,10 +13,24 @@ house = (
         infer_schema_length=1000
     )
     .filter(pl.col.uncontested == 0)
+    .join(
+        pl.read_csv('data/jungle_primaries.csv').with_columns(pl.lit(0).alias('jp')),
+        on=['cycle', 'state_name', 'district'],
+        how='left'
+    )
+    .with_columns(pl.col.jp.fill_null(1))
+    .with_columns(
+        pl.col.logit_dem_share_fec.mul(pl.col.has_fec).mul(pl.col.jp),
+        pl.when((pl.col.jp == 1) & (pl.col.has_fec == 1))
+        .then(pl.lit(1))
+        .otherwise(pl.lit(0))
+        .alias('fec')
+    )
     .select([
         'cycle', 'state_name', 'district', 'incumbent_party', 'pct',
         'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two', 'experience'
+        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two', 'experience',
+        'logit_dem_share_fec', 'fec'
     ])
     .join(
         pl.read_csv('data/presidential_party.csv'),
@@ -196,7 +210,8 @@ fixed_effects = [
     'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
     'is_incumbent_DEM', 'is_incumbent_REP',
     'dem_pres_twop_lag_lean_one',
-    'exp_disadvantage', 'exp_advantage'
+    'exp_disadvantage', 'exp_advantage',
+    'logit_dem_share_fec'
 ]
 
 stan_data = {
@@ -208,6 +223,8 @@ stan_data = {
     'Y': house['margin'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'eid': house['eid'].to_numpy(),
+    # 'FEC': fixed_effects.index('logit_dem_share_fec') + 1,
+    # 'fec': house['fec'].to_numpy(),
     'alpha_mu': 0,
     'alpha_sigma': 0.1,
     'beta_v0_mu': 0,
@@ -283,9 +300,9 @@ Y_rep = (
 
 az.plot_pair(
     house_az,
-    var_names=['alpha', 'beta_v'],
+    var_names=['beta_v'],
     coords={
-        'beta_v_dim_0': [7, 8, 9, 10, 11],
+        'beta_v_dim_0': [11, 8, 9, 10],
         'beta_v_dim_1': [0]
     },
     show=True
@@ -452,6 +469,14 @@ pred = (
     gg.geom_ribbon(alpha=0.25) +
     gg.geom_line() +
     gg.geom_point()
+).show()
+
+(
+    house
+    .filter(pl.col.fec == 0)
+    .with_columns(((pl.col.dem_share_fec - pl.col.dem_share_fec.mean()) / pl.col.dem_share_fec.std()).alias('dem_share_fec')) >>
+    gg.ggplot(gg.aes(x='dem_share_fec')) + 
+    gg.geom_histogram(bins=60)
 ).show()
 
 clean_dir()
