@@ -2,6 +2,7 @@ import arviz as az
 import polars as pl
 import numpy as np
 import plotnine as gg
+import matplotlib.pyplot as plt
 
 from war.utils.model import CmdStanModel, clean_dir
 
@@ -15,7 +16,7 @@ house = (
     .select([
         'cycle', 'state_name', 'district', 'incumbent_party', 'pct',
         'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two'
+        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two', 'experience'
     ])
     .join(
         pl.read_csv('data/presidential_party.csv'),
@@ -27,6 +28,11 @@ house = (
         .alias('inc_party_same_party_pres')
     )
     .select(pl.selectors.exclude('presidential_party'))
+    .with_columns(
+        pl.when(pl.col.experience < 0).then(pl.lit(1)).otherwise(pl.lit(0)).alias('exp_disadvantage'),
+        pl.when(pl.col.experience > 0).then(pl.lit(1)).otherwise(pl.lit(0)).alias('exp_advantage')
+    )
+    .select(pl.selectors.exclude('experience'))
 )
 
 # Map candidates to races
@@ -188,8 +194,9 @@ house = (
 
 fixed_effects = [
     'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-    'is_incumbent_DEM', 'is_incumbent_REP', 'inc_party_same_party_pres',
-    'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two'
+    'is_incumbent_DEM', 'is_incumbent_REP',
+    'dem_pres_twop_lag_lean_one',
+    'exp_disadvantage', 'exp_advantage'
 ]
 
 stan_data = {
@@ -212,16 +219,20 @@ stan_data = {
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_08.stan',
+    stan_file='stan/dev_09.stan',
     dir='exe'
 )
 
 house_fit = house_model.sample(
     data=stan_data,
-    iter_warmup=1000,
-    iter_sampling=1000,
+    iter_warmup=500,
+    iter_sampling=500,
     chains=8,
-    parallel_chains=8
+    parallel_chains=8,
+    inits=0.01,
+    step_size=0.002,
+    refresh=20,
+    seed=2026
 )
 
 print(house_fit.diagnose())
@@ -240,6 +251,9 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     .with_columns(
         pl.col.variable.map_elements(lambda x: x[0]).cast(pl.Int64).alias('parameter'),
         pl.col.variable.map_elements(lambda x: x[1]).cast(pl.Int64).alias('eid')
+    )
+    .with_columns(
+        pl.col.parameter.map_elements(lambda x: fixed_effects[x])
     ) >>
     gg.ggplot(gg.aes(
             x='eid',
@@ -248,6 +262,7 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
             ymax='hdi_97%'
     )) + 
     gg.geom_ribbon(alpha=0.25) +
+    gg.geom_line() +
     gg.facet_wrap(facets='parameter')
 ).show()
 
@@ -259,6 +274,47 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     .sel(beta_c_dim_0=809)
     .quantile(q=[0.025, 0.5, 0.975])
 )
+
+Y_rep = (
+    az.summary(house_az, 'Y_rep')
+    .pipe(pl.from_pandas, include_index=True)
+)
+
+
+az.plot_pair(
+    house_az,
+    var_names=['alpha', 'beta_v'],
+    coords={
+        'beta_v_dim_0': [7, 8, 9, 10, 11],
+        'beta_v_dim_1': [0]
+    },
+    show=True
+)
+
+az.summary(house_az, var_names='sigma_v')
+
+(
+    Y_rep
+    .rename({'None': 'rowid'})
+    .with_columns(pl.col.rowid.str.replace_all('Y_rep\\[|\\]', '').cast(pl.Int64))
+    .join(house.with_row_index('rowid'), on='rowid', how='left')
+    .group_by(['state_name', 'district'])
+    .agg(pl.implode(['cycle', 'mean', 'hdi_3%', 'hdi_97%']))
+    .sample(n=9)
+    # .filter(pl.col.state_name == 'California',
+    #         pl.col.district == 20)
+    .explode(['cycle', 'mean', 'hdi_3%', 'hdi_97%'])
+    .with_columns(pl.concat_str(pl.col.state_name, pl.col.district, separator=' ').alias('facet')) >>
+    gg.ggplot(gg.aes(
+        x='cycle',
+        y='mean',
+        ymin='hdi_3%',
+        ymax='hdi_97%'
+    )) +
+    gg.geom_ribbon(alpha=0.25) +
+    gg.geom_line() +
+    gg.facet_wrap(facets='facet')
+).show()
 
 (
     pl.from_pandas(house_fit.draws_pd('Y_rep'))
@@ -313,17 +369,20 @@ candidate_obs = (
         pl.col.beta_c.map_elements(lambda x: x.quantile(0.05)).alias('skill_low'),
         pl.col.beta_c.map_elements(lambda x: x.quantile(0.95)).alias('skill_high')
     )
-    .filter(pl.col.cid == 1)
-    # .join(candidate_obs, on=['cid', 'candidate'], how='inner')
-    # .sample(n=30) >>
-    # gg.ggplot(gg.aes(
-    #     x='reorder(candidate, skill_med)',
-    #     y='skill_med',
-    #     ymin='skill_low',
-    #     ymax='skill_high'
-    # )) +
-    # gg.geom_pointrange() +
-    # gg.coord_flip()
+    .filter(pl.col.cid != 1)
+    .join(candidate_obs, on=['cid', 'candidate'], how='inner')
+    .filter(
+        pl.col.candidate.str.contains('Ocasio|Sanders')
+    )
+    .sample(n=30) >>
+    gg.ggplot(gg.aes(
+        x='reorder(candidate, skill_med)',
+        y='skill_med',
+        ymin='skill_low',
+        ymax='skill_high'
+    )) +
+    gg.geom_pointrange() +
+    gg.coord_flip()
 )
 
 pred = (
@@ -379,5 +438,20 @@ pred = (
     gg.geom_point()
 ).show()
 
+(
+    az.summary(house_az, var_names='sigma_e')
+    .pipe(pl.from_pandas, include_index=True)
+    .rename({'None': 'eid'})
+    .with_columns(pl.col.eid.str.replace_all('sigma_e\\[|\\]', '').cast(pl.Int64)) >>
+    gg.ggplot(gg.aes(
+        x='eid',
+        y='mean',
+        ymin='hdi_3%',
+        ymax='hdi_97%'
+    )) +
+    gg.geom_ribbon(alpha=0.25) +
+    gg.geom_line() +
+    gg.geom_point()
+).show()
 
 clean_dir()
