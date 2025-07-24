@@ -112,10 +112,11 @@ model {
 generated quantities {
     // Posterior retrodictive
     vector[N] Y_rep = to_vector(normal_rng(mu, sigma));
-    vector[N] P_win;
+    array[2] vector[N] P_win;
     for (n in 1:N) {
-        P_win[n] = Y_rep[n] > 0;
+        P_win[1,n] = Y_rep[n] > 0;
     }
+    P_win[2] = 1 - P_win[1];
 
     vector[N] beta_c_dem = to_vector(to_vector(normal_rng(rep_vector(0, N), 1)) * sigma_c);
     vector[N] beta_c_rep = to_vector(to_vector(normal_rng(rep_vector(0, N), 1)) * sigma_c);
@@ -142,12 +143,12 @@ generated quantities {
 
     array[2] vector[N] WAR;
     for (p in 1:2) {
-        WAR[p] = Y_rep_cf[p] - Y_rep;
+        WAR[p] = Y_rep - Y_rep_cf[p];
     }
 
-    array[2] vector[N] WARP;
+    array[2] vector[N] P_win_cf;
     for (n in 1:N) {
-        WARP[1,n] = Y_rep_cf[1,n] > 0;
-        WARP[2,n] = Y_rep_cf[2,n] < 0;
+        P_win_cf[1,n] = Y_rep_cf[1,n] > 0;
+        P_win_cf[2,n] = Y_rep_cf[2,n] < 0;
     }
 }

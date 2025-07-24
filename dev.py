@@ -296,7 +296,7 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     .quantile(q=[0.025, 0.5, 0.975])
 )
 
-(
+WAR = (
     house_fit.draws_pd(vars='WAR')
     .pipe(pl.from_pandas, include_index=True)
     .unpivot(
@@ -328,20 +328,42 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     .with_columns(pl.col.rowid.cast(pl.Int64))
     .sort('rowid')
     .hstack(house)
-    .filter(pl.col.candidate_DEM == 'Alexandria Ocasio-Cortez')
     .with_columns(
         pl.col.dem.map_elements(lambda x: x.median()).alias('WAR_med'),
         pl.col.dem.map_elements(lambda x: x.quantile(0.05)).alias('WAR_low'),
-        pl.col.dem.map_elements(lambda x: x.quantile(0.95)).alias('WAR_high')
-    ) >>
+        pl.col.dem.map_elements(lambda x: x.quantile(0.95)).alias('WAR_high'),
+        pl.concat_str(['state_name', 'district'], separator=' ').alias('group')
+    )
+)
+
+(
+    WAR
+    .filter(pl.col.candidate_DEM.str.contains('Jones')) >>
     gg.ggplot(gg.aes(
         x='cycle',
         y='WAR_med',
         ymin='WAR_low',
-        ymax='WAR_high'
+        ymax='WAR_high',
+        group='group'
     )) +
     gg.geom_ribbon(alpha=0.25) +
     gg.geom_line()
+).show()
+
+(
+    WAR
+    .filter(pl.col.cycle == 2024)
+    .filter(pl.col.cid_DEM != 1)
+    .sort('WAR_med', descending=True)
+    .select(['group', 'candidate_DEM', 'WAR_med'])
+)
+
+(
+    WAR
+    .filter(pl.col.cid_DEM != 1) >>
+    gg.ggplot(gg.aes(x='WAR_med')) +
+    gg.geom_histogram() +
+    gg.facet_wrap(facets='cycle')
 ).show()
 
 pl.Series.quantile()
