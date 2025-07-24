@@ -214,6 +214,11 @@ fixed_effects = [
     'logit_dem_share_fec'
 ]
 
+iid = [
+    fixed_effects.index('is_incumbent_DEM'),
+    fixed_effects.index('is_incumbent_REP')
+]
+
 stan_data = {
     'N': house.shape[0],
     'E': house.unique('eid').shape[0],
@@ -223,8 +228,7 @@ stan_data = {
     'Y': house['margin'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'eid': house['eid'].to_numpy(),
-    # 'FEC': fixed_effects.index('logit_dem_share_fec') + 1,
-    # 'fec': house['fec'].to_numpy(),
+    'iid': iid,
     'alpha_mu': 0,
     'alpha_sigma': 0.1,
     'beta_v0_mu': 0,
@@ -236,7 +240,7 @@ stan_data = {
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_09.stan',
+    stan_file='stan/dev_11.stan',
     dir='exe'
 )
 
@@ -287,10 +291,60 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
 (
     house_az
     .posterior
-    .beta_c
-    .sel(beta_c_dim_0=809)
+    .WAR
+    .sel(WAR_dim_0=0, WAR_dim_1=810)
     .quantile(q=[0.025, 0.5, 0.975])
 )
+
+(
+    house_fit.draws_pd(vars='WAR')
+    .pipe(pl.from_pandas, include_index=True)
+    .unpivot(
+        pl.selectors.all(),
+        variable_name='variable',
+        value_name='WAR'
+    )
+    .group_by('variable')
+    .agg(pl.implode('WAR'))
+    .with_columns(
+        pl.col.variable.str.replace_all('WAR\\[|\\]', '').str.split(',')
+    )
+    .with_columns(
+        pl.col.variable.map_elements(lambda x: x[0]).alias('party'),
+        pl.col.variable.map_elements(lambda x: x[1]).alias('rowid')
+    )
+    .select(pl.selectors.exclude('variable'))
+    .with_columns(
+        pl.when(pl.col.party == '1')
+        .then(pl.lit('dem'))
+        .otherwise(pl.lit('rep'))
+        .alias('party')
+    )
+    .pivot(
+        on='party',
+        values='WAR',
+        index='rowid'
+    )
+    .with_columns(pl.col.rowid.cast(pl.Int64))
+    .sort('rowid')
+    .hstack(house)
+    .filter(pl.col.candidate_DEM == 'Alexandria Ocasio-Cortez')
+    .with_columns(
+        pl.col.dem.map_elements(lambda x: x.median()).alias('WAR_med'),
+        pl.col.dem.map_elements(lambda x: x.quantile(0.05)).alias('WAR_low'),
+        pl.col.dem.map_elements(lambda x: x.quantile(0.95)).alias('WAR_high')
+    ) >>
+    gg.ggplot(gg.aes(
+        x='cycle',
+        y='WAR_med',
+        ymin='WAR_low',
+        ymax='WAR_high'
+    )) +
+    gg.geom_ribbon(alpha=0.25) +
+    gg.geom_line()
+).show()
+
+pl.Series.quantile()
 
 Y_rep = (
     az.summary(house_az, 'Y_rep')
@@ -469,6 +523,26 @@ pred = (
     gg.geom_ribbon(alpha=0.25) +
     gg.geom_line() +
     gg.geom_point()
+).show()
+
+(
+    pred
+    .with_columns(pl.concat_str(['state_name', 'district'], separator=' ').alias('group'))
+    .group_by('group')
+    .agg(pl.implode(['cycle', 'margin', 'Y_rep_med', 'Y_rep_low', 'Y_rep_high']))
+    .sample(n=12)
+    .explode(['cycle', 'margin', 'Y_rep_med', 'Y_rep_low', 'Y_rep_high']) >>
+    gg.ggplot(gg.aes(
+        x='cycle',
+        y='Y_rep_med',
+        ymin='Y_rep_low',
+        ymax='Y_rep_high',
+        group='group'
+    )) +
+    gg.geom_ribbon(alpha=0.25) + 
+    gg.geom_line() +
+    gg.geom_point(gg.aes(y='margin'), color='royalblue') + 
+    gg.facet_wrap(facets='group')
 ).show()
 
 (
