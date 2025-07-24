@@ -215,8 +215,8 @@ fixed_effects = [
 ]
 
 iid = [
-    fixed_effects.index('is_incumbent_DEM'),
-    fixed_effects.index('is_incumbent_REP')
+    fixed_effects.index('is_incumbent_DEM') + 1,
+    fixed_effects.index('is_incumbent_REP') + 1
 ]
 
 stan_data = {
@@ -229,8 +229,9 @@ stan_data = {
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'eid': house['eid'].to_numpy(),
     'iid': iid,
-    'alpha_mu': 0,
-    'alpha_sigma': 0.1,
+    'alpha0_mu': 0,
+    'alpha0_sigma': 0.1,
+    'sigma_alpha_sigma': 0.1,
     'beta_v0_mu': 0,
     'beta_v0_sigma': 0.25,
     'sigma_v_sigma': 0.1,
@@ -240,7 +241,7 @@ stan_data = {
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_11.stan',
+    stan_file='stan/dev_12.stan',
     dir='exe'
 )
 
@@ -261,20 +262,20 @@ print(house_fit.diagnose())
 house_az = az.from_cmdstanpy(posterior=house_fit)
 
 (
-    pl.from_pandas(az.summary(house_az, 'beta_v'), include_index=True)
+    pl.from_pandas(az.summary(house_az, ['alpha', 'beta_v']), include_index=True)
     .rename({'None': 'variable'})
     .with_columns(
-        pl.col.variable.str.replace_all('beta_v\\[|\\]', '')
+        pl.col.variable.str.replace_all('beta_v\\[|\\]|alpha\\[', '')
     )
     .with_columns(
         pl.col.variable.str.split(by=', ')
     )
     .with_columns(
-        pl.col.variable.map_elements(lambda x: x[0]).cast(pl.Int64).alias('parameter'),
-        pl.col.variable.map_elements(lambda x: x[1]).cast(pl.Int64).alias('eid')
-    )
-    .with_columns(
-        pl.col.parameter.map_elements(lambda x: fixed_effects[x])
+        pl.when(pl.col.variable.map_elements(lambda x: len(x)) == 1)
+        .then(pl.lit('alpha'))
+        .otherwise(pl.col.variable.map_elements(lambda x: fixed_effects[int(x[0])]))
+        .alias('parameter'),
+        pl.col.variable.map_elements(lambda x: x[-1]).cast(pl.Int64).alias('eid')
     ) >>
     gg.ggplot(gg.aes(
             x='eid',
@@ -338,13 +339,13 @@ WAR = (
 
 (
     WAR
-    .filter(pl.col.candidate_DEM.str.contains('Jones')) >>
+    .filter(pl.col.candidate_DEM.str.contains('Lieu')) >>
     gg.ggplot(gg.aes(
         x='cycle',
         y='WAR_med',
         ymin='WAR_low',
         ymax='WAR_high',
-        group='group'
+        # group='group'
     )) +
     gg.geom_ribbon(alpha=0.25) +
     gg.geom_line()
