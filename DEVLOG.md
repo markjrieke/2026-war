@@ -1,5 +1,9 @@
 # DEVLOG
 
+## 2025-07-25
+
+Scheduled out some dedicated time where I could focus on the model and it's basically in a good spot. I need to do some final nips/tucks to the model itself (like swapping to estimating logit-scale results and making a few minor data updates), but then I can prettify the codebase, write out the results, and call it a day from the coding perspective. At some point in the next two weeks, I'll need to write the SIN article and companion DD article.
+
 ## 2025-07-18
 
 Well, I have just realized that I will need to *radically* update the schedule that I initially shared last week --- for personal reasons, I'll need to finish everything by end of August (and ideally ahead of then). This should be doable --- I have, for the most part, finished up the validation piece that was supposed to take me through end of July, and have made some meaningful progress iterating through models. If I can finish up the modeling piece in the first few weeks of August, I honestly should be able to bang out the graphics in a day and the posts in a week.
