@@ -8,3 +8,4 @@ real half_normal_lpdf(vector sigma,
     int D = size(sigma);
     return normal_lpdf(sigma | 0, sigma_sigma) - D * normal_lccdf(0 | 0, sigma_sigma);
 }
+
