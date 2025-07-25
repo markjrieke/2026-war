@@ -92,10 +92,6 @@ house = (
         .otherwise(pl.col.incumbent_party)
         .alias('incumbent_party')
     )
-    .with_columns(
-        pl.col.pct.sub(0.5).mul(2).alias('margin')
-    )
-    .select(pl.selectors.exclude('pct'))
 )
 
 # Set of candidates who have won a race during the modeled period
@@ -105,7 +101,7 @@ winners = (
         pl.col.cycle,
         pl.col.state_name,
         pl.col.district,
-        pl.when(pl.col.margin >= 0)
+        pl.when(pl.col.pct >= 0.50)
         .then(pl.col.candidate_DEM)
         .otherwise(pl.col.candidate_REP)
         .alias('candidate')
@@ -225,23 +221,23 @@ stan_data = {
     'C': cids.unique('cid').shape[0],
     'F': len(fixed_effects),
     'X': house.select(fixed_effects).to_numpy(),
-    'Y': house['margin'].to_numpy(),
+    'Y': house['pct'].to_numpy(),
     'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
     'eid': house['eid'].to_numpy(),
     'iid': iid,
     'alpha0_mu': 0,
-    'alpha0_sigma': 0.1,
+    'alpha0_sigma': 0.15,
     'sigma_alpha_sigma': 0.1,
     'beta_v0_mu': 0,
-    'beta_v0_sigma': 0.25,
+    'beta_v0_sigma': 0.5,
     'sigma_v_sigma': 0.1,
-    'sigma_c_sigma': 0.025,
-    'sigma_e_sigma': 0.1,
+    'sigma_c_sigma': 0.15,
+    'sigma_e_sigma': 0.2,
     'prior_check': 0
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_12.stan',
+    stan_file='stan/dev_13.stan',
     dir='exe'
 )
 
@@ -339,7 +335,14 @@ WAR = (
 
 (
     WAR
-    .filter(pl.col.candidate_DEM.str.contains('Mondaire')) >>
+    .filter(pl.col.cycle == 2024, pl.col.cid_DEM != 1)
+    .select(pl.col(['state_name', 'district', 'candidate_DEM']), pl.selectors.starts_with('WAR'))
+    .sort(pl.col.WAR_med, descending=True)
+)
+
+(
+    WAR
+    .filter(pl.col.candidate_DEM.str.contains('Kaptur')) >>
     gg.ggplot(gg.aes(
         x='cycle',
         y='WAR_med',
@@ -397,7 +400,7 @@ p_win_cf = az.summary(house_az, var_names='P_win_cf')
     .filter(pl.col.cycle == 2024, pl.col.cid_DEM != 1)
     .select(['state_name', 'district', 'candidate_DEM', 'WARP'])
     .sort('WARP', descending=True)
-    .filter(pl.col.candidate_DEM.str.contains('Omar'))
+    # .filter(pl.col.candidate_DEM.str.contains('Omar'))
     # >>
     # gg.ggplot(gg.aes(x='WARP')) +
     # gg.geom_histogram(bins=40) +
@@ -609,11 +612,9 @@ pred = (
 )
 
 (
-    pred.filter(
-        pl.col.cycle == 2000
-    ) >>
+    pred >>
     gg.ggplot(gg.aes(
-        x='margin',
+        x='pct',
         y='Y_rep_med',
         ymin='Y_rep_low',
         ymax='Y_rep_high'
