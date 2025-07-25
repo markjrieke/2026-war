@@ -293,7 +293,7 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     house_az
     .posterior
     .WAR
-    .sel(WAR_dim_0=0, WAR_dim_1=810)
+    .sel(WAR_dim_0=0, WAR_dim_1=809)
     .quantile(q=[0.025, 0.5, 0.975])
 )
 
@@ -339,7 +339,7 @@ WAR = (
 
 (
     WAR
-    .filter(pl.col.candidate_DEM.str.contains('Lieu')) >>
+    .filter(pl.col.candidate_DEM.str.contains('Mondaire')) >>
     gg.ggplot(gg.aes(
         x='cycle',
         y='WAR_med',
@@ -351,12 +351,116 @@ WAR = (
     gg.geom_line()
 ).show()
 
+P_win = (
+    house_az
+    .posterior
+    ['P_win']
+    .mean(dim=['chain', 'draw'])
+)
+
+P_win_cf = (
+    house_az
+    .posterior
+    ['P_win_cf']
+    .mean(dim=['chain', 'draw'])
+)
+
+(
+    pl.DataFrame({
+        'WARP': (P_win.to_numpy() - P_win_cf.to_numpy())[1, :]
+    })
+    .hstack(house)
+    .filter(pl.col.cycle == 2024)
+    .filter(pl.col.cid_DEM != 1)
+    .sort('WARP')
+    .select(['state_name', 'district', 'candidate_DEM', 'WARP'])
+)
+
+p_win = az.summary(house_az, var_names='P_win')
+p_win_cf = az.summary(house_az, var_names='P_win_cf')
+
+(
+    p_win
+    .pipe(pl.from_pandas, include_index=True)
+    .rename({'None': 'variable'})
+    .select(pl.col.variable, pl.col.mean.alias('p_win'))
+    .hstack(
+        p_win_cf.pipe(pl.from_pandas).select(pl.col.mean.alias('p_win_cf')),
+    )
+    .with_columns(
+        pl.col.p_win.sub(pl.col.p_win_cf).alias('WARP')
+    )
+    .filter(
+        pl.col.variable.str.contains('\\[0,')
+    )
+    .hstack(house)
+    .filter(pl.col.cycle == 2024, pl.col.cid_DEM != 1)
+    .select(['state_name', 'district', 'candidate_DEM', 'WARP'])
+    .sort('WARP', descending=True)
+    .filter(pl.col.candidate_DEM.str.contains('Omar'))
+    # >>
+    # gg.ggplot(gg.aes(x='WARP')) +
+    # gg.geom_histogram(bins=40) +
+    # gg.facet_wrap(facets='cycle')
+)
+
+(
+    p_win_cf
+    .pipe(pl.from_pandas, include_index=True)
+    .rename({'None': 'variable'})
+    .filter(pl.col.variable.str.contains('P_win_cf\\[0'))
+    .filter(pl.col.variable.str.contains('3128]'))
+)
+
 (
     WAR
     .filter(pl.col.cycle == 2024)
     .filter(pl.col.cid_DEM != 1)
     .sort('WAR_med', descending=True)
     .select(['group', 'candidate_DEM', 'WAR_med'])
+    .filter(pl.col.candidate_DEM.str.contains('Omar'))
+)
+
+# mondaire jones
+tmp_cf = (
+    house_fit.draws_pd('Y_rep_cf')
+    .pipe(pl.from_pandas, include_index=True)
+    .select(['Y_rep_cf[1,3129]'])
+)
+
+tmp = (
+    house_fit.draws_pd('Y_rep')
+    .pipe(pl.from_pandas, include_index=True)
+    .select('Y_rep[3129]')
+)
+
+(
+    tmp
+    .hstack(tmp_cf)
+    .unpivot(pl.selectors.all()) >>
+    gg.ggplot(gg.aes(x='value', color='variable')) +
+    gg.geom_density()
+).show()
+
+(
+    tmp
+    .hstack(tmp_cf)
+    .with_columns((pl.col('Y_rep[3129]') - pl.col('Y_rep_cf[1,3129]')).alias('WAR')) >>
+    gg.ggplot(gg.aes(x='WAR')) +
+    gg.geom_density()
+).show()
+
+(
+    house_az
+    .posterior
+    ['P_win']
+    .mean(dim=['chain', 'draw'])
+    .sel(P_win_dim_0=0, P_win_dim_1=3128)
+)
+
+(
+    P_win
+    .sel(P_win_dim_0=0, P_win_dim_1=3128)
 )
 
 (
@@ -463,12 +567,14 @@ candidate_obs = (
         pl.col.beta_c.map_elements(lambda x: x.quantile(0.05)).alias('skill_low'),
         pl.col.beta_c.map_elements(lambda x: x.quantile(0.95)).alias('skill_high')
     )
-    .filter(pl.col.cid != 1)
+    # .filter(pl.col.cid != 1)
     .join(candidate_obs, on=['cid', 'candidate'], how='inner')
     .filter(
-        pl.col.candidate.str.contains('Ocasio|Sanders')
-    )
-    .sample(n=30) >>
+        pl.col.candidate.str.contains(
+            'Golden|Cuellar|Kaptur|Peltola|Perez|Gray|Don Davis|Wild|Caraveo|Mondaire'
+        )
+    ) >>
+    # .sample(n=30) >>
     gg.ggplot(gg.aes(
         x='reorder(candidate, skill_med)',
         y='skill_med',
@@ -477,7 +583,7 @@ candidate_obs = (
     )) +
     gg.geom_pointrange() +
     gg.coord_flip()
-)
+).show()
 
 pred = (
     pl.from_pandas(house_fit.draws_pd('Y_rep'))
@@ -503,7 +609,9 @@ pred = (
 )
 
 (
-    pred >>
+    pred.filter(
+        pl.col.cycle == 2000
+    ) >>
     gg.ggplot(gg.aes(
         x='margin',
         y='Y_rep_med',
@@ -575,5 +683,7 @@ pred = (
     gg.ggplot(gg.aes(x='dem_share_fec')) + 
     gg.geom_histogram(bins=60)
 ).show()
+
+az.summary(house_az, 'sigma_c')
 
 clean_dir()
