@@ -237,7 +237,7 @@ stan_data = {
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_13.stan',
+    stan_file='stan/dev_14.stan',
     dir='exe'
 )
 
@@ -289,7 +289,7 @@ house_az = az.from_cmdstanpy(posterior=house_fit)
     house_az
     .posterior
     .WAR
-    .sel(WAR_dim_0=0, WAR_dim_1=809)
+    .sel(WAR_dim_0=0, WAR_dim_1=3097)
     .quantile(q=[0.025, 0.5, 0.975])
 )
 
@@ -338,11 +338,12 @@ WAR = (
     .filter(pl.col.cycle == 2024, pl.col.cid_DEM != 1)
     .select(pl.col(['state_name', 'district', 'candidate_DEM']), pl.selectors.starts_with('WAR'))
     .sort(pl.col.WAR_med, descending=True)
+    .filter(pl.col.candidate_DEM.str.contains('Ocasio'))
 )
 
 (
     WAR
-    .filter(pl.col.candidate_DEM.str.contains('Kaptur')) >>
+    .filter(pl.col.candidate_DEM.str.contains('Cuellar')) >>
     gg.ggplot(gg.aes(
         x='cycle',
         y='WAR_med',
@@ -351,6 +352,26 @@ WAR = (
         # group='group'
     )) +
     gg.geom_ribbon(alpha=0.25) +
+    gg.geom_line()
+).show()
+
+(
+    WAR >>
+    gg.ggplot(gg.aes(
+        x='cycle',
+        y='WAR_med'
+    )) +
+    gg.geom_point(alpha=0.25)
+).show()
+
+(
+    WAR
+    .group_by(pl.col.cycle)
+    .agg(pl.col.WAR_med.mean()) >>
+    gg.ggplot(gg.aes(
+        x='cycle',
+        y='WAR_med'
+    )) +
     gg.geom_line()
 ).show()
 
