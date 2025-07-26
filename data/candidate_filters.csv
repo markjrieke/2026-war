@@ -5552,7 +5552,7 @@ cycle,state_name,district,state,seat,party,candidate,politician_id,exclusions,is
 2010,Louisiana,3,LA,3,REP,Jeff Landry,6074,,
 2012,Louisiana,3,LA,3,DEM,Ron Richard,6078,x,
 2012,Louisiana,3,LA,3,LIB,Jim Stark,6079,x,
-2012,Louisiana,3,LA,3,REP,Jeff Landry,6074,,x
+2012,Louisiana,3,LA,3,REP,Jeff Landry,6074,x,x
 2012,Louisiana,3,LA,3,REP,Bryan Paul Barrilleaux,6064,x,
 2012,Louisiana,3,LA,3,REP,Charles W. Boustany Jr.,2733,,x
 2014,Louisiana,3,LA,3,NPA,James Russell Richard,16619,x,

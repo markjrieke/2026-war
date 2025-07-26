@@ -1,7 +1,7 @@
 from typing import Literal
 
 from polars import col, lit, read_csv, when
-from polars.selectors import exclude
+from polars.selectors import exclude, starts_with
 
 class WARData:
 
@@ -46,9 +46,8 @@ class WARData:
         # Model dataframe with candidates in wide format
         house = (
             house
-            .filter(col.uncontested == 0)
             .select([
-                'cycle', 'state_name', 'district', 'pct',
+                'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
                 'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec'
             ])
@@ -63,11 +62,16 @@ class WARData:
                 how='inner'
             )
             .pivot(on='party', values=['candidate', 'is_incumbent'])
+            .with_columns(
+                starts_with('candidate').fill_null('Uncontested'),
+                starts_with('is_incumbent').fill_null(False)
+            )
         )
 
         # Set of candidates who have won a race during the modeled period
         winners = (
             house
+            .filter(col.uncontested == 0)
             .select(
                 col.cycle,
                 col.state_name,
@@ -87,6 +91,7 @@ class WARData:
         # Set of incumbents during the modeled period
         incumbents = (
             house
+            .filter(col.uncontested == 0)
             .select(
                 col.cycle,
                 col.state_name,
@@ -146,6 +151,7 @@ class WARData:
                 on='politician_id',
                 how='left'
             )
+            .with_columns(col.cid.fill_null(lit(1)))
             .select(exclude('politician_id'))
             .rename({'cid': 'cid_DEM'})
             .join(
@@ -159,11 +165,19 @@ class WARData:
                 on='politician_id',
                 how='left'
             )
+            .with_columns(col.cid.fill_null(lit(1)))
             .select(exclude('politician_id'))
             .rename({'cid': 'cid_REP'})
             .with_columns(col.cycle.rank('dense').alias('eid'))
         )
 
-        self.prepped_data = house
+        prepped_data = (
+            house
+            .filter(col.uncontested == 0)
+            .select(exclude('uncontested'))
+        )
+
+        self.full_data = house
+        self.prepped_data = prepped_data
         self.cids = cids
 
