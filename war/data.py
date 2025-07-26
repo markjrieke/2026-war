@@ -24,7 +24,7 @@ class WARData:
     def prep_data(self):
 
         if self.chamber == 'house':
-            self.prepped_data = self._prep_house_data()
+            self._prep_house_data()
 
         return self
 
@@ -164,5 +164,6 @@ class WARData:
             .with_columns(col.cycle.rank('dense').alias('eid'))
         )
 
-        return house
+        self.prepped_data = house
+        self.cids = cids
 

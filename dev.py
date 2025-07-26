@@ -4,226 +4,61 @@ import numpy as np
 import plotnine as gg
 import matplotlib.pyplot as plt
 
+from war.data import WARData
+from war.model import WARModel
 from war.utils.model import CmdStanModel, clean_dir
 
-# Base set of seats to model exclude uncontested seats
-house = (
-    pl.read_csv(
-        'data/private/house_forecast_data_updated.csv',
-        infer_schema_length=1000
+war_data = WARData('house').prep_data()
+war_fit = (
+    WARModel(
+        war_data=war_data,
+        stan_file='stan/war.stan',
+        dir='exe'
     )
-    .filter(pl.col.uncontested == 0)
-    .join(
-        pl.read_csv('data/jungle_primaries.csv').with_columns(pl.lit(0).alias('jp')),
-        on=['cycle', 'state_name', 'district'],
-        how='left'
-    )
-    .with_columns(pl.col.jp.fill_null(1))
-    .with_columns(
-        pl.col.logit_dem_share_fec.mul(pl.col.has_fec).mul(pl.col.jp),
-        pl.when((pl.col.jp == 1) & (pl.col.has_fec == 1))
-        .then(pl.lit(1))
-        .otherwise(pl.lit(0))
-        .alias('fec')
-    )
-    .select([
-        'cycle', 'state_name', 'district', 'incumbent_party', 'pct',
-        'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-        'dem_pres_twop_lag_lean_one', 'dem_pres_twop_lag_lean_two', 'experience',
-        'logit_dem_share_fec', 'fec'
-    ])
-    .join(
-        pl.read_csv('data/presidential_party.csv'),
-        on='cycle',
-        how='left'
-    )
-    .with_columns(
-        (pl.col.incumbent_party == pl.col.presidential_party)
-        .alias('inc_party_same_party_pres')
-    )
-    .select(pl.selectors.exclude('presidential_party'))
-    .with_columns(
-        pl.when(pl.col.experience < 0).then(pl.lit(1)).otherwise(pl.lit(0)).alias('exp_disadvantage'),
-        pl.when(pl.col.experience > 0).then(pl.lit(1)).otherwise(pl.lit(0)).alias('exp_advantage')
-    )
-    .select(pl.selectors.exclude('experience'))
-)
-
-# Map candidates to races
-mappings = (
-    pl.read_csv('data/candidate_filters.csv')
-    .with_columns(pl.col.exclusions.fill_null('y'))
-    .filter(pl.col.exclusions != 'x')
-    .select(pl.selectors.exclude('exclusions'))
-    .with_columns(pl.col.is_incumbent == 'x')
-    .with_columns(pl.col.is_incumbent.fill_null(False))
-    .select(pl.selectors.exclude(['state', 'seat']))
-    .join(
-        house.select(['cycle', 'state_name', 'district']),
-        on=['cycle', 'state_name', 'district'],
-        how='inner'
+    .prep_stan_data()
+    .sample(
+        iter_warmup=50,
+        iter_sampling=50,
+        chains=8,
+        parallel_chains=8,
+        inits=0.01,
+        step_size=0.002,
+        refresh=20,
+        seed=2026
     )
 )
 
-# Get results in terms of the incumbent party's performance with candidates
-# in a wide format
-house = (
-    mappings
-    .select(pl.selectors.exclude('politician_id'))
-    .join(
-        house,
-        on=['cycle', 'state_name', 'district'],
-        how='inner'
-    )
-    .pivot(on='party', values=['candidate', 'is_incumbent'])
-    .with_columns(
-        pl.when((pl.col.incumbent_party == 'new_seat') &
-                (pl.col.is_incumbent_DEM))
-        .then(pl.lit('DEM'))
-        .when((pl.col.incumbent_party == 'new_seat') &
-              (pl.col.is_incumbent_REP))
-        .then(pl.lit('REP'))
-        .otherwise(pl.col.incumbent_party)
-        .alias('incumbent_party')
-    )
-    .with_columns(
-        pl.when(pl.col.incumbent_party == 'new_seat')
-        .then(pl.lit('DEM'))
-        .otherwise(pl.col.incumbent_party)
-        .alias('incumbent_party')
-    )
-)
+model_data = war_data.prepped_data
+cids = war_data.cids
 
-# Set of candidates who have won a race during the modeled period
-winners = (
-    house
-    .select(
-        pl.col.cycle,
-        pl.col.state_name,
-        pl.col.district,
-        pl.when(pl.col.pct >= 0.50)
-        .then(pl.col.candidate_DEM)
-        .otherwise(pl.col.candidate_REP)
-        .alias('candidate')
-    )
-    .join(
-        mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
-        on=['cycle', 'state_name', 'district', 'candidate'],
-        how='inner'
-    )
-    .unique('politician_id')
-    .sort(['candidate', 'politician_id'])
-    .select(['candidate', 'politician_id'])
-)
-
-# Set of incumbents during the modeled period
-incumbents = (
-    house
-    .select(
-        pl.col.cycle,
-        pl.col.state_name,
-        pl.col.district,
-        pl.when(pl.col.is_incumbent_DEM)
-        .then(pl.col.candidate_DEM)
-        .when(pl.col.is_incumbent_REP)
-        .then(pl.col.candidate_REP)
-        .alias('candidate')
-    )
-    .filter(pl.col.candidate.is_not_null())
-    .join(
-        mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
-        on=['cycle', 'state_name', 'district', 'candidate'],
-        how='inner'
-    )
-    .unique('politician_id')
-    .sort(['candidate', 'politician_id'])
-    .select(['candidate', 'politician_id'])
-)
-
-# Politician IDs of candidates who either were incumbents or won a race during
-# the modeled period
-named_candidates = (
-    winners
-    .vstack(incumbents)
-    .unique('politician_id')
-    .sort(['candidate', 'politician_id'])
-    ['politician_id']
-)
-
-# Create a Stan-friendly mapping of candidates
-# Generic challengers are mapped to position 1
-cids = (
-    mappings
-    .unique('politician_id')
-    .sort(['candidate', 'politician_id'])
-    .select(['candidate', 'politician_id'])
-    .with_columns(
-        pl.when(pl.col.politician_id.is_in(named_candidates))
-        .then(pl.col.politician_id)
-        .otherwise(pl.lit(0))
-        .alias('cid')
-    )
-    .with_columns(
-        pl.col.cid.rank('dense')
-    )
-)
-
-# Join ID mappings
-house = (
-    house
-    .join(
-        mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
-        left_on=['cycle', 'state_name', 'district', 'candidate_DEM'],
-        right_on=['cycle', 'state_name', 'district', 'candidate'],
-        how='left'
-    )
-    .join(
-        cids.select(['politician_id', 'cid']),
-        on='politician_id',
-        how='left'
-    )
-    .select(pl.selectors.exclude('politician_id'))
-    .rename({'cid': 'cid_DEM'})
-    .join(
-        mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
-        left_on=['cycle', 'state_name', 'district', 'candidate_REP'],
-        right_on=['cycle', 'state_name', 'district', 'candidate'],
-        how='left'
-    )
-    .join(
-        cids.select(['politician_id', 'cid']),
-        on='politician_id',
-        how='left'
-    )
-    .select(pl.selectors.exclude('politician_id'))
-    .rename({'cid': 'cid_REP'})
-    .with_columns(
-        pl.col.cycle.rank('dense').alias('eid')
-    )
-)
-
-fixed_effects = [
-    'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-    'is_incumbent_DEM', 'is_incumbent_REP',
-    'dem_pres_twop_lag_lean_one',
-    'exp_disadvantage', 'exp_advantage',
-    'logit_dem_share_fec'
+cols = model_data.columns
+exclusions = [
+    'cycle', 'state_name', 'district', 'pct', 'candidate_DEM', 'candidate_REP',
+    'cid_DEM', 'cid_REP', 'eid'
 ]
+
+fixed_effects = [x for x in cols if x not in exclusions]
 
 iid = [
     fixed_effects.index('is_incumbent_DEM') + 1,
     fixed_effects.index('is_incumbent_REP') + 1
 ]
 
+# Dataset dimensions
+N = model_data.shape[0]
+E = model_data.unique('eid').shape[0]
+C = cids.unique('cid').shape[0]
+F = len(fixed_effects)
+
 stan_data = {
-    'N': house.shape[0],
-    'E': house.unique('eid').shape[0],
-    'C': cids.unique('cid').shape[0],
-    'F': len(fixed_effects),
-    'X': house.select(fixed_effects).to_numpy(),
-    'Y': house['pct'].to_numpy(),
-    'cid': house['cid_DEM', 'cid_REP'].to_numpy(),
-    'eid': house['eid'].to_numpy(),
+    'N': N,
+    'E': E,
+    'C': C,
+    'F': F,
+    'X': model_data.select(fixed_effects).to_numpy(),
+    'Y': model_data['pct'].to_numpy(),
+    'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
+    'eid': model_data['eid'].to_numpy(),
     'iid': iid,
     'alpha0_mu': 0,
     'alpha0_sigma': 0.15,
@@ -237,14 +72,14 @@ stan_data = {
 }
 
 house_model = CmdStanModel(
-    stan_file='stan/dev_14.stan',
+    stan_file='stan/war.stan',
     dir='exe'
 )
 
 house_fit = house_model.sample(
     data=stan_data,
-    iter_warmup=500,
-    iter_sampling=500,
+    iter_warmup=50,
+    iter_sampling=50,
     chains=8,
     parallel_chains=8,
     inits=0.01,
@@ -253,9 +88,71 @@ house_fit = house_model.sample(
     seed=2026
 )
 
-print(house_fit.diagnose())
+candidates = (
+    cids
+    .unique('cid')
+    .with_columns(
+        pl.when(pl.col.cid == 1)
+        .then(pl.lit('Generic Challenger'))
+        .otherwise(pl.col.candidate)
+        .alias('candidate')
+    )
+    .sort('cid')
+    ['candidate']
+    .to_list()
+)
 
-house_az = az.from_cmdstanpy(posterior=house_fit)
+years = (
+    model_data
+    .unique('eid')
+    .sort('cycle')
+    ['cycle']
+    .to_list()
+)
+
+coords = {
+    'N': range(N),
+    'year': years,
+    'candidate': candidates,
+    'variable': fixed_effects,
+    'Em': years[1:],
+    'party': ['dem', 'rep']
+}
+
+dims = {
+    # Parameters
+    'alpha0': [],
+    'eta_alpha': ['Em'],
+    'sigma_alpha': [],
+    'beta_v0': ['variable'],
+    'eta_v': ['variable', 'Em'],
+    'sigma_v': ['variable'],
+    'eta_c': ['candidate'],
+    'sigma_c': [],
+    'sigma_e': ['year'],
+
+    # Transformed parameters
+    'beta_c': ['candidate'],
+    'alpha': ['year'],
+    'beta_v': ['variable', 'year'],
+    'mu': ['N'],
+    'sigma': ['N'],
+
+    # Generated quantities
+    'Y_rep': ['N'],
+    'Y_rep_cf': ['party', 'N'],
+    'P_win': ['party', 'N'],
+    'P_win_cf': ['party', 'N'],
+    'WAR': ['party', 'N']
+}
+
+house_az = az.from_cmdstanpy(
+    posterior=house_fit,
+    coords=coords,
+    dims=dims
+)
+
+
 
 (
     pl.from_pandas(az.summary(house_az, ['alpha', 'beta_v']), include_index=True)
