@@ -8,18 +8,32 @@ vector posterior_predictive_rng(vector mu,
     return inv_logit(to_vector(normal_rng(mu, sigma)));
 }
 
+vector posterior_predictive_rng(matrix X,
+                                vector alpha,
+                                matrix beta_v,
+                                vector beta_c,
+                                vector sigma_e,
+                                array[] int eid,
+                                array[,] int cid) {
+    int N = rows(X);
+    vector[N] mu = latent_mean(X, alpha, beta_v, beta_c, eid, cid);
+    vector[N] sigma = latent_sd(sigma_e, eid);
+    return posterior_predictive_rng(mu, sigma);
+}
+
 vector posterior_predictive_cf_rng(matrix X,
                                    vector alpha,
                                    matrix beta_v,
                                    vector beta_c,
                                    real sigma_c,
-                                   vector sigma,
+                                   vector sigma_e,
                                    array[] int eid,
                                    array[,] int cid,
                                    int dem_cf) {
     int N = rows(X);
     vector[N] beta_cf = new_candidate_rng(N, sigma_c);
     vector[N] mu;
+    vector[N] sigma;
     vector[N] gamma;
     vector[N] zeta_c;
     vector[N] beta;
@@ -37,6 +51,7 @@ vector posterior_predictive_cf_rng(matrix X,
         }
     }
     mu = gamma + beta + zeta_c;
+    sigma = latent_sd(sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
 }
 
@@ -46,13 +61,13 @@ array[] vector posterior_predictive_cf_rng(matrix Xc_dem,
                                            matrix beta_v,
                                            vector beta_c,
                                            real sigma_c,
-                                           vector sigma,
+                                           vector sigma_e,
                                            array[] int eid,
                                            array[,] int cid) {
     int N = rows(Xc_dem);
     array[2] vector[N] Y_rep_cf;
-    Y_rep_cf[1] = posterior_predictive_cf_rng(Xc_dem, alpha, beta_v, beta_c, sigma_c, sigma, eid, cid, 1);
-    Y_rep_cf[2] = posterior_predictive_cf_rng(Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma, eid, cid, 0);
+    Y_rep_cf[1] = posterior_predictive_cf_rng(Xc_dem, alpha, beta_v, beta_c, sigma_c, sigma_e, eid, cid, 1);
+    Y_rep_cf[2] = posterior_predictive_cf_rng(Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma_e, eid, cid, 0);
     return Y_rep_cf;
 }
 

@@ -6,7 +6,8 @@ functions {
 
 data {
     // Data dimensions
-    int N;                              // Number of observations
+    int N;                              // Number of observations in the model frame
+    int M;                              // Number of observations in the full frame
     int E;                              // Number of election cycles
     int C;                              // Number of candidates
     int F;                              // Number of non-candidate variables
@@ -14,10 +15,13 @@ data {
     // Observations
     matrix[N,F] X;                      // Design matrix
     vector[N] Y;                        // Democratic candidate two-party vote
+    matrix[M,F] Xf;                     // Full matrix
 
     // Mapping columns
-    array[N,2] int cid;                 // Map candidates to races
-    array[N] int eid;                   // Map election cyle to race
+    array[N,2] int cid;                 // Map candidates to races in the model frame
+    array[N] int eid;                   // Map election cyle to race in the model frame
+    array[M,2] int cfid;                // Map candidates to races in the full frame
+    array[M] int efid;                  // Map election cycle to race in the full frame
     array[2] int iid;                   // Denote columns that flag incumbency
 
     // Priors
@@ -36,10 +40,11 @@ data {
 transformed data {
     // Center/scale the design matrix
     matrix[N,F] Xc = standardize(X);
+    matrix[M,F] Xfc = standardize(Xf);
 
     // Create counterfactual matrices that eschew incumbency
-    matrix[N,F] Xc_dem = standardize_cf(X, iid[1]);
-    matrix[N,F] Xc_rep = standardize_cf(X, iid[2]);
+    matrix[M,F] Xc_dem = standardize_cf(Xf, iid[1]);
+    matrix[M,F] Xc_rep = standardize_cf(Xf, iid[2]);
 
     // Number of random walk steps
     int Em = E - 1;
@@ -67,13 +72,13 @@ transformed parameters {
     // Evaluate the random walks over the intercept and parameters
     vector[E] alpha = random_walk(alpha0, eta_alpha, sigma_alpha);
     matrix[F,E] beta_v = random_walk(beta_v0, eta_v, sigma_v);
-
-    // Estimate the expected mean, sd
-    vector[N] mu = latent_mean(Xc, alpha, beta_v, beta_c, eid, cid);
-    vector[N] sigma = latent_sd(sigma_e, eid);
 }
 
 model {
+    // Estimate the expected mean, sd
+    vector[N] mu = latent_mean(Xc, alpha, beta_v, beta_c, eid, cid);
+    vector[N] sigma = latent_sd(sigma_e, eid);
+
     // Priors
     target += normal_lpdf(alpha0 | alpha0_mu, alpha0_sigma);
     target += std_normal_lpdf(eta_alpha);
@@ -93,15 +98,19 @@ model {
 
 generated quantities {
     // Posterior predictive distributions
-    vector[N] Y_rep = posterior_predictive_rng(mu, sigma);
-    array[2] vector[N] Y_rep_cf = posterior_predictive_cf_rng(
-        Xc_dem, Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma, eid, cid
+    vector[M] Y_rep = posterior_predictive_rng(
+        Xfc, alpha, beta_v, beta_c, sigma_e, efid, cfid
+    );
+
+    // Counterfactual predictive distributions
+    array[2] vector[M] Y_rep_cf = posterior_predictive_cf_rng(
+        Xc_dem, Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma_e, efid, cfid
     );
 
     // Posterior predictive probability of winning
-    array[2] vector[N] P_win = win_probability(Y_rep);
-    array[2] vector[N] P_win_cf = win_probability(Y_rep_cf);
+    array[2] vector[M] P_win = win_probability(Y_rep);
+    array[2] vector[M] P_win_cf = win_probability(Y_rep_cf);
 
     // Estimate WAR
-    array[2] vector[N] WAR = calculate_WAR(Y_rep, Y_rep_cf);
+    array[2] vector[M] WAR = calculate_WAR(Y_rep, Y_rep_cf);
 }
