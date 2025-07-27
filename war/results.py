@@ -16,6 +16,30 @@ class WARResults:
         war_fit: WARModel
     ):
 
+        """
+        Class and methods for writing results of a model fit to disk.
+
+        In addition to Wins Above Replacement (WAR), estimated by the model
+        directly (see the `WARModel` class for more information), `WARResults`
+        uses the posterior to estimate a new metric, WARP (Wins Above Replacement
+        in terms of Probability of winning). For each candidate in each race,
+        WARP is the candidate's predicted probability of winning minus the
+        predicted probability of a hypothetical replacement candidate winning.
+
+        A positive WARP implies that a replacement candidate has a lower
+        probability of winning the seat and a negative WARP implies the inverse.
+        WARP is a function of both the candidate quality and the competitiveness
+        of the district. A candidate in a safe seat can have a relatively large
+        WAR (either positive or negative) and still have a WARP of 0, whereas a
+        candidates in hyper-competitive districts can have large WARPs from
+        relatively small WARs.
+
+        Parameters
+        ----------
+        war_fit : WARModel
+            A fitted `WARModel` object.
+        """
+
         self.war_fit = war_fit
         self.idata = self._extract_idata()
 
@@ -25,6 +49,21 @@ class WARResults:
         cred_level: float = 0.9
     ):
 
+        """
+        Write the topline WAR / WARP results for each congressional
+        representative from 2000-2024, based on the results of November elections.
+
+        The results are saved as `full_topline.parquet`.
+
+        Parameters
+        ----------
+        path : str
+            The path where the results topline results will be stored.
+        cred_level : float
+            Determines the size of the equal-tail-intervals (ETIs) for
+            summarizing candidate WAR.
+        """
+
         self._extract_topline(cred_level).write_parquet(join(path, 'full_topline.parquet'))
 
     def write_publication_topline(
@@ -32,6 +71,21 @@ class WARResults:
         path: str = 'out/summary',
         cred_level: float = 0.9
     ):
+
+        """
+        Write the topline WAR / WARP results for congressional representatives
+        elected in November 2024.
+
+        The results are saved as `current_topline.csv`.
+
+        Parameters
+        ----------
+        path : str
+            The path where the topline results will be stored.
+        cred_level : float
+            Determines the size of the equal-tail-intervals (ETIs) for
+            summarizing candidate WAR.
+        """
 
         (
             self._extract_topline(cred_level)
@@ -46,6 +100,22 @@ class WARResults:
         cred_levels: Union[List[float], float] = [0.66, 0.8, 0.95]
     ):
 
+        """
+        Write out summary DataFrames for all named parameters in the model.
+
+        Summary DataFrames are stored in long format with columns for the
+        summary quantile, any parameter dimensions, and the parameter value
+        at the summary quantile.
+
+        Parameters
+        ----------
+        path : str
+            The path where the parameter summaries will be stored.
+        cred_levels: Union[List[float], float]
+            The value (or list of values) determining the size of the
+            equal-tail-intervals (ETIs) for summarizing parameter values.
+        """
+
         # Write out all variables contained in the fit object
         for variable in self.idata.posterior.data_vars:
             self._write_parameter_summary(
@@ -59,10 +129,53 @@ class WARResults:
         WARP = self._extract_WARP()
         WARP.write_parquet(join(path, 'WARP.parquet'))
 
+    def write_mappings(
+        self,
+        path: str = 'out/summary/mappings'
+    ):
+
+        """
+        Write the set of DataFrames that map year, state, district, and
+        candidates to indices found in the parameter summary DataFrames `M`
+        maps row indices to the full dataset including uncontested races, `N`
+        maps row indices to the subset used for model fitting.
+
+        Parameters
+        ----------
+        path : str
+            The path where the mapping tables will be stored.
+        """
+
+        cols = [
+            'cycle', 'state_name', 'district', 'pct', 'uncontested',
+            'candidate_DEM', 'candidate_REP', 'cid_DEM', 'cid_REP'
+        ]
+
+        (
+            self.war_fit.war_data.full_data
+            .select(cols)
+            .with_row_index('M')
+            .write_parquet(join(path, 'full_data.parquet'))
+        )
+
+        cols.remove('uncontested')
+
+        (
+            self.war_fit.war_data.prepped_data
+            .select(cols)
+            .with_row_index('N')
+            .write_parquet(join(path, 'model_data.parquet'))
+        )
+
     def _extract_topline(
         self,
         cred_level: float
     ) -> DataFrame:
+
+        """
+        Util method for converting topline results (WAR, WARP) for each
+        representative to a DataFrame.
+        """
 
         quantiles = self._set_quantiles(cred_level)
         WAR = self.idata.posterior['WAR'].quantile(q=quantiles, dim=['chain', 'draw'])
@@ -110,6 +223,9 @@ class WARResults:
         return topline
 
     def _extract_WARP(self) -> DataFrame:
+        
+        """Internal method for calculating WARP from posterior draws."""
+
         p_win = self.idata.posterior['P_win'].mean(dim=['chain', 'draw'])
         p_win_cf = self.idata.posterior['P_win_cf'].mean(dim=['chain', 'draw'])
         WARP = (p_win - p_win_cf).rename('WARP')
@@ -119,6 +235,11 @@ class WARResults:
         self,
         cred_levels: Union[List[float], float]
     ) -> list:
+
+        """
+        Internal method for generating a list of quantiles based on a list of
+        cred levels (or single cred level value)
+        """
 
         quantiles = [0.5]
         levels = [cred_levels] if isinstance(cred_levels, float) else cred_levels
@@ -138,6 +259,10 @@ class WARResults:
         cred_levels: Union[List[float], float] = [0.66, 0.8, 0.95]
     ):
 
+        """
+        Internal method for writing the summary DataFrame for a single parameter.
+        """
+
         quantiles = self._set_quantiles(cred_levels)
         summary = posterior[variable].quantile(q=quantiles, dim=['chain', 'draw'])
         from_xarray(summary).write_parquet(file=file)
@@ -145,6 +270,11 @@ class WARResults:
     def _extract_idata(
         self
     ) -> InferenceData:
+
+        """
+        Internal method for extracting an InferenceData object with named
+        dimension and coordinates from a fitted CmdStanMCMC object.
+        """
 
         war_data = self.war_fit.war_data
         model_data = war_data.prepped_data

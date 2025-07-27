@@ -14,6 +14,30 @@ class WARModel:
         stan_file: str,
         **kwargs
     ):
+
+        """
+        Class for fitting a hierarchical Bayesian model to estimate each
+        candidate's Wins Above Replacement (WAR) metric.
+
+        This model estimates candidate "skill" as a model parameter directly.
+        Each candidate's WAR is then the difference in potential outcomes
+        between the predictive distribution and the predictive distribution
+        with a hypothetical new candidate.
+
+        Parameters
+        ----------
+        war_data : WARData
+            A prepped `WARData` object.
+        stan_file : str
+            The path to the model file.
+        **kwargs
+            Other named arguments to pass to `CmdStanModel`. This class is the
+            wrapper class found under `war.utils.model`, which contains an
+            additional optional argument, `dir`, for specifying where the Stan
+            executable should be created (in addition to all the named arguments
+            in the cmdstanpy class of the same name).
+        """
+
         self.war_data = war_data
         self.war_model = CmdStanModel(stan_file=stan_file, **kwargs)
 
@@ -22,6 +46,20 @@ class WARModel:
         priors: Optional[dict] = None,
         prior_check: bool = False
     ):
+
+        """
+        Attatch a dictionary containing data for passing to the model.
+
+        Parameters
+        ----------
+        priors : Optional[dict]
+            An optional dictionary containing priors for the model. If `None`,
+            the default priors found under `war.utils.constants` will be used.
+        prior_check : bool
+            If `True`, the model will sample from the prior predictive
+            distribution rather than fit to the data.
+        """
+
         model_data = self.war_data.prepped_data
         full_data = self.war_data.full_data
         cids = self.war_data.cids
@@ -79,6 +117,16 @@ class WARModel:
         self,
         **kwargs
     ):
+
+        """
+        A wrapper around cmdstanpy's `sample()` method.
+
+        Parameters
+        ----------
+        **kwargs
+            Named arguments for cmdstanpy's `sample()` method, excluding `data`
+            (this is passed to the method internally).
+        """
 
         self.war_fit = self.war_model.sample(
             data=self.stan_data,

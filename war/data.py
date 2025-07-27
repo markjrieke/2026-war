@@ -9,6 +9,32 @@ class WARData:
         self,
         chamber: Literal['house', 'senate']
     ):
+
+        """
+        Utility class for importing and preparing datasets for modeling.
+
+        The original raw data is curated by [G. Elliott Morris](https://www.gelliottmorris.com/).
+        It contains two-party results for each congressional election from
+        2000-2024, excluding special elections, along with a host of potentially
+        relevant predictor variables (district demographics, partisanship,
+        FEC fundraising, etc.).
+
+        The dataset is [slightly modified](https://github.com/markjrieke/2026-war/issues/2)
+        for use in the class. Namely, jungle primary results are overwritten
+        with general results when there is no majority winner in the primary,
+        vacancies, new districts, and purely independent incumbents have the
+        incumbent party reclassed, and minor inconsistencies with results are
+        resolved.
+
+        While the rest of the project is open source, these datasets have been
+        asked to remain private.
+
+        Parameters
+        ----------
+        chamber : Literal['house', 'senate']
+            The chamber of congress to prep data for.
+        """
+
         if chamber == 'house':
             self.raw_data = read_csv(
                 'data/private/house_forecast_data_updated.csv',
@@ -23,12 +49,31 @@ class WARData:
 
     def prep_data(self):
 
+        """
+        Prepare a dataset for passing to Stan for modeling.
+
+        This method attaches several DataFrames to the WARData object:
+        * **full_data** : A prepped dataset including results for all elections.
+        * **prepped_data** : A prepped dataset excluding uncontested elections.
+        * **cids** : A DataFrame mapping each candidate to a `cid` (candidate ID).
+
+        Many candidates appear in the dataset once to challenge an incumbent, but
+        do not win and do not run again. As such, only "named candidates" are
+        given a `cid`. Named candidates include candidates who either win an
+        election or appear as incumbents during the modeled time period. The
+        latter qualification accounts for incumbent candidates who lose in 2000
+        as well as candidates who win in off-year special elections to fill
+        vacancies but then lose in the regularly scheduled congressional race.
+        """
+
         if self.chamber == 'house':
             self._prep_house_data()
 
         return self
 
     def _prep_house_data(self):
+
+        """Internal method that performs prep for house datasets"""
 
         house = self.raw_data
 
