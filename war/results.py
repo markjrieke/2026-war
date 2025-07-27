@@ -324,22 +324,20 @@ class WARResults:
             'cycle': cycles,
             'candidate': candidates,
             'variable': variables,
-            'Em': cycles[1:],
             'party': ['dem', 'rep']
         }
 
         # Dimensions of each variable in terms of coordinate system
         dims = {
             # Parameters
-            'alpha0': [],
-            'eta_alpha': ['Em'],
-            'sigma_alpha': [],
-            'beta_v0': ['variable'],
-            'eta_v': ['variable', 'Em'],
-            'sigma_v': ['variable'],
-            'eta_c': ['candidate'],
-            'sigma_c': [],
-            'sigma_e': ['cycle'],
+            'sigma': [],
+            'eta_sigma_alpha': [],
+            'eta_alpha': ['cycle'],
+            'eta_sigma_beta_v': ['variable'],
+            'eta_beta_v': ['variable', 'cycle'],
+            'eta_sigma_beta_c': [],
+            'eta_beta_c': ['candidates'],
+            'eta_sigma_e': ['cycle'],
 
             # Transformed parameters
             'beta_c': ['candidate'],

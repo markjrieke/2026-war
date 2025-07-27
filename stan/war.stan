@@ -54,57 +54,76 @@ transformed data {
 }
 
 parameters {
-    real alpha0;                        // Intercept initial state
-    vector[Em] eta_alpha;               // Intercept random walk
-    real<lower=0> sigma_alpha;          // Intercept random walk scale
-    vector[F] beta_v0;                  // Non-candidate parameter random walk initial state
-    matrix[F,Em] eta_v;                 // Non-candidate parameter random walk
-    vector<lower=0>[F] sigma_v;         // Non-candidate parameter random walk scale
-    vector[C] eta_c;                    // Candidate skill parameters
-    real<lower=0> sigma_c;              // Candidate skill scale
-    vector<lower=0>[E] sigma_e;         // Observation scale
+    real<lower=0> sigma;
+    real<lower=0> eta_sigma_alpha;
+    vector[E] eta_alpha;
+    vector<lower=0>[F] eta_sigma_beta_v;
+    matrix[F,E] eta_beta_v;
+    real<lower=0> eta_sigma_beta_c;
+    vector[C] eta_beta_c;
+    vector<lower=0>[E] eta_sigma_e;
 }
 
 transformed parameters {
     // Evaluate hierarchical parameters
-    vector[C] beta_c = eta_c * sigma_c;
+    vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
+
+    // Evaluate random walk over the intercept
+    vector[E] alpha = eta_alpha * eta_sigma_alpha * sigma;
+    for (i in 2:E) {
+        alpha[i] += alpha[i-1];
+    }
+
+    // Evaluate random walk over the parameters
+    matrix[F,E] beta_v = diag_pre_multiply(eta_sigma_beta_v * sigma, eta_beta_v);
+    for (i in 2:E) {
+        beta_v[:,i] += beta_v[:,i-1];
+    }
 
     // Evaluate the random walks over the intercept and parameters
-    vector[E] alpha = random_walk(alpha0, eta_alpha, sigma_alpha);
-    matrix[F,E] beta_v = random_walk(beta_v0, eta_v, sigma_v);
+    // vector[E] alpha = random_walk(alpha0, eta_alpha, sigma_alpha);
+    // matrix[F,E] beta_v = random_walk(beta_v0, eta_v, sigma_v);
 }
 
 model {
     // Estimate the expected mean, sd
     vector[N] mu = latent_mean(Xc, alpha, beta_v, beta_c, eid, cid);
-    vector[N] sigma = latent_sd(sigma_e, eid);
+    vector[N] sigma_o = latent_sd(eta_sigma_e * sigma, eid);
 
     // Priors
-    target += normal_lpdf(alpha0 | alpha0_mu, alpha0_sigma);
+    // target += normal_lpdf(alpha0 | alpha0_mu, alpha0_sigma);
+    // target += std_normal_lpdf(eta_alpha);
+    // target += half_normal_lpdf(sigma_alpha | sigma_alpha_sigma);
+    // target += normal_lpdf(beta_v0 | beta_v0_mu, beta_v0_sigma);
+    // target += std_normal_lpdf(to_vector(eta_v));
+    // target += half_normal_lpdf(sigma_v | sigma_v_sigma);
+    // target += std_normal_lpdf(eta_c);
+    // target += half_normal_lpdf(sigma_c | sigma_c_sigma);
+    // target += half_normal_lpdf(sigma_e | sigma_e_sigma);
+    target += half_normal_lpdf(sigma | 1);
+    target += half_normal_lpdf(eta_sigma_alpha | 1);
     target += std_normal_lpdf(eta_alpha);
-    target += half_normal_lpdf(sigma_alpha | sigma_alpha_sigma);
-    target += normal_lpdf(beta_v0 | beta_v0_mu, beta_v0_sigma);
-    target += std_normal_lpdf(to_vector(eta_v));
-    target += half_normal_lpdf(sigma_v | sigma_v_sigma);
-    target += std_normal_lpdf(eta_c);
-    target += half_normal_lpdf(sigma_c | sigma_c_sigma);
-    target += half_normal_lpdf(sigma_e | sigma_e_sigma);
+    target += half_normal_lpdf(eta_sigma_beta_v | 1);
+    target += std_normal_lpdf(to_vector(eta_beta_v));
+    target += half_normal_lpdf(eta_sigma_beta_c | 1);
+    target += std_normal_lpdf(eta_beta_c);
+    target += half_normal_lpdf(eta_sigma_e | 1);
 
     // Likelihood
     if (!prior_check) {
-        target += normal_lpdf(Y_logit | mu, sigma);
+        target += normal_lpdf(Y_logit | mu, sigma_o);
     }
 }
 
 generated quantities {
     // Posterior predictive distributions
     vector[M] Y_rep = posterior_predictive_rng(
-        Xfc, alpha, beta_v, beta_c, sigma_e, efid, cfid
+        Xfc, alpha, beta_v, beta_c, eta_sigma_e * sigma, efid, cfid
     );
 
     // Counterfactual predictive distributions
     array[2] vector[M] Y_rep_cf = posterior_predictive_cf_rng(
-        Xc_dem, Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma_e, efid, cfid
+        Xc_dem, Xc_rep, alpha, beta_v, beta_c, eta_sigma_beta_c * sigma, eta_sigma_e * sigma, efid, cfid
     );
 
     // Posterior predictive probability of winning
