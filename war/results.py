@@ -264,7 +264,10 @@ class WARResults:
         """
 
         quantiles = self._set_quantiles(cred_levels)
-        summary = posterior[variable].quantile(q=quantiles, dim=['chain', 'draw'])
+        if 'P_win' in variable:
+            summary = posterior[variable].mean(dim=['chain', 'draw'])
+        else:
+            summary = posterior[variable].quantile(q=quantiles, dim=['chain', 'draw'])
         from_xarray(summary).write_parquet(file=file)
 
     def _extract_idata(

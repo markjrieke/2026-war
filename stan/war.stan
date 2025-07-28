@@ -25,14 +25,7 @@ data {
     array[2] int iid;                   // Denote columns that flag incumbency
 
     // Priors
-    real alpha0_mu;                     // Intercept prior mean
-    real<lower=0> alpha0_sigma;         // Intercept prior scale
-    real<lower=0> sigma_alpha_sigma;    // Intercept random walk scale
-    real beta_v0_mu;                    // Non-candidate parameter initial state prior mean
-    real beta_v0_sigma;                 // Non-candidate parameter initial state prior scale
-    real<lower=0> sigma_v_sigma;        // Non-candidate parameter random walk scale
-    real<lower=0> sigma_c_sigma;        // Candidate effect scale prior scale
-    real<lower=0> sigma_e_sigma;        // Observation prior scale
+    real<lower=0> sigma_sigma;          // Global hyperparameter
 
     int<lower=0, upper=1> prior_check;
 }
@@ -45,9 +38,6 @@ transformed data {
     // Create counterfactual matrices that eschew incumbency
     matrix[M,F] Xc_dem = standardize_cf(Xf, iid[1]);
     matrix[M,F] Xc_rep = standardize_cf(Xf, iid[2]);
-
-    // Number of random walk steps
-    int Em = E - 1;
 
     // Estimate model on the logit scale
     vector[N] Y_logit = logit(Y);
@@ -79,10 +69,6 @@ transformed parameters {
     for (i in 2:E) {
         beta_v[:,i] += beta_v[:,i-1];
     }
-
-    // Evaluate the random walks over the intercept and parameters
-    // vector[E] alpha = random_walk(alpha0, eta_alpha, sigma_alpha);
-    // matrix[F,E] beta_v = random_walk(beta_v0, eta_v, sigma_v);
 }
 
 model {
@@ -91,23 +77,14 @@ model {
     vector[N] sigma_o = latent_sd(eta_sigma_e * sigma, eid);
 
     // Priors
-    // target += normal_lpdf(alpha0 | alpha0_mu, alpha0_sigma);
-    // target += std_normal_lpdf(eta_alpha);
-    // target += half_normal_lpdf(sigma_alpha | sigma_alpha_sigma);
-    // target += normal_lpdf(beta_v0 | beta_v0_mu, beta_v0_sigma);
-    // target += std_normal_lpdf(to_vector(eta_v));
-    // target += half_normal_lpdf(sigma_v | sigma_v_sigma);
-    // target += std_normal_lpdf(eta_c);
-    // target += half_normal_lpdf(sigma_c | sigma_c_sigma);
-    // target += half_normal_lpdf(sigma_e | sigma_e_sigma);
-    target += half_normal_lpdf(sigma | 1);
-    target += half_normal_lpdf(eta_sigma_alpha | 1);
+    target += half_normal_lpdf(sigma | sigma_sigma);
+    target += std_half_normal_lpdf(eta_sigma_alpha);
     target += std_normal_lpdf(eta_alpha);
-    target += half_normal_lpdf(eta_sigma_beta_v | 1);
+    target += std_half_normal_lpdf(eta_sigma_beta_v);
     target += std_normal_lpdf(to_vector(eta_beta_v));
-    target += half_normal_lpdf(eta_sigma_beta_c | 1);
+    target += std_half_normal_lpdf(eta_sigma_beta_c);
     target += std_normal_lpdf(eta_beta_c);
-    target += half_normal_lpdf(eta_sigma_e | 1);
+    target += std_half_normal_lpdf(eta_sigma_e);
 
     // Likelihood
     if (!prior_check) {
