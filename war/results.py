@@ -337,6 +337,7 @@ class WARResults:
             'eta_beta_g': ['national_variable'],
             'eta_sigma_beta_c': [],
             'eta_beta_c': ['candidates'],
+            'eta_sigma_sigma_e': [],
             'eta_sigma_e': ['cycle'],
 
             # Transformed parameters
@@ -344,6 +345,7 @@ class WARResults:
             'beta_g': ['national_variable'],
             'alpha': ['cycle'],
             'beta_d': ['district_variable', 'cycle'],
+            'sigma_e': ['cycle'],
 
             # Generated quantities
             'Y_rep': ['M'],

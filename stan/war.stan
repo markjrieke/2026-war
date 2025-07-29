@@ -69,7 +69,8 @@ parameters {
     vector[G] eta_beta_g;
     real<lower=0> eta_sigma_beta_c;
     vector[C] eta_beta_c;
-    vector<lower=0>[E] eta_sigma_e;
+    real<lower=0> eta_sigma_sigma_e;
+    vector[E] eta_sigma_e;
 }
 
 transformed parameters {
@@ -88,12 +89,19 @@ transformed parameters {
     for (i in 2:E) {
         beta_d[:,i] += beta_d[:,i-1];
     }
+
+    // Evaluate random walk over the standard deviations
+    vector[E] sigma_e = eta_sigma_e * eta_sigma_sigma_e * sigma;
+    for (i in 2:E) {
+        sigma_e[i] += sigma_e[i-1];
+    }
+    sigma_e = exp(sigma_e);
 }
 
 model {
     // Estimate the expected mean, sd
     vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
-    vector[N] sigma_o = latent_sd(eta_sigma_e * sigma, eid);
+    vector[N] sigma_o = latent_sd(sigma_e, eid);
 
     // Priors
     target += half_normal_lpdf(sigma | sigma_sigma);
@@ -105,7 +113,8 @@ model {
     target += std_normal_lpdf(eta_beta_g);
     target += std_half_normal_lpdf(eta_sigma_beta_c);
     target += std_normal_lpdf(eta_beta_c);
-    target += std_half_normal_lpdf(eta_sigma_e);
+    target += std_half_normal_lpdf(eta_sigma_sigma_e);
+    target += std_normal_lpdf(eta_sigma_e);
 
     // Likelihood
     if (!prior_check) {
@@ -116,12 +125,12 @@ model {
 generated quantities {
     // Posterior predictive distributions
     vector[M] Y_rep = posterior_predictive_rng(
-        Xfdc, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_e * sigma, efid, cfid
+        Xfdc, Xfgc, alpha, beta_d, beta_g, beta_c, sigma_e, efid, cfid
     );
 
     // Counterfactual predictive distributions
     array[2] vector[M] Y_rep_cf = posterior_predictive_cf_rng(
-        Xfdc_dem, Xfdc_rep, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_beta_c * sigma, eta_sigma_e * sigma, efid, cfid
+        Xfdc_dem, Xfdc_rep, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_beta_c * sigma, sigma_e, efid, cfid
     );
 
     // Posterior predictive probability of winning
