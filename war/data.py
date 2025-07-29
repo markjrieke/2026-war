@@ -111,6 +111,14 @@ class WARData:
                 starts_with('candidate').fill_null('Uncontested'),
                 starts_with('is_incumbent').fill_null(False)
             )
+            .join(
+                read_csv('data/presidential_party.csv'),
+                on='cycle',
+                how='left'
+            )
+            .with_columns(col.presidential_party == 'DEM')
+            .rename({'presidential_party': 'dem_president'})
+            .with_columns((col.dem_president & col.midterm).alias('dem_president_midterm'))
         )
 
         # Set of candidates who have won a race during the modeled period

@@ -280,17 +280,12 @@ class WARResults:
         """
 
         war_data = self.war_fit.war_data
+        district_variables = self.war_fit.district_variables
+        national_variables = self.war_fit.national_variables
+
         model_data = war_data.prepped_data
         full_data = war_data.full_data
         cids = war_data.cids
-
-        cols = model_data.columns
-        exclusions = [
-            'cycle', 'state_name', 'district', 'pct', 'candidate_DEM', 'candidate_REP',
-            'cid_DEM', 'cid_REP', 'eid'
-        ]
-
-        variables = [x for x in cols if x not in exclusions]
 
         # Dataset dimensions
         N = model_data.shape[0]
@@ -326,7 +321,8 @@ class WARResults:
             'M': range(M),
             'cycle': cycles,
             'candidate': candidates,
-            'variable': variables,
+            'district_variable': district_variables,
+            'national_variable': national_variables,
             'party': ['dem', 'rep']
         }
 
@@ -336,16 +332,18 @@ class WARResults:
             'sigma': [],
             'eta_sigma_alpha': [],
             'eta_alpha': ['cycle'],
-            'eta_sigma_beta_v': ['variable'],
-            'eta_beta_v': ['variable', 'cycle'],
+            'eta_sigma_beta_d': ['district_variable'],
+            'eta_beta_d': ['district_variable', 'cycle'],
+            'eta_beta_g': ['national_variable'],
             'eta_sigma_beta_c': [],
             'eta_beta_c': ['candidates'],
             'eta_sigma_e': ['cycle'],
 
             # Transformed parameters
             'beta_c': ['candidate'],
+            'beta_g': ['national_variable'],
             'alpha': ['cycle'],
-            'beta_v': ['variable', 'cycle'],
+            'beta_d': ['district_variable', 'cycle'],
 
             # Generated quantities
             'Y_rep': ['M'],

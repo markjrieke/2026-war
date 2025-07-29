@@ -20,14 +20,40 @@ matrix standardize(matrix X) {
 }
 
 /*
+    Center and scale the columns of a matrix, X, based on the mean/sd of columns
+    in a matrix Z
+
+    @param X: A counterfactual design matrix
+    @param Z: A design matrix
+
+    @returns Xc: A centered/scaled matrix of the same dimensions as X.
+*/
+matrix standardize(matrix X,
+                   matrix Z) {
+    int M = rows(X);
+    int F = cols(X);
+    matrix[M,F] Xc;
+    vector[F] Z_mean;
+    vector[F] Z_sd;
+    for (f in 1:F) {
+        Z_mean[f] = mean(Z[:,f]);
+        Z_sd[f] = sd(Z[:,f]);
+        Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
+    }
+    return Xc;
+}
+
+/*
     Create a centered/scaled counterfactual matrix.
 
-    Centers and scales a matrix, X, then sets all values in the column that
-    flags incumbency, `iid`, to the centered/scaled value for `0`. I.e., this
-    counterfactual matrix is the same as `standardize(X)` with no incumbents in
-    `iid`.
+    Centers and scales a matrix, X, based on the means and standard deviations
+    of each column in matrix Z, then sets all values in the column that flags
+    incumbency, `iid`, to the centered/scaled value for `0`. I.e., this
+    counterfactual matrix is the same as `standardize(X, Z)` with no incumbents
+    in `iid`.
 
-    @param X: A design matrix
+    @param X: A counterfactual design matrix
+    @param Z: A design matrix
     @param iid: An integer indicating the column in the design matrix that
         corresponds to incumbency.
 
@@ -35,28 +61,45 @@ matrix standardize(matrix X) {
         values in column `iid` taking on the centered/scaled value for `0`.
 */
 matrix standardize_cf(matrix X,
+                      matrix Z,
                       int iid) {
-    int N = rows(X);
+    int M = rows(X);
     int F = cols(X);
-    matrix[N,F] Xc;
-    vector[F] X_mean;
-    vector[F] X_sd;
+    matrix[M,F] Xc;
+    vector[F] Z_mean;
+    vector[F] Z_sd;
 
     // Create centered design matrix
     for (f in 1:F) {
-        X_mean[f] = mean(X[:,f]);
-        X_sd[f] = sd(X[:,f]);
-        Xc[:,f] = (X[:,f] - X_mean[f]) / X_sd[f];
+        Z_mean[f] = mean(Z[:,f]);
+        Z_sd[f] = sd(Z[:,f]);
+        Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
     }
 
     // Replace columns in iid with centered zeroes
     for (f in 1:F) {
         if (f == iid) {
-            Xc[:,f] = rep_vector(-X_mean[f] / X_sd[f], N);
+            Xc[:,f] = rep_vector(-Z_mean[f] / Z_sd[f], M);
         }
     }
 
     return Xc;
+}
+
+/*
+    Add an intercept term to the first column of a matrix
+
+    @param X: a design matrix
+
+    @returns Xi: A with on addtional column of 1s added to X
+*/
+matrix add_intercept(matrix X) {
+    int N = rows(X);
+    int C = cols(X) + 1;
+    matrix[N,C] Xi;
+    Xi[:,1] = rep_vector(1, N);
+    Xi[:,2:C] = X;
+    return Xi;
 }
 
 /*
@@ -117,7 +160,7 @@ matrix random_walk(vector theta0,
 
     @param X: A centered/scaled design matrix
     @param alpha: A vector of intercept parameters for each year
-    @param beta_v: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each parameter in each year
     @param beta_c: A vector of candidate skill parameters
     @param eid: An array of integers mapping year to each race
     @param cid: A multidimensional array of integers mapping the democratic and
@@ -126,13 +169,15 @@ matrix random_walk(vector theta0,
     @returns mu: A vector of logit-scale mean democratic two-party voteshare
         estimates
 */
-vector latent_mean(matrix X,
+vector latent_mean(matrix Xd,
+                   matrix Xg,
                    vector alpha,
-                   matrix beta_v,
+                   matrix beta_d,
+                   vector beta_g,
                    vector beta_c,
                    array[] int eid,
                    array[,] int cid) {
-    int N = rows(X);
+    int N = rows(Xd);
     vector[N] mu;
     vector[N] gamma;
     vector[N] zeta_c;
@@ -140,9 +185,9 @@ vector latent_mean(matrix X,
     for (n in 1:N) {
         gamma[n] = alpha[eid[n]];
         zeta_c[n] = beta_c[cid[n,1]] - beta_c[cid[n,2]];
-        beta[n] = dot_product(X[n,:], beta_v[:,eid[n]]);
+        beta[n] = dot_product(Xd[n,:], beta_d[:,eid[n]]);
     }
-    mu = gamma + beta + zeta_c;
+    mu = gamma + beta + zeta_c + Xg * beta_g;
     return mu;
 }
 

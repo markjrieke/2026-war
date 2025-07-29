@@ -1,6 +1,6 @@
-from typing import Optional
+from typing import Optional, List
 
-from cmdstanpy import CmdStanMCMC
+from polars import col
 
 from war.data import WARData
 from war.utils.model import CmdStanModel
@@ -68,14 +68,15 @@ class WARModel:
         cols = model_data.columns
         exclusions = [
             'cycle', 'state_name', 'district', 'pct', 'candidate_DEM', 'candidate_REP',
-            'cid_DEM', 'cid_REP', 'eid'
+            'cid_DEM', 'cid_REP', 'eid', 'uncontested'
         ]
-        variables = [x for x in cols if x not in exclusions]
+        national_variables = self._detect_national_variables(exclusions)
+        district_variables = [x for x in cols if x not in exclusions + national_variables]
 
         # Find locations of incumbent ID columns
         iid = [
-            variables.index('is_incumbent_DEM') + 1,
-            variables.index('is_incumbent_REP') + 1
+            district_variables.index('is_incumbent_DEM') + 1,
+            district_variables.index('is_incumbent_REP') + 1
         ]
 
         # Parse stan data from model frame
@@ -84,10 +85,13 @@ class WARModel:
             'M': full_data.shape[0],
             'E': model_data.unique('eid').shape[0],
             'C': cids.unique('cid').shape[0],
-            'F': len(variables),
-            'X': model_data.select(variables).to_numpy(),
+            'D': len(district_variables),
+            'L': len(national_variables),
+            'Xd': model_data.select(district_variables).to_numpy(),
+            'Xl': model_data.select(national_variables).to_numpy(),
             'Y': model_data['pct'].to_numpy(),
-            'Xf': full_data.select(variables).to_numpy(),
+            'Xfd': full_data.select(district_variables).to_numpy(),
+            'Xfl': full_data.select(national_variables).to_numpy(),
             'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
             'eid': model_data['eid'].to_numpy(),
             'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
@@ -110,6 +114,8 @@ class WARModel:
         # Attach the full stan data object
         stan_data.update(priors_args)
         self.stan_data = stan_data
+        self.district_variables = district_variables
+        self.national_variables = ['intercept'] + national_variables
 
         return self
 
@@ -134,3 +140,28 @@ class WARModel:
         )
 
         return self
+
+    def _detect_national_variables(
+        self,
+        exclusions
+    ) -> List[str]:
+
+        # Set list of columns to look through as potential national variables
+        full_data = self.war_data.full_data
+        columns = full_data.columns
+        for exclusion in exclusions:
+            columns.remove(exclusion)
+
+        # Generate list of national variables (only vary by cycle)
+        variables = []
+        for column in columns:
+            n = (
+                full_data
+                .group_by('cycle')
+                .agg(col(column).n_unique())
+                [column]
+            )
+            if (n == 1).all():
+                variables.append(column)
+
+        return variables

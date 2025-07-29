@@ -10,19 +10,26 @@ data {
     int M;                              // Number of observations in the full frame
     int E;                              // Number of election cycles
     int C;                              // Number of candidates
-    int F;                              // Number of non-candidate variables
+    int D;                              // Number of district variables
+    int L;                              // Number of national variables
 
     // Observations
-    matrix[N,F] X;                      // Design matrix
+    matrix[N,D] Xd;                     // Design matrix (district)
+    matrix[N,L] Xl;                     // Design matrix (national)
     vector[N] Y;                        // Democratic candidate two-party vote
-    matrix[M,F] Xf;                     // Full matrix
+
+    // Counterfactual Observations
+    matrix[M,D] Xfd;                    // Full matrix (district)
+    matrix[M,L] Xfl;                    // Full matrix (national)
 
     // Mapping columns
     array[N,2] int cid;                 // Map candidates to races in the model frame
     array[N] int eid;                   // Map election cyle to race in the model frame
+    array[2] int iid;                   // Denote columns that flag incumbency
+
+    // Counterfactual mapping columns
     array[M,2] int cfid;                // Map candidates to races in the full frame
     array[M] int efid;                  // Map election cycle to race in the full frame
-    array[2] int iid;                   // Denote columns that flag incumbency
 
     // Priors
     real<lower=0> sigma_sigma;          // Global hyperparameter
@@ -31,13 +38,22 @@ data {
 }
 
 transformed data {
-    // Center/scale the design matrix
-    matrix[N,F] Xc = standardize(X);
-    matrix[M,F] Xfc = standardize(Xf);
+    // Center/scale the design district/national matrices
+    matrix[N,D] Xdc = standardize(Xd);
+    matrix[N,L] Xlc = standardize(Xl);
 
-    // Create counterfactual matrices that eschew incumbency
-    matrix[M,F] Xc_dem = standardize_cf(Xf, iid[1]);
-    matrix[M,F] Xc_rep = standardize_cf(Xf, iid[2]);
+    // Center/scale counterfactual district/national matrices based on the design matrices
+    matrix[M,D] Xfdc = standardize(Xfd, Xd);
+    matrix[M,L] Xflc = standardize(Xfl, Xl);
+
+    // Add intercept to national matrices
+    int G = L + 1;
+    matrix[N,G] Xgc = add_intercept(Xlc);
+    matrix[M,G] Xfgc = add_intercept(Xflc);
+
+    // Create counterfactual district matrices that eschew incumbency
+    matrix[M,D] Xfdc_dem = standardize_cf(Xfd, Xd, iid[1]);
+    matrix[M,D] Xfdc_rep = standardize_cf(Xfd, Xd, iid[2]);
 
     // Estimate model on the logit scale
     vector[N] Y_logit = logit(Y);
@@ -47,8 +63,10 @@ parameters {
     real<lower=0> sigma;
     real<lower=0> eta_sigma_alpha;
     vector[E] eta_alpha;
-    vector<lower=0>[F] eta_sigma_beta_v;
-    matrix[F,E] eta_beta_v;
+    vector<lower=0>[D] eta_sigma_beta_d;
+    matrix[D,E] eta_beta_d;
+    real<lower=0> eta_sigma_beta_g;
+    vector[G] eta_beta_g;
     real<lower=0> eta_sigma_beta_c;
     vector[C] eta_beta_c;
     vector<lower=0>[E] eta_sigma_e;
@@ -57,6 +75,7 @@ parameters {
 transformed parameters {
     // Evaluate hierarchical parameters
     vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
+    vector[G] beta_g = eta_beta_g * eta_sigma_beta_g * sigma;
 
     // Evaluate random walk over the intercept
     vector[E] alpha = eta_alpha * eta_sigma_alpha * sigma;
@@ -65,23 +84,25 @@ transformed parameters {
     }
 
     // Evaluate random walk over the parameters
-    matrix[F,E] beta_v = diag_pre_multiply(eta_sigma_beta_v * sigma, eta_beta_v);
+    matrix[D,E] beta_d = diag_pre_multiply(eta_sigma_beta_d * sigma, eta_beta_d);
     for (i in 2:E) {
-        beta_v[:,i] += beta_v[:,i-1];
+        beta_d[:,i] += beta_d[:,i-1];
     }
 }
 
 model {
     // Estimate the expected mean, sd
-    vector[N] mu = latent_mean(Xc, alpha, beta_v, beta_c, eid, cid);
+    vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
     vector[N] sigma_o = latent_sd(eta_sigma_e * sigma, eid);
 
     // Priors
     target += half_normal_lpdf(sigma | sigma_sigma);
     target += std_half_normal_lpdf(eta_sigma_alpha);
     target += std_normal_lpdf(eta_alpha);
-    target += std_half_normal_lpdf(eta_sigma_beta_v);
-    target += std_normal_lpdf(to_vector(eta_beta_v));
+    target += std_half_normal_lpdf(eta_sigma_beta_d);
+    target += std_normal_lpdf(to_vector(eta_beta_d));
+    target += std_half_normal_lpdf(eta_sigma_beta_g);
+    target += std_normal_lpdf(eta_beta_g);
     target += std_half_normal_lpdf(eta_sigma_beta_c);
     target += std_normal_lpdf(eta_beta_c);
     target += std_half_normal_lpdf(eta_sigma_e);
@@ -95,12 +116,12 @@ model {
 generated quantities {
     // Posterior predictive distributions
     vector[M] Y_rep = posterior_predictive_rng(
-        Xfc, alpha, beta_v, beta_c, eta_sigma_e * sigma, efid, cfid
+        Xfdc, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_e * sigma, efid, cfid
     );
 
     // Counterfactual predictive distributions
     array[2] vector[M] Y_rep_cf = posterior_predictive_cf_rng(
-        Xc_dem, Xc_rep, alpha, beta_v, beta_c, eta_sigma_beta_c * sigma, eta_sigma_e * sigma, efid, cfid
+        Xfdc_dem, Xfdc_rep, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_beta_c * sigma, eta_sigma_e * sigma, efid, cfid
     );
 
     // Posterior predictive probability of winning

@@ -36,20 +36,6 @@ war_results.write_full_topline()
 war_results.write_publication_topline()
 war_results.write_parameter_summaries()
 
-(
-    az.from_cmdstanpy(war_fit.war_fit)
-    .posterior
-    .Y_rep
-    .mean(dim=['chain', 'draw'])
-    .to_dataframe()
-    .pipe(pl.from_pandas, include_index=True)
-    .rename({'Y_rep_dim_0': 'M'})
-    .join(
-        pl.read_parquet('out/summary/mappings/full_data.parquet'),
-        on='M',
-        how='left'
-    )
-)
 # brain dump for exploratory objs
 # - parameter plot over cycle
 # - war plot over cycle

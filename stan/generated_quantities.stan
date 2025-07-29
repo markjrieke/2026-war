@@ -30,7 +30,7 @@ vector posterior_predictive_rng(vector mu,
 
     @param X: A centered/scaled design matrix
     @param alpha: A vector of intercept parameters for each year
-    @param beta_v: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each parameter in each year
     @param beta_c: A vector of candidate skill parameters
     @param sigma_e: A vector of logit-scale observation standard deviations
     @param eid: An array of integers mapping year to each race
@@ -39,15 +39,17 @@ vector posterior_predictive_rng(vector mu,
 
     @returns: A vector of observation-scale predictive samples
 */
-vector posterior_predictive_rng(matrix X,
+vector posterior_predictive_rng(matrix Xd,
+                                matrix Xg,
                                 vector alpha,
-                                matrix beta_v,
+                                matrix beta_d,
+                                vector beta_g,
                                 vector beta_c,
                                 vector sigma_e,
                                 array[] int eid,
                                 array[,] int cid) {
-    int N = rows(X);
-    vector[N] mu = latent_mean(X, alpha, beta_v, beta_c, eid, cid);
+    int N = rows(Xd);
+    vector[N] mu = latent_mean(Xd, Xg, alpha, beta_d, beta_g, beta_c, eid, cid);
     vector[N] sigma = latent_sd(sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
 }
@@ -58,7 +60,7 @@ vector posterior_predictive_rng(matrix X,
 
     @param X: A centered/scaled counterfactual design matrix
     @param alpha: A vector of intercept parameters for each year
-    @param beta_v: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each parameter in each year
     @param beta_c: A vector of candidate skill parameters
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
@@ -71,16 +73,18 @@ vector posterior_predictive_rng(matrix X,
 
     @returns: A vector of observation-scale counterfactual predictive samples
 */
-vector posterior_predictive_cf_rng(matrix X,
+vector posterior_predictive_cf_rng(matrix Xd,
+                                   matrix Xg,
                                    vector alpha,
-                                   matrix beta_v,
+                                   matrix beta_d,
+                                   vector beta_g,
                                    vector beta_c,
                                    real sigma_c,
                                    vector sigma_e,
                                    array[] int eid,
                                    array[,] int cid,
                                    int dem_cf) {
-    int N = rows(X);
+    int N = rows(Xd);
     vector[N] beta_cf = new_candidate_rng(N, sigma_c);
     vector[N] mu;
     vector[N] sigma;
@@ -89,7 +93,7 @@ vector posterior_predictive_cf_rng(matrix X,
     vector[N] beta;
     for (n in 1:N) {
         gamma[n] = alpha[eid[n]];
-        beta[n] = dot_product(X[n,:], beta_v[:,eid[n]]);
+        beta[n] = dot_product(Xd[n,:], beta_d[:,eid[n]]);
     }
     if (dem_cf) {
         for (n in 1:N) {
@@ -100,7 +104,7 @@ vector posterior_predictive_cf_rng(matrix X,
             zeta_c[n] = beta_c[cid[n,1]] - beta_cf[n];
         }
     }
-    mu = gamma + beta + zeta_c;
+    mu = gamma + beta + zeta_c + Xg * beta_g;
     sigma = latent_sd(sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
 }
@@ -114,7 +118,7 @@ vector posterior_predictive_cf_rng(matrix X,
     @param Xc_rep: A centered/scaled counterfactual design matrix for republican
         candidates
     @param alpha: A vector of intercept parameters for each year
-    @param beta_v: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each parameter in each year
     @param beta_c: A vector of candidate skill parameters
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
@@ -125,19 +129,32 @@ vector posterior_predictive_cf_rng(matrix X,
     @returns: An array of vectors of observation-scale counterfactual predictive
         samples for each party
 */
-array[] vector posterior_predictive_cf_rng(matrix Xc_dem,
-                                           matrix Xc_rep,
+array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
+                                           matrix Xdc_rep,
+                                           matrix Xg,
                                            vector alpha,
-                                           matrix beta_v,
+                                           matrix beta_d,
+                                           vector beta_g,
                                            vector beta_c,
                                            real sigma_c,
                                            vector sigma_e,
                                            array[] int eid,
                                            array[,] int cid) {
-    int N = rows(Xc_dem);
+    int N = rows(Xdc_dem);
+    int D = cols(Xdc_dem);
     array[2] vector[N] Y_rep_cf;
-    Y_rep_cf[1] = posterior_predictive_cf_rng(Xc_dem, alpha, beta_v, beta_c, sigma_c, sigma_e, eid, cid, 1);
-    Y_rep_cf[2] = posterior_predictive_cf_rng(Xc_rep, alpha, beta_v, beta_c, sigma_c, sigma_e, eid, cid, 0);
+    for (i in 1:2) {
+        matrix[N,D] Xdc;
+        int dem_flag = 2 - i;
+        if (i == 1) {
+            Xdc = Xdc_dem;
+        } else {
+            Xdc = Xdc_rep;
+        }
+        Y_rep_cf[i] = posterior_predictive_cf_rng(
+            Xdc, Xg, alpha, beta_d, beta_g, beta_c, sigma_c, sigma_e, eid, cid, dem_flag
+        );
+    }
     return Y_rep_cf;
 }
 
