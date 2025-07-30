@@ -10,19 +10,19 @@ data {
     int M;                              // Number of observations in the full frame
     int E;                              // Number of election cycles
     int C;                              // Number of candidates
-    int D;                              // Number of district variables
-    int L;                              // Number of national variables
+    int D;                              // Number of time-varying variables
+    int L;                              // Number of time-invariant variables
     int J;                              // Number of sd-estimating variables
 
     // Observations
-    matrix[N,D] Xd;                     // Design matrix (district)
-    matrix[N,L] Xl;                     // Design matrix (national)
+    matrix[N,D] Xd;                     // Design matrix (time-varying)
+    matrix[N,L] Xl;                     // Design matrix (time-invariant)
     matrix[N,J] Xj;                     // Design matrix (observation sd)
     vector[N] Y;                        // Democratic candidate two-party vote
 
     // Counterfactual Observations
-    matrix[M,D] Xfd;                    // Full matrix (district)
-    matrix[M,L] Xfl;                    // Full matrix (national)
+    matrix[M,D] Xfd;                    // Full matrix (time-varying)
+    matrix[M,L] Xfl;                    // Full matrix (time-invariant)
     matrix[M,J] Xfj;                    // Full matrix (observation sd)
 
     // Mapping columns
@@ -41,12 +41,12 @@ data {
 }
 
 transformed data {
-    // Center/scale the design district/national matrices
+    // Center/scale the design time-varying/time-invariant matrices
     matrix[N,D] Xdc = standardize(Xd);
     matrix[N,L] Xlc = standardize(Xl);
     matrix[N,J] Xjc = standardize(Xj);
 
-    // Center/scale counterfactual district/national matrices based on the design matrices
+    // Center/scale counterfactual time-varying/time-invariant matrices based on the design matrices
     matrix[M,D] Xfdc = standardize(Xfd, Xd);
     matrix[M,L] Xflc = standardize(Xfl, Xl);
     matrix[M,J] Xfjc = standardize(Xfj, Xj);

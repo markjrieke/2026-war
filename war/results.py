@@ -280,8 +280,8 @@ class WARResults:
         """
 
         war_data = self.war_fit.war_data
-        district_variables = self.war_fit.district_variables
-        national_variables = self.war_fit.national_variables
+        time_varying_variables = self.war_fit.time_varying_variables
+        time_invariant_variables = self.war_fit.time_invariant_variables
         sd_variables = self.war_fit.sd_variables
 
         model_data = war_data.prepped_data
@@ -322,8 +322,8 @@ class WARResults:
             'M': range(M),
             'cycle': cycles,
             'candidate': candidates,
-            'district_variable': district_variables,
-            'national_variable': national_variables,
+            'time_varying_variable': time_varying_variables,
+            'time_invariant_variable': time_invariant_variables,
             'sd_variable': sd_variables,
             'party': ['dem', 'rep']
         }
@@ -335,7 +335,7 @@ class WARResults:
 
             # Variable scale parameter offsets
             'eta_sigma_alpha': [],
-            'eta_sigma_beta_d': ['district_variable'],
+            'eta_sigma_beta_d': ['time_varying_variable'],
             'eta_sigma_beta_g': [],
             'eta_sigma_beta_j': [],
             'eta_sigma_beta_c': [],
@@ -343,18 +343,18 @@ class WARResults:
 
             # Variable scale parameter offsets
             'eta_alpha': ['cycle'],
-            'eta_beta_d': ['district_variable', 'cycle'],
-            'eta_beta_g': ['national_variable'],
+            'eta_beta_d': ['time_varying_variable', 'cycle'],
+            'eta_beta_g': ['time_invariant_variable'],
             'eta_beta_j': ['sd_variable'],
             'eta_beta_c': ['candidate'],
             'eta_sigma_e': ['cycle'],
 
             # Transformed parameters
             'beta_c': ['candidate'],
-            'beta_g': ['national_variable'],
+            'beta_g': ['time_invariant_variable'],
             'beta_j': ['sd_variable'],
             'alpha': ['cycle'],
-            'beta_d': ['district_variable', 'cycle'],
+            'beta_d': ['time_varying_variable', 'cycle'],
             'sigma_e': ['cycle'],
 
             # Generated quantities

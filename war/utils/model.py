@@ -21,7 +21,6 @@ class CmdStanModel(stan.CmdStanModel):
         **kwargs
     ):
 
-        # TODO: Figure out how to create the exe without copying everything while retaining function references
         if dir:
             # Check if the dir file needs to be updated
             if basename(stan_file) in listdir(dir):

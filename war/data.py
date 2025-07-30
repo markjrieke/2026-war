@@ -95,9 +95,8 @@ class WARData:
                 'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
                 'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec',
-                'redistricted'
+                'redistricted', 'incumbent_party',
             ])
-            .rename({'redistricted': 'redistricted_sd'})
             .with_columns(
                 when(col.experience < 0).then(lit(1)).otherwise(lit(0)).alias('exp_disadvantage'),
                 when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage')
@@ -121,7 +120,7 @@ class WARData:
             .with_columns(
                 (col.n_democratic_candidates.is_not_null() |
                  col.n_republican_candidates.is_not_null())
-                 .alias('jungle_primary_sd')
+                 .alias('jungle_primary')
             )
             .select(exclude(starts_with('n_')))
             .join(
@@ -129,6 +128,19 @@ class WARData:
                 on='cycle',
                 how='left'
             )
+            .with_columns(
+                (
+                    (col.presidential_party == 'DEM') &
+                    (col.incumbent_party == 'DEM') &
+                    (col.midterm)
+                ).alias('dem_inc_dem_midterm'),
+                (
+                    (col.presidential_party == 'REP') &
+                    (col.incumbent_party == 'REP') &
+                    (col.midterm)
+                ).alias('rep_inc_rep_midterm')
+            )
+            .select(exclude('incumbent_party'))
             .with_columns(col.presidential_party == 'DEM')
             .rename({'presidential_party': 'dem_president'})
             .with_columns((col.dem_president & col.midterm).alias('dem_president_midterm'))
