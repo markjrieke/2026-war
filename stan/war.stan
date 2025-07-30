@@ -12,15 +12,18 @@ data {
     int C;                              // Number of candidates
     int D;                              // Number of district variables
     int L;                              // Number of national variables
+    int J;                              // Number of sd-estimating variables
 
     // Observations
     matrix[N,D] Xd;                     // Design matrix (district)
     matrix[N,L] Xl;                     // Design matrix (national)
+    matrix[N,J] Xj;                     // Design matrix (observation sd)
     vector[N] Y;                        // Democratic candidate two-party vote
 
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (district)
     matrix[M,L] Xfl;                    // Full matrix (national)
+    matrix[M,J] Xfj;                    // Full matrix (observation sd)
 
     // Mapping columns
     array[N,2] int cid;                 // Map candidates to races in the model frame
@@ -41,10 +44,12 @@ transformed data {
     // Center/scale the design district/national matrices
     matrix[N,D] Xdc = standardize(Xd);
     matrix[N,L] Xlc = standardize(Xl);
+    matrix[N,J] Xjc = standardize(Xj);
 
     // Center/scale counterfactual district/national matrices based on the design matrices
     matrix[M,D] Xfdc = standardize(Xfd, Xd);
     matrix[M,L] Xflc = standardize(Xfl, Xl);
+    matrix[M,J] Xfjc = standardize(Xfj, Xj);
 
     // Add intercept to national matrices
     int G = L + 1;
@@ -60,16 +65,23 @@ transformed data {
 }
 
 parameters {
+    // Global hyper-parameter
     real<lower=0> sigma;
+
+    // Variable scale parameter offsets
     real<lower=0> eta_sigma_alpha;
-    vector[E] eta_alpha;
     vector<lower=0>[D] eta_sigma_beta_d;
-    matrix[D,E] eta_beta_d;
     real<lower=0> eta_sigma_beta_g;
-    vector[G] eta_beta_g;
+    real<lower=0> eta_sigma_beta_j;
     real<lower=0> eta_sigma_beta_c;
-    vector[C] eta_beta_c;
     real<lower=0> eta_sigma_sigma_e;
+
+    // Variable offsets
+    vector[E] eta_alpha;
+    matrix[D,E] eta_beta_d;
+    vector[G] eta_beta_g;
+    vector[J] eta_beta_j;
+    vector[C] eta_beta_c;
     vector[E] eta_sigma_e;
 }
 
@@ -77,6 +89,7 @@ transformed parameters {
     // Evaluate hierarchical parameters
     vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
     vector[G] beta_g = eta_beta_g * eta_sigma_beta_g * sigma;
+    vector[J] beta_j = eta_beta_j * eta_sigma_beta_j * sigma;
 
     // Evaluate random walk over the intercept
     vector[E] alpha = eta_alpha * eta_sigma_alpha * sigma;
@@ -95,13 +108,14 @@ transformed parameters {
     for (i in 2:E) {
         sigma_e[i] += sigma_e[i-1];
     }
-    sigma_e = exp(sigma_e);
+
+    // Estimate the expected mean, sd
+    vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
+    vector[N] sigma_o = latent_sd(Xjc, beta_j, sigma_e, eid);
+
 }
 
 model {
-    // Estimate the expected mean, sd
-    vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
-    vector[N] sigma_o = latent_sd(sigma_e, eid);
 
     // Priors
     target += half_normal_lpdf(sigma | sigma_sigma);
@@ -125,12 +139,34 @@ model {
 generated quantities {
     // Posterior predictive distributions
     vector[M] Y_rep = posterior_predictive_rng(
-        Xfdc, Xfgc, alpha, beta_d, beta_g, beta_c, sigma_e, efid, cfid
+        Xfdc,
+        Xfgc,
+        Xfjc,
+        alpha,
+        beta_d,
+        beta_g,
+        beta_j,
+        beta_c,
+        sigma_e,
+        efid,
+        cfid
     );
 
     // Counterfactual predictive distributions
     array[2] vector[M] Y_rep_cf = posterior_predictive_cf_rng(
-        Xfdc_dem, Xfdc_rep, Xfgc, alpha, beta_d, beta_g, beta_c, eta_sigma_beta_c * sigma, sigma_e, efid, cfid
+        Xfdc_dem,
+        Xfdc_rep,
+        Xfgc,
+        Xfjc,
+        alpha,
+        beta_d,
+        beta_g,
+        beta_j,
+        beta_c,
+        eta_sigma_beta_c * sigma,
+        sigma_e,
+        efid,
+        cfid
     );
 
     // Posterior predictive probability of winning

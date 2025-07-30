@@ -94,8 +94,10 @@ class WARData:
             .select([
                 'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-                'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec'
+                'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec',
+                'redistricted'
             ])
+            .rename({'redistricted': 'redistricted_sd'})
             .with_columns(
                 when(col.experience < 0).then(lit(1)).otherwise(lit(0)).alias('exp_disadvantage'),
                 when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage')
@@ -111,6 +113,17 @@ class WARData:
                 starts_with('candidate').fill_null('Uncontested'),
                 starts_with('is_incumbent').fill_null(False)
             )
+            .join(
+                read_csv('data/jungle_primaries.csv'),
+                on=['cycle', 'state_name', 'district'],
+                how='left'
+            )
+            .with_columns(
+                (col.n_democratic_candidates.is_not_null() |
+                 col.n_republican_candidates.is_not_null())
+                 .alias('jungle_primary_sd')
+            )
+            .select(exclude(starts_with('n_')))
             .join(
                 read_csv('data/presidential_party.csv'),
                 on='cycle',

@@ -195,18 +195,22 @@ vector latent_mean(matrix Xd,
     Estimate the logit-scale standard deviation round the estimate for the
     democratic two-party voteshare
 
+    @param Xjc #TODO
+    @param beta_j #TODO
     @param sigma_e: A vector of logit-scale observation standard deviations for
         each year
     @param eid: An array of integers mapping year to each race
 
     @returns sigma: A vector of logit-scale standard deviation estimates
 */
-vector latent_sd(vector sigma_e,
+vector latent_sd(matrix Xjc,
+                 vector beta_j,
+                 vector sigma_e,
                  array[] int eid) {
     int N = size(eid);
-    vector[N] sigma;
+    vector[N] sigma = Xjc * beta_j;
     for (n in 1:N) {
-        sigma[n] = sigma_e[eid[n]];
+        sigma[n] += sigma_e[eid[n]];
     }
-    return sigma;
+    return exp(sigma);
 }

@@ -73,6 +73,10 @@ class WARModel:
         national_variables = self._detect_national_variables(exclusions)
         district_variables = [x for x in cols if x not in exclusions + national_variables]
 
+        # Separate jungle primary variables from district variables
+        sd_variables = [x for x in district_variables if '_sd' in x]
+        district_variables = [x for x in district_variables if x not in sd_variables]
+
         # Find locations of incumbent ID columns
         iid = [
             district_variables.index('is_incumbent_DEM') + 1,
@@ -87,11 +91,14 @@ class WARModel:
             'C': cids.unique('cid').shape[0],
             'D': len(district_variables),
             'L': len(national_variables),
+            'J': len(sd_variables),
             'Xd': model_data.select(district_variables).to_numpy(),
             'Xl': model_data.select(national_variables).to_numpy(),
+            'Xj': model_data.select(sd_variables).to_numpy(),
             'Y': model_data['pct'].to_numpy(),
             'Xfd': full_data.select(district_variables).to_numpy(),
             'Xfl': full_data.select(national_variables).to_numpy(),
+            'Xfj': full_data.select(sd_variables).to_numpy(),
             'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
             'eid': model_data['eid'].to_numpy(),
             'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
@@ -116,6 +123,7 @@ class WARModel:
         self.stan_data = stan_data
         self.district_variables = district_variables
         self.national_variables = ['intercept'] + national_variables
+        self.sd_variables = sd_variables
 
         return self
 

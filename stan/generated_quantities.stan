@@ -28,9 +28,14 @@ vector posterior_predictive_rng(vector mu,
 /*
     Generate observation-scale posterior predictive samples
 
-    @param X: A centered/scaled design matrix
+    @param Xd: A centered/scaled design matrix for district-level variables
+    @param Xg: A centered/scaled design matrix for national-level variables
+    @param Xj: A centered/scaled design matrix for sd-affecting variables
     @param alpha: A vector of intercept parameters for each year
-    @param beta_d: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of district parameter values for each parameter in
+        each year
+    @param beta_g: A vector of national parameter values
+    @param beta_j: A vector of sd-affecting parameter values
     @param beta_c: A vector of candidate skill parameters
     @param sigma_e: A vector of logit-scale observation standard deviations
     @param eid: An array of integers mapping year to each race
@@ -41,16 +46,18 @@ vector posterior_predictive_rng(vector mu,
 */
 vector posterior_predictive_rng(matrix Xd,
                                 matrix Xg,
+                                matrix Xj,
                                 vector alpha,
                                 matrix beta_d,
                                 vector beta_g,
+                                vector beta_j,
                                 vector beta_c,
                                 vector sigma_e,
                                 array[] int eid,
                                 array[,] int cid) {
     int N = rows(Xd);
     vector[N] mu = latent_mean(Xd, Xg, alpha, beta_d, beta_g, beta_c, eid, cid);
-    vector[N] sigma = latent_sd(sigma_e, eid);
+    vector[N] sigma = latent_sd(Xj, beta_j, sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
 }
 
@@ -58,9 +65,14 @@ vector posterior_predictive_rng(matrix Xd,
     Generate observation-scale posterior predictive samples given a
     counterfactual matrix
 
-    @param X: A centered/scaled counterfactual design matrix
+    @param Xd: A centered/scaled counterfactual district design matrix
+    @param Xg: A centered/scaled counterfacutla national design matrix
+    @param Xj: A centered/scaled counterfactual sd-affecting design matrix
     @param alpha: A vector of intercept parameters for each year
-    @param beta_d: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each district parameter in
+        each year
+    @param beta_g: A vector of national parameter values
+    @param beta_j: A vector of sd-affecting parameter values
     @param beta_c: A vector of candidate skill parameters
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
@@ -75,9 +87,11 @@ vector posterior_predictive_rng(matrix Xd,
 */
 vector posterior_predictive_cf_rng(matrix Xd,
                                    matrix Xg,
+                                   matrix Xj,
                                    vector alpha,
                                    matrix beta_d,
                                    vector beta_g,
+                                   vector beta_j,
                                    vector beta_c,
                                    real sigma_c,
                                    vector sigma_e,
@@ -105,7 +119,7 @@ vector posterior_predictive_cf_rng(matrix Xd,
         }
     }
     mu = gamma + beta + zeta_c + Xg * beta_g;
-    sigma = latent_sd(sigma_e, eid);
+    sigma = latent_sd(Xj, beta_j, sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
 }
 
@@ -117,8 +131,13 @@ vector posterior_predictive_cf_rng(matrix Xd,
         candidates
     @param Xc_rep: A centered/scaled counterfactual design matrix for republican
         candidates
+    @param Xg: A centered/scaled counterfacutla national design matrix
+    @param Xj: A centered/scaled counterfactual sd-affecting design matrix
     @param alpha: A vector of intercept parameters for each year
-    @param beta_d: A matrix of parameter values for each parameter in each year
+    @param beta_d: A matrix of parameter values for each district parameter in
+        each year
+    @param beta_g: A vector of national parameter values
+    @param beta_j: A vector of sd-affecting parameter values
     @param beta_c: A vector of candidate skill parameters
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
@@ -132,9 +151,11 @@ vector posterior_predictive_cf_rng(matrix Xd,
 array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
                                            matrix Xdc_rep,
                                            matrix Xg,
+                                           matrix Xj,
                                            vector alpha,
                                            matrix beta_d,
                                            vector beta_g,
+                                           vector beta_j,
                                            vector beta_c,
                                            real sigma_c,
                                            vector sigma_e,
@@ -152,7 +173,19 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
             Xdc = Xdc_rep;
         }
         Y_rep_cf[i] = posterior_predictive_cf_rng(
-            Xdc, Xg, alpha, beta_d, beta_g, beta_c, sigma_c, sigma_e, eid, cid, dem_flag
+            Xdc,
+            Xg,
+            Xj,
+            alpha,
+            beta_d,
+            beta_g,
+            beta_j,
+            beta_c,
+            sigma_c,
+            sigma_e,
+            eid,
+            cid,
+            dem_flag
         );
     }
     return Y_rep_cf;

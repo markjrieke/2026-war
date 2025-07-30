@@ -282,6 +282,7 @@ class WARResults:
         war_data = self.war_fit.war_data
         district_variables = self.war_fit.district_variables
         national_variables = self.war_fit.national_variables
+        sd_variables = self.war_fit.sd_variables
 
         model_data = war_data.prepped_data
         full_data = war_data.full_data
@@ -323,26 +324,35 @@ class WARResults:
             'candidate': candidates,
             'district_variable': district_variables,
             'national_variable': national_variables,
+            'sd_variable': sd_variables,
             'party': ['dem', 'rep']
         }
 
         # Dimensions of each variable in terms of coordinate system
         dims = {
-            # Parameters
+            # Global hyper-parameter
             'sigma': [],
+
+            # Variable scale parameter offsets
             'eta_sigma_alpha': [],
-            'eta_alpha': ['cycle'],
             'eta_sigma_beta_d': ['district_variable'],
+            'eta_sigma_beta_g': [],
+            'eta_sigma_beta_j': [],
+            'eta_sigma_beta_c': [],
+            'eta_sigma_sigma_e': [],
+
+            # Variable scale parameter offsets
+            'eta_alpha': ['cycle'],
             'eta_beta_d': ['district_variable', 'cycle'],
             'eta_beta_g': ['national_variable'],
-            'eta_sigma_beta_c': [],
-            'eta_beta_c': ['candidates'],
-            'eta_sigma_sigma_e': [],
+            'eta_beta_j': ['sd_variable'],
+            'eta_beta_c': ['candidate'],
             'eta_sigma_e': ['cycle'],
 
             # Transformed parameters
             'beta_c': ['candidate'],
             'beta_g': ['national_variable'],
+            'beta_j': ['sd_variable'],
             'alpha': ['cycle'],
             'beta_d': ['district_variable', 'cycle'],
             'sigma_e': ['cycle'],
