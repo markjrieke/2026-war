@@ -95,11 +95,11 @@ class WARData:
                 'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
                 'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec',
-                'redistricted', 'incumbent_party',
+                'redistricted', 'incumbent_party', 'has_fec'
             ])
             .with_columns(
                 when(col.experience < 0).then(lit(1)).otherwise(lit(0)).alias('exp_disadvantage'),
-                when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage')
+                when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage'),
             )
             .select(exclude('experience'))
             .join(
@@ -121,6 +121,12 @@ class WARData:
                 (col.n_democratic_candidates.is_not_null() |
                  col.n_republican_candidates.is_not_null())
                  .alias('jungle_primary')
+            )
+            .with_columns(
+                when((~col.jungle_primary) & (col.has_fec == 1))
+                .then(col.logit_dem_share_fec)
+                .otherwise(lit(0))
+                .alias('logit_dem_share_fec')
             )
             .select(exclude(starts_with('n_')))
             .join(
