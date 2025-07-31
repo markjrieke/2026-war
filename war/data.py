@@ -1,0 +1,274 @@
+from typing import Literal
+
+from polars import col, lit, read_csv, when
+from polars.selectors import exclude, starts_with
+
+class WARData:
+
+    def __init__(
+        self,
+        chamber: Literal['house', 'senate']
+    ):
+
+        """
+        Utility class for importing and preparing datasets for modeling.
+
+        The original raw data is curated by [G. Elliott Morris](https://www.gelliottmorris.com/).
+        It contains two-party results for each congressional election from
+        2000-2024, excluding special elections, along with a host of potentially
+        relevant predictor variables (district demographics, partisanship,
+        FEC fundraising, etc.).
+
+        The dataset is [slightly modified](https://github.com/markjrieke/2026-war/issues/2)
+        for use in the class. Namely, jungle primary results are overwritten
+        with general results when there is no majority winner in the primary,
+        vacancies, new districts, and purely independent incumbents have the
+        incumbent party reclassed, and minor inconsistencies with results are
+        resolved.
+
+        While the rest of the project is open source, these datasets have been
+        asked to remain private.
+
+        Parameters
+        ----------
+        chamber : Literal['house', 'senate']
+            The chamber of congress to prep data for.
+        """
+
+        if chamber == 'house':
+            self.raw_data = read_csv(
+                'data/private/house_forecast_data_updated.csv',
+                infer_schema_length=1000
+            )
+        if chamber == 'senate':
+            raise NotImplementedError(
+                'Senate model not yet implemented!'
+            )
+
+        self.chamber = chamber
+
+    def prep_data(self):
+
+        """
+        Prepare a dataset for passing to Stan for modeling.
+
+        This method attaches several DataFrames to the WARData object:
+        * **full_data** : A prepped dataset including results for all elections.
+        * **prepped_data** : A prepped dataset excluding uncontested elections.
+        * **cids** : A DataFrame mapping each candidate to a `cid` (candidate ID).
+
+        Many candidates appear in the dataset once to challenge an incumbent, but
+        do not win and do not run again. As such, only "named candidates" are
+        given a `cid`. Named candidates include candidates who either win an
+        election or appear as incumbents during the modeled time period. The
+        latter qualification accounts for incumbent candidates who lose in 2000
+        as well as candidates who win in off-year special elections to fill
+        vacancies but then lose in the regularly scheduled congressional race.
+        """
+
+        if self.chamber == 'house':
+            self._prep_house_data()
+
+        return self
+
+    def _prep_house_data(self):
+
+        """Internal method that performs prep for house datasets"""
+
+        house = self.raw_data
+
+        # Map candidates to races
+        mappings = (
+            read_csv('data/candidate_filters.csv')
+            .with_columns(col.exclusions.fill_null('y'))
+            .filter(col.exclusions != 'x')
+            .select(exclude('exclusions'))
+            .with_columns(col.is_incumbent == 'x')
+            .with_columns(col.is_incumbent.fill_null(False))
+            .select(exclude(['state', 'seat']))
+        )
+
+        # Model dataframe with candidates in wide format
+        house = (
+            house
+            .select([
+                'cycle', 'state_name', 'district', 'pct', 'uncontested',
+                'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
+                'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec',
+                'redistricted', 'incumbent_party',
+            ])
+            .with_columns(
+                when(col.experience < 0).then(lit(1)).otherwise(lit(0)).alias('exp_disadvantage'),
+                when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage')
+            )
+            .select(exclude('experience'))
+            .join(
+                mappings.select(exclude('politician_id')),
+                on=['cycle', 'state_name', 'district'],
+                how='inner'
+            )
+            .pivot(on='party', values=['candidate', 'is_incumbent'])
+            .with_columns(
+                starts_with('candidate').fill_null('Uncontested'),
+                starts_with('is_incumbent').fill_null(False)
+            )
+            .join(
+                read_csv('data/jungle_primaries.csv'),
+                on=['cycle', 'state_name', 'district'],
+                how='left'
+            )
+            .with_columns(
+                (col.n_democratic_candidates.is_not_null() |
+                 col.n_republican_candidates.is_not_null())
+                 .alias('jungle_primary')
+            )
+            .select(exclude(starts_with('n_')))
+            .join(
+                read_csv('data/presidential_party.csv'),
+                on='cycle',
+                how='left'
+            )
+            .with_columns(
+                when((col.presidential_party == 'DEM') &
+                     (col.incumbent_party == 'DEM') &
+                     (col.midterm))
+                .then(lit(1))
+                .when((col.presidential_party == 'REP') &
+                      (col.incumbent_party == 'REP') &
+                      (col.midterm))
+                .then(lit(-1))
+                .otherwise(lit(0))
+                .alias('inc_party_same_party_pres_midterm')
+            )
+            .select(exclude('incumbent_party'))
+            .with_columns(
+                when(col.presidential_party == 'DEM')
+                .then(lit(1))
+                .otherwise(lit(-1))
+                .alias('presidential_party'),
+                when(col.midterm)
+                .then(lit(1))
+                .otherwise(lit(-1))
+                .alias('midterm'),
+                when((col.presidential_party == 'DEM') & col.midterm)
+                .then(lit(1))
+                .when((col.presidential_party == 'REP') & col.midterm)
+                .then(lit(-1))
+                .otherwise(lit(0))
+                .alias('president_midterm')
+            )
+        )
+
+        # Set of candidates who have won a race during the modeled period
+        winners = (
+            house
+            .filter(col.uncontested == 0)
+            .select(
+                col.cycle,
+                col.state_name,
+                col.district,
+                when(col.pct >= 0.50)
+                .then(col.candidate_DEM)
+                .otherwise(col.candidate_REP)
+                .alias('candidate')
+            )
+            .join(
+                mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
+                on=['cycle', 'state_name', 'district', 'candidate'],
+                how='inner'
+            )
+        )
+
+        # Set of incumbents during the modeled period
+        incumbents = (
+            house
+            .filter(col.uncontested == 0)
+            .select(
+                col.cycle,
+                col.state_name,
+                col.district,
+                when(col.is_incumbent_DEM)
+                .then(col.candidate_DEM)
+                .when(col.is_incumbent_REP)
+                .then(col.candidate_REP)
+                .alias('candidate')
+            )
+            .filter(col.candidate.is_not_null())
+            .join(
+                mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
+                on=['cycle', 'state_name', 'district', 'candidate'],
+                how='inner'
+            )
+        )
+
+        # Politician IDs of candidates who either were incumbents or won a race
+        # during the modeled time period
+        named_candidates = (
+            winners
+            .vstack(incumbents)
+            .unique('politician_id')
+            .sort(['candidate', 'politician_id'])
+            ['politician_id']
+        )
+
+        # Create a Stan-friendly mapping of candidates
+        # Generic challengers are mapped to position 1
+        cids = (
+            mappings
+            .unique('politician_id')
+            .sort(['candidate', 'politician_id'])
+            .select(['candidate', 'politician_id'])
+            .with_columns(
+                when(col.politician_id.is_in(named_candidates))
+                .then(col.politician_id)
+                .otherwise(lit(0))
+                .rank('dense')
+                .alias('cid')
+            )
+        )
+
+        # Join in mapping ids
+        base_cols = ['cycle', 'state_name', 'district']
+        house = (
+            house
+            .join(
+                mappings.select(base_cols + ['candidate', 'politician_id']),
+                left_on=base_cols + ['candidate_DEM'],
+                right_on=base_cols + ['candidate'],
+                how='left'
+            )
+            .join(
+                cids.select(['politician_id', 'cid']),
+                on='politician_id',
+                how='left'
+            )
+            .with_columns(col.cid.fill_null(lit(1)))
+            .select(exclude('politician_id'))
+            .rename({'cid': 'cid_DEM'})
+            .join(
+                mappings.select(base_cols + ['candidate', 'politician_id']),
+                left_on=base_cols + ['candidate_REP'],
+                right_on=base_cols + ['candidate'],
+                how='left'
+            )
+            .join(
+                cids.select(['politician_id', 'cid']),
+                on='politician_id',
+                how='left'
+            )
+            .with_columns(col.cid.fill_null(lit(1)))
+            .select(exclude('politician_id'))
+            .rename({'cid': 'cid_REP'})
+            .with_columns(col.cycle.rank('dense').alias('eid'))
+        )
+
+        prepped_data = (
+            house
+            .filter(col.uncontested == 0)
+            .select(exclude('uncontested'))
+        )
+
+        self.full_data = house
+        self.prepped_data = prepped_data
+        self.cids = cids
+
