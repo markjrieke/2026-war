@@ -21,7 +21,8 @@ data {
     vector[N] Y;                        // Democratic candidate two-party vote
 
     // FEC Observations
-    array[N] int Sf;                    // Indicate whether (or not) FEC contributions are present
+    array[E] int Sf;                    // Number of campaigns with FEC filings available
+    array[E] int Kf;                    // Total number of campaigns per cycle
     // vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
     // Counterfactual Observations
@@ -139,12 +140,6 @@ model {
     vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
     vector[N] sigma_o = latent_sd(Xjc, beta_j, sigma_e, eid);
 
-    // Estimate the probability of FEC filing
-    vector[N] theta_f;
-    for (n in 1:N) {
-        theta_f[n] = beta_f[eid[n]];
-    }
-
     // Global hyper-prior
     target += half_normal_lpdf(sigma | sigma_sigma);
 
@@ -169,7 +164,7 @@ model {
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
-        target += bernoulli_logit_lpmf(Sf | theta_f);
+        target += binomial_logit_lpmf(Sf | Kf, beta_f);
     }
 }
 

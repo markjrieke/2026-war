@@ -1,6 +1,7 @@
 from typing import Optional, List
 
 from polars import col
+from polars import len as pl_len
 
 from war.data import WARData
 from war.utils.model import CmdStanModel
@@ -81,6 +82,17 @@ class WARModel:
             time_varying_variables.index('is_incumbent_REP') + 1
         ]
 
+        # Summarize FEC data
+        fec = (
+            model_data
+            .group_by('cycle')
+            .agg(
+                col.has_fec.sum().alias('Sf'),
+                pl_len().alias('Kf')
+            )
+            .sort('cycle')
+        )
+
         # Parse stan data from model frame
         stan_data = {
             'N': model_data.shape[0],
@@ -94,7 +106,8 @@ class WARModel:
             'Xl': model_data.select(time_invariant_variables).to_numpy(),
             'Xj': model_data.select(sd_variables).to_numpy(),
             'Y': model_data['pct'].to_numpy(),
-            'Sf': model_data['has_fec'].to_numpy(),
+            'Sf': fec['Sf'].to_numpy(),
+            'Kf': fec['Kf'].to_numpy(),
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
             'Xfj': full_data.select(sd_variables).to_numpy(),
