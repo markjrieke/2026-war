@@ -23,6 +23,7 @@ data {
     // FEC Observations
     array[E] int Sf;                    // Number of campaigns with FEC filings available
     array[E] int Kf;                    // Total number of campaigns per cycle
+    array[E] int fec;                   // Whether (or not) FEC data is available for a given year
     // vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
     // Counterfactual Observations
@@ -164,7 +165,11 @@ model {
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
-        target += binomial_logit_lpmf(Sf | Kf, beta_f);
+        for (i in 1:E) {
+            if (fec[i]) {
+                target += binomial_logit_lpmf(Sf[i] | Kf[i], beta_f[i]);
+            }
+        }
     }
 }
 

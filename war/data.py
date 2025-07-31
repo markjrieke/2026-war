@@ -123,7 +123,7 @@ class WARData:
                  .alias('jungle_primary')
             )
             .with_columns(
-                when((~col.jungle_primary) & (col.has_fec == 1))
+                when((~col.jungle_primary) & (col.has_fec == 1) & (col.uncontested == 0))
                 .then(col.logit_dem_share_fec)
                 .otherwise(lit(0))
                 .alias('logit_dem_share_fec')

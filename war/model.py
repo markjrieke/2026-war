@@ -93,6 +93,16 @@ class WARModel:
             .sort('cycle')
         )
 
+        # Indicator for whether or not FEC data exists
+        fec_exists = (
+            full_data
+            .with_columns((col.has_fec.sum().over('cycle') > 0).alias('fec_exists'))
+            .unique(['cycle', 'fec_exists'])
+            .sort('cycle')
+            ['fec_exists']
+            .to_numpy()
+        )
+
         # Parse stan data from model frame
         stan_data = {
             'N': model_data.shape[0],
@@ -108,6 +118,7 @@ class WARModel:
             'Y': model_data['pct'].to_numpy(),
             'Sf': fec['Sf'].to_numpy(),
             'Kf': fec['Kf'].to_numpy(),
+            'fec': fec_exists,
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
             'Xfj': full_data.select(sd_variables).to_numpy(),
