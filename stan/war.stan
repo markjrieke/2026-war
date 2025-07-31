@@ -24,7 +24,7 @@ data {
     array[E] int Sf;                    // Number of campaigns with FEC filings available
     array[E] int Kf;                    // Total number of campaigns per cycle
     array[E] int fec;                   // Whether (or not) FEC data is available for a given year
-    // vector[N] Yf;                       // Logit-democratic share of FEC contributions
+    vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (time-varying)
@@ -84,7 +84,9 @@ parameters {
     real<lower=0> eta_sigma_beta_j;
     real<lower=0> eta_sigma_beta_c;
     real<lower=0> eta_sigma_sigma_e;
+    real<lower=0> eta_sigma_theta_f;
     real<lower=0> eta_sigma_beta_f;
+    real<lower=0> eta_sigma_sigma_f;
 
     // Variable offsets
     vector[E] eta_alpha;
@@ -93,7 +95,9 @@ parameters {
     vector[J] eta_beta_j;
     vector[C] eta_beta_c;
     vector[E] eta_sigma_e;
+    vector[E] eta_theta_f;
     vector[E] eta_beta_f;
+    vector[E] eta_sigma_f;
 }
 
 transformed parameters {
@@ -130,10 +134,19 @@ transformed parameters {
     }
 
     // Evaluate random walk over FEC filing probability
+    vector[E] theta_f = eta_theta_f * eta_sigma_theta_f * sigma;
+    for (i in 2:E) {
+        theta_f[i] += theta_f[i-1];
+    }
+
+    // Evaluate random walk over FEC filing share
     vector[E] beta_f = eta_beta_f * eta_sigma_beta_f * sigma;
+    vector[E] sigma_f = eta_sigma_f * eta_sigma_sigma_f * sigma;
     for (i in 2:E) {
         beta_f[i] += beta_f[i-1];
+        sigma_f[i] += sigma_f[i-1];
     }
+    sigma_f = exp(sigma_f);
 }
 
 model {
@@ -151,7 +164,9 @@ model {
     target += std_half_normal_lpdf(eta_sigma_beta_j);
     target += std_half_normal_lpdf(eta_sigma_beta_c);
     target += std_half_normal_lpdf(eta_sigma_sigma_e);
+    target += std_half_normal_lpdf(eta_sigma_theta_f);
     target += std_half_normal_lpdf(eta_sigma_beta_f);
+    target += std_half_normal_lpdf(eta_sigma_sigma_f);
 
     // Variable offsets
     target += std_normal_lpdf(eta_alpha);
@@ -160,14 +175,21 @@ model {
     target += std_normal_lpdf(eta_beta_j);
     target += std_normal_lpdf(eta_beta_c);
     target += std_normal_lpdf(eta_sigma_e);
-    target += std_normal_lpdf(to_vector(eta_beta_f));
+    target += std_normal_lpdf(eta_theta_f);
+    target += std_normal_lpdf(eta_beta_f);
+    target += std_normal_lpdf(eta_sigma_f);
 
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
         for (i in 1:E) {
             if (fec[i]) {
-                target += binomial_logit_lpmf(Sf[i] | Kf[i], beta_f[i]);
+                target += binomial_logit_lpmf(Sf[i] | Kf[i], theta_f[i]);
+            }
+        }
+        for (n in 1:N) {
+            if (fec[eid[n]]) {
+                target += normal_lpdf(Yf[n] | beta_f[eid[n]], sigma_f[eid[n]]);
             }
         }
     }

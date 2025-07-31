@@ -118,6 +118,7 @@ class WARModel:
             'Y': model_data['pct'].to_numpy(),
             'Sf': fec['Sf'].to_numpy(),
             'Kf': fec['Kf'].to_numpy(),
+            'Yf': model_data['logit_dem_share_fec'].to_numpy(),
             'fec': fec_exists,
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
