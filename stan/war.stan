@@ -88,8 +88,17 @@ parameters {
 transformed parameters {
     // Evaluate hierarchical parameters
     vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
-    vector[G] beta_g = eta_beta_g * eta_sigma_beta_g * sigma;
-    vector[J] beta_j = eta_beta_j * eta_sigma_beta_j * sigma;
+    vector[G] beta_g = eta_beta_g * sigma;
+    vector[J] beta_j = eta_beta_j * sigma;
+
+    // Conditionally use additional hierarchical parameter if necessary
+    if (G > 1) {
+        beta_g *= eta_sigma_beta_g;
+    }
+
+    if (J > 1) {
+        beta_j *= eta_sigma_beta_j;
+    }
 
     // Evaluate random walk over the intercept
     vector[E] alpha = eta_alpha * eta_sigma_alpha * sigma;

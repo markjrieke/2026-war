@@ -129,21 +129,34 @@ class WARData:
                 how='left'
             )
             .with_columns(
-                (
-                    (col.presidential_party == 'DEM') &
-                    (col.incumbent_party == 'DEM') &
-                    (col.midterm)
-                ).alias('dem_inc_dem_midterm'),
-                (
-                    (col.presidential_party == 'REP') &
-                    (col.incumbent_party == 'REP') &
-                    (col.midterm)
-                ).alias('rep_inc_rep_midterm')
+                when((col.presidential_party == 'DEM') &
+                     (col.incumbent_party == 'DEM') &
+                     (col.midterm))
+                .then(lit(1))
+                .when((col.presidential_party == 'REP') &
+                      (col.incumbent_party == 'REP') &
+                      (col.midterm))
+                .then(lit(-1))
+                .otherwise(lit(0))
+                .alias('inc_party_same_party_pres_midterm')
             )
             .select(exclude('incumbent_party'))
-            .with_columns(col.presidential_party == 'DEM')
-            .rename({'presidential_party': 'dem_president'})
-            .with_columns((col.dem_president & col.midterm).alias('dem_president_midterm'))
+            .with_columns(
+                when(col.presidential_party == 'DEM')
+                .then(lit(1))
+                .otherwise(lit(-1))
+                .alias('presidential_party'),
+                when(col.midterm)
+                .then(lit(1))
+                .otherwise(lit(-1))
+                .alias('midterm'),
+                when((col.presidential_party == 'DEM') & col.midterm)
+                .then(lit(1))
+                .when((col.presidential_party == 'REP') & col.midterm)
+                .then(lit(-1))
+                .otherwise(lit(0))
+                .alias('president_midterm')
+            )
         )
 
         # Set of candidates who have won a race during the modeled period

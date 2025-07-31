@@ -15,19 +15,17 @@ TIME_VARYING_VARIABLES = [
     'exp_disadvantage',
     'exp_advantage',
     'is_incumbent_REP',
-    'is_incumbent_DEM'
+    'is_incumbent_DEM',
+    'presidential_party',
+    'midterm',
+    'president_midterm'
 ]
 
 TIME_INVARIANT_VARIABLES = [
     'intercept',
-    'dem_president',
-    'midterm',
-    'dem_president_midterm',
-    'dem_inc_dem_midterm',
-    'rep_inc_rep_midterm'
+    'inc_party_same_party_pres_midterm'
 ]
 
 SD_VARIABLES = [
     'redistricted',
-    'jungle_primary'
 ]
