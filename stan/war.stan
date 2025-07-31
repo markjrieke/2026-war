@@ -20,6 +20,10 @@ data {
     matrix[N,J] Xj;                     // Design matrix (observation sd)
     vector[N] Y;                        // Democratic candidate two-party vote
 
+    // FEC Observations
+    array[N] int Sf;                    // Indicate whether (or not) FEC contributions are present
+    // vector[N] Yf;                       // Logit-democratic share of FEC contributions
+
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (time-varying)
     matrix[M,L] Xfl;                    // Full matrix (time-invariant)
@@ -28,7 +32,10 @@ data {
     // Mapping columns
     array[N,2] int cid;                 // Map candidates to races in the model frame
     array[N] int eid;                   // Map election cyle to race in the model frame
+
+    // Flag columns for working with counterfactuals
     array[2] int iid;                   // Denote columns that flag incumbency
+    // int fid;                            // Column containing FEC contribution share
 
     // Counterfactual mapping columns
     array[M,2] int cfid;                // Map candidates to races in the full frame
@@ -75,6 +82,7 @@ parameters {
     real<lower=0> eta_sigma_beta_j;
     real<lower=0> eta_sigma_beta_c;
     real<lower=0> eta_sigma_sigma_e;
+    real<lower=0> eta_sigma_beta_f;
 
     // Variable offsets
     vector[E] eta_alpha;
@@ -83,6 +91,7 @@ parameters {
     vector[J] eta_beta_j;
     vector[C] eta_beta_c;
     vector[E] eta_sigma_e;
+    vector[E] eta_beta_f;
 }
 
 transformed parameters {
@@ -118,30 +127,49 @@ transformed parameters {
         sigma_e[i] += sigma_e[i-1];
     }
 
+    // Evaluate random walk over FEC filing probability
+    vector[E] beta_f = eta_beta_f * eta_sigma_beta_f * sigma;
+    for (i in 2:E) {
+        beta_f[i] += beta_f[i-1];
+    }
+}
+
+model {
     // Estimate the expected mean, sd
     vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
     vector[N] sigma_o = latent_sd(Xjc, beta_j, sigma_e, eid);
 
-}
+    // Estimate the probability of FEC filing
+    vector[N] theta_f;
+    for (n in 1:N) {
+        theta_f[n] = beta_f[eid[n]];
+    }
 
-model {
-
-    // Priors
+    // Global hyper-prior
     target += half_normal_lpdf(sigma | sigma_sigma);
+
+    // Variable scale priors
     target += std_half_normal_lpdf(eta_sigma_alpha);
-    target += std_normal_lpdf(eta_alpha);
     target += std_half_normal_lpdf(eta_sigma_beta_d);
-    target += std_normal_lpdf(to_vector(eta_beta_d));
     target += std_half_normal_lpdf(eta_sigma_beta_g);
-    target += std_normal_lpdf(eta_beta_g);
+    target += std_half_normal_lpdf(eta_sigma_beta_j);
     target += std_half_normal_lpdf(eta_sigma_beta_c);
-    target += std_normal_lpdf(eta_beta_c);
     target += std_half_normal_lpdf(eta_sigma_sigma_e);
+    target += std_half_normal_lpdf(eta_sigma_beta_f);
+
+    // Variable offsets
+    target += std_normal_lpdf(eta_alpha);
+    target += std_normal_lpdf(to_vector(eta_beta_d));
+    target += std_normal_lpdf(eta_beta_g);
+    target += std_normal_lpdf(eta_beta_j);
+    target += std_normal_lpdf(eta_beta_c);
     target += std_normal_lpdf(eta_sigma_e);
+    target += std_normal_lpdf(to_vector(eta_beta_f));
 
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
+        target += bernoulli_logit_lpmf(Sf | theta_f);
     }
 }
 

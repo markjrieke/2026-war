@@ -94,6 +94,7 @@ class WARModel:
             'Xl': model_data.select(time_invariant_variables).to_numpy(),
             'Xj': model_data.select(sd_variables).to_numpy(),
             'Y': model_data['pct'].to_numpy(),
+            'Sf': model_data['has_fec'].to_numpy(),
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
             'Xfj': full_data.select(sd_variables).to_numpy(),
