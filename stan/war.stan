@@ -13,6 +13,7 @@ data {
     int D;                              // Number of time-varying variables
     int L;                              // Number of time-invariant variables
     int J;                              // Number of sd-estimating variables
+    int F;                              // Number of FEC predictors
 
     // Observations
     matrix[N,D] Xd;                     // Design matrix (time-varying)
@@ -21,6 +22,7 @@ data {
     vector[N] Y;                        // Democratic candidate two-party vote
 
     // FEC Observations
+    matrix[N,F] Xf;                     // Design matrix for FEC predictors
     array[E] int Sf;                    // Number of campaigns with FEC filings available
     array[E] int Kf;                    // Total number of campaigns per cycle
     array[E] int fec;                   // Whether (or not) FEC data is available for a given year
@@ -50,10 +52,11 @@ data {
 }
 
 transformed data {
-    // Center/scale the design time-varying/time-invariant matrices
+    // Center/scale the design matrices
     matrix[N,D] Xdc = standardize(Xd);
     matrix[N,L] Xlc = standardize(Xl);
     matrix[N,J] Xjc = standardize(Xj);
+    matrix[N,F] Xfc = standardize(Xf);
 
     // Center/scale counterfactual time-varying/time-invariant matrices based on the design matrices
     matrix[M,D] Xfdc = standardize(Xfd, Xd);
@@ -66,6 +69,8 @@ transformed data {
     matrix[M,G] Xfgc = add_intercept(Xflc);
 
     // Create counterfactual district matrices that eschew incumbency
+    // These get further modified in the generated quantities block as a part of
+    // generating the counterfactual, but counterfactual incumbency is always 0.
     matrix[M,D] Xfdc_dem = standardize_cf(Xfd, Xd, iid[1]);
     matrix[M,D] Xfdc_rep = standardize_cf(Xfd, Xd, iid[2]);
 
@@ -85,6 +90,7 @@ parameters {
     real<lower=0> eta_sigma_beta_c;
     real<lower=0> eta_sigma_sigma_e;
     real<lower=0> eta_sigma_theta_f;
+    real<lower=0> eta_sigma_alpha_f;
     real<lower=0> eta_sigma_beta_f;
     real<lower=0> eta_sigma_sigma_f;
 
@@ -96,7 +102,8 @@ parameters {
     vector[C] eta_beta_c;
     vector[E] eta_sigma_e;
     vector[E] eta_theta_f;
-    vector[E] eta_beta_f;
+    vector[E] eta_alpha_f;
+    vector[F] eta_beta_f;
     vector[E] eta_sigma_f;
 }
 
@@ -105,6 +112,7 @@ transformed parameters {
     vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
     vector[G] beta_g = eta_beta_g * sigma;
     vector[J] beta_j = eta_beta_j * sigma;
+    vector[F] beta_f = eta_beta_f * sigma;
 
     // Conditionally use additional hierarchical parameter if necessary
     if (G > 1) {
@@ -113,6 +121,10 @@ transformed parameters {
 
     if (J > 1) {
         beta_j *= eta_sigma_beta_j;
+    }
+
+    if (F > 1) {
+        beta_f *= eta_sigma_beta_f;
     }
 
     // Evaluate random walk over the intercept
@@ -140,10 +152,10 @@ transformed parameters {
     }
 
     // Evaluate random walk over FEC filing share
-    vector[E] beta_f = eta_beta_f * eta_sigma_beta_f * sigma;
+    vector[E] alpha_f = eta_alpha_f * eta_sigma_alpha_f * sigma;
     vector[E] sigma_f = eta_sigma_f * eta_sigma_sigma_f * sigma;
     for (i in 2:E) {
-        beta_f[i] += beta_f[i-1];
+        alpha_f[i] += alpha_f[i-1];
         sigma_f[i] += sigma_f[i-1];
     }
     sigma_f = exp(sigma_f);
@@ -153,6 +165,9 @@ model {
     // Estimate the expected mean, sd
     vector[N] mu = latent_mean(Xdc, Xgc, alpha, beta_d, beta_g, beta_c, eid, cid);
     vector[N] sigma_o = latent_sd(Xjc, beta_j, sigma_e, eid);
+
+    // Semi-constructed latent mean of FEC data
+    vector[N] mu_f = Xfc * beta_f;
 
     // Global hyper-prior
     target += half_normal_lpdf(sigma | sigma_sigma);
@@ -165,6 +180,7 @@ model {
     target += std_half_normal_lpdf(eta_sigma_beta_c);
     target += std_half_normal_lpdf(eta_sigma_sigma_e);
     target += std_half_normal_lpdf(eta_sigma_theta_f);
+    target += std_half_normal_lpdf(eta_sigma_alpha_f);
     target += std_half_normal_lpdf(eta_sigma_beta_f);
     target += std_half_normal_lpdf(eta_sigma_sigma_f);
 
@@ -176,6 +192,7 @@ model {
     target += std_normal_lpdf(eta_beta_c);
     target += std_normal_lpdf(eta_sigma_e);
     target += std_normal_lpdf(eta_theta_f);
+    target += std_normal_lpdf(eta_alpha_f);
     target += std_normal_lpdf(eta_beta_f);
     target += std_normal_lpdf(eta_sigma_f);
 
@@ -189,7 +206,7 @@ model {
         }
         for (n in 1:N) {
             if (fec[eid[n]]) {
-                target += normal_lpdf(Yf[n] | beta_f[eid[n]], sigma_f[eid[n]]);
+                target += normal_lpdf(Yf[n] | alpha_f[eid[n]] + mu_f[n], sigma_f[eid[n]]);
             }
         }
     }

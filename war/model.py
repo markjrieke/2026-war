@@ -9,7 +9,8 @@ from war.utils.constants import (
     DEFAULT_PRIORS,
     TIME_VARYING_VARIABLES,
     TIME_INVARIANT_VARIABLES,
-    SD_VARIABLES
+    SD_VARIABLES,
+    FEC_VARIABLES
 )
 
 class WARModel:
@@ -75,6 +76,7 @@ class WARModel:
         time_varying_variables = [x for x in cols if x in TIME_VARYING_VARIABLES]
         time_invariant_variables = [x for x in cols if x in TIME_INVARIANT_VARIABLES]
         sd_variables = [x for x in cols if x in SD_VARIABLES]
+        fec_variables = [x for x in cols if x in FEC_VARIABLES]
 
         # Find locations of incumbent ID columns
         iid = [
@@ -112,10 +114,12 @@ class WARModel:
             'D': len(time_varying_variables),
             'L': len(time_invariant_variables),
             'J': len(sd_variables),
+            'F': len(fec_variables),
             'Xd': model_data.select(time_varying_variables).to_numpy(),
             'Xl': model_data.select(time_invariant_variables).to_numpy(),
             'Xj': model_data.select(sd_variables).to_numpy(),
             'Y': model_data['pct'].to_numpy(),
+            'Xf': model_data.select(fec_variables).to_numpy(),
             'Sf': fec['Sf'].to_numpy(),
             'Kf': fec['Kf'].to_numpy(),
             'Yf': model_data['logit_dem_share_fec'].to_numpy(),
@@ -148,6 +152,7 @@ class WARModel:
         self.time_varying_variables = time_varying_variables
         self.time_invariant_variables = ['intercept'] + time_invariant_variables
         self.sd_variables = sd_variables
+        self.fec_variables = fec_variables
 
         return self
 

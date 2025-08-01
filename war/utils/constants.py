@@ -29,3 +29,10 @@ TIME_INVARIANT_VARIABLES = [
 SD_VARIABLES = [
     'redistricted',
 ]
+
+FEC_VARIABLES = [
+    'exp_disadvantage',
+    'exp_advantage',
+    'is_incumbent_REP',
+    'is_incumbent_DEM'
+]

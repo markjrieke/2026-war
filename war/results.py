@@ -283,6 +283,7 @@ class WARResults:
         time_varying_variables = self.war_fit.time_varying_variables
         time_invariant_variables = self.war_fit.time_invariant_variables
         sd_variables = self.war_fit.sd_variables
+        fec_variables = self.war_fit.fec_variables
 
         model_data = war_data.prepped_data
         full_data = war_data.full_data
@@ -325,6 +326,7 @@ class WARResults:
             'time_varying_variable': time_varying_variables,
             'time_invariant_variable': time_invariant_variables,
             'sd_variable': sd_variables,
+            'fec_variable': fec_variables,
             'party': ['dem', 'rep']
         }
 
@@ -341,6 +343,7 @@ class WARResults:
             'eta_sigma_beta_c': [],
             'eta_sigma_sigma_e': [],
             'eta_sigma_theta_f': [],
+            'esta_sigma_alpha_f': [],
             'eta_sigma_beta_f': [],
             'eta_sigma_sigma_f': [],
 
@@ -352,7 +355,8 @@ class WARResults:
             'eta_beta_c': ['candidate'],
             'eta_sigma_e': ['cycle'],
             'eta_theta_f': ['cycle'],
-            'eta_beta_f': ['cycle'],
+            'eta_alpha_f': ['cycle'],
+            'eta_beta_f': ['fec_variable'],
             'eta_sigma_f': ['cycle'],
 
             # Transformed parameters
@@ -363,7 +367,8 @@ class WARResults:
             'beta_d': ['time_varying_variable', 'cycle'],
             'sigma_e': ['cycle'],
             'theta_f': ['cycle'],
-            'beta_f': ['cycle'],
+            'alpha_f': ['cycle'],
+            'beta_f': ['fec_variable'],
             'sigma_f': ['cycle'],
 
             # Generated quantities
