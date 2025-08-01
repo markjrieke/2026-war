@@ -84,6 +84,9 @@ class WARModel:
             time_varying_variables.index('is_incumbent_REP') + 1
         ]
 
+        # Find location of FEC contribution column
+        fid = time_varying_variables.index('logit_dem_share_fec') + 1
+
         # Summarize FEC data
         fec = (
             model_data
@@ -126,12 +129,15 @@ class WARModel:
             'fec': fec_exists,
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
+            'Xff': full_data.select(fec_variables).to_numpy(),
+            'Yff': full_data['logit_dem_share_fec'].to_numpy(),
             'Xfj': full_data.select(sd_variables).to_numpy(),
             'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
             'eid': model_data['eid'].to_numpy(),
             'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
             'efid': full_data['eid'].to_numpy(),
-            'iid': iid
+            'iid': iid,
+            'fid': fid
         }
 
         # Add in priors if supplied, or use default priors

@@ -61,6 +61,64 @@ vector posterior_predictive_rng(matrix Xd,
     return posterior_predictive_rng(mu, sigma);
 }
 
+vector counterfactual_fec_rng(matrix Xf,
+                              vector Yf,
+                              vector cases,
+                              vector theta_f,
+                              vector alpha_f,
+                              vector beta_f,
+                              vector sigma_f,
+                              array[] int eid,
+                              array[] int fec) {
+    int N = rows(Xf);
+    real Yf_min = min(Yf);
+    real Yf_max = max(Yf);
+    array[N] int fec_exist;
+    vector[N] fec_share;
+    vector[N] fec_result;
+    vector[N] theta;
+    vector[N] mu = Xf * beta_f;
+    vector[N] sigma;
+    vector[N] result;
+
+    // Estimate FEC parameters over all obervations
+    for (n in 1:N) {
+        theta[n] = theta_f[eid[n]];
+        mu[n] += alpha_f[eid[n]];
+        sigma[n] = sigma_f[eid[n]];
+    }
+
+    // Sample hurdle normal
+    fec_exist = bernoulli_logit_rng(theta);
+    fec_share = to_vector(normal_rng(mu, sigma));
+    fec_result = to_vector(fec_exist) .* fec_share;
+
+    // Adjust the share of FEC contributions based on results and each case
+    for (n in 1:N) {
+        if (cases[n] == 4) {
+            result[n] = fec_exist[n] ? fec_result[n] : Yf_min;
+        } else if (cases[n] == 3) {
+            result[n] = fec_exist[n] ? Yf_max : 0.0;
+        } else if (cases[n] == 2) {
+            result[n] = fec_exist[n] ? fec_result[n] : Yf_min;
+        } else {
+            result[n] = fec_exist[n] ? Yf_max : 0.0;
+        }
+    }
+
+    // Set results to 0 if sampled for years without FEC data
+    for (n in 1:N) {
+        result[n] *= fec[eid[n]];
+    }
+
+    return result;
+}
+
+/*
+    TODO Add counterfactual estiamtion for replacement candidate experience
+vector counterfactual_experience_rng()
+*/
+
 /*
     Generate observation-scale posterior predictive samples given a
     counterfactual matrix
@@ -88,27 +146,47 @@ vector posterior_predictive_rng(matrix Xd,
 vector posterior_predictive_cf_rng(matrix Xd,
                                    matrix Xg,
                                    matrix Xj,
+                                   matrix Xf,
+                                   vector Yf,
                                    vector alpha,
+                                   vector alpha_f,
                                    matrix beta_d,
                                    vector beta_g,
                                    vector beta_j,
                                    vector beta_c,
+                                   vector beta_f,
+                                   vector theta_f,
                                    real sigma_c,
                                    vector sigma_e,
+                                   vector sigma_f,
                                    array[] int eid,
                                    array[,] int cid,
+                                   array[] int fec,
+                                   vector cases,
+                                   int fid,
                                    int dem_cf) {
     int N = rows(Xd);
+    int G = cols(Xd);
+    matrix[N,G] Xdc = Xd;
     vector[N] beta_cf = new_candidate_rng(N, sigma_c);
     vector[N] mu;
     vector[N] sigma;
     vector[N] gamma;
     vector[N] zeta_c;
     vector[N] beta;
+
+    // Generate counterfacutal estimates for democratic share of FEC contributions
+    Xdc[:,fid] = counterfactual_fec_rng(
+        Xf, Yf, cases, theta_f, alpha_f, beta_f, sigma_f, eid, fec
+    );
+
+    // Estimate parameters for constructing the latent mean
     for (n in 1:N) {
         gamma[n] = alpha[eid[n]];
         beta[n] = dot_product(Xd[n,:], beta_d[:,eid[n]]);
     }
+
+    // Estimate candidate impact
     if (dem_cf) {
         for (n in 1:N) {
             zeta_c[n] = beta_cf[n] - beta_c[cid[n,2]];
@@ -118,6 +196,8 @@ vector posterior_predictive_cf_rng(matrix Xd,
             zeta_c[n] = beta_c[cid[n,1]] - beta_cf[n];
         }
     }
+
+    // Return posterior predictive based on latent mean, sd
     mu = gamma + beta + zeta_c + Xg * beta_g;
     sigma = latent_sd(Xj, beta_j, sigma_e, eid);
     return posterior_predictive_rng(mu, sigma);
@@ -152,15 +232,24 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
                                            matrix Xdc_rep,
                                            matrix Xg,
                                            matrix Xj,
+                                           matrix Xf,
+                                           vector Yf,
                                            vector alpha,
+                                           vector alpha_f,
                                            matrix beta_d,
                                            vector beta_g,
                                            vector beta_j,
                                            vector beta_c,
+                                           vector beta_f,
+                                           vector theta_f,
                                            real sigma_c,
                                            vector sigma_e,
+                                           vector sigma_f,
                                            array[] int eid,
-                                           array[,] int cid) {
+                                           array[,] int cid,
+                                           array[] int fec,
+                                           int fid,
+                                           vector cases) {
     int N = rows(Xdc_dem);
     int D = cols(Xdc_dem);
     array[2] vector[N] Y_rep_cf;
@@ -176,17 +265,27 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
             Xdc,
             Xg,
             Xj,
+            Xf,
+            Yf,
             alpha,
+            alpha_f,
             beta_d,
             beta_g,
             beta_j,
             beta_c,
+            beta_f,
+            theta_f,
             sigma_c,
             sigma_e,
+            sigma_f,
             eid,
             cid,
+            fec,
+            cases,
+            fid,
             dem_flag
         );
+
     }
     return Y_rep_cf;
 }

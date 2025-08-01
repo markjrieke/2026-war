@@ -33,13 +33,17 @@ data {
     matrix[M,L] Xfl;                    // Full matrix (time-invariant)
     matrix[M,J] Xfj;                    // Full matrix (observation sd)
 
+    // Counterfactual FEC Observations
+    matrix[M,F] Xff;                    // Full matrix for FEC predictors
+    vector[M] Yff;                      // Logit-democratic share of FEC contributions
+
     // Mapping columns
     array[N,2] int cid;                 // Map candidates to races in the model frame
     array[N] int eid;                   // Map election cyle to race in the model frame
 
     // Flag columns for working with counterfactuals
     array[2] int iid;                   // Denote columns that flag incumbency
-    // int fid;                            // Column containing FEC contribution share
+    int fid;                            // Column containing FEC contribution share
 
     // Counterfactual mapping columns
     array[M,2] int cfid;                // Map candidates to races in the full frame
@@ -62,6 +66,7 @@ transformed data {
     matrix[M,D] Xfdc = standardize(Xfd, Xd);
     matrix[M,L] Xflc = standardize(Xfl, Xl);
     matrix[M,J] Xfjc = standardize(Xfj, Xj);
+    matrix[M,F] Xffc = standardize(Xff, Xf);
 
     // Add intercept to national matrices
     int G = L + 1;
@@ -76,6 +81,23 @@ transformed data {
 
     // Estimate model on the logit scale
     vector[N] Y_logit = logit(Y);
+
+    // Reference FEC share in terms of %
+    vector[M] Yff_inv_logit = inv_logit(Yff);
+
+    // Set FEC 'cases' based on FEC share
+    vector[M] cases;
+    for (m in 1:M) {
+        if (Yff_inv_logit[m] > 0.99) {
+            cases[m] = 1;               // D ~ 1
+        } else if (Yff_inv_logit[m] < 0.01) {
+            cases[m] = 2;               // R ~ 1
+        } else if (Yff_inv_logit[m] == 0.5) {
+            cases[m] = 3;               // Even
+        } else {
+            cases[m] = 4;               // Mix
+        }
+    }
 }
 
 parameters {
@@ -234,15 +256,24 @@ generated quantities {
         Xfdc_rep,
         Xfgc,
         Xfjc,
+        Xffc,
+        Yff,
         alpha,
+        alpha_f,
         beta_d,
         beta_g,
         beta_j,
         beta_c,
+        beta_f,
+        theta_f,
         eta_sigma_beta_c * sigma,
         sigma_e,
+        sigma_f,
         efid,
-        cfid
+        cfid,
+        fec,
+        fid,
+        cases
     );
 
     // Posterior predictive probability of winning
