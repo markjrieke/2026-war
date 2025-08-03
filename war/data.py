@@ -137,7 +137,6 @@ class WARData:
                 (col.experience_DEM > col.experience_REP).alias('exp_advantage'),
                 (col.experience_DEM < col.experience_REP).alias('exp_disadvantage')
             )
-            .select(exclude(starts_with('experience')))
             .with_columns(
                 starts_with('candidate').fill_null('Uncontested'),
                 starts_with('is_incumbent').fill_null(False)

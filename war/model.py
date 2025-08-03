@@ -1,6 +1,6 @@
-from typing import Optional, List
+from typing import Optional, List, Literal
 
-from polars import col
+from polars import DataFrame, col
 from polars import len as pl_len
 
 from war.data import WARData
@@ -108,6 +108,22 @@ class WARModel:
             .to_numpy()
         )
 
+        # Create experience DataFrame for non-incumbents
+        experience = (
+            self._summarize_experience('DEM')
+            .join(
+                self._summarize_experience('REP'),
+                on='cycle',
+                how='left'
+            )
+            .join(
+                model_data.unique(['cycle', 'eid']).select(['cycle', 'eid']),
+                on='cycle',
+                how='left'
+            )
+            .sort('cycle')
+        )
+
         # Parse stan data from model frame
         stan_data = {
             'N': model_data.shape[0],
@@ -125,19 +141,22 @@ class WARModel:
             'Xf': model_data.select(fec_variables).to_numpy(),
             'Sf': fec['Sf'].to_numpy(),
             'Kf': fec['Kf'].to_numpy(),
-            'Yf': model_data['logit_dem_share_fec'].to_numpy(),
             'fec': fec_exists,
+            'Yf': model_data['logit_dem_share_fec'].to_numpy(),
+            'eeid': experience['eid'].to_numpy(),
+            'Ke': experience['Ke_DEM', 'Ke_REP'].to_numpy().transpose(),
+            'Ye': experience['Ye_DEM', 'Ye_REP'].to_numpy().transpose(),
             'Xfd': full_data.select(time_varying_variables).to_numpy(),
             'Xfl': full_data.select(time_invariant_variables).to_numpy(),
+            'Xfj': full_data.select(sd_variables).to_numpy(),
             'Xff': full_data.select(fec_variables).to_numpy(),
             'Yff': full_data['logit_dem_share_fec'].to_numpy(),
-            'Xfj': full_data.select(sd_variables).to_numpy(),
             'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
             'eid': model_data['eid'].to_numpy(),
-            'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
-            'efid': full_data['eid'].to_numpy(),
             'iid': iid,
-            'fid': fid
+            'fid': fid,
+            'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
+            'efid': full_data['eid'].to_numpy()
         }
 
         # Add in priors if supplied, or use default priors
@@ -208,3 +227,21 @@ class WARModel:
                 variables.append(column)
 
         return variables
+
+    def _summarize_experience(
+        self,
+        party: Literal['DEM', 'REP']
+    ) -> DataFrame:
+
+        out = (
+            self.war_data.prepped_data
+            .filter(~col(f'is_incumbent_{party}'))
+            .group_by('cycle')
+            .agg(
+                col(f'experience_{party}').sum().alias(f'Ye_{party}'),
+                pl_len().alias(f'Ke_{party}')
+            )
+            .sort('cycle')
+        )
+
+        return out

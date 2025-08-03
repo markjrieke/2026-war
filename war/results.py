@@ -346,6 +346,7 @@ class WARResults:
             'esta_sigma_alpha_f': [],
             'eta_sigma_beta_f': [],
             'eta_sigma_sigma_f': [],
+            'eta_sigma_theta_e': ['party'],
 
             # Variable scale parameter offsets
             'eta_alpha': ['cycle'],
@@ -358,6 +359,7 @@ class WARResults:
             'eta_alpha_f': ['cycle'],
             'eta_beta_f': ['fec_variable'],
             'eta_sigma_f': ['cycle'],
+            'eta_theta_e': ['party', 'cycle'],
 
             # Transformed parameters
             'beta_c': ['candidate'],
@@ -370,6 +372,7 @@ class WARResults:
             'alpha_f': ['cycle'],
             'beta_f': ['fec_variable'],
             'sigma_f': ['cycle'],
+            'theta_e': ['party', 'cycle'],
 
             # Generated quantities
             'Y_rep': ['M'],

@@ -28,6 +28,11 @@ data {
     array[E] int fec;                   // Whether (or not) FEC data is available for a given year
     vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
+    // Experience Observations
+    array[E] int eeid;                  // Map election cycle to experience observations
+    array[2,E] int Ke;                  // Number of non-incumbents per party per cycle
+    array[2,E] int Ye;                  // Number of experienced non-incumbents per party per cycle
+
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (time-varying)
     matrix[M,L] Xfl;                    // Full matrix (time-invariant)
@@ -115,6 +120,7 @@ parameters {
     real<lower=0> eta_sigma_alpha_f;
     real<lower=0> eta_sigma_beta_f;
     real<lower=0> eta_sigma_sigma_f;
+    vector[2] eta_sigma_theta_e;
 
     // Variable offsets
     vector[E] eta_alpha;
@@ -127,6 +133,7 @@ parameters {
     vector[E] eta_alpha_f;
     vector[F] eta_beta_f;
     vector[E] eta_sigma_f;
+    matrix[2,E] eta_theta_e;
 }
 
 transformed parameters {
@@ -181,6 +188,12 @@ transformed parameters {
         sigma_f[i] += sigma_f[i-1];
     }
     sigma_f = exp(sigma_f);
+
+    // Evaluate random walk over candidate experience
+    matrix[2,E] theta_e = diag_pre_multiply(eta_sigma_theta_e * sigma, eta_theta_e);
+    for (i in 2:E) {
+        theta_e[:,i] += theta_e[:,i-1];
+    }
 }
 
 model {
@@ -205,6 +218,7 @@ model {
     target += std_half_normal_lpdf(eta_sigma_alpha_f);
     target += std_half_normal_lpdf(eta_sigma_beta_f);
     target += std_half_normal_lpdf(eta_sigma_sigma_f);
+    target += std_half_normal_lpdf(eta_sigma_theta_e);
 
     // Variable offsets
     target += std_normal_lpdf(eta_alpha);
@@ -217,6 +231,7 @@ model {
     target += std_normal_lpdf(eta_alpha_f);
     target += std_normal_lpdf(eta_beta_f);
     target += std_normal_lpdf(eta_sigma_f);
+    target += std_normal_lpdf(to_vector(eta_theta_e));
 
     // Likelihood
     if (!prior_check) {
@@ -224,6 +239,9 @@ model {
         for (i in 1:E) {
             if (fec[i]) {
                 target += binomial_logit_lpmf(Sf[i] | Kf[i], theta_f[i]);
+            }
+            for (p in 1:2) {
+                target += binomial_logit_lpmf(Ye[p] | Ke[p], theta_e[p]);
             }
         }
         for (n in 1:N) {
