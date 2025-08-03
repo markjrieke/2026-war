@@ -1,7 +1,9 @@
 from typing import Literal
 
-from polars import col, lit, read_csv, when
-from polars.selectors import exclude, starts_with
+from polars import DataFrame, col, lit, read_csv, when
+from polars.selectors import all, exclude, starts_with
+
+from war.utils.constants import STATES
 
 class WARData:
 
@@ -77,6 +79,26 @@ class WARData:
 
         house = self.raw_data
 
+        # State DataFrame for converting abbreviations to names
+        states = (
+            DataFrame(STATES)
+            .unpivot(
+                all(),
+                variable_name='state',
+                value_name='state_name'
+            )
+        )
+
+        # Create holistic set of candidate experience mappings
+        candidate_experience = (
+            read_csv('data/private/house_candidates_updated.csv')
+            .select(exclude('effective_party'))
+            .vstack(read_csv('data/private/house_candidates_historical_updated.csv'))
+            .rename({'seat': 'district'})
+            .join(states, on='state', how='left')
+            .select(['cycle', 'state_name', 'district', 'politician_id', 'experience'])
+        )
+
         # Map candidates to races
         mappings = (
             read_csv('data/candidate_filters.csv')
@@ -86,6 +108,11 @@ class WARData:
             .with_columns(col.is_incumbent == 'x')
             .with_columns(col.is_incumbent.fill_null(False))
             .select(exclude(['state', 'seat']))
+            .join(
+                candidate_experience,
+                on=['cycle', 'state_name', 'district', 'politician_id'],
+                how='left'
+            )
         )
 
         # Model dataframe with candidates in wide format
@@ -94,20 +121,23 @@ class WARData:
             .select([
                 'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-                'dem_pres_twop_lag_lean_one', 'experience', 'logit_dem_share_fec',
+                'dem_pres_twop_lag_lean_one', 'logit_dem_share_fec',
                 'redistricted', 'incumbent_party', 'has_fec'
             ])
-            .with_columns(
-                when(col.experience < 0).then(lit(1)).otherwise(lit(0)).alias('exp_disadvantage'),
-                when(col.experience > 0).then(lit(1)).otherwise(lit(0)).alias('exp_advantage'),
-            )
-            .select(exclude('experience'))
             .join(
                 mappings.select(exclude('politician_id')),
                 on=['cycle', 'state_name', 'district'],
                 how='inner'
             )
-            .pivot(on='party', values=['candidate', 'is_incumbent'])
+            .pivot(on='party', values=['candidate', 'is_incumbent', 'experience'])
+            .with_columns(
+                col('experience_DEM', 'experience_REP').fill_null(0)
+            )
+            .with_columns(
+                (col.experience_DEM > col.experience_REP).alias('exp_advantage'),
+                (col.experience_DEM < col.experience_REP).alias('exp_disadvantage')
+            )
+            .select(exclude(starts_with('experience')))
             .with_columns(
                 starts_with('candidate').fill_null('Uncontested'),
                 starts_with('is_incumbent').fill_null(False)
