@@ -29,7 +29,6 @@ data {
     vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
     // Experience Observations
-    array[E] int eeid;                  // Map election cycle to experience observations
     array[2,E] int Ke;                  // Number of non-incumbents per party per cycle
     array[2,E] int Ye;                  // Number of experienced non-incumbents per party per cycle
 
@@ -42,12 +41,17 @@ data {
     matrix[M,F] Xff;                    // Full matrix for FEC predictors
     vector[M] Yff;                      // Logit-democratic share of FEC contributions
 
+    // Counterfactual Experience Observations
+    matrix[M,2] Xfe;                    // Full matrix of experience levels
+
     // Mapping columns
     array[N,2] int cid;                 // Map candidates to races in the model frame
     array[N] int eid;                   // Map election cyle to race in the model frame
 
     // Flag columns for working with counterfactuals
     array[2] int iid;                   // Denote columns that flag incumbency
+    array[2] int exid_f;                // Columns that flag experience advantage/disadvantage in Xf
+    array[2] int exid_d;                // Columns that flag experience advantage/disadvantage in Xd
     int fid;                            // Column containing FEC contribution share
 
     // Counterfactual mapping columns
@@ -102,6 +106,14 @@ transformed data {
         } else {
             cases[m] = 4;               // Mix
         }
+    }
+
+    // Centered/scaled experience advantage/disadvantage values
+    vector[2] xe_mean;
+    vector[2] xe_sd;
+    for (p in 1:2) {
+        xe_mean[p] = mean(Xf[:,exid_f[p]]);
+        xe_sd[p] = sd(Xf[:,exid_f[p]]);
     }
 }
 
@@ -275,6 +287,7 @@ generated quantities {
         Xfgc,
         Xfjc,
         Xffc,
+        Xfe,
         Yff,
         alpha,
         alpha_f,
@@ -284,14 +297,19 @@ generated quantities {
         beta_c,
         beta_f,
         theta_f,
+        theta_e,
         eta_sigma_beta_c * sigma,
         sigma_e,
         sigma_f,
         efid,
         cfid,
         fec,
+        exid_f,
+        exid_d,
         fid,
-        cases
+        cases,
+        xe_mean,
+        xe_sd
     );
 
     // Posterior predictive probability of winning

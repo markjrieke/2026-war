@@ -61,6 +61,30 @@ vector posterior_predictive_rng(matrix Xd,
     return posterior_predictive_rng(mu, sigma);
 }
 
+matrix counterfactual_exp_adv_rng(matrix theta_e,
+                                  matrix Xe,
+                                  array[] int eid,
+                                  int dem_flag) {
+    int N = rows(Xe);
+    matrix[N,2] X = Xe;
+    vector[N] theta;
+
+    // Sample counterfacutal experience levels
+    for (n in 1:N) {
+        theta[n] = theta_e[2-dem_flag, eid[n]];
+    }
+    X[:,2-dem_flag] = to_vector(bernoulli_logit_rng(theta));
+
+    // Convert experience levels to advantage/disadvantage
+    for (n in 1:N) {
+        for (p in 1:2) {
+            X[n,p] = X[n,p] > X[n,3-p];
+        }
+    }
+
+    return X;
+}
+
 vector counterfactual_fec_rng(matrix Xf,
                               vector Yf,
                               vector cases,
@@ -115,11 +139,6 @@ vector counterfactual_fec_rng(matrix Xf,
 }
 
 /*
-    TODO Add counterfactual estiamtion for replacement candidate experience
-vector counterfactual_experience_rng()
-*/
-
-/*
     Generate observation-scale posterior predictive samples given a
     counterfactual matrix
 
@@ -147,6 +166,7 @@ vector posterior_predictive_cf_rng(matrix Xd,
                                    matrix Xg,
                                    matrix Xj,
                                    matrix Xf,
+                                   matrix Xe,
                                    vector Yf,
                                    vector alpha,
                                    vector alpha_f,
@@ -156,18 +176,25 @@ vector posterior_predictive_cf_rng(matrix Xd,
                                    vector beta_c,
                                    vector beta_f,
                                    vector theta_f,
+                                   matrix theta_e,
                                    real sigma_c,
                                    vector sigma_e,
                                    vector sigma_f,
                                    array[] int eid,
                                    array[,] int cid,
                                    array[] int fec,
+                                   array[] int exid_f,
+                                   array[] int exid_d,
                                    vector cases,
+                                   vector xe_mean,
+                                   vector xe_sd,
                                    int fid,
                                    int dem_cf) {
     int N = rows(Xd);
     int G = cols(Xd);
+    int F = cols(Xf);
     matrix[N,G] Xdc = Xd;
+    matrix[N,F] Xfc = Xf;
     vector[N] beta_cf = new_candidate_rng(N, sigma_c);
     vector[N] mu;
     vector[N] sigma;
@@ -175,9 +202,18 @@ vector posterior_predictive_cf_rng(matrix Xd,
     vector[N] zeta_c;
     vector[N] beta;
 
+    // Generate a counterfactual estimates for experience advantage/disadvantage
+    // and adjust design matrices with these counterfactual estimates
+    matrix[N,2] Xa = counterfactual_exp_adv_rng(theta_e, Xe, eid, dem_cf);
+    for (p in 1:2) {
+        Xa[:,p] = (Xa[:,p] - xe_mean[p]) / xe_sd[p];
+        Xfc[:,exid_f[p]] = Xa[:,p];
+        Xdc[:,exid_d[p]] = Xa[:,p];
+    }
+
     // Generate counterfacutal estimates for democratic share of FEC contributions
     Xdc[:,fid] = counterfactual_fec_rng(
-        Xf, Yf, cases, theta_f, alpha_f, beta_f, sigma_f, eid, fec
+        Xfc, Yf, cases, theta_f, alpha_f, beta_f, sigma_f, eid, fec
     );
 
     // Estimate parameters for constructing the latent mean
@@ -233,6 +269,7 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
                                            matrix Xg,
                                            matrix Xj,
                                            matrix Xf,
+                                           matrix Xe,
                                            vector Yf,
                                            vector alpha,
                                            vector alpha_f,
@@ -242,14 +279,19 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
                                            vector beta_c,
                                            vector beta_f,
                                            vector theta_f,
+                                           matrix theta_e,
                                            real sigma_c,
                                            vector sigma_e,
                                            vector sigma_f,
                                            array[] int eid,
                                            array[,] int cid,
                                            array[] int fec,
+                                           array[] int exid_f,
+                                           array[] int exid_d,
                                            int fid,
-                                           vector cases) {
+                                           vector cases,
+                                           vector xe_mean,
+                                           vector xe_sd) {
     int N = rows(Xdc_dem);
     int D = cols(Xdc_dem);
     array[2] vector[N] Y_rep_cf;
@@ -266,6 +308,7 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
             Xg,
             Xj,
             Xf,
+            Xe,
             Yf,
             alpha,
             alpha_f,
@@ -275,13 +318,18 @@ array[] vector posterior_predictive_cf_rng(matrix Xdc_dem,
             beta_c,
             beta_f,
             theta_f,
+            theta_e,
             sigma_c,
             sigma_e,
             sigma_f,
             eid,
             cid,
             fec,
+            exid_f,
+            exid_d,
             cases,
+            xe_mean,
+            xe_sd,
             fid,
             dem_flag
         );

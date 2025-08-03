@@ -12,8 +12,8 @@ TIME_VARYING_VARIABLES = [
     'hispanic',
     'dem_pres_twop_lag_lean_one',
     'logit_dem_share_fec',
-    'exp_disadvantage',
     'exp_advantage',
+    'exp_disadvantage',
     'is_incumbent_REP',
     'is_incumbent_DEM',
     'presidential_party',
@@ -31,10 +31,10 @@ SD_VARIABLES = [
 ]
 
 FEC_VARIABLES = [
-    'exp_disadvantage',
     'exp_advantage',
-    'is_incumbent_REP',
-    'is_incumbent_DEM'
+    'exp_disadvantage',
+    'is_incumbent_DEM',
+    'is_incumbent_REP'
 ]
 
 STATES = {

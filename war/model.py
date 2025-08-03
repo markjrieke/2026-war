@@ -87,6 +87,17 @@ class WARModel:
         # Find location of FEC contribution column
         fid = time_varying_variables.index('logit_dem_share_fec') + 1
 
+        # Find locations of experience advantage/disadvnatage columns
+        exid_f = [
+            fec_variables.index('exp_advantage') + 1,
+            fec_variables.index('exp_disadvantage') + 1
+        ]
+
+        exid_d = [
+            time_varying_variables.index('exp_advantage') + 1,
+            time_varying_variables.index('exp_disadvantage') + 1
+        ]
+
         # Summarize FEC data
         fec = (
             model_data
@@ -151,9 +162,12 @@ class WARModel:
             'Xfj': full_data.select(sd_variables).to_numpy(),
             'Xff': full_data.select(fec_variables).to_numpy(),
             'Yff': full_data['logit_dem_share_fec'].to_numpy(),
+            'Xfe': full_data['experience_DEM', 'experience_REP'].to_numpy(),
             'cid': model_data['cid_DEM', 'cid_REP'].to_numpy(),
             'eid': model_data['eid'].to_numpy(),
             'iid': iid,
+            'exid_f': exid_f,
+            'exid_d': exid_d,
             'fid': fid,
             'cfid': full_data['cid_DEM', 'cid_REP'].to_numpy(),
             'efid': full_data['eid'].to_numpy()
