@@ -8,7 +8,8 @@ data {
     // Data dimensions
     int N;                              // Number of observations in the model frame
     int M;                              // Number of observations in the full frame
-    int E;                              // Number of election cycles
+    int H;                              // Number of election cycles in the model frame
+    int E;                              // Number of election cycles in the full frame
     int C;                              // Number of candidates
     int D;                              // Number of time-varying variables
     int L;                              // Number of time-invariant variables
@@ -23,14 +24,14 @@ data {
 
     // FEC Observations
     matrix[N,F] Xf;                     // Design matrix for FEC predictors
-    array[E] int Sf;                    // Number of campaigns with FEC filings available
-    array[E] int Kf;                    // Total number of campaigns per cycle
+    array[H] int Sf;                    // Number of campaigns with FEC filings available
+    array[H] int Kf;                    // Total number of campaigns per cycle
     array[E] int fec;                   // Whether (or not) FEC data is available for a given year
     vector[N] Yf;                       // Logit-democratic share of FEC contributions
 
     // Experience Observations
-    array[2,E] int Ke;                  // Number of non-incumbents per party per cycle
-    array[2,E] int Ye;                  // Number of experienced non-incumbents per party per cycle
+    array[2,H] int Ke;                  // Number of non-incumbents per party per cycle
+    array[2,H] int Ye;                  // Number of experienced non-incumbents per party per cycle
 
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (time-varying)
@@ -248,12 +249,12 @@ model {
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
-        for (i in 1:E) {
+        for (i in 1:H) {
             if (fec[i]) {
                 target += binomial_logit_lpmf(Sf[i] | Kf[i], theta_f[i]);
             }
             for (p in 1:2) {
-                target += binomial_logit_lpmf(Ye[p] | Ke[p], theta_e[p]);
+                target += binomial_logit_lpmf(Ye[p] | Ke[p], theta_e[p,1:H]);
             }
         }
         for (n in 1:N) {

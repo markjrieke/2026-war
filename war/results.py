@@ -289,6 +289,10 @@ class WARResults:
         full_data = war_data.full_data
         cids = war_data.cids
 
+        if self.war_fit.holdout:
+            model_data = model_data.filter(col.cycle < self.war_fit.holdout)
+            full_data = full_data.filter(col.cycle <= self.war_fit.holdout)
+
         # Dataset dimensions
         N = model_data.shape[0]
         M = full_data.shape[0]
@@ -310,7 +314,7 @@ class WARResults:
 
         # Coordinates for election cycle
         cycles = (
-            model_data
+            full_data
             .unique('eid')
             .sort('cycle')
             ['cycle']

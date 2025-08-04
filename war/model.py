@@ -10,7 +10,8 @@ from war.utils.constants import (
     TIME_VARYING_VARIABLES,
     TIME_INVARIANT_VARIABLES,
     SD_VARIABLES,
-    FEC_VARIABLES
+    FEC_VARIABLES,
+    CYCLES
 )
 
 class WARModel:
@@ -50,6 +51,7 @@ class WARModel:
 
     def prep_stan_data(
         self,
+        holdout: Optional[CYCLES] = None,
         priors: Optional[dict] = None,
         prior_check: bool = False
     ):
@@ -70,6 +72,10 @@ class WARModel:
         model_data = self.war_data.prepped_data
         full_data = self.war_data.full_data
         cids = self.war_data.cids
+
+        if holdout:
+            model_data = model_data.filter(col.cycle < holdout)
+            full_data = full_data.filter(col.cycle <= holdout)
 
         # Extract variable names from the model frame
         cols = model_data.columns
@@ -121,9 +127,9 @@ class WARModel:
 
         # Create experience DataFrame for non-incumbents
         experience = (
-            self._summarize_experience('DEM')
+            self._summarize_experience(model_data, 'DEM')
             .join(
-                self._summarize_experience('REP'),
+                self._summarize_experience(model_data, 'REP'),
                 on='cycle',
                 how='left'
             )
@@ -139,7 +145,8 @@ class WARModel:
         stan_data = {
             'N': model_data.shape[0],
             'M': full_data.shape[0],
-            'E': model_data.unique('eid').shape[0],
+            'H': model_data.unique('eid').shape[0],
+            'E': full_data.unique('eid').shape[0],
             'C': cids.unique('cid').shape[0],
             'D': len(time_varying_variables),
             'L': len(time_invariant_variables),
@@ -192,6 +199,7 @@ class WARModel:
         self.time_invariant_variables = ['intercept'] + time_invariant_variables
         self.sd_variables = sd_variables
         self.fec_variables = fec_variables
+        self.holdout = holdout
 
         return self
 
@@ -244,11 +252,12 @@ class WARModel:
 
     def _summarize_experience(
         self,
+        df: DataFrame,
         party: Literal['DEM', 'REP']
     ) -> DataFrame:
 
         out = (
-            self.war_data.prepped_data
+            df
             .filter(~col(f'is_incumbent_{party}'))
             .group_by('cycle')
             .agg(
