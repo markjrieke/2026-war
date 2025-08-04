@@ -1,5 +1,11 @@
 # DEVLOG
 
+## 2025-08-02
+
+Having met with Elliott earlier in the week, there are a few (more) model-side changes I ought to make before really calling it done. Most importantly, I need to update the counterfactual predictive functions to sample hypothetical experience advantage/disadvantages as well as hypothetical FEC shares for the replacement candidates. This is somewhat tricker than what I did for incumbency (i.e., just slapping a `0` for all alternative candidates) and likely requires a few different submodels.
+
+I've also received the senate dataset! In an ideal world, I'd release the house and senate results simultaneously. But there's going to be some non-zero amount of work to be done to accommodate the senate data and I have a pretty busy weekend / upcoming few weeks, personally, so we'll see what I can get done. If need be, I can push back the senate release so that I can prioritize finalizing the house. 
+
 ## 2025-07-25
 
 Scheduled out some dedicated time where I could focus on the model and it's basically in a good spot. I need to do some final nips/tucks to the model itself (like swapping to estimating logit-scale results and making a few minor data updates), but then I can prettify the codebase, write out the results, and call it a day from the coding perspective. At some point in the next two weeks, I'll need to write the SIN article and companion DD article.
