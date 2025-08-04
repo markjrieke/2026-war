@@ -116,6 +116,9 @@ transformed data {
         xe_mean[p] = mean(Xf[:,exid_f[p]]);
         xe_sd[p] = sd(Xf[:,exid_f[p]]);
     }
+
+    // Number of random walk steps
+    int Em = E - 1;
 }
 
 parameters {
@@ -135,18 +138,27 @@ parameters {
     real<lower=0> eta_sigma_sigma_f;
     vector[2] eta_sigma_theta_e;
 
-    // Variable offsets
-    vector[E] eta_alpha;
-    matrix[D,E] eta_beta_d;
+    // Random walk initial states
+    real eta_alpha0;
+    vector[D] eta_beta_d0;
+    real eta_sigma_e0;
+    real eta_theta_f0;
+    real eta_alpha_f0;
+    real eta_sigma_f0;
+    vector[2] eta_theta_e0;
+
+    // Random walk steps
+    vector[Em] eta_alpha;
+    matrix[D,Em] eta_beta_d;
     vector[G] eta_beta_g;
     vector[J] eta_beta_j;
     vector[C] eta_beta_c;
-    vector[E] eta_sigma_e;
-    vector[E] eta_theta_f;
-    vector[E] eta_alpha_f;
+    vector[Em] eta_sigma_e;
+    vector[Em] eta_theta_f;
+    vector[Em] eta_alpha_f;
     vector[F] eta_beta_f;
-    vector[E] eta_sigma_f;
-    matrix[2,E] eta_theta_e;
+    vector[Em] eta_sigma_f;
+    matrix[2,Em] eta_theta_e;
 }
 
 transformed parameters {
@@ -170,32 +182,44 @@ transformed parameters {
     }
 
     // Evaluate random walk over the intercept
-    vector[E] alpha = eta_alpha * eta_sigma_alpha * sigma;
+    vector[E] alpha;
+    alpha[1] = eta_alpha0 * sigma;
+    alpha[2:E] = eta_alpha * eta_sigma_alpha * sigma;
     for (i in 2:E) {
         alpha[i] += alpha[i-1];
     }
 
     // Evaluate random walk over the parameters
-    matrix[D,E] beta_d = diag_pre_multiply(eta_sigma_beta_d * sigma, eta_beta_d);
+    matrix[D,E] beta_d;
+    beta_d[:,1] = eta_beta_d0 * sigma;
+    beta_d[:,2:E] = diag_pre_multiply(eta_sigma_beta_d * sigma, eta_beta_d);
     for (i in 2:E) {
         beta_d[:,i] += beta_d[:,i-1];
     }
 
     // Evaluate random walk over the standard deviations
-    vector[E] sigma_e = eta_sigma_e * eta_sigma_sigma_e * sigma;
+    vector[E] sigma_e;
+    sigma_e[1] = eta_sigma_e0 * sigma;
+    sigma_e[2:E] = eta_sigma_e * eta_sigma_sigma_e * sigma;
     for (i in 2:E) {
         sigma_e[i] += sigma_e[i-1];
     }
 
     // Evaluate random walk over FEC filing probability
-    vector[E] theta_f = eta_theta_f * eta_sigma_theta_f * sigma;
+    vector[E] theta_f;
+    theta_f[1] = eta_theta_f0 * sigma;
+    theta_f[2:E] = eta_theta_f * eta_sigma_theta_f * sigma;
     for (i in 2:E) {
         theta_f[i] += theta_f[i-1];
     }
 
     // Evaluate random walk over FEC filing share
-    vector[E] alpha_f = eta_alpha_f * eta_sigma_alpha_f * sigma;
-    vector[E] sigma_f = eta_sigma_f * eta_sigma_sigma_f * sigma;
+    vector[E] alpha_f;
+    vector[E] sigma_f;
+    alpha_f[1] = eta_alpha_f0 * sigma;
+    sigma_f[1] = eta_sigma_f0 * sigma;
+    alpha_f[2:E] = eta_alpha_f * eta_sigma_alpha_f * sigma;
+    sigma_f[2:E] = eta_sigma_f * eta_sigma_sigma_f * sigma;
     for (i in 2:E) {
         alpha_f[i] += alpha_f[i-1];
         sigma_f[i] += sigma_f[i-1];
@@ -203,7 +227,9 @@ transformed parameters {
     sigma_f = exp(sigma_f);
 
     // Evaluate random walk over candidate experience
-    matrix[2,E] theta_e = diag_pre_multiply(eta_sigma_theta_e * sigma, eta_theta_e);
+    matrix[2,E] theta_e;
+    theta_e[:,1] = eta_theta_e0 * sigma;
+    theta_e[:,2:E] = diag_pre_multiply(eta_sigma_theta_e * sigma, eta_theta_e);
     for (i in 2:E) {
         theta_e[:,i] += theta_e[:,i-1];
     }

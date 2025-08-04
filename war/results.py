@@ -325,6 +325,7 @@ class WARResults:
         coords = {
             'N': range(N),
             'M': range(M),
+            'Em': cycles[1:],
             'cycle': cycles,
             'candidate': candidates,
             'time_varying_variable': time_varying_variables,
@@ -352,18 +353,27 @@ class WARResults:
             'eta_sigma_sigma_f': [],
             'eta_sigma_theta_e': ['party'],
 
+            # Random walk initial states
+            'eta_alpha0': [],
+            'eta_beta_d0': ['time_varying_variable'],
+            'eta_sigma_e0': [],
+            'eta_theta_f0': [],
+            'eta_alpha_f0': [],
+            'eta_sigma_f0': [],
+            'eta_theta_e0': ['party'],
+
             # Variable scale parameter offsets
-            'eta_alpha': ['cycle'],
-            'eta_beta_d': ['time_varying_variable', 'cycle'],
+            'eta_alpha': ['Em'],
+            'eta_beta_d': ['time_varying_variable', 'Em'],
             'eta_beta_g': ['time_invariant_variable'],
             'eta_beta_j': ['sd_variable'],
             'eta_beta_c': ['candidate'],
-            'eta_sigma_e': ['cycle'],
-            'eta_theta_f': ['cycle'],
-            'eta_alpha_f': ['cycle'],
+            'eta_sigma_e': ['Em'],
+            'eta_theta_f': ['Em'],
+            'eta_alpha_f': ['Em'],
             'eta_beta_f': ['fec_variable'],
-            'eta_sigma_f': ['cycle'],
-            'eta_theta_e': ['party', 'cycle'],
+            'eta_sigma_f': ['Em'],
+            'eta_theta_e': ['party', 'Em'],
 
             # Transformed parameters
             'beta_c': ['candidate'],
