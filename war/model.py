@@ -196,7 +196,7 @@ class WARModel:
         stan_data.update(priors_args)
         self.stan_data = stan_data
         self.time_varying_variables = time_varying_variables
-        self.time_invariant_variables = ['intercept'] + time_invariant_variables
+        self.time_invariant_variables = time_invariant_variables
         self.sd_variables = sd_variables
         self.fec_variables = fec_variables
         self.holdout = holdout

@@ -79,9 +79,11 @@ transformed data {
     matrix[M,F] Xffc = standardize(Xff, Xf);
 
     // Add intercept to national matrices
-    int G = L + 1;
-    matrix[N,G] Xgc = add_intercept(Xlc);
-    matrix[M,G] Xfgc = add_intercept(Xflc);
+    int G = L;
+    matrix[N,G] Xgc = Xlc;
+    matrix[M,G] Xfgc = Xflc;
+    // matrix[N,G] Xgc = add_intercept(Xlc);
+    // matrix[M,G] Xfgc = add_intercept(Xflc);
 
     // Create counterfactual district matrices that eschew incumbency
     // These get further modified in the generated quantities block as a part of

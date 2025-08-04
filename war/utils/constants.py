@@ -24,7 +24,6 @@ TIME_VARYING_VARIABLES = [
 ]
 
 TIME_INVARIANT_VARIABLES = [
-    'intercept',
     'inc_party_same_party_pres_midterm'
 ]
 
