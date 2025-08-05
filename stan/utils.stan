@@ -87,41 +87,26 @@ matrix standardize_cf(matrix X,
 }
 
 /*
-    Add an intercept term to the first column of a matrix
-
-    @param X: a design matrix
-
-    @returns Xi: A with on addtional column of 1s added to X
-*/
-matrix add_intercept(matrix X) {
-    int N = rows(X);
-    int C = cols(X) + 1;
-    matrix[N,C] Xi;
-    Xi[:,1] = rep_vector(1, N);
-    Xi[:,2:C] = X;
-    return Xi;
-}
-
-/*
     Propagate a random walk over a vector
 
     @param theta0: The initial state of the random walk
     @param eta: A vector of N-1 standardized random walk steps
-    @param sigma: The random walk scale
+    @param eta_sigma: The random walk scale
+    @param sigma: The global hyperparameter scale
 
     @returns theta: A vector of length N that randomly drifts from the initial
         state.
 */
 vector random_walk(real theta0,
                    vector eta,
+                   real eta_sigma,
                    real sigma) {
     int E = size(eta) + 1;
-    int Em = E - 1;
     vector[E] theta;
-    theta[1] = theta0;
-    theta[2:E] = eta * sigma;
-    for (em in 1:Em) {
-        theta[em+1] += theta[em];
+    theta[1] = theta0 * sigma;
+    theta[2:E] = eta * eta_sigma * sigma;
+    for (i in 2:E) {
+        theta[i] += theta[i-1];
     }
     return theta;
 }
@@ -142,17 +127,28 @@ vector random_walk(real theta0,
 */
 matrix random_walk(vector theta0,
                    matrix eta,
-                   vector sigma) {
-    int F = size(theta0);
+                   vector eta_sigma,
+                   real sigma) {
+    int N = rows(eta);
     int E = cols(eta) + 1;
-    int Em = E - 1;
-    matrix[F,E] theta;
-    theta[:,1] = theta0;
-    theta[:,2:E] = diag_pre_multiply(sigma, eta);
-    for (em in 1:Em) {
-        theta[:,em+1] += theta[:,em];
+    matrix[N,E] theta;
+    theta[:,1] = theta0 * sigma;
+    theta[:,2:E] = diag_pre_multiply(eta_sigma * sigma, eta);
+    for (i in 2:E) {
+        theta[:,i] += theta[:,i-1];
     }
     return theta;
+}
+
+vector evaluate_hierarchy(vector eta,
+                          real eta_sigma,
+                          real sigma) {
+    int N = size(eta);
+    vector[N] beta = eta * sigma;
+    if (N > 1) {
+        beta *= eta_sigma;
+    }
+    return beta;
 }
 
 /*

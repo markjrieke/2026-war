@@ -91,16 +91,20 @@ transformed data {
     vector[M] Yff_inv_logit = inv_logit(Yff);
 
     // Set FEC 'cases' based on FEC share
+    // 1: D candidate has ~ 100% of reported FEC share
+    // 2: R candidate has ~ 100% of reported FEC share
+    // 3: Neither candidate has reported FEC values
+    // 4: Normal mix of reported FEC contributions
     vector[M] cases;
     for (m in 1:M) {
         if (Yff_inv_logit[m] > 0.99) {
-            cases[m] = 1;               // D ~ 1
+            cases[m] = 1;
         } else if (Yff_inv_logit[m] < 0.01) {
-            cases[m] = 2;               // R ~ 1
+            cases[m] = 2;
         } else if (Yff_inv_logit[m] == 0.5) {
-            cases[m] = 3;               // Even
+            cases[m] = 3;
         } else {
-            cases[m] = 4;               // Mix
+            cases[m] = 4;
         }
     }
 
@@ -121,113 +125,58 @@ parameters {
     real<lower=0> sigma;
 
     // Variable scale parameter offsets
-    real<lower=0> eta_sigma_alpha;
-    vector<lower=0>[D] eta_sigma_beta_d;
-    real<lower=0> eta_sigma_beta_g;
-    real<lower=0> eta_sigma_beta_j;
-    real<lower=0> eta_sigma_beta_c;
-    real<lower=0> eta_sigma_sigma_e;
-    real<lower=0> eta_sigma_theta_f;
-    real<lower=0> eta_sigma_alpha_f;
-    real<lower=0> eta_sigma_beta_f;
-    real<lower=0> eta_sigma_sigma_f;
-    vector[2] eta_sigma_theta_e;
+    real<lower=0> eta_sigma_alpha;          // Time-varying intercept random walk scale
+    vector<lower=0>[D] eta_sigma_beta_d;    // Time-varying parameter random walk scale
+    real<lower=0> eta_sigma_beta_g;         // Time-invariant parameter scale
+    real<lower=0> eta_sigma_beta_j;         // Standard deviation predictor scale
+    real<lower=0> eta_sigma_beta_c;         // Candidate skill scale
+    real<lower=0> eta_sigma_sigma_e;        // Standard deviation random walk scale
+    real<lower=0> eta_sigma_theta_f;        // FEC hurdle probability random walk scale
+    real<lower=0> eta_sigma_alpha_f;        // FEC share intercept random walk scale
+    real<lower=0> eta_sigma_beta_f;         // FEC share parameter scale
+    real<lower=0> eta_sigma_sigma_f;        // FEC share standard deviation random walk scale
+    vector[2] eta_sigma_theta_e;            // Experience probability random walk scale
 
     // Random walk initial states
-    real eta_alpha0;
-    vector[D] eta_beta_d0;
-    real eta_sigma_e0;
-    real eta_theta_f0;
-    real eta_alpha_f0;
-    real eta_sigma_f0;
-    vector[2] eta_theta_e0;
+    real eta_alpha0;                        // Time-varying intercept initial state
+    vector[D] eta_beta_d0;                  // Time varying parameter initial state
+    real eta_sigma_e0;                      // Standard deviation initial state
+    real eta_theta_f0;                      // FEC hurdle probability initial state
+    real eta_alpha_f0;                      // FEC share intercept initial state
+    real eta_sigma_f0;                      // FEC share standard deviation initial state
+    vector[2] eta_theta_e0;                 // Experience probability initial state
 
     // Random walk steps
-    vector[Em] eta_alpha;
-    matrix[D,Em] eta_beta_d;
-    vector[G] eta_beta_g;
-    vector[J] eta_beta_j;
-    vector[C] eta_beta_c;
-    vector[Em] eta_sigma_e;
-    vector[Em] eta_theta_f;
-    vector[Em] eta_alpha_f;
-    vector[F] eta_beta_f;
-    vector[Em] eta_sigma_f;
-    matrix[2,Em] eta_theta_e;
+    vector[Em] eta_alpha;                   // Time-varying intercept random walk steps
+    matrix[D,Em] eta_beta_d;                // Time-varying parameter random walk steps
+    vector[G] eta_beta_g;                   // Time-invariant parameters
+    vector[J] eta_beta_j;                   // Standard deviation predictors
+    vector[C] eta_beta_c;                   // Candidate skill
+    vector[Em] eta_sigma_e;                 // Standard deviation random walk steps
+    vector[Em] eta_theta_f;                 // FEC hurdle probability random walk steps
+    vector[Em] eta_alpha_f;                 // FEC share intercept random walk steps
+    vector[F] eta_beta_f;                   // FEC share parameters
+    vector[Em] eta_sigma_f;                 // FEC share standard deviation random walk steps
+    matrix[2,Em] eta_theta_e;               // Experience probability random walk steps
 }
 
 transformed parameters {
     // Evaluate hierarchical parameters
-    vector[C] beta_c = eta_beta_c * eta_sigma_beta_c * sigma;
-    vector[G] beta_g = eta_beta_g * sigma;
-    vector[J] beta_j = eta_beta_j * sigma;
-    vector[F] beta_f = eta_beta_f * sigma;
+    vector[C] beta_c = evaluate_hierarchy(eta_beta_c, eta_sigma_beta_c, sigma);
+    vector[G] beta_g = evaluate_hierarchy(eta_beta_g, eta_sigma_beta_g, sigma);
+    vector[J] beta_j = evaluate_hierarchy(eta_beta_j, eta_sigma_beta_j, sigma);
+    vector[F] beta_f = evaluate_hierarchy(eta_beta_f, eta_sigma_beta_f, sigma);
 
-    // Conditionally use additional hierarchical parameter if necessary
-    if (G > 1) {
-        beta_g *= eta_sigma_beta_g;
-    }
+    // Evaluate random walks over vectors
+    vector[E] alpha = random_walk(eta_alpha0, eta_alpha, eta_sigma_alpha, sigma);
+    vector[E] sigma_e = random_walk(eta_sigma_e0, eta_sigma_e, eta_sigma_sigma_e, sigma);
+    vector[E] theta_f = random_walk(eta_theta_f0, eta_theta_f, eta_sigma_theta_f, sigma);
+    vector[E] alpha_f = random_walk(eta_alpha_f0, eta_alpha_f, eta_sigma_alpha_f, sigma);
+    vector[E] sigma_f = exp(random_walk(eta_sigma_f0, eta_sigma_f, eta_sigma_sigma_f, sigma));
 
-    if (J > 1) {
-        beta_j *= eta_sigma_beta_j;
-    }
-
-    if (F > 1) {
-        beta_f *= eta_sigma_beta_f;
-    }
-
-    // Evaluate random walk over the intercept
-    vector[E] alpha;
-    alpha[1] = eta_alpha0 * sigma;
-    alpha[2:E] = eta_alpha * eta_sigma_alpha * sigma;
-    for (i in 2:E) {
-        alpha[i] += alpha[i-1];
-    }
-
-    // Evaluate random walk over the parameters
-    matrix[D,E] beta_d;
-    beta_d[:,1] = eta_beta_d0 * sigma;
-    beta_d[:,2:E] = diag_pre_multiply(eta_sigma_beta_d * sigma, eta_beta_d);
-    for (i in 2:E) {
-        beta_d[:,i] += beta_d[:,i-1];
-    }
-
-    // Evaluate random walk over the standard deviations
-    vector[E] sigma_e;
-    sigma_e[1] = eta_sigma_e0 * sigma;
-    sigma_e[2:E] = eta_sigma_e * eta_sigma_sigma_e * sigma;
-    for (i in 2:E) {
-        sigma_e[i] += sigma_e[i-1];
-    }
-
-    // Evaluate random walk over FEC filing probability
-    vector[E] theta_f;
-    theta_f[1] = eta_theta_f0 * sigma;
-    theta_f[2:E] = eta_theta_f * eta_sigma_theta_f * sigma;
-    for (i in 2:E) {
-        theta_f[i] += theta_f[i-1];
-    }
-
-    // Evaluate random walk over FEC filing share
-    vector[E] alpha_f;
-    vector[E] sigma_f;
-    alpha_f[1] = eta_alpha_f0 * sigma;
-    sigma_f[1] = eta_sigma_f0 * sigma;
-    alpha_f[2:E] = eta_alpha_f * eta_sigma_alpha_f * sigma;
-    sigma_f[2:E] = eta_sigma_f * eta_sigma_sigma_f * sigma;
-    for (i in 2:E) {
-        alpha_f[i] += alpha_f[i-1];
-        sigma_f[i] += sigma_f[i-1];
-    }
-    sigma_f = exp(sigma_f);
-
-    // Evaluate random walk over candidate experience
-    matrix[2,E] theta_e;
-    theta_e[:,1] = eta_theta_e0 * sigma;
-    theta_e[:,2:E] = diag_pre_multiply(eta_sigma_theta_e * sigma, eta_theta_e);
-    for (i in 2:E) {
-        theta_e[:,i] += theta_e[:,i-1];
-    }
+    // Evaluate random walk over matrices
+    matrix[D,E] beta_d = random_walk(eta_beta_d0, eta_beta_d, eta_sigma_beta_d, sigma);
+    matrix[2,E] theta_e = random_walk(eta_theta_e0, eta_theta_e, eta_sigma_theta_e, sigma);
 }
 
 model {
@@ -270,19 +219,9 @@ model {
     // Likelihood
     if (!prior_check) {
         target += normal_lpdf(Y_logit | mu, sigma_o);
-        for (i in 1:H) {
-            if (fec[i]) {
-                target += binomial_logit_lpmf(Sf[i] | Kf[i], theta_f[i]);
-            }
-            for (p in 1:2) {
-                target += binomial_logit_lpmf(Ye[p] | Ke[p], theta_e[p,1:H]);
-            }
-        }
-        for (n in 1:N) {
-            if (fec[eid[n]]) {
-                target += normal_lpdf(Yf[n] | alpha_f[eid[n]] + mu_f[n], sigma_f[eid[n]]);
-            }
-        }
+        target += binomial_logit_lpmf(Sf | Kf, theta_f, fec);
+        target += binomial_logit_lpmf(Ye | Ke, theta_e);
+        target += hurdle_normal_lpdf(Yf | alpha_f, mu_f, sigma_f, fec, eid);
     }
 }
 

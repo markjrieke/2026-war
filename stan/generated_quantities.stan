@@ -61,6 +61,21 @@ vector posterior_predictive_rng(matrix Xd,
     return posterior_predictive_rng(mu, sigma);
 }
 
+/*
+    Create a counterfactual sample of experience advantage/disadvantage columns
+
+    @param theta_e: A matrix of logit-scale probabilities of non-incumbents
+        having prior electoral experience.
+    @param Xe: A matrix containing the observed experience values for democratic
+        and republican candidates.
+    @param eid: An array of integers mapping year to each race
+    @param dem_flag: An integer indicating whether to estimate the predictive
+        sample for a democratic counterfactual matrix (1) or republican
+        counterfactual matrix (0)
+
+    @returns X: A matrix containing counterfactual observations of experience
+        advantage (X[:,1]) and disadvantage (X[:,2]) values.
+*/
 matrix counterfactual_exp_adv_rng(matrix theta_e,
                                   matrix Xe,
                                   array[] int eid,
@@ -85,6 +100,25 @@ matrix counterfactual_exp_adv_rng(matrix theta_e,
     return X;
 }
 
+/*
+    Create a counterfactual sample of logit-scale democratic FEC shares
+
+    @param Xf: A design matrix for predicting FEC values
+    @param cases: A vector containing the "case" for each race. See the
+        transformed data block in war.stan for more information on each case.
+    @param theta_f: A vector containing the hurdle probability of a race
+        containing FEC data in each year.
+    @param alpha_f: A vector containing the time-varying intercept parameter for
+        predicting FEC shares conditional on having FEC information.
+    @param beta_f: A vector of FEC parameter values
+    @param sigma_f: A vector containing the standard deviation of logit-scale
+        FEC shares per year.
+    @param eid: An array of integers mapping year to each race
+    @param fec: An array of integers indicating whether or not FEC filing
+        information is available for each year.
+
+    @returns result: A vector of counterfactual FEC share estimates.
+*/
 vector counterfactual_fec_rng(matrix Xf,
                               vector Yf,
                               vector cases,
@@ -145,17 +179,43 @@ vector counterfactual_fec_rng(matrix Xf,
     @param Xd: A centered/scaled counterfactual district design matrix
     @param Xg: A centered/scaled counterfacutla national design matrix
     @param Xj: A centered/scaled counterfactual sd-affecting design matrix
+    @param Xf: A design matrix for predicting FEC values
+    @param Xe: A matrix containing the observed experience values for democratic
+        and republican candidates.
+    @param Yf: A vector containing the observed logit-scale democratic share of
+        FEC contributions
     @param alpha: A vector of intercept parameters for each year
+    @param alpha_f: A vector containing the time-varying intercept parameter for
+        predicting FEC shares conditional on having FEC information.
     @param beta_d: A matrix of parameter values for each district parameter in
         each year
     @param beta_g: A vector of national parameter values
     @param beta_j: A vector of sd-affecting parameter values
     @param beta_c: A vector of candidate skill parameters
+    @param beta_f: A vector of FEC parameter values
+    @param theta_f: A vector containing the hurdle probability of a race
+        containing FEC data in each year.
+    @param theta_e: A matrix of logit-scale probabilities of non-incumbents
+        having prior electoral experience.
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
+    @param sigma_f: A vector containing the standard deviation of logit-scale
+        FEC shares per year.
     @param eid: An array of integers mapping year to each race
     @param cid: A multidimensional array of integers mapping the democratic and
         republican candidates to each race
+    @param fec: An array of integers indicating whether or not FEC filing
+        information is available for each year.
+    @param exid_f: An array of integers corresponding to the column positions of
+        experience advantage/disadvantage in Xf.
+    @param exid_d: An array of integers corresponding to the column positions of
+        experience advantage/disadvantage in Xd.
+    @param cases: A vector containing the "case" for each race. See the
+        transformed data block in war.stan for more information on each case.
+    @param xe_mean: A vector of means for centring/scaling advantage/disadvantage
+    @param xe_sd: A vector of sds for centering/scaling advantage/disadvantage
+    @param fid: An integer corresponding to the column position of FEC share in
+        Xd.
     @param dem_cf: An integer indicating whether to estimate the predictive
         sample for a democratic counterfactual matrix (1) or republican
         counterfactual matrix (0)
@@ -249,17 +309,43 @@ vector posterior_predictive_cf_rng(matrix Xd,
         candidates
     @param Xg: A centered/scaled counterfacutla national design matrix
     @param Xj: A centered/scaled counterfactual sd-affecting design matrix
+    @param Xf: A design matrix for predicting FEC values
+    @param Xe: A matrix containing the observed experience values for democratic
+        and republican candidates.
+    @param Yf: A vector containing the observed logit-scale democratic share of
+        FEC contributions
     @param alpha: A vector of intercept parameters for each year
+    @param alpha_f: A vector containing the time-varying intercept parameter for
+        predicting FEC shares conditional on having FEC information.
     @param beta_d: A matrix of parameter values for each district parameter in
         each year
     @param beta_g: A vector of national parameter values
     @param beta_j: A vector of sd-affecting parameter values
     @param beta_c: A vector of candidate skill parameters
+    @param beta_f: A vector of FEC parameter values
+    @param theta_f: A vector containing the hurdle probability of a race
+        containing FEC data in each year.
+    @param theta_e: A matrix of logit-scale probabilities of non-incumbents
+        having prior electoral experience.
     @param sigma_c: Candidate group-level standard deviation
     @param sigma_e: A vector of logit-scale observation standard deviations
+    @param sigma_f: A vector containing the standard deviation of logit-scale
+        FEC shares per year.
     @param eid: An array of integers mapping year to each race
     @param cid: A multidimensional array of integers mapping the democratic and
         republican candidates to each race
+    @param fec: An array of integers indicating whether or not FEC filing
+        information is available for each year.
+    @param exid_f: An array of integers corresponding to the column positions of
+        experience advantage/disadvantage in Xf.
+    @param exid_d: An array of integers corresponding to the column positions of
+        experience advantage/disadvantage in Xd.
+    @param fid: An integer corresponding to the column position of FEC share in
+        Xd.
+    @param cases: A vector containing the "case" for each race. See the
+        transformed data block in war.stan for more information on each case.
+    @param xe_mean: A vector of means for centring/scaling advantage/disadvantage
+    @param xe_sd: A vector of sds for centering/scaling advantage/disadvantage
 
     @returns: An array of vectors of observation-scale counterfactual predictive
         samples for each party
