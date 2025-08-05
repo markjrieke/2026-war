@@ -12,13 +12,13 @@ data {
     int E;                              // Number of election cycles in the full frame
     int C;                              // Number of candidates
     int D;                              // Number of time-varying variables
-    int L;                              // Number of time-invariant variables
+    int G;                              // Number of time-invariant variables
     int J;                              // Number of sd-estimating variables
     int F;                              // Number of FEC predictors
 
     // Observations
     matrix[N,D] Xd;                     // Design matrix (time-varying)
-    matrix[N,L] Xl;                     // Design matrix (time-invariant)
+    matrix[N,G] Xg;                     // Design matrix (time-invariant)
     matrix[N,J] Xj;                     // Design matrix (observation sd)
     vector[N] Y;                        // Democratic candidate two-party vote
 
@@ -35,7 +35,7 @@ data {
 
     // Counterfactual Observations
     matrix[M,D] Xfd;                    // Full matrix (time-varying)
-    matrix[M,L] Xfl;                    // Full matrix (time-invariant)
+    matrix[M,G] Xfg;                    // Full matrix (time-invariant)
     matrix[M,J] Xfj;                    // Full matrix (observation sd)
 
     // Counterfactual FEC Observations
@@ -68,22 +68,15 @@ data {
 transformed data {
     // Center/scale the design matrices
     matrix[N,D] Xdc = standardize(Xd);
-    matrix[N,L] Xlc = standardize(Xl);
+    matrix[N,G] Xgc = standardize(Xg);
     matrix[N,J] Xjc = standardize(Xj);
     matrix[N,F] Xfc = standardize(Xf);
 
     // Center/scale counterfactual time-varying/time-invariant matrices based on the design matrices
     matrix[M,D] Xfdc = standardize(Xfd, Xd);
-    matrix[M,L] Xflc = standardize(Xfl, Xl);
+    matrix[M,G] Xfgc = standardize(Xfg, Xg);
     matrix[M,J] Xfjc = standardize(Xfj, Xj);
     matrix[M,F] Xffc = standardize(Xff, Xf);
-
-    // Add intercept to national matrices
-    int G = L;
-    matrix[N,G] Xgc = Xlc;
-    matrix[M,G] Xfgc = Xflc;
-    // matrix[N,G] Xgc = add_intercept(Xlc);
-    // matrix[M,G] Xfgc = add_intercept(Xflc);
 
     // Create counterfactual district matrices that eschew incumbency
     // These get further modified in the generated quantities block as a part of
