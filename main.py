@@ -21,7 +21,7 @@ args = parser.parse_args()
 # Import and prep data for running the model
 war_data = WARData(args.chamber).prep_data()
 
-# Fit the mode.
+# Fit the model
 war_fit = (
     WARModel(
         war_data=war_data,
@@ -46,3 +46,4 @@ war_results = WARResults(war_fit)
 war_results.write_full_topline()
 war_results.write_publication_topline()
 war_results.write_parameter_summaries()
+war_results.write_mappings()
