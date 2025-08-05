@@ -1,9 +1,10 @@
 from typing import List, Union
-from os.path import join
+from os.path import join, exists
 
 from arviz import InferenceData, from_cmdstanpy
-from polars import DataFrame, col, implode, lit, when
+from polars import DataFrame, col, implode, lit, when, read_parquet, len
 from polars.selectors import exclude
+from plotnine import ggplot, aes, geom_pointrange, geom_abline, facet_wrap
 from xarray import Dataset
 
 from war.model import WARModel
@@ -129,6 +130,132 @@ class WARResults:
         WARP = self._extract_WARP()
         WARP.write_parquet(join(path, 'WARP.parquet'))
 
+    def plot_holdout(
+        self,
+        cred_level: float = 0.95
+    ) -> ggplot:
+
+        """
+        Generate a posterior predictive plot for the holdout set.
+
+        Parameters
+        ----------
+        cred_level : float
+            The value determining the size of the equal-tail-intervals (ETIs)
+            displayed in the plot.
+        """
+
+        if not self.war_fit.holdout:
+            raise ValueError(
+                'This model was fit without a holdout set! Cannot generate a holdout plot.'
+            )
+
+        # Summarize Y_rep predictions
+        quantiles = self._set_quantiles(cred_level)
+        summary = (
+            self.idata.posterior['Y_rep'].quantile(q=quantiles, dim=['chain', 'draw'])
+        )
+        summary = from_xarray(summary)
+
+        summary = (
+            summary
+            .with_columns(col.quantile.round(decimals=3))
+        )
+
+        plot_quantiles = summary.unique('quantile').sort('quantile')['quantile']
+
+        out = (
+            summary
+            .filter(col.quantile.is_in(plot_quantiles))
+            .pivot(on='quantile', values='Y_rep')
+            .join(
+                self.war_fit.full_data,
+                on='M',
+                how='left'
+            )
+            .filter(
+                col.uncontested == 0,
+                col.cycle == self.war_fit.holdout
+            )
+            >>
+            ggplot(aes(
+                x='pct',
+                y=str(plot_quantiles[1]),
+                ymin=str(plot_quantiles[0]),
+                ymax=str(plot_quantiles[2])
+            )) +
+            geom_pointrange(alpha=0.125) +
+            geom_abline(linetype='dashed', color='red') +
+            facet_wrap(facets='cycle')
+        )
+
+        return out
+
+    def write_fit_summary(
+        self,
+        path: str = 'out/holdout',
+        reset: bool = False
+    ):
+
+        """
+        Write fit diagnostic summary information
+
+        Model fit(s) are summarized using the posterior median RMSE for both the
+        training data and holdout observations.
+
+        Parameters
+        ----------
+        path : str
+            The path where the fit summary will be stored.
+        reset : bool
+            Whether (`True`) or not (`False`) to overwrite the existing fit
+            summary file.
+        """
+
+        if not self.war_fit.holdout:
+            raise ValueError(
+                'This model was fit without a holdout set! Cannot generate a holdout plot.'
+            )
+
+        predictions = (
+            self.idata.posterior['Y_rep'].quantile(q=0.5, dim=['chain', 'draw'])
+        )
+        predictions = from_xarray(predictions)
+
+        fit_summary = (
+            predictions
+            .pivot(on='quantile', values='Y_rep')
+            .rename({'0.5': 'Y_rep'})
+            .join(
+                self.war_fit.full_data,
+                on='M',
+                how='left'
+            )
+            .filter(col.uncontested == 0)
+            .with_columns(
+                when(col.cycle == self.war_fit.holdout)
+                .then(lit('holdout'))
+                .otherwise(lit('training'))
+                .alias('set')
+            )
+            .group_by('set')
+            .agg(
+                (((col.Y_rep - col.pct).pow(2)).sum() / len()).pow(0.5).alias('rmse')
+            )
+            .with_columns(lit(self.war_fit.holdout).alias('holdout_year'))
+        )
+
+        filepath = join(path, 'fit_summary.parquet')
+        if reset or not exists(filepath):
+            fit_summary.write_parquet(filepath)
+        else:
+            (
+                fit_summary
+                .vstack(read_parquet(filepath))
+                .write_parquet(filepath)
+            )
+
+
     def write_mappings(
         self,
         path: str = 'out/summary/mappings'
@@ -152,18 +279,16 @@ class WARResults:
         ]
 
         (
-            self.war_fit.war_data.full_data
-            .select(cols)
-            .with_row_index('M')
+            self.war_fit.full_data
+            .select(['M'] + cols)
             .write_parquet(join(path, 'full_data.parquet'))
         )
 
         cols.remove('uncontested')
 
         (
-            self.war_fit.war_data.prepped_data
-            .select(cols)
-            .with_row_index('N')
+            self.war_fit.model_data
+            .select(['N'] + cols)
             .write_parquet(join(path, 'model_data.parquet'))
         )
 

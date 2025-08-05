@@ -61,6 +61,10 @@ class WARModel:
 
         Parameters
         ----------
+        holdout : Optional[CYCLES]
+            An optional integer representing an election year to be used as a
+            holdout set for model validation. If `None`, the default, the model
+            is fit to the entire dataset.
         priors : Optional[dict]
             An optional dictionary containing priors for the model. If `None`,
             the default priors found under `war.utils.constants` will be used.
@@ -76,6 +80,10 @@ class WARModel:
         if holdout:
             model_data = model_data.filter(col.cycle < holdout)
             full_data = full_data.filter(col.cycle <= holdout)
+
+        # Add indices to DataFrames
+        model_data = model_data.with_row_index('N')
+        full_data = full_data.with_row_index('M')
 
         # Extract variable names from the model frame
         cols = model_data.columns
@@ -200,6 +208,8 @@ class WARModel:
         self.sd_variables = sd_variables
         self.fec_variables = fec_variables
         self.holdout = holdout
+        self.model_data = model_data
+        self.full_data = full_data
 
         return self
 
@@ -224,31 +234,6 @@ class WARModel:
         )
 
         return self
-
-    def _detect_national_variables(
-        self,
-        exclusions
-    ) -> List[str]:
-
-        # Set list of columns to look through as potential national variables
-        full_data = self.war_data.full_data
-        columns = full_data.columns
-        for exclusion in exclusions:
-            columns.remove(exclusion)
-
-        # Generate list of national variables (only vary by cycle)
-        variables = []
-        for column in columns:
-            n = (
-                full_data
-                .group_by('cycle')
-                .agg(col(column).n_unique())
-                [column]
-            )
-            if (n == 1).all():
-                variables.append(column)
-
-        return variables
 
     def _summarize_experience(
         self,
