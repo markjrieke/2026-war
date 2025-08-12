@@ -121,7 +121,7 @@ class WARData:
             .select([
                 'cycle', 'state_name', 'district', 'pct', 'uncontested',
                 'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-                'dem_pres_twop_lag_lean_one', 'logit_dem_share_fec',
+                'dem_pres_twop_lag_lean_one', 'dem_share_fec',
                 'redistricted', 'incumbent_party', 'has_fec'
             ])
             .join(
@@ -151,11 +151,12 @@ class WARData:
                  col.n_republican_candidates.is_not_null())
                  .alias('jungle_primary')
             )
+            .with_columns(col.dem_share_fec.add(0.5))
             .with_columns(
                 when((~col.jungle_primary) & (col.has_fec == 1) & (col.uncontested == 0))
-                .then(col.logit_dem_share_fec)
-                .otherwise(lit(0))
-                .alias('logit_dem_share_fec')
+                .then(col.dem_share_fec)
+                .otherwise(lit(0.5))
+                .alias('dem_share_fec')
             )
             .select(exclude(starts_with('n_')))
             .join(
@@ -298,7 +299,7 @@ class WARData:
                 on='politician_id',
                 how='left'
             )
-            .with_columns(col.cid.fill_null(lit(1)))
+            .with_columns(col.cid.fill_null(lit(2)))
             .select(exclude('politician_id'))
             .rename({'cid': 'cid_DEM'})
             .join(
@@ -316,6 +317,10 @@ class WARData:
             .select(exclude('politician_id'))
             .rename({'cid': 'cid_REP'})
             .with_columns(col.cycle.rank('dense').alias('eid'))
+            .with_columns(
+                when(col.cid_DEM == 2).then(lit(1)).otherwise(lit(0)).alias('generic_DEM'),
+                when(col.cid_REP == 1).then(lit(1)).otherwise(lit(0)).alias('generic_REP')
+            )
         )
 
         prepped_data = (

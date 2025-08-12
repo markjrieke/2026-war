@@ -146,10 +146,10 @@ vector counterfactual_fec_rng(matrix Xf,
         sigma[n] = sigma_f[eid[n]];
     }
 
-    // Sample hurdle normal
+    // Sample hurdle normal and convert back to observation scale
     fec_exist = bernoulli_logit_rng(theta);
     fec_share = to_vector(normal_rng(mu, sigma));
-    fec_result = to_vector(fec_exist) .* fec_share;
+    fec_result = to_vector(fec_exist) .* inv_logit(fec_share);
 
     // Adjust the share of FEC contributions based on results and each case
     for (n in 1:N) {

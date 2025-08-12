@@ -27,7 +27,7 @@ data {
     array[H] int Sf;                    // Number of campaigns with FEC filings available
     array[H] int Kf;                    // Total number of campaigns per cycle
     array[E] int fec;                   // Whether (or not) FEC data is available for a given year
-    vector[N] Yf;                       // Logit-democratic share of FEC contributions
+    vector[N] Yf;                       // Democratic share of FEC contributions
 
     // Experience Observations
     array[2,H] int Ke;                  // Number of non-incumbents per party per cycle
@@ -40,7 +40,7 @@ data {
 
     // Counterfactual FEC Observations
     matrix[M,F] Xff;                    // Full matrix for FEC predictors
-    vector[M] Yff;                      // Logit-democratic share of FEC contributions
+    vector[M] Yff;                      // Democratic share of FEC contributions
 
     // Counterfactual Experience Observations
     matrix[M,2] Xfe;                    // Full matrix of experience levels
@@ -86,9 +86,7 @@ transformed data {
 
     // Estimate model on the logit scale
     vector[N] Y_logit = logit(Y);
-
-    // Reference FEC share in terms of %
-    vector[M] Yff_inv_logit = inv_logit(Yff);
+    vector[N] Yf_logit = logit(Yf);
 
     // Set FEC 'cases' based on FEC share
     // 1: D candidate has ~ 100% of reported FEC share
@@ -97,11 +95,11 @@ transformed data {
     // 4: Normal mix of reported FEC contributions
     vector[M] cases;
     for (m in 1:M) {
-        if (Yff_inv_logit[m] > 0.99) {
+        if (Yff[m] > 0.99) {
             cases[m] = 1;
-        } else if (Yff_inv_logit[m] < 0.01) {
+        } else if (Yff[m] < 0.01) {
             cases[m] = 2;
-        } else if (Yff_inv_logit[m] == 0.5) {
+        } else if (Yff[m] == 0.5) {
             cases[m] = 3;
         } else {
             cases[m] = 4;
@@ -221,7 +219,7 @@ model {
         target += normal_lpdf(Y_logit | mu, sigma_o);
         target += binomial_logit_lpmf(Sf | Kf, theta_f, fec);
         target += binomial_logit_lpmf(Ye | Ke, theta_e);
-        target += hurdle_normal_lpdf(Yf | alpha_f, mu_f, sigma_f, fec, eid);
+        target += hurdle_normal_lpdf(Yf_logit | alpha_f, mu_f, sigma_f, fec, eid);
     }
 }
 
