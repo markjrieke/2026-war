@@ -428,7 +428,9 @@ class WARResults:
             .unique('cid')
             .with_columns(
                 when(col.cid == 1)
-                .then(lit('Generic Challenger'))
+                .then(lit('Generic Republican Challenger'))
+                .when(col.cid == 2)
+                .then(lit('Generic Democratic Challenger'))
                 .otherwise(col.candidate)
                 .alias('candidate')
             )

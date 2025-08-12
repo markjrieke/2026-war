@@ -270,14 +270,17 @@ class WARData:
             mappings
             .unique('politician_id')
             .sort(['candidate', 'politician_id'])
-            .select(['candidate', 'politician_id'])
+            .select(['candidate', 'politician_id', 'party'])
             .with_columns(
                 when(col.politician_id.is_in(named_candidates))
                 .then(col.politician_id)
-                .otherwise(lit(0))
+                .when(col.party == 'DEM')
+                .then(lit(0))
+                .otherwise(lit(-1))
                 .rank('dense')
                 .alias('cid')
             )
+            .select(exclude('party'))
         )
 
         # Join in mapping ids
