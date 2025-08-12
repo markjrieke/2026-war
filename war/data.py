@@ -197,7 +197,6 @@ class WARData:
         # Set of candidates who have won a race during the modeled period
         winners = (
             house
-            .filter(col.uncontested == 0)
             .select(
                 col.cycle,
                 col.state_name,
@@ -217,7 +216,6 @@ class WARData:
         # Set of incumbents during the modeled period
         incumbents = (
             house
-            .filter(col.uncontested == 0)
             .select(
                 col.cycle,
                 col.state_name,
@@ -236,11 +234,31 @@ class WARData:
             )
         )
 
+        # Set of politicians who appear in the dataset multiple times
+        repeat_candidates = (
+            house
+            .select(['cycle', 'state_name', 'district', 'candidate_DEM', 'candidate_REP'])
+            .unpivot(
+                on=['candidate_DEM', 'candidate_REP'],
+                variable_name='party',
+                value_name='candidate',
+                index=['cycle', 'state_name', 'district']
+            )
+            .select(exclude('party'))
+            .join(
+                mappings.select(['cycle', 'state_name', 'district', 'candidate', 'politician_id']),
+                on=['cycle', 'state_name', 'district', 'candidate'],
+                how='inner'
+            )
+            .filter(col.politician_id.count().over('candidate') > 1)
+        )
+
         # Politician IDs of candidates who either were incumbents or won a race
         # during the modeled time period
         named_candidates = (
             winners
             .vstack(incumbents)
+            .vstack(repeat_candidates)
             .unique('politician_id')
             .sort(['candidate', 'politician_id'])
             ['politician_id']
