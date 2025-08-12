@@ -15,7 +15,7 @@ pols = pols %>%
   ungroup() %>%
   filter(representative != 'Uncontested')
 
-# filter to winning candidates OR candidates who appear twice+
+# retain all candidates (for prediction purposes)
 pols = pols %>% 
   group_by(representative) %>%
   mutate(winner = 
@@ -226,12 +226,13 @@ lm(dem_pct ~ 1  + WAR + abs(score) + dem_pres_twop_lag_lean_one - cycle,
 
 
 # redo elects, make everyone more moderate -----------------
+# we want to ask: what if everyone got 25% more moderate? what if they were all henry cuellar?
 library(mgcv)
 library(furrr)
 library(progressr)
 plan(multisession, workers = 9)
 
-NSim = 5000
+NSim = 10000
 
 cycle_sims = map_df(
   seq(2012,2024,2),
@@ -274,7 +275,7 @@ cycle_sims = map_df(
           # now for each candidate, predict WAR based on actual values, and hypo values
           sample_d$WAR_hat = predict(war_model, newdata = sample_d)
           sample_d$hypo_WAR_hat = predict(war_model, 
-                                          newdata = (sample_d %>% mutate(score = score + 1)))
+                                          newdata = (sample_d %>% mutate(score =-1)))
           
           sample_d$delta = sample_d$hypo_WAR_hat - sample_d$WAR_hat 
           
@@ -314,3 +315,4 @@ sims = cycle_sims %>%
 sims
 sims
 
+beepr::beep(2)
