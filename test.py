@@ -1,5 +1,3 @@
-from polars import read_parquet
-
 from argparse import ArgumentParser
 
 from war.data import WARData
