@@ -1,3 +1,9 @@
+# Some data files that are too big or we cannot release
+
+WARP-ideology-analysis/house_forecast_data_updated.csv
+WARP-ideology-analysis/dime_recipients_1979_2024.csv
+WARP-ideology-analysis/cand/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
