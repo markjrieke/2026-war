@@ -3,7 +3,7 @@ library(arrow)
 library(janitor)
 
 # read in all pols
-pols = read_parquet('full_data.parquet') %>%
+pols = read_parquet('../../out/summary/mappings/full_data.parquet') %>%
   select(M, cycle, state_name, district, dem_pct=pct, candidate_DEM, candidate_REP) %>%
   gather('party','representative', 6:7) %>%
   mutate(party = tolower(gsub('candidate_','',party))) 
@@ -24,7 +24,7 @@ pols = pols %>%
   ungroup() # %>% group_by(representative) %>% filter(n() > 5)
 
 # join WAR
-WAR = read_parquet('WAR.parquet') %>%
+WAR = read_parquet('../../out/summary/variables/WAR.parquet') %>%
   filter(quantile == 0.5)
 
 pols = pols %>% 
@@ -36,11 +36,11 @@ pols
 
 # by candidate name, join with something we can join to voteview
 cand = map_df(list.files('cand/',full.names = T),
-       function(fn){
-         read_csv(fn) %>% 
-           mutate(seat = as.numeric(seat))
-         }
-       ) %>%
+              function(fn){
+                read_csv(fn) %>% 
+                  mutate(seat = as.numeric(seat))
+              }
+) %>%
   mutate(chamber = ifelse(is.na(seat),'Senate','House'))
 
 cand = cand %>% 
@@ -117,7 +117,7 @@ dat %>%
 
 library(lme4)
 model = dat %>%
-  filter(uncontested == 0) %>%
+  filter(uncontested == 0,winner) %>%
   lmer(WAR*100 ~ 1 + abs(score) + (1 + abs(score) | cycle) , data = .)
 
 predict(model,
@@ -133,7 +133,7 @@ predict(model,
 # -3 ilhan omar
 
 # eda
-ggplot(dat[dat$cycle == 2024,], aes(x = abs(score), y = WAR*100)) + 
+ggplot(dat[dat$cycle == 2024 & dat$winner,], aes(x = abs(score), y = WAR*100)) + 
   geom_point(shape = 1,aes(col = party),show.legend = F) + 
   scale_color_manual(values=c('dem'='blue','rep'='red')) +
   geom_smooth(method = 'lm',col='gray40') +
@@ -144,7 +144,7 @@ ggplot(dat[dat$cycle == 2024,], aes(x = abs(score), y = WAR*100)) +
        title = 'Moderates no longer have significantly higher WAR',
        col = '')
 
-ggplot(dat, aes(x = abs(score), y = WAR*100)) + 
+ggplot(dat[dat$winner,], aes(x = abs(score), y = WAR*100)) + 
   geom_point(shape = 1) +
   geom_smooth(method = 'lm',aes(col = as.character(cycle)),show.legend = T, se = F) +
   theme_minimal() +
@@ -154,7 +154,7 @@ ggplot(dat, aes(x = abs(score), y = WAR*100)) +
        title = 'The electoral advantage of ideological moderation is declining',
        col = 'year')
 
-ggplot(dat, aes(x = abs(score), y = WAR*100)) + 
+ggplot(dat[dat$winner,], aes(x = abs(score), y = WAR*100)) + 
   geom_point(shape = 1,aes(col = party),show.legend = F) + 
   scale_color_manual(values=c('dem'='blue','rep'='red')) +
   geom_smooth(method = 'lm', aes (col = party), se=F,show.legend = F) +
@@ -167,19 +167,21 @@ ggplot(dat, aes(x = abs(score), y = WAR*100)) +
 
 lm(gen_vote_pct ~ I(WAR*100),
    data = 
-     dat[(dat$uncontested == 0 & 
+     dat[(dat$winner & 
+            dat$uncontested == 0 & 
             dat$gen_vote_pct > 10 & 
             dat$gen_vote_pct < 90 &
             dat$WAR*100 < 10 &
             dat$WAR*100 > -10),]
-   ) %>% summary
+) %>% summary
 
 
-ggplot(dat[(dat$uncontested == 0 & 
-             dat$gen_vote_pct > 10 & 
-             dat$gen_vote_pct < 90 &
-             dat$WAR*100 < 20 &
-             dat$WAR*100 > -20),], 
+ggplot(dat[(dat$winner & 
+              dat$uncontested == 0 & 
+              dat$gen_vote_pct > 10 & 
+              dat$gen_vote_pct < 90 &
+              dat$WAR*100 < 20 &
+              dat$WAR*100 > -20),], 
        aes(x = WAR*100, y = gen_vote_pct-mean(gen_vote_pct,na.rm=T))) + 
   geom_point(shape = 1) + 
   geom_smooth(method = 'lm') +
@@ -193,17 +195,18 @@ ggplot(dat[(dat$uncontested == 0 &
 
 lm(WAR ~ abs(score), 
    data = dat %>% 
-     filter(cycle == 2024)) %>% summary
+     filter(cycle == 2024, winner)) %>% summary
 
 # variance explained by WAR? ----------------------------------------------
 # trim data set
-temp = dat[(dat$uncontested == 0 & 
-               dat$dem_pct > .10 & 
-               dat$dem_pct < .90 &
-               dat$WAR*100 < 20 &
-               dat$WAR*100 > -20 &
+temp = dat[(dat$winner & 
+              dat$uncontested == 0 & 
+              dat$dem_pct > .10 & 
+              dat$dem_pct < .90 &
+              dat$WAR*100 < 20 &
+              dat$WAR*100 > -20 &
               dat$party == 'dem'),]
-        
+
 # add race-level vars
 races = read_csv('house_forecast_data_updated.csv') %>% select(-uncontested)
 dat = dat %>% left_join(races, by = c('cycle','state_name','district'))
@@ -211,83 +214,103 @@ dat = dat %>% left_join(races, by = c('cycle','state_name','district'))
 
 # regression on partisanship
 lm(dem_pct ~ 1 + dem_pres_twop_lag_lean_one - cycle,
-   data = dat[dat$cycle == 2024 & dat$party == 'dem',] ) %>% summary
+   data = dat[dat$cycle == 2024 & dat$party == 'dem' & dat$winner,] ) %>% summary
 
 
 lm(dem_pct ~ 1  + abs(score) + dem_pres_twop_lag_lean_one - cycle,
-   data = dat[dat$cycle == 2024 & dat$party == 'dem',] ) %>% summary
+   data = dat[dat$cycle == 2024 & dat$party == 'dem' & dat$winner,] ) %>% summary
 
 
 lm(dem_pct ~ 1  + WAR + abs(score) + dem_pres_twop_lag_lean_one - cycle,
-   data = dat[dat$cycle == 2024 & dat$party == 'dem',] ) %>% summary
+   data = dat[dat$cycle == 2024 & dat$party == 'dem' & dat$winner,] ) %>% summary
 
 
 # redo elects, make everyone more moderate -----------------
 library(mgcv)
-cycle_sims = map_df(seq(2012,2024,2),
-       function(yr){
-         print(yr)
-         # get data
-         tmp = dat %>% filter(cycle == yr)
-         
-         # get dems
-         dems = tmp[tmp$party == 'dem',]
-         
-         # fill in gaps
-         ideo_model = lm(score ~ dem_pres_twop_lag_lean, data = dems)
-         dems = dems %>%
-           mutate(score = ifelse(is.na(score), predict(ideo_model, newdata = .), score))
-       
-         # bootstrap
-         sims = map_df(1:5000,
-                function(i){
-                  # resample
-                  dems = sample_n(tbl = dems, size = nrow(dems), replace = T)
-                  
-                  # get relationship between covars and vote pct
-                  vote_model = lm(dem_pct ~ 1 +
-                                    WAR + 
-                                    dem_pres_twop_lag_lean + 
-                                    incumbent +
-                                    experience +
-                                    has_fec:dem_share_fec
-                                    , data = dems)
-                  
-                  # get relationship between ideo and WAR, for winners
-                  war_model = gam(WAR ~ s(score), data = dems)
-                  
-                  # now for each candidate, predict WAR based on actual values, and hypo values
-                  dems$WAR_hat = predict(war_model, newdata = dems)
-                  dems$hypo_WAR_hat = predict(war_model, 
-                                              newdata = (dems %>% mutate(score = score + 1)))
-                  
-                  dems$delta = dems$hypo_WAR_hat - dems$WAR_hat 
-                  
-                  # add the delta to WAR
-                  dems$WAR = dems$WAR + dems$delta
-                  
-                  # re-predict dem_pct
-                  dems$dem_pct_hat = predict(vote_model, newdata = dems)
-                  
-                  # sum up seats
-                  tibble(cycle = yr, iter = i, 
-                         dem_chg = sum(dems$dem_pct_hat > 0.5) - 
-                           sum(dems$dem_pct > 0.5)) %>%
-                    
-                    return
-                })
-         
-         return(sims)
-         
-       })
+library(furrr)
+library(progressr)
+plan(multisession, workers = 9)
+
+NSim = 5000
+
+cycle_sims = map_df(
+  seq(2012,2024,2),
+  function(yr){
+    print(yr)
+    # get data
+    tmp = dat %>% filter(cycle == yr)
+    
+    # get dems
+    dems = tmp[tmp$party == 'dem',]
+    
+    # fill in gaps
+    ideo_model = lm(score ~ dem_pres_twop_lag_lean, data = dems)
+    dems = dems %>%
+      mutate(score = ifelse(is.na(score), predict(ideo_model, newdata = .), score))
+    
+    with_progress({
+      p = progressor(steps = NSim)
+      
+      # bootstrap
+      sims = future_map_dfr(
+        .x = 1:NSim,
+        .f = function(i){
+          p()
+          # resample
+          sample_d = sample_n(tbl = dems, size = nrow(dems), replace = T)
+          
+          # get relationship between covars and vote pct
+          vote_model = lm(dem_pct ~ 1 +
+                            WAR + 
+                            dem_pres_twop_lag_lean + 
+                            incumbent +
+                            experience +
+                            has_fec:dem_share_fec
+                          , data = sample_d %>% filter(uncontested == 0))
+          
+          # get relationship between ideo and WAR, for winners
+          war_model = gam(WAR ~ s(score), data = sample_d)
+          
+          # now for each candidate, predict WAR based on actual values, and hypo values
+          sample_d$WAR_hat = predict(war_model, newdata = sample_d)
+          sample_d$hypo_WAR_hat = predict(war_model, 
+                                          newdata = (sample_d %>% mutate(score = score + 1)))
+          
+          sample_d$delta = sample_d$hypo_WAR_hat - sample_d$WAR_hat 
+          
+          # add the delta to WAR
+          sample_d$WAR = sample_d$WAR + sample_d$delta
+          
+          # re-predict dem_pct
+          sample_d$dem_pct_hat = 
+            ifelse(sample_d$uncontested == 1,
+                   sample_d$dem_pct,
+                   predict(vote_model, newdata = sample_d)
+            )
+          
+          # sum up seats
+          tibble(cycle = yr, iter = i, 
+                 dem_chg = sum(sample_d$dem_pct_hat > 0.5) - 
+                   sum(sample_d$dem_pct > 0.5)) %>%
+            return
+        },
+        .options = furrr_options(seed = 538)
+      )
+    })
+    
+    return(sims)
+    
+  })
+
+cycle_sims
 
 # summarise
-sims = sims %>%
+sims = cycle_sims %>%
   group_by(cycle) %>%
   summarise(median = median(dem_chg),
             upper = quantile(dem_chg,0.975),
             lower = quantile(dem_chg,0.025)
   )
 sims
-print(sims)
+sims
 
