@@ -101,7 +101,7 @@ class WARData:
 
         # Map candidates to races
         mappings = (
-            read_csv('data/candidate_filters.csv')
+            read_csv('data/house_candidate_filters.csv')
             .with_columns(col.exclusions.fill_null('y'))
             .filter(col.exclusions != 'x')
             .select(exclude('exclusions'))

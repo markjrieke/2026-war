@@ -1,0 +1,1961 @@
+cycle,state_name,district,party,candidate,politician_id,exclusions
+1998,Alabama,Class III,DEM,Clayton Suddith,2461,
+1998,Alabama,Class III,REP,Richard C. Shelby,363,
+1998,Alaska,Class III,GRE,Jeffrey Gottlieb,13553,x
+1998,Alaska,Class III,DEM,Joseph A. Sonneman,13552,
+1998,Alaska,Class III,REP,Frank Murkowski,9358,
+1998,Alaska,Class III,LIB,Scott A. Kohlhaas,4543,x
+1998,Arizona,Class III,REP,John McCain,43,
+1998,Arizona,Class III,DEM,Edward Ranger,9844,
+1998,Arizona,Class III,LIB,John C. Zajac,12661,x
+1998,Arizona,Class III,REF,Robert Park,12662,x
+1998,Arkansas,Class III,REP,Fay Boozman,2462,
+1998,Arkansas,Class III,REF,Charles E. Heffley,12663,x
+1998,Arkansas,Class III,DEM,Blanche Lincoln,379,
+1998,California,Class III,PAF,Ophie C. Beltran,12665,x
+1998,California,Class III,NLP,Brian M. Rees,11528,x
+1998,California,Class III,AIP,H. Joseph Perrin,12664,x
+1998,California,Class III,DEM,Barbara Boxer,66,
+1998,California,Class III,REP,Matt Fong,2464,
+1998,California,Class III,REF,Timothy R. Erich,12666,x
+1998,California,Class III,LIB,Ted Brown,12445,x
+1998,Colorado,Class III,DEM,Dottie Lamm,2466,
+1998,Colorado,Class III,REP,Ben Nighthorse Campbell,2465,
+1998,Colorado,Class III,LIB,David S. Segal,12668,x
+1998,Colorado,Class III,CON,Kevin P. Swanson,12667,x
+1998,Colorado,Class III,OTH,John J. Heckman,11837,x
+1998,Colorado,Class III,OTH,Gary Swing,3868,x
+1998,Colorado,Class III,NLP,Jeffrey Lee Peckman,12669,x
+1998,Connecticut,Class III,CNC,William Kozak,9854,x
+1998,Connecticut,Class III,OTH,Lois Grasso,12670,x
+1998,Connecticut,Class III,REP,Gary A. Franks,2467,
+1998,Connecticut,Class III,DEM,Christopher J. Dodd,45,
+1998,Connecticut,Class III,LIB,Wildey Judd Moore,11532,x
+1998,Florida,Class III,REP,Charlie Crist,479,
+1998,Florida,Class III,DEM,Bob Graham,141,
+1998,Georgia,Class III,REP,Paul Coverdell,2468,
+1998,Georgia,Class III,LIB,Bert Loftman,12671,x
+1998,Georgia,Class III,DEM,Michael J. Coles,2469,
+1998,Hawaii,Class III,LIB,Lloyd Jeffrey Mallan,11544,x
+1998,Hawaii,Class III,DEM,Daniel K. Inouye,504,
+1998,Hawaii,Class III,REP,Crystal Young,13554,
+1998,Idaho,Class III,NLP,George J. Mansfeld,13555,x
+1998,Idaho,Class III,REP,Mike Crapo,525,
+1998,Idaho,Class III,DEM,Bill Mauk,2473,
+1998,Illinois,Class III,DEM,Carol Moseley-Braun,140,
+1998,Illinois,Class III,REF,Don A. Torgersen,12672,x
+1998,Illinois,Class III,REP,Peter G. Fitzgerald,2474,
+1998,Illinois,Class III,UST,Bud Stalker,12673,x
+1998,Indiana,Class III,DEM,Evan Bayh,60,
+1998,Indiana,Class III,REP,Paul Helmke,2475,
+1998,Indiana,Class III,LIB,Rebecca Sink-Burris,1356,x
+1998,Iowa,Class III,NLP,Susan Marcus,12674,x
+1998,Iowa,Class III,REP,Chuck Grassley,517,
+1998,Iowa,Class III,DEM,David Osterberg,2472,
+1998,Iowa,Class III,SWP,Margaret Trowe,12675,x
+1998,Kansas,Class III,DEM,Paul Feleciano,2476,
+1998,Kansas,Class III,REP,Sam Brownback,71,
+1998,Kansas,Class III,REF,Alvin L. Bauman,12677,x
+1998,Kansas,Class III,LIB,Thomas L. Oyler,12676,x
+1998,Kentucky,Class III,REF,Charles R. Arbegust,12678,x
+1998,Kentucky,Class III,REP,Jim Bunning,2001,
+1998,Kentucky,Class III,DEM,Scotty Baesler,2477,
+1998,Louisiana,Class III,DEM,Sam Houston Melton,12394,x
+1998,Louisiana,Class III,REP,James J. Donelon,13569,
+1998,Louisiana,Class III,DEM,John B. Breaux,2478,
+1998,Louisiana,Class III,LIB,Jeffery H. Diket,13567,x
+1998,Louisiana,Class III,OTH,Luther Devine Knox,13568,x
+1998,Louisiana,Class III,UNK,Raymond Brown,6379,x
+1998,Louisiana,Class III,REP,Messiah Darryl Paul Ward,11866,x
+1998,Louisiana,Class III,NLP,Martin A. Rosenthal,13566,x
+1998,Maryland,Class III,DEM,Barbara A. Mikulski,594,
+1998,Maryland,Class III,REP,Ross Z. Pierpont,2309,
+1998,Missouri,Class III,REF,James F. Newport,12679,x
+1998,Missouri,Class III,LIB,Tamara A. Millay,11853,x
+1998,Missouri,Class III,DEM,Jay Nixon,2480,
+1998,Missouri,Class III,UST,James C. Frazier,12680,x
+1998,Missouri,Class III,REP,Christopher S. Bond,316,
+1998,Nevada,Class III,NLP,Michael E. Williams,12682,x
+1998,Nevada,Class III,DEM,Harry Reid,718,
+1998,Nevada,Class III,REP,John Ensign,1022,
+1998,Nevada,Class III,LIB,Michael Cloud,12681,x
+1998,New Hampshire,Class III,IND,Roy Kendel,12367,x
+1998,New Hampshire,Class III,LIB,Brian A. Christeson,12368,x
+1998,New Hampshire,Class III,REP,Judd Gregg,2029,
+1998,New Hampshire,Class III,DEM,George Condodemetraky,2483,
+1998,New York,Class III,REP,Alfonse M. D'Amato,2484,
+1998,New York,Class III,SWP,Rose Ana Berbeo,12686,x
+1998,New York,Class III,GRE,Joel Kovel,12683,x
+1998,New York,Class III,OTH,Corinne E Kurtz,12685,x
+1998,New York,Class III,LIB,William P. McMillen,12684,x
+1998,New York,Class III,DEM,Charles E. Schumer,744,
+1998,North Carolina,Class III,DEM,John Edwards,44,
+1998,North Carolina,Class III,LIB,Barbara Howe,9224,x
+1998,North Carolina,Class III,REP,Lauch Faircloth,2481,
+1998,North Dakota,Class III,REP,Donna L. Nalewaja,13723,
+1998,North Dakota,Class III,REF,Harley J. McLain,13722,x
+1998,North Dakota,Class III,DEM,Byron L. Dorgan,2027,
+1998,Ohio,Class III,REP,George V. Voinovich,2043,
+1998,Ohio,Class III,DEM,Mary Boyle,2485,
+1998,Oklahoma,Class III,IND,Mike Morris,12688,x
+1998,Oklahoma,Class III,REP,Don Nickles,2486,
+1998,Oklahoma,Class III,DEM,Don Carroll,2487,
+1998,Oklahoma,Class III,IND,Argus W. Yandell,12687,x
+1998,Oregon,Class III,LIB,James M. Brewster,13886,x
+1998,Oregon,Class III,NLP,Michael A. Campbell,13887,x
+1998,Oregon,Class III,SUS,Dean M. Braa,13889,x
+1998,Oregon,Class III,PG,Karyn R. Moskowitz,13888,x
+1998,Oregon,Class III,REP,John Lim,2488,
+1998,Oregon,Class III,DEM,Ron Wyden,788,
+1998,Pennsylvania,Class III,REP,Arlen Specter,194,
+1998,Pennsylvania,Class III,CON,Dean L. Snyder,12689,x
+1998,Pennsylvania,Class III,LIB,Jack Iannantuono,12690,x
+1998,Pennsylvania,Class III,DEM,Bill Lloyd,2489,
+1998,South Carolina,Class III,DEM,Ernest F. Hollings,291,
+1998,South Carolina,Class III,REP,Bob Inglis,2490,
+1998,South Carolina,Class III,LIB,Richard T. Quillian,12691,x
+1998,South Dakota,Class III,LIB,Byron Dale,12692,x
+1998,South Dakota,Class III,REP,Ron Schmidt,2491,
+1998,South Dakota,Class III,DEM,Tom Daschle,76,
+1998,Utah,Class III,DEM,Scott Leckman,2492,
+1998,Utah,Class III,REP,Robert F. Bennett,2076,
+1998,Utah,Class III,IAP,Gary R. Van Horn,2078,x
+1998,Vermont,Class III,IND,Barry Nelson,14037,x
+1998,Vermont,Class III,REP,Fred Tuttle,2493,
+1998,Vermont,Class III,LIB,Hugh Douglas,11587,x
+1998,Vermont,Class III,DEM,Patrick J. Leahy,891,
+1998,Vermont,Class III,GRT,Robert Melamede,14036,x
+1998,Vermont,Class III,LBU,Jerry E. Levy,11586,x
+1998,Washington,Class III,REP,Linda Smith,2494,
+1998,Washington,Class III,DEM,Patty Murray,907,
+1998,Wisconsin,Class III,DEM,Russ Feingold,64,
+1998,Wisconsin,Class III,UST,Robert Raymond,5709,x
+1998,Wisconsin,Class III,LIB,Thomas G. Ender,12693,x
+1998,Wisconsin,Class III,IND,Eugene A. Hem,11588,x
+1998,Wisconsin,Class III,REP,Mark W. Neumann,2495,
+2000,Arizona,Class I,REP,Jon Kyl,942,
+2000,Arizona,Class I,IND,William Toel,11531,x
+2000,Arizona,Class I,LIB,Barry Hess,6625,x
+2000,Arizona,Class I,GRE,Vance Hansen,11530,x
+2000,California,Class I,REF,Jose Luis Camahort,11529,x
+2000,California,Class I,LIB,Gail Katherine Lightfoot,6183,x
+2000,California,Class I,AIP,Diane Beall Templin,11526,x
+2000,California,Class I,GRE,Medea Susan Benjamin,11527,x
+2000,California,Class I,NLP,Brian M. Rees,11528,x
+2000,California,Class I,REP,Tom Campbell,413,
+2000,California,Class I,DEM,Dianne Feinstein,943,
+2000,Connecticut,Class I,DEM,Joseph I. Lieberman,79,
+2000,Connecticut,Class I,REP,Phil Giordano,2263,
+2000,Connecticut,Class I,LIB,Wildey Judd Moore,11532,x
+2000,Connecticut,Class I,CNC,William Kozak,9854,x
+2000,Delaware,Class I,DEM,Thomas R. Carper,951,
+2000,Delaware,Class I,LIB,J. Burke Morrison,11534,x
+2000,Delaware,Class I,NLP,Robert E. Mattson,11535,x
+2000,Delaware,Class I,CON,Mark E. Dankof,11533,x
+2000,Delaware,Class I,REP,William V. Roth Jr.,2533,
+2000,Florida,Class I,REF,Huey Joel Deckard,10238,x
+2000,Florida,Class I,IND,Willie Logan,2271,x
+2000,Florida,Class I,NLP,Joe Simonetta,11537,x
+2000,Florida,Class I,IND,Andy Martin,11541,x
+2000,Florida,Class I,NPA,Darrell L. McCormick,11536,x
+2000,Florida,Class I,REP,Bill McCollum,458,
+2000,Florida,Class I,DEM,Bill Nelson,953,
+2000,Georgia,Class III,GRE,Jeff Gates,11538,x
+2000,Georgia,Class III,DEM,Zell Bryan Miller,253,
+2000,Georgia,Class III,REP,Mack Mattingly,2286,
+2000,Georgia,Class III,IND,Winnie Walsh,11539,x
+2000,Georgia,Class III,REP,Ben Ballenger,11542,x
+2000,Georgia,Class III,LIB,Paul Robert MacGregor,11540,x
+2000,Hawaii,Class I,DEM,Daniel K. Akaka,963,
+2000,Hawaii,Class I,CON,David Porter,11543,x
+2000,Hawaii,Class I,REP,John Stanley Carroll,6125,
+2000,Hawaii,Class I,NLP,Lauri A. Clegg,11545,x
+2000,Hawaii,Class I,LIB,Lloyd Jeffrey Mallan,11544,x
+2000,Indiana,Class I,DEM,David L. Johnson,2300,
+2000,Indiana,Class I,LIB,Clyde Paul Hager,13551,x
+2000,Indiana,Class I,REP,Richard G. Lugar,193,
+2000,Maine,Class I,DEM,Mark W. Lawrence,2314,
+2000,Maine,Class I,REP,Olympia J. Snowe,983,
+2000,Maryland,Class I,REP,Paul H. Rappaport,2307,
+2000,Maryland,Class I,DEM,Paul S. Sarbanes,2306,
+2000,Massachusetts,Class I,CON,Philip F. Lawler,11546,x
+2000,Massachusetts,Class I,DEM,Edward M. Kennedy,255,
+2000,Massachusetts,Class I,LIB,Carla A. Howell,2302,x
+2000,Massachusetts,Class I,NLP,Dale E. Friedgen,11549,x
+2000,Massachusetts,Class I,REP,Jack E. Robinson,11548,
+2000,Massachusetts,Class I,OTH,Philip Hyde,13583,x
+2000,Michigan,Class I,DEM,Debbie Stabenow,984,
+2000,Michigan,Class I,NLP,William B. Quarton,11551,x
+2000,Michigan,Class I,LIB,Michael R. Corliss,11550,x
+2000,Michigan,Class I,GRE,Matthew Abel,10233,x
+2000,Michigan,Class I,REF,Mark A. Forton,10234,x
+2000,Michigan,Class I,UST,John S. Mangopoulos,11552,x
+2000,Michigan,Class I,REP,Spencer Abraham,2315,
+2000,Minnesota,Class I,LIB,Erik D. Pakieser,11555,x
+2000,Minnesota,Class I,CON,David H. Swan,11553,x
+2000,Minnesota,Class I,REP,Rod Grams,2320,
+2000,Minnesota,Class I,GRT,David Daniels,11554,x
+2000,Minnesota,Class I,DEM,Mark Dayton,621,
+2000,Minnesota,Class I,SWP,Rebecca Ellis,11556,x
+2000,Minnesota,Class I,IDP,Jim Gibson,2322,x
+2000,Mississippi,Class I,LIB,Lewis Napper,11558,x
+2000,Mississippi,Class I,REF,Shawn R. O'Hara,4699,x
+2000,Mississippi,Class I,IND,Jim Giles,11557,x
+2000,Mississippi,Class I,DEM,Troy Brown,2345,
+2000,Mississippi,Class I,REP,Trent Lott,1801,
+2000,Missouri,Class I,DEM,Mel Carnahan,2336,
+2000,Missouri,Class I,REF,Hugh Foley,10235,x
+2000,Missouri,Class I,LIB,Grant Samuel Stauffer,13686,x
+2000,Missouri,Class I,NLP,Charles Dockins,11561,x
+2000,Missouri,Class I,REP,John Ashcroft,178,
+2000,Missouri,Class I,GRE,Evaline Taylor,11559,x
+2000,Montana,Class I,DEM,Brian Schweitzer,2354,
+2000,Montana,Class I,REF,Gary Lee,11226,x
+2000,Montana,Class I,REP,Conrad Burns,1806,
+2000,Nebraska,Class I,DEM,Ben Nelson,1006,
+2000,Nebraska,Class I,REP,Don Stenberg,1008,
+2000,Nevada,Class I,REP,John Ensign,1022,
+2000,Nevada,Class I,DEM,Ed Bernstein,2377,
+2000,Nevada,Class I,IAP,Ernie Berghof,11562,x
+2000,Nevada,Class I,LIB,J.J. Johnson,11563,x
+2000,Nevada,Class I,OTH,Bill Grutzmacher,11564,x
+2000,Nevada,Class I,GRE,Kathryn Rusco,9855,x
+2000,New Jersey,Class I,OTH,J. M. Carter,11165,x
+2000,New Jersey,Class I,GRE,Bruce Afran,9856,x
+2000,New Jersey,Class I,CRV,Lorraine LaNeve,11567,x
+2000,New Jersey,Class I,SUS,Gregory Pason,6338,x
+2000,New Jersey,Class I,IND,Dennis Arthur Breen,5999,x
+2000,New Jersey,Class I,REP,Bob Franks,2364,
+2000,New Jersey,Class I,OTH,George Gostigian,11569,x
+2000,New Jersey,Class I,DEM,Jon Stevens Corzine,8039,
+2000,New Jersey,Class I,REF,Pat DiNizio,11565,x
+2000,New Jersey,Class I,SWP,Nancy Rosenstock,11568,x
+2000,New Jersey,Class I,LIB,Emerson Ellett,11566,x
+2000,New Mexico,Class I,DEM,Jeff Bingaman,1014,
+2000,New Mexico,Class I,REP,Bill Redmond,2375,
+2000,New York,Class I,CON,Louis Wein,11570,x
+2000,New York,Class I,REP,Rick Lazio,720,
+2000,New York,Class I,GRE,Mark J. Dunau,10236,x
+2000,New York,Class I,IDP,Jeffrey E. Graham,11571,x
+2000,New York,Class I,SWP,Jacob J. Perasso,11573,x
+2000,New York,Class I,DEM,Hillary Rodham Clinton,28,
+2000,New York,Class I,LIB,John Clifton,9309,x
+2000,New York,Class I,RTL,John O. Adefope,11572,x
+2000,North Dakota,Class I,DEM,Kent Conrad,1815,
+2000,North Dakota,Class I,REP,Duane Sand,1076,
+2000,Ohio,Class I,LIB,John R. McAlister,9858,x
+2000,Ohio,Class I,NLP,John Eastman,9422,x
+2000,Ohio,Class I,DEM,Ted Celeste,2395,
+2000,Ohio,Class I,REP,Mike DeWine,1842,
+2000,Pennsylvania,Class I,REP,Rick Santorum,10,
+2000,Pennsylvania,Class I,DEM,Ron Klink,2405,
+2000,Pennsylvania,Class I,LIB,John J. Featherman,5335,x
+2000,Pennsylvania,Class I,CON,Lester B. Searer,11574,x
+2000,Pennsylvania,Class I,REF,Robert E. Domske,10237,x
+2000,Rhode Island,Class I,REP,Lincoln Chafee,822,
+2000,Rhode Island,Class I,DEM,Robert A. Weygand,2413,
+2000,Rhode Island,Class I,REF,Christopher F. Young,1677,x
+2000,Rhode Island,Class I,IND,Kenneth P. Proulx,11575,x
+2000,Tennessee,Class I,IND,Charles F. Johnson,11576,x
+2000,Tennessee,Class I,REP,Bill Frist,58,
+2000,Tennessee,Class I,GRE,Tom Burrell,9859,x
+2000,Tennessee,Class I,IND,David Jarrod Ownby,11578,x
+2000,Tennessee,Class I,IND,Joel Kinstle,11579,x
+2000,Tennessee,Class I,DEM,Jeff Clark,2416,
+2000,Tennessee,Class I,IND,Robert O. Watson,11577,x
+2000,Texas,Class I,DEM,Gene Kelly,1703,
+2000,Texas,Class I,GRE,Douglas S. Sandage,11580,x
+2000,Texas,Class I,LIB,Mary J. Ruwart,11581,x
+2000,Texas,Class I,REP,Kay Bailey Hutchison,857,
+2000,Utah,Class I,LIB,Jim Dexter,9848,x
+2000,Utah,Class I,REP,Orrin G. Hatch,168,
+2000,Utah,Class I,IAP,Carlton E. Bowen,11582,x
+2000,Utah,Class I,DEM,Scott N. Howell,1223,
+2000,Vermont,Class I,LBU,Jerry E. Levy,11586,x
+2000,Vermont,Class I,DEM,Ed Flanagan,2432,
+2000,Vermont,Class I,CON,Charles W. Russell,11583,x
+2000,Vermont,Class I,GRT,Billy Greer,11584,x
+2000,Vermont,Class I,IND,Rick Hubbard,11585,x
+2000,Vermont,Class I,LIB,Hugh Douglas,11587,x
+2000,Vermont,Class I,REP,James M. Jeffords,2565,
+2000,Virginia,Class I,DEM,Charles S. Robb,229,
+2000,Virginia,Class I,REP,George F. Allen,61,
+2000,Washington,Class I,REP,Slade Gorton,2440,
+2000,Washington,Class I,DEM,Maria Cantwell,1066,
+2000,Washington,Class I,LIB,Jeff E. Jared,9849,x
+2000,West Virginia,Class I,DEM,Robert C. Byrd,296,
+2000,West Virginia,Class I,REP,David T. Gallaher,9850,
+2000,West Virginia,Class I,LIB,Francis Joseph Whelan,9852,x
+2000,Wisconsin,Class I,REP,John Gillespie,2447,
+2000,Wisconsin,Class I,LIB,Tim C. Peterson,9860,x
+2000,Wisconsin,Class I,IND,Eugene A. Hem,11588,x
+2000,Wisconsin,Class I,CON,Robert Raymond,5709,x
+2000,Wisconsin,Class I,DEM,Herb Kohl,1068,
+2000,Wyoming,Class I,DEM,Mel Logan,2456,
+2000,Wyoming,Class I,LIB,Margaret Dawson,2457,x
+2000,Wyoming,Class I,REP,Craig Thomas,1895,
+2002,Alabama,Class II,LIB,Jeff Allen,2098,x
+2002,Alabama,Class II,DEM,Susan Parker,2097,
+2002,Alabama,Class II,REP,Jeff Sessions,1536,
+2002,Alaska,Class II,AKI,Jim Dore,11835,x
+2002,Alaska,Class II,GRE,Jim Sykes,1899,x
+2002,Alaska,Class II,LIB,Leonard J. Karpinski,14073,x
+2002,Alaska,Class II,DEM,Frank J. Vondersaar,3668,
+2002,Alaska,Class II,REP,Ted Stevens,1527,
+2002,Arkansas,Class II,DEM,Mark L. Pryor,1541,
+2002,Arkansas,Class II,REP,Tim Hutchinson,2100,
+2002,Colorado,Class II,CON,Douglas Campbell,3851,x
+2002,Colorado,Class II,LIB,Rick Stanley,2104,x
+2002,Colorado,Class II,OTH,John J. Heckman,11837,x
+2002,Colorado,Class II,REP,Wayne A. Allard,2102,
+2002,Colorado,Class II,DEM,Tom Strickland,2103,
+2002,Delaware,Class II,DEM,Joe Biden,42,
+2002,Delaware,Class II,NLP,Robert E. Mattson,11535,x
+2002,Delaware,Class II,IDE,Maurice J. Barros,11839,x
+2002,Delaware,Class II,LIB,Raymond T. Buranello,11840,x
+2002,Delaware,Class II,REP,Raymond J. Clatworthy,2106,
+2002,Georgia,Class II,REP,Saxby Chambliss,1548,
+2002,Georgia,Class II,DEM,Max Cleland,2110,
+2002,Georgia,Class II,LIB,Claude Thomas,11228,x
+2002,Idaho,Class II,REP,Larry E. Craig,2118,
+2002,Idaho,Class II,LIB,Donovan Bramwell,11841,x
+2002,Idaho,Class II,DEM,Alan Blinken,2119,
+2002,Illinois,Class II,DEM,Richard J. Durbin,1574,
+2002,Illinois,Class II,REP,Jim Durkin,2123,
+2002,Illinois,Class II,LIB,Steven Burgauer,2124,x
+2002,Iowa,Class II,LIB,Richard J. Moore,11842,x
+2002,Iowa,Class II,REP,Greg Ganske,2114,
+2002,Iowa,Class II,DEM,Tom Harkin,221,
+2002,Iowa,Class II,GRE,Timothy A. Harthan,11205,x
+2002,Kansas,Class II,REP,Pat Roberts,1580,
+2002,Kansas,Class II,REF,George H. Cook,11843,x
+2002,Kansas,Class II,LIB,Steven A. Rosile,1998,x
+2002,Kentucky,Class II,REP,Mitch McConnell,1585,
+2002,Kentucky,Class II,DEM,Lois Combs Weinberg,9872,
+2002,Louisiana,Class II,UNK,Gary D. Robbins,11845,x
+2002,Louisiana,Class II,REP,John C. Cooksey,9862,x
+2002,Louisiana,Class II,DEM,James Lemann,11844,x
+2002,Louisiana,Class II,REP,Anthony Richard Perkins,10269,x
+2002,Louisiana,Class II,DEM,Mary L. Landrieu,1594,
+2002,Louisiana,Class II,DEM,Raymond Brown,6379,x
+2002,Louisiana,Class II,REP,Suzanne Haik Terrell,9861,
+2002,Louisiana,Class II,REP,Ernest Edward Skillman,11846,x
+2002,Louisiana,Class II,UNK,Patrick E. Landry,9732,x
+2002,Maine,Class II,REP,Susan M. Collins,1602,
+2002,Maine,Class II,DEM,Chellie Pingree,600,
+2002,Massachusetts,Class II,LIB,Michael E. Cloud,11847,x
+2002,Massachusetts,Class II,DEM,John Kerry,59,
+2002,Michigan,Class II,DEM,Carl Levin,1606,
+2002,Michigan,Class II,NLP,Doug Dern,10956,x
+2002,Michigan,Class II,REF,John S. Mangopoulos,11552,x
+2002,Michigan,Class II,GRE,Eric J. Borregard,11849,x
+2002,Michigan,Class II,REP,Andrew Rocky Raczkowski,8433,
+2002,Minnesota,Class II,DEM,Paul Wellstone,173,x
+2002,Minnesota,Class II,IDP,Jim R.C. Moore,11246,x
+2002,Minnesota,Class II,CON,Miro Drago Kovatchevitch,11850,x
+2002,Minnesota,Class II,GRE,Raymond Tricomo,11227,x
+2002,Minnesota,Class II,DEM,Walter F. Mondale,278,
+2002,Minnesota,Class II,REP,Norm Coleman,1611,
+2002,Mississippi,Class II,REF,Shawn R. O'Hara,4699,x
+2002,Mississippi,Class II,REP,Thad Cochran,1626,
+2002,Missouri,Class I,DEM,Jean Carnahan,2153,
+2002,Missouri,Class I,LIB,Tamara A. Millay,11853,x
+2002,Missouri,Class I,REP,Jim Talent,1793,
+2002,Missouri,Class I,GRE,Daniel Romano,11852,x
+2002,Montana,Class II,DEM,Max Baucus,1629,
+2002,Montana,Class II,GRE,Bob Kelleher,1630,x
+2002,Montana,Class II,REP,Mike Taylor,2164,
+2002,Montana,Class II,LIB,Stan Jones,9236,x
+2002,Nebraska,Class II,DEM,Charlie Matulka,2183,
+2002,Nebraska,Class II,REP,Chuck Hagel,54,
+2002,Nebraska,Class II,IND,Phil Chase,11854,x
+2002,Nebraska,Class II,LIB,John J. Graziano,11855,x
+2002,New Hampshire,Class II,DEM,Jeanne Shaheen,1649,
+2002,New Hampshire,Class II,LIB,Ken Blevens,1438,x
+2002,New Hampshire,Class II,REP,John E. Sununu,1650,
+2002,New Jersey,Class II,DEM,Frank R. Lautenberg,1652,
+2002,New Jersey,Class II,SUS,Gregory Pason,6338,x
+2002,New Jersey,Class II,LIB,Elizabeth Macron,11151,x
+2002,New Jersey,Class II,GRE,John Glick,11150,x
+2002,New Jersey,Class II,IND,Norman E. Wahner,11856,x
+2002,New Jersey,Class II,REP,Douglas R. Forrester,2194,
+2002,New Mexico,Class II,REP,Pete V. Domenici,2201,
+2002,New Mexico,Class II,DEM,Gloria Tristani,2202,
+2002,North Carolina,Class II,DEM,Erskine Bowles,2023,
+2002,North Carolina,Class II,LIB,Sean Newton Haugh,4534,x
+2002,North Carolina,Class II,REP,Elizabeth H. Dole,170,
+2002,Oklahoma,Class II,REP,James M. Inhofe,1663,
+2002,Oklahoma,Class II,IND,James Germalic,2206,x
+2002,Oklahoma,Class II,DEM,David Walters,2205,
+2002,Oregon,Class II,REP,Gordon H. Smith,1668,
+2002,Oregon,Class II,LIB,Dan Fitzgerald,11254,x
+2002,Oregon,Class II,CON,Lon Mabon,11253,x
+2002,Oregon,Class II,DEM,Bill Bradbury,2209,
+2002,Rhode Island,Class II,DEM,Jack Reed,1675,
+2002,Rhode Island,Class II,REP,Robert G. Tingle,1676,
+2002,South Carolina,Class II,CON,Ted Adams,11858,x
+2002,South Carolina,Class II,LIB,Victor Kocher,2215,x
+2002,South Carolina,Class II,REP,Lindsey Graham,1680,
+2002,South Carolina,Class II,DEM,Alex Sanders,2213,
+2002,South Dakota,Class II,DEM,Tim Johnson,1684,
+2002,South Dakota,Class II,REP,John R. Thune,22,
+2002,South Dakota,Class II,LIB,Kurt Evans,4588,x
+2002,Tennessee,Class II,IND,Gary Keplinger,11861,x
+2002,Tennessee,Class II,IND,Basil Marceaux,6678,x
+2002,Tennessee,Class II,REP,Lamar Alexander,167,
+2002,Tennessee,Class II,IND,Karl Stanley Davidson,11860,x
+2002,Tennessee,Class II,IND,Wesley M. Baker,11859,x
+2002,Tennessee,Class II,IND,Connie L. Gammon,11640,x
+2002,Tennessee,Class II,DEM,Bob Clement,2218,
+2002,Tennessee,Class II,IND,John Hooker,1850,x
+2002,Texas,Class II,REP,John Cornyn,1699,
+2002,Texas,Class II,LIB,Scott Lanier Jameson,12746,x
+2002,Texas,Class II,GRE,Roy H. Williams,11240,x
+2002,Texas,Class II,DEM,Ron Kirk,2229,
+2002,Virginia,Class II,REP,John W. Warner,2238,
+2002,Virginia,Class II,IND,Jacob George Hornberger,10318,x
+2002,Virginia,Class II,IND,Nancy B. Spannaus,11229,x
+2002,West Virginia,Class II,DEM,"John D. Rockefeller, IV",220,
+2002,West Virginia,Class II,REP,Jay Wolfe,1708,
+2002,Wyoming,Class II,DEM,Joyce  Ann Jansa Corcoran,14274,
+2002,Wyoming,Class II,REP,Michael B. Enzi,1712,
+2004,Alabama,Class III,REP,Richard C. Shelby,363,
+2004,Alabama,Class III,DEM,Wayne Sowell,14275,
+2004,Alaska,Class III,REP,Lisa Murkowski,350,
+2004,Alaska,Class III,AKI,Jerry Sanders,11206,x
+2004,Alaska,Class III,DEM,Tony Knowles,1897,
+2004,Alaska,Class III,N,Ted Gianoutsos,6358,x
+2004,Alaska,Class III,N,Marc J. Millican,12694,x
+2004,Alaska,Class III,LIB,Scott A. Kohlhaas,4543,x
+2004,Alaska,Class III,GRE,Jim Sykes,1899,x
+2004,Arizona,Class III,LIB,Ernest T. Hancock,13220,x
+2004,Arizona,Class III,REP,John McCain,43,
+2004,Arizona,Class III,DEM,Stuart Starky,13216,
+2004,Arkansas,Class III,DEM,Blanche Lincoln,379,x
+2004,Arkansas,Class III,REP,Jim Holt,1252,x
+2004,California,Class III,PAF,Marsha J. Feinland,6171,x
+2004,California,Class III,AIP,Don J. Grundmann,6174,x
+2004,California,Class III,LIB,James P. Gray,11252,x
+2004,California,Class III,REP,Bill Jones,1915,
+2004,California,Class III,DEM,Barbara Boxer,66,
+2004,Colorado,Class III,UN,Finn Gotaas,12698,x
+2004,Colorado,Class III,DEM,Ken Salazar,1927,
+2004,Colorado,Class III,IND,John R. Harris,12696,x
+2004,Colorado,Class III,LIB,Richard Randall,12697,x
+2004,Colorado,Class III,REF,Victor A. Good,12386,x
+2004,Colorado,Class III,REP,Pete Coors,1928,
+2004,Colorado,Class III,CON,Douglas Campbell,3851,x
+2004,Connecticut,Class III,REP,Jack C. Orchulli,1942,
+2004,Connecticut,Class III,LIB,Leonard H. Rasch,12700,x
+2004,Connecticut,Class III,DEM,Christopher J. Dodd,45,
+2004,Connecticut,Class III,CNC,Timothy A. Knibbs,12699,x
+2004,Florida,Class III,DEM,Betty Castor,1945,
+2004,Florida,Class III,REP,Mel Martinez,1944,
+2004,Florida,Class III,VET,Dennis F. Bradley,11230,x
+2004,Georgia,Class III,LIB,Allen Buckley,1550,x
+2004,Georgia,Class III,DEM,Denise Majette,1959,
+2004,Georgia,Class III,REP,Johnny Isakson,495,
+2004,Hawaii,Class III,N,Jim Brewer,9272,x
+2004,Hawaii,Class III,LIB,Lloyd Jeffrey Mallan,11544,x
+2004,Hawaii,Class III,DEM,Daniel K. Inouye,504,
+2004,Hawaii,Class III,REP,Cam Cavasso,505,
+2004,Idaho,Class III,REP,Mike Crapo,525,
+2004,Illinois,Class III,DEM,Barack Obama,16,
+2004,Illinois,Class III,REP,Alan Keyes,49,
+2004,Illinois,Class III,IND,Albert J. Franzen,12704,x
+2004,Illinois,Class III,LIB,Jerry Kohn,12705,x
+2004,Indiana,Class III,LIB,Albert Barger,12706,x
+2004,Indiana,Class III,DEM,Evan Bayh,60,
+2004,Indiana,Class III,REP,Marvin Bailey Scott,8421,
+2004,Iowa,Class III,GRE,Daryl A. Northrop,12707,x
+2004,Iowa,Class III,REP,Chuck Grassley,517,
+2004,Iowa,Class III,LIB,Christy Ann Welty,12708,x
+2004,Iowa,Class III,SWP,Edwin B. Fruit,12390,x
+2004,Iowa,Class III,DEM,Art Small,1976,
+2004,Kansas,Class III,LIB,Steven A. Rosile,1998,x
+2004,Kansas,Class III,DEM,Lee Jones,1584,
+2004,Kansas,Class III,REP,Sam Brownback,71,
+2004,Kansas,Class III,REF,George H. Cook,11843,x
+2004,Kentucky,Class III,DEM,Daniel Mongiardo,577,
+2004,Kentucky,Class III,REP,Jim Bunning,2001,
+2004,Louisiana,Class III,DEM,Arthur A. Morrell,11199,x
+2004,Louisiana,Class III,DEM,John Kennedy,1595,x
+2004,Louisiana,Class III,DEM,Sam Houston Melton,12394,x
+2004,Louisiana,Class III,DEM,Chris John,2003,
+2004,Louisiana,Class III,NPA,RA Galan,12709,x
+2004,Louisiana,Class III,NPA,Richard M. Fontanesi,11239,x
+2004,Louisiana,Class III,REP,David Vitter,581,
+2004,Maryland,Class III,CON,Thomas M. Trump,12710,x
+2004,Maryland,Class III,REP,E. J. Pipkin,2005,
+2004,Maryland,Class III,DEM,Barbara A. Mikulski,594,
+2004,Maryland,Class III,GRE,Maria Allwine,12267,x
+2004,Missouri,Class III,CON,Don Griffin,12713,x
+2004,Missouri,Class III,DEM,Nancy Farmer,2017,
+2004,Missouri,Class III,LIB,Kevin J. Tull,12714,x
+2004,Missouri,Class III,REP,Christopher S. Bond,316,
+2004,Nevada,Class III,LIB,Thomas L. Hurst,12715,x
+2004,Nevada,Class III,DEM,Harry Reid,718,
+2004,Nevada,Class III,NLP,Gary A. Marinch,6737,x
+2004,Nevada,Class III,IAP,David K. Schumann,11234,x
+2004,Nevada,Class III,REP,Richard Ziser,2032,
+2004,New Hampshire,Class III,DEM,Doris R. Haddock,2030,
+2004,New Hampshire,Class III,REP,Judd Gregg,2029,
+2004,New York,Class III,LIB,Donald Silberger,12716,x
+2004,New York,Class III,CRV,Marilyn F. O'Grady,2039,x
+2004,New York,Class III,DEM,Charles E. Schumer,744,
+2004,New York,Class III,GRE,David E. McReynolds,11519,x
+2004,New York,Class III,SWP,Martin Koppel,12718,x
+2004,New York,Class III,REP,Howard Mills,2038,
+2004,New York,Class III,OTH,Abraham Hirschfeld,12717,x
+2004,North Carolina,Class III,DEM,Erskine Bowles,2023,
+2004,North Carolina,Class III,LIB,Thomas Aaron Bailey,8652,x
+2004,North Carolina,Class III,REP,Richard Burr,663,
+2004,North Dakota,Class III,DEM,Byron L. Dorgan,2027,
+2004,North Dakota,Class III,REP,Mike Liffrig,2028,
+2004,Ohio,Class III,REP,George V. Voinovich,2043,
+2004,Ohio,Class III,DEM,Eric D. Fingerhut,2044,
+2004,Oklahoma,Class III,IND,Sheila Bilyeu,2049,x
+2004,Oklahoma,Class III,DEM,Brad R. Carson,2048,
+2004,Oklahoma,Class III,REP,Tom Coburn,777,
+2004,Oregon,Class III,REP,Al King,2056,
+2004,Oregon,Class III,PG,Teresa C. Keane,14277,x
+2004,Oregon,Class III,DEM,Ron Wyden,788,
+2004,Oregon,Class III,CON,David M. Brownlow,1669,x
+2004,Oregon,Class III,LIB,Dan Fitzgerald,11254,x
+2004,Pennsylvania,Class III,DEM,Joe Hoeffel,790,
+2004,Pennsylvania,Class III,CON,James N. Clymer,2063,x
+2004,Pennsylvania,Class III,REP,Arlen Specter,194,
+2004,Pennsylvania,Class III,LIB,Betsy Summers,11273,x
+2004,South Carolina,Class III,REP,Jim DeMint,24,
+2004,South Carolina,Class III,UC,Tee Ferguson,12724,x
+2004,South Carolina,Class III,CON,Patrick Tyndall,12721,x
+2004,South Carolina,Class III,LIB,Rebekah Sutherland,12723,x
+2004,South Carolina,Class III,DEM,Inez Tenenbaum,2065,
+2004,South Carolina,Class III,GRE,Efia Nwangaza,12722,x
+2004,South Dakota,Class III,DEM,Tom Daschle,76,
+2004,South Dakota,Class III,REP,John R. Thune,22,
+2004,Utah,Class III,DEM,R. Paul Van Dam,2077,
+2004,Utah,Class III,REP,Robert F. Bennett,2076,
+2004,Utah,Class III,CON,Gary R. Van Horn,2078,x
+2004,Utah,Class III,PCH,Joe LaBonte,11177,x
+2004,Vermont,Class III,REP,Jack McMullen,14278,
+2004,Vermont,Class III,DEM,Patrick J. Leahy,891,
+2004,Vermont,Class III,OTH,Cris Ericson,6318,x
+2004,Vermont,Class III,LBU,Benjamin L. Mitchell,12294,x
+2004,Vermont,Class III,GRE,Craig Barclay Hill,12747,x
+2004,Vermont,Class III,IND,Keith M. Stern,12487,x
+2004,Washington,Class III,LIB,J. Mills,12726,x
+2004,Washington,Class III,DEM,Patty Murray,907,
+2004,Washington,Class III,GRE,Mark B. Wilson,12725,x
+2004,Washington,Class III,REP,George R. Nethercutt,2083,
+2004,Wisconsin,Class III,LIB,Arif Khan,12727,x
+2004,Wisconsin,Class III,DEM,Russ Feingold,64,
+2004,Wisconsin,Class III,REP,Tim Michels,2088,
+2004,Wisconsin,Class III,IND,Eugene A. Hem,11588,x
+2006,Arizona,Class I,LIB,Richard I. Mack,11156,x
+2006,Arizona,Class I,DEM,Jim Pederson,1715,
+2006,Arizona,Class I,REP,Jon Kyl,942,
+2006,California,Class I,DEM,Dianne Feinstein,943,
+2006,California,Class I,PAF,Marsha J. Feinland,6171,x
+2006,California,Class I,AIP,Don J. Grundmann,6174,x
+2006,California,Class I,LIB,Michael S. Metti,12729,x
+2006,California,Class I,GRE,Todd Chretien,12728,x
+2006,California,Class I,REP,Richard Dick Mountjoy,1719,
+2006,Connecticut,Class I,DEM,Edward Lamont,433,
+2006,Connecticut,Class I,CNC,Timothy A. Knibbs,12699,x
+2006,Connecticut,Class I,REP,Alan Schlesinger,1726,x
+2006,Connecticut,Class I,GRE,Ralph A. Ferrucci,12730,x
+2006,Connecticut,Class I,IND,Joseph I. Lieberman,79,
+2006,Delaware,Class I,LIB,William E. Morris,12731,x
+2006,Delaware,Class I,DEM,Thomas R. Carper,951,
+2006,Delaware,Class I,REP,Jan Ting,1729,
+2006,Florida,Class I,NPA,Belinda Noah,12732,x
+2006,Florida,Class I,NPA,Floyd Ray Frazier,12733,x
+2006,Florida,Class I,NPA,Roy Tanner,12734,x
+2006,Florida,Class I,DEM,Bill Nelson,953,
+2006,Florida,Class I,NPA,Brian Patrick Moore,11604,x
+2006,Florida,Class I,REP,Katherine Harris,1732,
+2006,Hawaii,Class I,LIB,Lloyd Jeffrey Mallan,11544,x
+2006,Hawaii,Class I,DEM,Daniel K. Akaka,963,
+2006,Hawaii,Class I,REP,Cynthia Henry Thielen,14279,
+2006,Indiana,Class I,LIB,Steve Osborn,14282,x
+2006,Indiana,Class I,REP,Richard G. Lugar,193,
+2006,Maine,Class I,REP,Olympia J. Snowe,983,
+2006,Maine,Class I,IND,William H. Slavick,11261,x
+2006,Maine,Class I,DEM,Jean M. Hay Bright,1776,
+2006,Maryland,Class I,GRE,Kevin Zeese,11231,x
+2006,Maryland,Class I,REP,Michael S. Steele,1754,
+2006,Maryland,Class I,DEM,Benjamin L. Cardin,981,
+2006,Massachusetts,Class I,DEM,Edward M. Kennedy,255,
+2006,Massachusetts,Class I,REP,Kenneth G. Chase,1752,
+2006,Michigan,Class I,LIB,Leonard C. Schwartz,4899,x
+2006,Michigan,Class I,DEM,Debbie Stabenow,984,
+2006,Michigan,Class I,GRE,David Sole,11185,x
+2006,Michigan,Class I,REP,Mike Bouchard,606,
+2006,Michigan,Class I,UST,W. Dennis FitzSimons,11263,x
+2006,Minnesota,Class I,GRE,Michael James Cavlan,6131,x
+2006,Minnesota,Class I,CON,Ben Powers,11259,x
+2006,Minnesota,Class I,REP,Mark R. Kennedy,1787,
+2006,Minnesota,Class I,IDP,Robert Fitzgerald,11203,x
+2006,Minnesota,Class I,DEM,Amy Klobuchar,992,
+2006,Mississippi,Class I,DEM,Erik R. Fleming,1627,
+2006,Mississippi,Class I,REP,Trent Lott,1801,
+2006,Mississippi,Class I,LIB,Harold M. Taylor,12574,x
+2006,Missouri,Class I,PRO,Lydia Lewis,12737,x
+2006,Missouri,Class I,DEM,Claire McCaskill,997,
+2006,Missouri,Class I,LIB,Frank Gilmour,11265,x
+2006,Missouri,Class I,REP,Jim Talent,1793,
+2006,Montana,Class I,REP,Conrad Burns,1806,
+2006,Montana,Class I,LIB,Stan Jones,9236,x
+2006,Montana,Class I,DEM,Jon Tester,1002,
+2006,Nebraska,Class I,DEM,Ben Nelson,1006,
+2006,Nebraska,Class I,REP,Pete Ricketts,1819,
+2006,Nevada,Class I,DEM,Jack Carter,1831,
+2006,Nevada,Class I,LIB,Brendan J. Trainor,12738,x
+2006,Nevada,Class I,REP,John Ensign,1022,
+2006,Nevada,Class I,IAP,David K. Schumann,11234,x
+2006,New Jersey,Class I,DEM,Bob Menendez,1012,
+2006,New Jersey,Class I,REP,Thomas H. Kean Jr.,264,
+2006,New Jersey,Class I,LIB,Len T. Flynn,6011,x
+2006,New Jersey,Class I,SWP,Angela L. Lariscy,12216,x
+2006,New Jersey,Class I,OTH,Robert Edward Forchion,6013,x
+2006,New Jersey,Class I,OTH,N. Leonard Smith,12739,x
+2006,New Jersey,Class I,SOC,Gregory Pason,6338,x
+2006,New Jersey,Class I,OTH,Daryl Mikell Brooks,6327,x
+2006,New Jersey,Class I,OTH,J. M. Carter,11165,x
+2006,New Mexico,Class I,DEM,Jeff Bingaman,1014,
+2006,New Mexico,Class I,REP,Allen W. McCulloch MD,1827,
+2006,New York,Class I,GRE,Howie Hawkins,6572,x
+2006,New York,Class I,LIB,Jeffrey T. Russell,12740,x
+2006,New York,Class I,DEM,Hillary Rodham Clinton,28,
+2006,New York,Class I,REP,John Spencer,1835,
+2006,New York,Class I,SWP,Roger Calero,11594,x
+2006,New York,Class I,SEP,William Van Auken,11591,x
+2006,North Dakota,Class I,IND,James Germalic,2206,x
+2006,North Dakota,Class I,DEM,Kent Conrad,1815,
+2006,North Dakota,Class I,REP,Dwight Grotberg,14283,
+2006,North Dakota,Class I,IND,Roland Riemers,9348,x
+2006,Ohio,Class I,DEM,Sherrod Brown,1025,
+2006,Ohio,Class I,REP,Mike DeWine,1842,
+2006,Pennsylvania,Class I,DEM,Robert P. Casey Jr.,1032,
+2006,Pennsylvania,Class I,REP,Rick Santorum,10,
+2006,Rhode Island,Class I,DEM,Sheldon Whitehouse,1038,
+2006,Rhode Island,Class I,REP,Lincoln Chafee,822,
+2006,Tennessee,Class I,DEM,Harold E. Ford Jr.,2649,
+2006,Tennessee,Class I,IND,Emory S. Heyward,12742,x
+2006,Tennessee,Class I,W,Gloria D. Reagon Price,12744,x
+2006,Tennessee,Class I,IND,James Anthony Gray,12593,x
+2006,Tennessee,Class I,IND,Gary Keplinger,11861,x
+2006,Tennessee,Class I,IND,David Gatchell,6227,x
+2006,Tennessee,Class I,IND,Eduardo Bryan Choate,12741,x
+2006,Tennessee,Class I,REP,Bob Corker,1043,
+2006,Tennessee,Class I,IND,Christopher J. Lugo,12743,x
+2006,Tennessee,Class I,W,Mary Taylor Shelby,12745,x
+2006,Tennessee,Class I,IND,John Hooker,1850,x
+2006,Texas,Class I,REP,Kay Bailey Hutchison,857,
+2006,Texas,Class I,DEM,Barbara Ann Radnofsky,1862,
+2006,Texas,Class I,LIB,Scott Lanier Jameson,12746,x
+2006,Utah,Class I,CON,Scott N. Bradley,11178,x
+2006,Utah,Class I,DEM,Pete Ashdown,1230,
+2006,Utah,Class I,REP,Orrin G. Hatch,168,
+2006,Utah,Class I,DGR,Julian Hatch,11179,x
+2006,Utah,Class I,LIB,Dave Starr Seely,11180,x
+2006,Utah,Class I,PCH,Roger I. Price,11181,x
+2006,Vermont,Class I,IND,Cris Ericson,6318,x
+2006,Vermont,Class I,REP,Rich Tarrant,1869,
+2006,Vermont,Class I,LBU,Pete Diamondstone,6317,x
+2006,Vermont,Class I,IND,Bernie Sanders,37,
+2006,Vermont,Class I,GRE,Craig Barclay Hill,12747,x
+2006,Vermont,Class I,OTH,Peter D. Moss,6321,x
+2006,Virginia,Class I,IGR,Glenda Gail Parker,4383,x
+2006,Virginia,Class I,REP,George F. Allen,61,
+2006,Virginia,Class I,DEM,Jim Webb,1059,
+2006,Washington,Class I,LIB,Bruce M. Guthrie,11266,x
+2006,Washington,Class I,IND,Robin Adair,11267,x
+2006,Washington,Class I,GRE,Aaron Dixon,11183,x
+2006,Washington,Class I,REP,Mike McGavick,1875,
+2006,Washington,Class I,DEM,Maria Cantwell,1066,
+2006,West Virginia,Class I,REP,John Raese,927,
+2006,West Virginia,Class I,DEM,Robert C. Byrd,296,
+2006,Wisconsin,Class I,GRE,Rae S. Vogeler,11276,x
+2006,Wisconsin,Class I,REP,Robert Gerald Lorge,1885,
+2006,Wisconsin,Class I,IND,Ben J. Glatzel,11314,x
+2006,Wisconsin,Class I,DEM,Herb Kohl,1068,
+2006,Wyoming,Class I,DEM,Dale Groutage,1896,
+2006,Wyoming,Class I,REP,Craig Thomas,1895,
+2008,Alabama,Class II,REP,Jeff Sessions,1536,
+2008,Alabama,Class II,DEM,Vivian Davis Figures,1537,
+2008,Alaska,Class II,DEM,Mark Begich,1526,
+2008,Alaska,Class II,NPA,Ted Gianoutsos,6358,x
+2008,Alaska,Class II,AKI,Robert Bird,11207,x
+2008,Alaska,Class II,REP,Ted Stevens,1527,
+2008,Alaska,Class II,LIB,Fredrick David Haase,11248,x
+2008,Arkansas,Class II,GRE,Rebekah J. Kennedy,5434,x
+2008,Arkansas,Class II,DEM,Mark L. Pryor,1541,
+2008,Colorado,Class II,DEM,Mark Udall,1543,
+2008,Colorado,Class II,CON,Douglas Campbell,3851,x
+2008,Colorado,Class II,REP,Bob Schaffer,1544,
+2008,Colorado,Class II,GRE,Robert A. Kinsey,11201,x
+2008,Delaware,Class II,DEM,Joe Biden,42,
+2008,Delaware,Class II,REP,Christine O'Donnell,456,
+2008,Georgia,Class II,DEM,Jim Martin,1549,
+2008,Georgia,Class II,LIB,Allen Buckley,1550,x
+2008,Georgia,Class II,REP,Saxby Chambliss,1548,
+2008,Idaho,Class II,IND,Rex Rammell,9644,x
+2008,Idaho,Class II,REP,James E. Risch,2710,
+2008,Idaho,Class II,DEM,Larry LaRocco,1561,
+2008,Idaho,Class II,IND,Marvin Richardson,4970,x
+2008,Idaho,Class II,LIB,Kent A. Marmon,12750,x
+2008,Illinois,Class II,CON,Chad Koppie,1578,x
+2008,Illinois,Class II,LIB,Larry A. Stafford,12753,x
+2008,Illinois,Class II,DEM,Richard J. Durbin,1574,
+2008,Illinois,Class II,GRE,Kathleen J. Cummings,12752,x
+2008,Illinois,Class II,REP,Steve Sauerberg,1575,
+2008,Iowa,Class II,DEM,Tom Harkin,221,
+2008,Iowa,Class II,REP,Christopher Reed,1557,
+2008,Kansas,Class II,DEM,Jim Slattery,1581,
+2008,Kansas,Class II,REP,Pat Roberts,1580,
+2008,Kansas,Class II,LIB,Randall L. Hodgkinson,1582,x
+2008,Kansas,Class II,REF,Joseph L. Martin,1583,x
+2008,Kentucky,Class II,DEM,Bruce Lunsford,1586,
+2008,Kentucky,Class II,REP,Mitch McConnell,1585,
+2008,Louisiana,Class II,NPA,Jay Patel,12755,x
+2008,Louisiana,Class II,REP,John Kennedy,1595,
+2008,Louisiana,Class II,UNK,Robert Stewart,12756,x
+2008,Louisiana,Class II,DEM,Mary L. Landrieu,1594,
+2008,Louisiana,Class II,LIB,Richard M. Fontanesi,11239,x
+2008,Maine,Class II,REP,Susan M. Collins,1602,
+2008,Maine,Class II,DEM,Thomas H. Allen,1604,
+2008,Massachusetts,Class II,REP,Jeffrey K. Beatty,1599,
+2008,Massachusetts,Class II,DEM,John Kerry,59,
+2008,Massachusetts,Class II,LIB,Robert Jospeh Underwood,11268,x
+2008,Michigan,Class II,LIB,Scott Avery Boman,6108,x
+2008,Michigan,Class II,REP,Jacob W. Hoogendyk Jr.,1607,
+2008,Michigan,Class II,NLP,Doug Dern,10956,x
+2008,Michigan,Class II,DEM,Carl Levin,1606,
+2008,Michigan,Class II,GRE,Harley G. Mikkelson,6115,x
+2008,Michigan,Class II,UST,Michael N. Nikitin,12757,x
+2008,Minnesota,Class II,REP,Norm Coleman,1611,
+2008,Minnesota,Class II,IDP,Dean Barkley,2515,x
+2008,Minnesota,Class II,DEM,Al Franken,1610,
+2008,Minnesota,Class II,CON,James J. Niemackl,12758,x
+2008,Minnesota,Class II,LIB,Charles A. Aldrich,4516,x
+2008,Mississippi,Class II,DEM,Erik R. Fleming,1627,
+2008,Mississippi,Class II,REP,Thad Cochran,1626,
+2008,Mississippi,Class I,REP,Roger F. Wicker,1001,
+2008,Mississippi,Class I,DEM,Ronnie Musgrove,1625,
+2008,Montana,Class II,REP,Bob Kelleher,1630,
+2008,Montana,Class II,DEM,Max Baucus,1629,
+2008,Nebraska,Class II,REP,Mike Johanns,1643,
+2008,Nebraska,Class II,GRE,Steven R. Larrick,12427,x
+2008,Nebraska,Class II,DEM,Scott Kleeb,1644,
+2008,Nebraska,Class II,OTH,Kelly Renee Rosberg,12760,x
+2008,New Hampshire,Class II,DEM,Jeanne Shaheen,1649,
+2008,New Hampshire,Class II,REP,John E. Sununu,1650,
+2008,New Hampshire,Class II,LIB,Ken Blevens,1438,x
+2008,New Jersey,Class II,OTH,Jeffrey Harlan Boss,4687,x
+2008,New Jersey,Class II,OTH,Daryl Mikell Brooks,6327,x
+2008,New Jersey,Class II,OTH,J. M. Carter,11165,x
+2008,New Jersey,Class II,LIB,Jason M. Scheurer,11166,x
+2008,New Jersey,Class II,DEM,Frank R. Lautenberg,1652,
+2008,New Jersey,Class II,REP,Dick Zimmer,1653,
+2008,New Jersey,Class II,SWP,Sara J. Lobman,11167,x
+2008,New Mexico,Class II,DEM,Tom Udall,1662,
+2008,New Mexico,Class II,REP,Stevan Pearce,708,
+2008,North Carolina,Class II,DEM,Kay R. Hagan,1636,
+2008,North Carolina,Class II,LIB,Christopher Scott Cole,11164,x
+2008,North Carolina,Class II,REP,Elizabeth H. Dole,170,
+2008,Oklahoma,Class II,IND,Stephen P. Wallace,1471,x
+2008,Oklahoma,Class II,REP,James M. Inhofe,1663,
+2008,Oklahoma,Class II,DEM,Andrew Rice,1664,
+2008,Oregon,Class II,DEM,Jeff Merkley,1667,
+2008,Oregon,Class II,REP,Gordon H. Smith,1668,
+2008,Oregon,Class II,CON,David M. Brownlow,1669,x
+2008,Rhode Island,Class II,DEM,Jack Reed,1675,
+2008,Rhode Island,Class II,REP,Robert G. Tingle,1676,
+2008,South Carolina,Class II,REP,Lindsey Graham,1680,
+2008,South Carolina,Class II,DEM,Bob Conley,1681,
+2008,South Dakota,Class II,DEM,Tim Johnson,1684,
+2008,South Dakota,Class II,REP,Joel D. Dykstra,1685,
+2008,Tennessee,Class II,IND,Daniel Towers Lewis,6677,x
+2008,Tennessee,Class II,IND,David Gatchell,6227,x
+2008,Tennessee,Class II,IND,Christopher G. Fenner,12762,x
+2008,Tennessee,Class II,IND,Ed Lawhorn,12763,x
+2008,Tennessee,Class II,IND,Christopher J. Lugo,12743,x
+2008,Tennessee,Class II,IND,Edward L. Buck,12761,x
+2008,Tennessee,Class II,DEM,Robert D. Tuke,1688,
+2008,Tennessee,Class II,REP,Lamar Alexander,167,
+2008,Texas,Class II,REP,John Cornyn,1699,
+2008,Texas,Class II,DEM,Rick Noriega,1700,
+2008,Texas,Class II,LIB,Yvonne Adams Schick,11275,x
+2008,Virginia,Class II,DEM,Mark R. Warner,67,
+2008,Virginia,Class II,LIB,Bill Redpath,4385,x
+2008,Virginia,Class II,IGR,Glenda Gail Parker,4383,x
+2008,Virginia,Class II,REP,James S. Gilmore III,52,
+2008,West Virginia,Class II,DEM,"John D. Rockefeller, IV",220,
+2008,West Virginia,Class II,REP,Jay Wolfe,1708,
+2008,Wyoming,Class I,REP,John Barrasso,1069,
+2008,Wyoming,Class II,DEM,Christopher Rothfuss,1713,
+2008,Wyoming,Class II,REP,Michael B. Enzi,1712,
+2008,Wyoming,Class I,DEM,Nicholas H. Carter,1710,
+2010,Alabama,Class III,REP,Richard C. Shelby,363,
+2010,Alabama,Class III,DEM,William G. Barnes,364,
+2010,Alaska,Class III,REP,Joe Miller,351,x
+2010,Alaska,Class III,DEM,Scott T. McAdams,352,
+2010,Alaska,Class III,UN,Robert Timothy Carter,12766,x
+2010,Alaska,Class III,UN,Ted Gianoutsos,6358,x
+2010,Alaska,Class III,W,Lisa Murkowski,350,
+2010,Alaska,Class III,LIB,Fredrick David Haase,11248,x
+2010,Arizona,Class III,REP,John McCain,43,
+2010,Arizona,Class III,LIB,David F. Nolan,11158,x
+2010,Arizona,Class III,DEM,Rodney Britz Glassman,1257,
+2010,Arizona,Class III,GRE,Jerry Joslyn,11157,x
+2010,Arkansas,Class III,DEM,Blanche Lincoln,379,
+2010,Arkansas,Class III,REP,John Boozman,376,
+2010,Arkansas,Class III,GRE,John Laney Gray,11236,x
+2010,Arkansas,Class III,IND,Trevor Drown,11159,x
+2010,California,Class III,LIB,Gail Katherine Lightfoot,6183,x
+2010,California,Class III,REP,Carly Fiorina,415,
+2010,California,Class III,AIP,Edward C. Noonan,9261,x
+2010,California,Class III,PAF,Marsha J. Feinland,6171,x
+2010,California,Class III,GRE,Duane Roberts,11247,x
+2010,California,Class III,DEM,Barbara Boxer,66,
+2010,Colorado,Class III,UN,Charley Miller,12773,x
+2010,Colorado,Class III,DEM,Michael Bennet,429,
+2010,Colorado,Class III,GRE,Robert A. Kinsey,11201,x
+2010,Colorado,Class III,UN,Jorge H. Moromisato,12774,x
+2010,Colorado,Class III,OTH,Jason Napolitano,12772,x
+2010,Colorado,Class III,LIB,Maclyn Stringer,11202,x
+2010,Colorado,Class III,REP,Ken Buck,1280,
+2010,Connecticut,Class III,DEM,Richard Blumenthal,447,
+2010,Connecticut,Class III,OTH,John Mertens,11262,x
+2010,Connecticut,Class III,IP,Warren Bruce Mosler,5935,x
+2010,Connecticut,Class III,REP,Linda McMahon,448,
+2010,Delaware,Class II,LIB,James W. Rash,12655,x
+2010,Delaware,Class II,REP,Christine O'Donnell,456,
+2010,Delaware,Class II,DEM,Christopher A. Coons,1299,
+2010,Delaware,Class II,IDE,Glenn A. Miller,12654,x
+2010,Florida,Class III,LIB,Alexander Andrew Snitker,11249,x
+2010,Florida,Class III,NPA,Lewis J. Armstrong,12784,x
+2010,Florida,Class III,DEM,Kendrick B. Meek,480,
+2010,Florida,Class III,REP,Marco Rubio,481,
+2010,Florida,Class III,NPA,Rick Tyler,12783,x
+2010,Florida,Class III,NPA,Bruce Ray Riggs,4800,x
+2010,Florida,Class III,IND,Charlie Crist,479,x
+2010,Florida,Class III,CON,Bernie DeCastro,12781,x
+2010,Florida,Class III,NPA,Bobbie Bean,12785,x
+2010,Florida,Class III,NPA,Sue Askeland,12782,x
+2010,Georgia,Class III,LIB,Chuck Donovan,11204,x
+2010,Georgia,Class III,REP,Johnny Isakson,495,
+2010,Georgia,Class III,DEM,Michael Thurmond,496,
+2010,Hawaii,Class III,GRE,Jim Brewer,9272,x
+2010,Hawaii,Class III,LIB,Lloyd Jeffrey Mallan,11544,x
+2010,Hawaii,Class III,DEM,Daniel K. Inouye,504,
+2010,Hawaii,Class III,N,Jeff S. Jarrett,12793,x
+2010,Hawaii,Class III,REP,Cam Cavasso,505,
+2010,Idaho,Class III,CON,Randy Lynn Bergquist,11235,x
+2010,Idaho,Class III,DEM,Tom Sullivan,526,
+2010,Idaho,Class III,REP,Mike Crapo,525,
+2010,Illinois,Class III,REP,Mark Kirk,544,
+2010,Illinois,Class III,DEM,Alexi Giannoulias,543,
+2010,Illinois,Class III,LIB,Mike Labno,11155,x
+2010,Illinois,Class III,DEM,Alexi Giannoulias,543,x
+2010,Illinois,Class III,GRE,LeAlan M. Jones,11154,x
+2010,Illinois,Class III,LIB,Mike Labno,11155,x
+2010,Indiana,Class III,REP,Daniel Coats,1355,
+2010,Indiana,Class III,DEM,Brad Ellsworth,559,
+2010,Indiana,Class III,LIB,Rebecca Sink-Burris,1356,x
+2010,Iowa,Class III,REP,Chuck Grassley,517,
+2010,Iowa,Class III,LIB,John Heiderscheit,11256,x
+2010,Iowa,Class III,DEM,Roxanne Conlin,515,
+2010,Kansas,Class III,DEM,Lisa Johnston,570,
+2010,Kansas,Class III,REF,Joseph K. Bellis,11270,x
+2010,Kansas,Class III,LIB,Michael William Dann,11269,x
+2010,Kansas,Class III,REP,Jerry Moran,566,
+2010,Kentucky,Class III,DEM,Jack Conway,575,
+2010,Kentucky,Class III,REP,Rand Paul,30,
+2010,Louisiana,Class III,NPA,Sam Houston Melton,12394,x
+2010,Louisiana,Class III,DEM,Charlie Melancon,1375,
+2010,Louisiana,Class III,NPA,Michael Karlton Brown,11214,x
+2010,Louisiana,Class III,UNK,Thomas G. LaFargue,12800,x
+2010,Louisiana,Class III,REP,David Vitter,581,
+2010,Louisiana,Class III,LIB,Randall T. Hayes,11213,x
+2010,Louisiana,Class III,REF,William R. McShan,11258,x
+2010,Louisiana,Class III,NPA,Milton Gordon,12797,x
+2010,Louisiana,Class III,OTH,Michael Lane Spears,11215,x
+2010,Louisiana,Class III,UNK,William Robert Lang,11938,x
+2010,Louisiana,Class III,UNK,Ernest D. Woolon,12799,x
+2010,Louisiana,Class III,NPA,RA Galan,12709,x
+2010,Maryland,Class III,GRE,Kenniss Henry,12801,x
+2010,Maryland,Class III,CON,Richard Shawver,8082,x
+2010,Maryland,Class III,DEM,Barbara A. Mikulski,594,
+2010,Maryland,Class III,REP,Eric Wargotz,596,
+2010,Missouri,Class III,REP,Roy Blunt,644,
+2010,Missouri,Class III,LIB,Jonathan Dine,1198,x
+2010,Missouri,Class III,CON,Jerry Garth Beck,6118,x
+2010,Missouri,Class III,DEM,Robin Carnahan,11182,
+2010,Nevada,Class III,REP,Sharron Angle,716,
+2010,Nevada,Class III,IAP,Timothy Fasano,11186,x
+2010,Nevada,Class III,IND,Michael L. Haines,5879,x
+2010,Nevada,Class III,IND,Jeffrey C. Reeves,12502,x
+2010,Nevada,Class III,TEA,Scott Ashjian,11242,x
+2010,Nevada,Class III,DEM,Harry Reid,718,
+2010,Nevada,Class III,IND,Jesse Holland,11251,x
+2010,Nevada,Class III,IND,Wil Stand,12811,x
+2010,New Hampshire,Class III,IND,Chris Booth,11153,x
+2010,New Hampshire,Class III,REP,Kelly Ayotte,688,
+2010,New Hampshire,Class III,DEM,Paul W. Hodes,690,
+2010,New Hampshire,Class III,LIB,Ken Blevens,1438,x
+2010,New York,Class I,OTH,Joseph Huff,12659,x
+2010,New York,Class I,GRE,Cecile Ann Lawrence,12658,x
+2010,New York,Class III,REP,Jay Townsend,746,
+2010,New York,Class III,GRE,Colia Clark,6151,x
+2010,New York,Class III,LIB,Randolph A. Credico,6570,x
+2010,New York,Class I,REP,Joseph J. DioGuardi,8180,
+2010,New York,Class I,OTH,Vivia M. Morgan,5302,x
+2010,New York,Class III,DEM,Charles E. Schumer,744,
+2010,New York,Class I,LIB,John Clifton,9309,x
+2010,New York,Class I,DEM,Kirsten E. Gillibrand,748,
+2010,New York,Class I,OTH,Bruce Blakeman,747,x
+2010,North Carolina,Class III,DEM,Elaine Marshall,666,
+2010,North Carolina,Class III,REP,Richard Burr,663,
+2010,North Carolina,Class III,LIB,Michael A. Beitler,10289,x
+2010,North Dakota,Class III,DEM,Tracy Potter,670,
+2010,North Dakota,Class III,REP,John Hoeven,669,
+2010,North Dakota,Class III,LIB,Keith J. Hanson,12812,x
+2010,Ohio,Class III,DEM,Lee Fisher,771,
+2010,Ohio,Class III,REP,Rob Portman,772,
+2010,Ohio,Class III,IND,Michael L. Pryce,6166,x
+2010,Ohio,Class III,CON,Eric W. Deaton,11168,x
+2010,Ohio,Class III,SUS,Daniel H. La Botz,11169,x
+2010,Oklahoma,Class III,DEM,Jim Rogers,779,
+2010,Oklahoma,Class III,REP,Tom Coburn,777,
+2010,Oklahoma,Class III,IND,Ronald F. Dwyer,11257,x
+2010,Oklahoma,Class III,IND,Stephen P. Wallace,1471,x
+2010,Oregon,Class III,OTH,Bruce W. Cronk,11271,x
+2010,Oregon,Class III,LIB,Marc L. Delphine,11200,x
+2010,Oregon,Class III,PRO,Richard K. Staggenborg,11272,x
+2010,Oregon,Class III,DEM,Ron Wyden,788,
+2010,Oregon,Class III,REP,Jim Huffman,789,
+2010,Pennsylvania,Class III,DEM,Joe Sestak,818,
+2010,Pennsylvania,Class III,REP,Patrick J. Toomey,1484,
+2010,South Carolina,Class III,REP,Jim DeMint,24,
+2010,South Carolina,Class III,DEM,Alvin Greene,839,
+2010,South Carolina,Class III,GRE,Thomas Clements,6380,x
+2010,South Dakota,Class III,REP,John R. Thune,22,
+2010,Utah,Class III,DEM,Samuel Frank Granato,1489,
+2010,Utah,Class III,CON,Scott N. Bradley,11178,x
+2010,Utah,Class III,REP,Mike Lee,873,
+2010,Vermont,Class III,IND,Daniel Freilich,11237,x
+2010,Vermont,Class III,REP,Leonard Wheeler Britton,890,
+2010,Vermont,Class III,OTH,Cris Ericson,6318,x
+2010,Vermont,Class III,IND,Stephen J. Cain,11238,x
+2010,Vermont,Class III,IND,Johenry Nunes,12814,x
+2010,Vermont,Class III,DEM,Patrick J. Leahy,891,
+2010,Vermont,Class III,SUS,Pete Diamondstone,6317,x
+2010,Washington,Class III,REP,Dino Rossi,908,
+2010,Washington,Class III,DEM,Patty Murray,907,
+2010,West Virginia,Class I,DEM,"Joe Manchin, III",925,
+2010,West Virginia,Class I,MTP,Jesse Johnson,9249,x
+2010,West Virginia,Class I,CON,Jeff C. Becker,12660,x
+2010,West Virginia,Class I,REP,John Raese,927,
+2010,Wisconsin,Class III,DEM,Russ Feingold,64,
+2010,Wisconsin,Class III,CON,Robert Taylor,12815,x
+2010,Wisconsin,Class III,REP,Ron Johnson,919,
+2012,Arizona,Class I,LIB,Marc Victor,6196,x
+2012,Arizona,Class I,DEM,Richard Carmona,1070,
+2012,Arizona,Class I,REP,Jeff Flake,938,
+2012,California,Class I,REP,Elizabeth Emken,1125,
+2012,California,Class I,DEM,Dianne Feinstein,943,
+2012,Connecticut,Class I,LIB,Paul Passarelli,6145,x
+2012,Connecticut,Class I,DEM,Christopher S. Murphy,446,
+2012,Connecticut,Class I,REP,Linda McMahon,448,
+2012,Delaware,Class I,IND,Alexander Pires,6149,x
+2012,Delaware,Class I,REP,Kevin Wade,4515,
+2012,Delaware,Class I,GRE,Andrew Richard Groff,6148,x
+2012,Delaware,Class I,DEM,Thomas R. Carper,951,
+2012,Florida,Class I,W,Lawrence Sidney Scott,6103,x
+2012,Florida,Class I,REP,Connie Mack,1073,
+2012,Florida,Class I,W,Piotr Blass,6085,x
+2012,Florida,Class I,DEM,Bill Nelson,953,
+2012,Florida,Class I,W,Lionel Long,6097,x
+2012,Florida,Class I,W,Naomi L. Craine,6089,x
+2012,Florida,Class I,NPA,Chris Borgia,6087,x
+2012,Florida,Class I,NPA,William G. Gaylor,6091,x
+2012,Florida,Class I,W,Robert Monroe,6102,x
+2012,Hawaii,Class I,DEM,Mazie K. Hirono,502,
+2012,Hawaii,Class I,REP,Linda Lingle,1075,
+2012,Indiana,Class I,LIB,Andrew Horning,1181,x
+2012,Indiana,Class I,REP,Richard Mourdock,966,
+2012,Indiana,Class I,DEM,Joe Donnelly,547,
+2012,Maine,Class I,IND,Andrew Ian Dodge,6280,x
+2012,Maine,Class I,DEM,Cynthia Dill,1183,x
+2012,Maine,Class I,IND,Angus S. King Jr.,1187,
+2012,Maine,Class I,REP,Charlie Summers,1186,
+2012,Maine,Class I,NON,Danny Francis Dalton,6278,x
+2012,Maine,Class I,IND,Stephen M. Woods,6288,x
+2012,Maryland,Class I,LIB,Dean A. Ahmad,6289,x
+2012,Maryland,Class I,DEM,Lih Y. Young,4297,x
+2012,Maryland,Class I,DEM,Benjamin L. Cardin,981,
+2012,Maryland,Class I,IND,Rob Sobhani,1182,x
+2012,Maryland,Class I,REP,Daniel J. Bongino,979,
+2012,Maryland,Class I,DEM,Ed Tinus,6304,x
+2012,Massachusetts,Class I,DEM,Elizabeth Ann Warren,975,
+2012,Massachusetts,Class I,REP,Scott Brown,976,
+2012,Michigan,Class I,NLP,John D. Litle,6112,x
+2012,Michigan,Class I,GRE,Harley G. Mikkelson,6115,x
+2012,Michigan,Class I,TX,Richard A. Matkin,6114,x
+2012,Michigan,Class I,LIB,Scott Avery Boman,6108,x
+2012,Michigan,Class I,REP,Pete Hoekstra,608,
+2012,Michigan,Class I,DEM,Debbie Stabenow,984,
+2012,Minnesota,Class I,REP,Kurt Patrick Bills,1193,
+2012,Minnesota,Class I,OTH,Michael James Cavlan,6131,x
+2012,Minnesota,Class I,DEM,Amy Klobuchar,992,
+2012,Minnesota,Class I,IDP,Stephen J. Williams,4513,x
+2012,Minnesota,Class I,GRT,Tim A. Davis,6132,x
+2012,Mississippi,Class I,REF,Shawn R. O'Hara,4699,x
+2012,Mississippi,Class I,REP,Roger F. Wicker,1001,
+2012,Mississippi,Class I,DEM,Albert N. Gore,6345,
+2012,Mississippi,Class I,CON,Thomas Cramer,6344,x
+2012,Missouri,Class I,REP,Todd Akin,1000,
+2012,Missouri,Class I,DEM,Claire McCaskill,997,
+2012,Missouri,Class I,LIB,Jonathan Dine,1198,x
+2012,Montana,Class I,LIB,Jerry McConnell,6122,x
+2012,Montana,Class I,LIB,Dan Cox,2645,x
+2012,Montana,Class I,DEM,Jon Tester,1002,
+2012,Montana,Class I,REP,Denny Rehberg,1003,
+2012,Nebraska,Class I,DEM,Bob Kerrey,144,
+2012,Nebraska,Class I,REP,Deb Fischer,1007,
+2012,Nevada,Class I,REP,Dean Heller,1021,
+2012,Nevada,Class I,DEM,Shelley Berkley,1020,
+2012,Nevada,Class I,IAP,David Lory VanDerBeek,1208,x
+2012,New Jersey,Class I,LIB,Kenneth R. Kaplan,6335,x
+2012,New Jersey,Class I,REP,Joe Kyrillos,1097,
+2012,New Jersey,Class I,IND,Eugene Martin LaVergne,4689,x
+2012,New Jersey,Class I,IND,Jonathan Maher,6337,x
+2012,New Jersey,Class I,IND,Robert D. Turkavage,6342,x
+2012,New Jersey,Class I,GRE,Kenneth Wolski,6343,x
+2012,New Jersey,Class I,IND,Lawrence J. Donahue,6331,x
+2012,New Jersey,Class I,IND,Daryl Mikell Brooks,6327,x
+2012,New Jersey,Class I,DEM,Bob Menendez,1012,
+2012,New Jersey,Class I,OTH,Inder Jit Soni,6341,x
+2012,New Jersey,Class I,IND,Gwen Diakos,6329,x
+2012,New Jersey,Class I,IND,J. David Dranikoff,6332,x
+2012,New Jersey,Class I,SOC,Gregory Pason,6338,x
+2012,New Mexico,Class I,DEM,Martin Heinrich,707,
+2012,New Mexico,Class I,REP,Heather A. Wilson,1018,
+2012,New Mexico,Class I,IND,Jon Ross Barrie,1207,x
+2012,New York,Class I,GRE,Colia Clark,6151,x
+2012,New York,Class I,DEM,Kirsten E. Gillibrand,748,
+2012,New York,Class I,LIB,Christopher Edes,6152,x
+2012,New York,Class I,OTH,John Mangelli,6153,x
+2012,New York,Class I,REP,Wendy E. Long,1209,
+2012,North Dakota,Class I,DEM,Heidi Heitkamp,1005,
+2012,North Dakota,Class I,REP,Rick Berg,1004,
+2012,Ohio,Class I,REP,Josh Mandel,1028,
+2012,Ohio,Class I,DEM,Sherrod Brown,1025,
+2012,Ohio,Class I,LIB,John K. Fockler,6163,x
+2012,Ohio,Class I,GRE,Joseph Rosario DeMare,6161,x
+2012,Ohio,Class I,IND,Scott Allen Rupert,1159,x
+2012,Pennsylvania,Class I,REP,Tom Smith,1036,
+2012,Pennsylvania,Class I,LIB,Rayburn Smith,6157,x
+2012,Pennsylvania,Class I,DEM,Robert P. Casey Jr.,1032,
+2012,Rhode Island,Class I,DEM,Sheldon Whitehouse,1038,
+2012,Rhode Island,Class I,REP,Barry Hinckley,2650,
+2012,Rhode Island,Class I,IND,David J. Slavin,6201,x
+2012,Rhode Island,Class I,IND,Todd Giroux,6197,x
+2012,Rhode Island,Class I,IND,Christopher Reynolds,6200,x
+2012,Tennessee,Class I,REP,Bob Corker,1043,
+2012,Tennessee,Class I,DEM,Gary Gene Davis,4615,x
+2012,Tennessee,Class I,GRE,Martin Pleasant,6234,x
+2012,Tennessee,Class I,IND,David Gatchell,6227,x
+2012,Tennessee,Class I,DEM,Larry Crim,4614,x
+2012,Tennessee,Class I,DEM,Mark E. Clayton,1215,
+2012,Tennessee,Class I,IND,Michel Joseph Long,6230,x
+2012,Tennessee,Class I,CON,Kermit E. Steck,6238,x
+2012,Tennessee,Class I,LIB,Shaun E. Crowell,6225,x
+2012,Tennessee,Class I,IND,James Higdon,6229,x
+2012,Tennessee,Class I,IND,Troy Stephen Scoggin,6237,x
+2012,Texas,Class I,DEM,Paul Sadler,1164,
+2012,Texas,Class I,IND,Lorenzo Morales,6217,x
+2012,Texas,Class I,LIB,Jon Roland,6221,x
+2012,Texas,Class I,IND,Michael R. Powell,6219,x
+2012,Texas,Class I,GRE,Victoria Ann Zabaras,6223,x
+2012,Texas,Class I,GRE,David B. Collins,1220,x
+2012,Texas,Class I,LIB,Wayne Huffman,6212,x
+2012,Texas,Class I,IND,Craig Couvillion,6207,x
+2012,Texas,Class I,REP,Ted Cruz,1052,
+2012,Texas,Class I,LIB,John Jay Myers,1219,x
+2012,Texas,Class I,LIB,S. Gopal Rajue,6220,x
+2012,Texas,Class I,CON,Eric Lawrence Kirkland,6215,x
+2012,Texas,Class I,IND,Michael Champion,6206,x
+2012,Texas,Class I,LIB,Robert D. Butler,6205,x
+2012,Texas,Class I,LIB,Scott Lanier Jameson,12746,x
+2012,Utah,Class I,REP,Orrin G. Hatch,168,
+2012,Utah,Class I,CON,Shaun Lynn McCausland,4124,x
+2012,Utah,Class I,DEM,Scott N. Howell,1223,
+2012,Utah,Class I,UN,William C. Barron,4110,x
+2012,Utah,Class I,OTH,Daniel Geery,6243,x
+2012,Vermont,Class I,REP,John MacGovern,6320,
+2012,Vermont,Class I,OTH,Laurel LaFramboise,6319,x
+2012,Vermont,Class I,OTH,Cris Ericson,6318,x
+2012,Vermont,Class I,LBU,Pete Diamondstone,6317,x
+2012,Vermont,Class I,DEM,Bernie Sanders,37,
+2012,Vermont,Class I,OTH,Peter D. Moss,6321,x
+2012,Virginia,Class I,REP,George F. Allen,61,
+2012,Virginia,Class I,DEM,Timothy Michael Kaine,80,
+2012,Washington,Class I,REP,Michael Baumgartner,1077,
+2012,Washington,Class I,DEM,Maria Cantwell,1066,
+2012,West Virginia,Class I,DEM,"Joe Manchin, III",925,
+2012,West Virginia,Class I,MTP,Bob Henry Baber,4620,x
+2012,West Virginia,Class I,REP,John Raese,927,
+2012,Wisconsin,Class I,IND,Nimrod Y.U. Allen,6252,x
+2012,Wisconsin,Class I,LIB,Joseph M. Kexel,6255,x
+2012,Wisconsin,Class I,IND,Joseph Moriarty,6260,x
+2012,Wisconsin,Class I,IND,James Samuelson,6262,x
+2012,Wisconsin,Class I,REP,Tommy Thompson,50,
+2012,Wisconsin,Class I,DEM,Tammy Baldwin,1067,
+2012,Wisconsin,Class I,CON,Riley J. Hood,6254,x
+2012,Wisconsin,Class I,IND,Michael Blinkwitz,6253,x
+2012,Wyoming,Class I,DEM,Tim Chesnut,6249,
+2012,Wyoming,Class I,COU,Joel Otto,6251,x
+2012,Wyoming,Class I,REP,John Barrasso,1069,
+2014,Alabama,Class II,REP,Jeff Sessions,1536,
+2014,Alaska,Class II,IND,Ted Gianoutsos,6358,x
+2014,Alaska,Class II,DEM,Mark Begich,1526,
+2014,Alaska,Class II,REP,Dan Sullivan,4545,
+2014,Alaska,Class II,LIB,Mark S. Fish,4540,x
+2014,Arkansas,Class II,GRE,Mark H. Swaney,4551,x
+2014,Arkansas,Class II,LIB,Nathan LaFrance,4550,x
+2014,Arkansas,Class II,REP,Tom Cotton,3066,
+2014,Arkansas,Class II,DEM,Mark L. Pryor,1541,
+2014,Colorado,Class II,IND,Steve Shogan,4558,x
+2014,Colorado,Class II,DEM,Mark Udall,1543,
+2014,Colorado,Class II,LIB,Gaylon Kent,4557,x
+2014,Colorado,Class II,REP,Cory Gardner,2816,
+2014,Colorado,Class II,IND,Raul Acosta,4552,x
+2014,Colorado,Class II,IND,William Robert Hammons,4555,x
+2014,Delaware,Class II,DEM,Christopher A. Coons,1299,
+2014,Delaware,Class II,GRE,Andrew Richard Groff,6148,x
+2014,Delaware,Class II,REP,Kevin Wade,4515,
+2014,Georgia,Class II,DEM,Mary Michelle Nunn,4488,
+2014,Georgia,Class II,REP,David A. Perdue,4489,
+2014,Georgia,Class II,LIB,Amanda Swafford,4492,x
+2014,Hawaii,Class III,LIB,Michael Kokoski,4496,x
+2014,Hawaii,Class III,REP,Cam Cavasso,505,
+2014,Hawaii,Class III,DEM,Brian Schatz,2654,
+2014,Idaho,Class II,DEM,Nels Mitchell,4483,
+2014,Idaho,Class II,REP,James E. Risch,2710,
+2014,Illinois,Class II,DEM,Richard J. Durbin,1574,
+2014,Illinois,Class II,GRE,Omar N. López,4525,x
+2014,Illinois,Class II,LIB,Sharon Hansen,4524,x
+2014,Illinois,Class II,CON,Chad Koppie,1578,x
+2014,Illinois,Class II,IND,Roger K. Davis,4523,x
+2014,Illinois,Class II,REP,James D. Oberweis,4526,
+2014,Iowa,Class II,REP,Joni K. Ernst,4518,
+2014,Iowa,Class II,IND,Rick Stewart,6356,x
+2014,Iowa,Class II,DEM,Bruce L. Braley,2736,
+2014,Iowa,Class II,IND,Jay T. Williams,4522,x
+2014,Iowa,Class II,LIB,Douglas Butzier,6353,x
+2014,Iowa,Class II,LIB,Charles A. Aldrich,4516,x
+2014,Iowa,Class II,IND,Ruth Smith,6355,x
+2014,Iowa,Class II,IND,Bob Quast,6354,x
+2014,Kansas,Class II,REP,Pat Roberts,1580,
+2014,Kansas,Class II,LIB,Randall A. Batson,6360,x
+2014,Kansas,Class II,DEM,Gregory Orman,6361,
+2014,Kentucky,Class II,REP,Mitch McConnell,1585,
+2014,Kentucky,Class II,REP,Shawna Sterling,4682,x
+2014,Kentucky,Class II,DEM,Alison Lundergan Grimes,4676,
+2014,Kentucky,Class II,LIB,David Patterson,4679,x
+2014,Kentucky,Class II,IND,Ed Marksberry,4678,x
+2014,Louisiana,Class II,LIB,Brannon McMorris,6382,x
+2014,Louisiana,Class II,DEM,Wayne Ables,6378,x
+2014,Louisiana,Class II,DEM,William Waymire,6385,x
+2014,Louisiana,Class II,REP,Thomas Clements,6380,x
+2014,Louisiana,Class II,DEM,Mary L. Landrieu,1594,
+2014,Louisiana,Class II,DEM,Raymond Brown,6379,x
+2014,Louisiana,Class II,REP,Bill Cassidy,2753,
+2014,Louisiana,Class II,REP,Rob Maness,6381,x
+2014,Louisiana,Class II,DEM,Vallian Senegal,6384,x
+2014,Maine,Class II,DEM,Shenna Bellows,4668,
+2014,Maine,Class II,REP,Susan M. Collins,1602,
+2014,Massachusetts,Class II,DEM,Edward J. Markey,2711,
+2014,Massachusetts,Class II,REP,Brian J. Herr,4672,
+2014,Michigan,Class II,GRE,Chris Wahmhoff,6350,x
+2014,Michigan,Class II,LIB,Jim Fulner,4865,x
+2014,Michigan,Class II,DEM,Gary C. Peters,2948,
+2014,Michigan,Class II,IND,Richard A. Matkin,6114,x
+2014,Michigan,Class II,REP,Terri Lynn Land,4475,
+2014,Minnesota,Class II,LIB,Heather Johnson,6352,x
+2014,Minnesota,Class II,DEM,Al Franken,1610,
+2014,Minnesota,Class II,REP,Mike McFadden,4506,
+2014,Minnesota,Class II,IDP,Stephen W. Carlson,4502,x
+2014,Mississippi,Class II,REF,Shawn R. O'Hara,4699,x
+2014,Mississippi,Class II,DEM,Travis W. Childers,4695,
+2014,Mississippi,Class II,REP,Thad Cochran,1626,
+2014,Montana,Class II,DEM,John E. Walsh,2714,x
+2014,Montana,Class II,DEM,Amanda G. Curtis,6351,
+2014,Montana,Class II,LIB,Roger Roots,4481,x
+2014,Montana,Class II,REP,Steve Daines,3105,
+2014,Nebraska,Class II,DEM,Dave Domina,4653,
+2014,Nebraska,Class II,IND,Jim Jenkins,4654,x
+2014,Nebraska,Class II,REP,Ben Sasse,4659,
+2014,Nebraska,Class II,IND,Todd F. Watson,4660,x
+2014,New Hampshire,Class II,DEM,Jeanne Shaheen,1649,
+2014,New Hampshire,Class II,REP,Scott Brown,976,
+2014,New Jersey,Class II,REP,Jeff Bell,4686,
+2014,New Jersey,Class II,OTH,Eugene Martin LaVergne,4689,x
+2014,New Jersey,Class II,IND,Jeffrey Harlan Boss,4687,x
+2014,New Jersey,Class II,IND,Antonio N. Sabas,4691,x
+2014,New Jersey,Class II,LIB,Joseph Baratelli,4685,x
+2014,New Jersey,Class II,IND,Hank Schroeder,4693,x
+2014,New Jersey,Class II,DEM,Cory A. Booker,2713,
+2014,New Mexico,Class II,DEM,Tom Udall,1662,
+2014,New Mexico,Class II,REP,Allen E. Weh,4671,
+2014,North Carolina,Class II,LIB,Sean Newton Haugh,4534,x
+2014,North Carolina,Class II,REP,Thomas Roland Tillis,4539,
+2014,North Carolina,Class II,DEM,Kay R. Hagan,1636,
+2014,Oklahoma,Class II,IND,Joan E. Farr,4640,x
+2014,Oklahoma,Class II,REP,James M. Inhofe,1663,
+2014,Oklahoma,Class III,IND,Mark Beard,6377,x
+2014,Oklahoma,Class III,REP,James Lankford,2881,
+2014,Oklahoma,Class II,DEM,Matt Silverstein,4648,
+2014,Oklahoma,Class III,DEM,Constance N. Johnson,4642,
+2014,Oklahoma,Class II,IND,Ray Woods,4650,x
+2014,Oklahoma,Class II,IND,Aaron DeLozier,4639,x
+2014,Oregon,Class II,DEM,Jeff Merkley,1667,
+2014,Oregon,Class II,CON,James E. Leuenberger,6362,x
+2014,Oregon,Class II,LIB,Mike Montchalin,6363,x
+2014,Oregon,Class II,REP,Monica Wehby,4570,
+2014,Oregon,Class II,GRE,Christina Jean Lugo,5539,x
+2014,Rhode Island,Class II,DEM,Jack Reed,1675,
+2014,Rhode Island,Class II,REP,Mark S. Zaccaria,4572,
+2014,South Carolina,Class III,DEM,Joyce Dickerson,4579,
+2014,South Carolina,Class II,LIB,Victor Kocher,2215,x
+2014,South Carolina,Class II,IND,Brandon Armstrong,4573,x
+2014,South Carolina,Class III,REP,Tim Scott,2712,
+2014,South Carolina,Class II,IND,Thomas Ravenel,6364,x
+2014,South Carolina,Class II,REP,Lindsey Graham,1680,
+2014,South Carolina,Class II,DEM,Charles Bradley Hutto,4581,
+2014,South Carolina,Class III,IND,Jill Bossi,4574,x
+2014,South Dakota,Class II,REP,M. Michael Rounds,4593,
+2014,South Dakota,Class II,LIB,Kurt Evans,4588,x
+2014,South Dakota,Class II,IND,Gordon K. Howie,4589,x
+2014,South Dakota,Class II,DEM,Richard P. Weiland,4594,
+2014,South Dakota,Class II,IND,Larry Pressler,312,x
+2014,Tennessee,Class II,DEM,William Gordon Ball,4612,
+2014,Tennessee,Class II,IND,Edmund Louis Gauthier,6366,x
+2014,Tennessee,Class II,IND,Bartholomew J. Phillips,6370,x
+2014,Tennessee,Class II,REP,Lamar Alexander,167,
+2014,Tennessee,Class II,IND,Tom Emerson,6365,x
+2014,Tennessee,Class II,IND,Harrison Kelly,6368,x
+2014,Tennessee,Class II,IND,Rick Tyler,6373,x
+2014,Tennessee,Class II,GRE,Martin Pleasant,6234,x
+2014,Tennessee,Class II,IND,Joshua James,6367,x
+2014,Tennessee,Class II,IND,Eric Schechter,6372,x
+2014,Tennessee,Class II,IND,Danny Page,6369,x
+2014,Tennessee,Class II,REP,Erin Kent Magee,3383,x
+2014,Tennessee,Class II,CON,Joe B. Wilmoth,6374,x
+2014,Tennessee,Class II,IND,Choudhury Salekin,6371,x
+2014,Texas,Class II,LIB,Rebecca Paddock,4602,x
+2014,Texas,Class II,GRE,Emily Sanchez,4605,x
+2014,Texas,Class II,IND,Avery L. Ayers,4596,x
+2014,Texas,Class II,REP,John Cornyn,1699,
+2014,Texas,Class II,DEM,David M. Alameel,4595,
+2014,Virginia,Class II,LIB,Robert C. Sarvis,4684,x
+2014,Virginia,Class II,DEM,Mark R. Warner,67,
+2014,Virginia,Class II,REP,Ed W. Gillespie,4683,
+2014,West Virginia,Class II,DEM,Natalie E. Tennant,4627,
+2014,West Virginia,Class II,LIB,John S. Buckley,4621,x
+2014,West Virginia,Class II,REP,Larry Eugene Butcher,4622,x
+2014,West Virginia,Class II,MTP,Bob Henry Baber,4620,x
+2014,West Virginia,Class II,REP,Shelley Moore Capito,2708,
+2014,West Virginia,Class II,CON,Phillip J. Hudok,4624,x
+2014,Wyoming,Class II,REP,Michael B. Enzi,1712,
+2014,Wyoming,Class II,DEM,Charlie Hardy,4633,
+2014,Wyoming,Class II,IND,Curt Gottshall,6375,x
+2014,Wyoming,Class II,LIB,Joseph Porambo,6376,x
+2016,Alabama,Class III,REP,Richard C. Shelby,363,
+2016,Alabama,Class III,DEM,Ronald Steven Crumpton,8195,
+2016,Alaska,Class III,DEM,Ray Metcalfe,8184,
+2016,Alaska,Class III,N,Margaret Stock,8192,x
+2016,Alaska,Class III,LIB,Joe Miller,351,x
+2016,Alaska,Class III,NA,Breck A. Craig,8216,x
+2016,Alaska,Class III,N,Ted Gianoutsos,6358,x
+2016,Alaska,Class III,REP,Lisa Murkowski,350,
+2016,Arizona,Class III,REP,John McCain,43,
+2016,Arizona,Class III,DEM,Ann Kirkpatrick,3063,
+2016,Arizona,Class III,GRE,Gary Swing,3868,x
+2016,Arkansas,Class III,REP,John Boozman,376,
+2016,Arkansas,Class III,DEM,Conner W. Eldridge,5424,
+2016,Arkansas,Class III,LIB,Frank Gilbert,6596,x
+2016,California,Class III,DEM,Kamala Harris,6826,
+2016,California,Class III,DEM,Loretta Sanchez,2986,x
+2016,Colorado,Class III,LIB,Lily Tang Williams,8146,x
+2016,Colorado,Class III,REP,Darryl Glenn,8140,
+2016,Colorado,Class III,DEM,Michael Bennet,429,
+2016,Colorado,Class III,UN,Paul Fiorino,6614,x
+2016,Colorado,Class III,GRE,Arn Menconi,8145,x
+2016,Colorado,Class III,UN,Dan Chapin,3853,x
+2016,Colorado,Class III,UNI,William Robert Hammons,4555,x
+2016,Connecticut,Class III,LIB,Richard Lion,12860,x
+2016,Connecticut,Class III,GRE,Jeffery Russell,12777,x
+2016,Connecticut,Class III,DEM,Richard Blumenthal,447,
+2016,Connecticut,Class III,REP,Dan Carter,8125,
+2016,Florida,Class III,DEM,Patrick Murphy,3085,
+2016,Florida,Class III,NNE,Basil E. Dalack,8201,x
+2016,Florida,Class III,NNE,Anton Khoury,8202,x
+2016,Florida,Class III,NNE,Steven Machat,8203,x
+2016,Florida,Class III,NPA,Bruce Nathan,12862,x
+2016,Florida,Class III,LIB,Paul Anthony Stanton,8185,x
+2016,Florida,Class III,REP,Marco Rubio,481,
+2016,Georgia,Class III,REP,Johnny Isakson,495,
+2016,Georgia,Class III,LIB,Allen Buckley,1550,x
+2016,Georgia,Class III,DEM,Jim Barksdale,8120,
+2016,Hawaii,Class III,OTH,"John ""Raghu"" Giuffre",5015,x
+2016,Hawaii,Class III,REP,John Stanley Carroll,6125,
+2016,Hawaii,Class III,CON,Joy J. Allison,4493,x
+2016,Hawaii,Class III,LIB,Michael Kokoski,4496,x
+2016,Hawaii,Class III,DEM,Brian Schatz,2654,
+2016,Idaho,Class III,DEM,Jerry Sturgill,8141,
+2016,Idaho,Class III,REP,Mike Crapo,525,
+2016,Idaho,Class III,CON,Ray J. Writz,8142,x
+2016,Illinois,Class III,REP,Mark Kirk,544,
+2016,Illinois,Class III,DEM,Tammy Duckworth,3090,
+2016,Illinois,Class III,LIB,Kenton McMillen,8188,x
+2016,Illinois,Class III,GRE,Scott K. Summers,6566,x
+2016,Indiana,Class III,DEM,Evan Bayh,60,
+2016,Indiana,Class III,REP,Todd Young,3050,
+2016,Indiana,Class III,LIB,Lucy M. Brenton,8215,x
+2016,Iowa,Class III,DEM,Patty Judge,8129,
+2016,Iowa,Class III,NPA,Michael Luick-Thrams,12900,x
+2016,Iowa,Class III,OTH,Jim Hennager,6552,x
+2016,Iowa,Class III,LIB,Charles A. Aldrich,4516,x
+2016,Iowa,Class III,REP,Chuck Grassley,517,
+2016,Kansas,Class III,LIB,Robert David Garrard,8161,x
+2016,Kansas,Class III,DEM,Patrick Wiesner,4562,
+2016,Kansas,Class III,REP,Jerry Moran,566,
+2016,Kentucky,Class III,DEM,Jim Gray,8158,
+2016,Kentucky,Class III,REP,Rand Paul,30,
+2016,Louisiana,Class III,NPA,Kaitlin Marone,12925,x
+2016,Louisiana,Class III,UNK,William Robert Lang,11938,x
+2016,Louisiana,Class III,UNK,Gregory Taylor,12926,x
+2016,Louisiana,Class III,IND,Troy M. Hebert,8123,x
+2016,Louisiana,Class III,DEM,Peter Williams,12923,x
+2016,Louisiana,Class III,REP,David Duke,239,x
+2016,Louisiana,Class III,DEM,"M.V. ""Vinny"" Mendoza",6077,x
+2016,Louisiana,Class III,REP,Charles Marsala,12928,x
+2016,Louisiana,Class III,REP,John Fleming,2807,x
+2016,Louisiana,Class III,DEM,Foster L. Campbell,8121,
+2016,Louisiana,Class III,REP,Charles W. Boustany Jr.,2733,x
+2016,Louisiana,Class III,REP,John Kennedy,1595,
+2016,Louisiana,Class III,REP,Rob Maness,6381,x
+2016,Louisiana,Class III,DEM,Joshua Pellerin,8155,x
+2016,Louisiana,Class III,REP,Donald Crawford,12927,x
+2016,Louisiana,Class III,NPA,Arden Wells,6083,x
+2016,Louisiana,Class III,NPA,Beryl A. Billiot,10949,x
+2016,Louisiana,Class III,LIB,Le Roy Gillam,12924,x
+2016,Louisiana,Class III,LIB,Thomas Clements,6380,x
+2016,Louisiana,Class III,DEM,Gary Landrieu,6073,x
+2016,Louisiana,Class III,DEM,Derrick Edwards,8156,x
+2016,Louisiana,Class III,REP,Anh Quang Cao,8154,x
+2016,Louisiana,Class III,REP,Abhay Patel,8181,x
+2016,Louisiana,Class III,DEM,Caroline Fayard,8122,x
+2016,Maryland,Class III,DEM,Chris Van Hollen,3028,
+2016,Maryland,Class III,REP,Kathy Szeliga,8083,
+2016,Maryland,Class III,GRE,Margaret Flowers,8204,x
+2016,Missouri,Class III,REP,Roy Blunt,644,
+2016,Missouri,Class III,DEM,Jason Kander,8098,
+2016,Missouri,Class III,GRE,Johnathan McFarland,8220,x
+2016,Missouri,Class III,CON,Fred Ryman,8177,x
+2016,Missouri,Class III,LIB,Jonathan Dine,1198,x
+2016,Nevada,Class III,IND,Tom F. Jones,5884,x
+2016,Nevada,Class III,REP,Joseph J. Heck,2844,
+2016,Nevada,Class III,NNE,Tony Gumina,8209,x
+2016,Nevada,Class III,NNE,Jarrod M. Williams,8211,x
+2016,Nevada,Class III,NNE,Tom Sawyer,8210,x
+2016,Nevada,Class III,DEM,Catherine Cortez Masto,6829,
+2016,New Hampshire,Class III,LIB,Brian Chabot,8208,x
+2016,New Hampshire,Class III,DEM,Maggie Hassan,6712,
+2016,New Hampshire,Class III,IND,Aaron Day,8214,x
+2016,New Hampshire,Class III,REP,Kelly Ayotte,688,
+2016,New York,Class III,REP,Wendy E. Long,1209,x
+2016,New York,Class III,GRE,Robin Laverne Wilson,12912,x
+2016,New York,Class III,LIB,Alex Merced,12913,x
+2016,New York,Class III,DEM,Charles E. Schumer,744,
+2016,North Carolina,Class III,REP,Richard Burr,663,
+2016,North Carolina,Class III,DEM,Deborah K. Ross,8095,x
+2016,North Carolina,Class III,LIB,Sean Newton Haugh,4534,
+2016,North Dakota,Class III,REP,John Hoeven,669,
+2016,North Dakota,Class III,IND,James Germalic,2206,x
+2016,North Dakota,Class III,LIB,Robert N. Marquette,12914,x
+2016,North Dakota,Class III,DEM,Eliot Glassheim,8197,
+2016,Ohio,Class III,NNE,Tom Connors,8207,x
+2016,Ohio,Class III,GRE,Joseph Rosario DeMare,6161,x
+2016,Ohio,Class III,DEM,Ted Strickland,6820,
+2016,Ohio,Class III,REP,Rob Portman,772,
+2016,Ohio,Class III,NNE,Scott Allen Rupert,1159,x
+2016,Oklahoma,Class III,IND,Mark Beard,6377,x
+2016,Oklahoma,Class III,LIB,Robert Murphy,4186,x
+2016,Oklahoma,Class III,DEM,Mike Workman,8196,
+2016,Oklahoma,Class III,IND,Sean Donahue Braddy,12916,x
+2016,Oklahoma,Class III,REP,James Lankford,2881,
+2016,Oregon,Class III,DEM,Ron Wyden,788,
+2016,Oregon,Class III,PG,Eric Navickas,12918,x
+2016,Oregon,Class III,OTH,Shanti S. Lewallen,12919,x
+2016,Oregon,Class III,LIB,James D. Lindsay,12917,x
+2016,Oregon,Class III,IND,Cody Reynolds,5541,x
+2016,Oregon,Class III,REP,Mark Callahan,4565,
+2016,Pennsylvania,Class III,REP,Patrick J. Toomey,1484,
+2016,Pennsylvania,Class III,DEM,Kathleen Alana McGinty,6579,
+2016,Pennsylvania,Class III,LIB,Edward T. Clifford,8186,x
+2016,South Carolina,Class III,REP,Tim Scott,2712,
+2016,South Carolina,Class III,LIB,Bill Bledsoe,8164,x
+2016,South Carolina,Class III,DEM,Thomas Dixon,8163,
+2016,South Carolina,Class III,AMP,Rebel Michael Scarborough,8165,x
+2016,South Dakota,Class III,DEM,Jay H. Williams,8198,
+2016,South Dakota,Class III,REP,John R. Thune,22,
+2016,Utah,Class III,REP,Mike Lee,873,
+2016,Utah,Class III,DEM,Misty Katherine Snow,8144,
+2016,Utah,Class III,IAP,Stone Teiko Fonua,8162,x
+2016,Utah,Class III,IND,William C. Barron,4110,x
+2016,Vermont,Class III,IND,Jerry P. Trudell,10282,x
+2016,Vermont,Class III,OTH,Cris Ericson,6318,x
+2016,Vermont,Class III,DEM,Patrick J. Leahy,891,
+2016,Vermont,Class III,REP,Scott Milne,6750,
+2016,Vermont,Class III,LBU,Pete Diamondstone,6317,x
+2016,Washington,Class III,DEM,Patty Murray,907,
+2016,Washington,Class III,REP,Chris Vance,8149,
+2016,Wisconsin,Class III,LIB,Phil Anderson,8131,x
+2016,Wisconsin,Class III,DEM,Russ Feingold,64,
+2016,Wisconsin,Class III,REP,Ron Johnson,919,
+2018,Arizona,Class I,GRE,Angela Green,9573,x
+2018,Arizona,Class I,REP,Martha McSally,3888,
+2018,Arizona,Class I,DEM,Kyrsten Sinema,3067,
+2018,California,Class I,DEM,Dianne Feinstein,943,
+2018,California,Class I,DEM,Kevin de León,8598,x
+2018,Connecticut,Class I,LIB,Richard Lion,12860,x
+2018,Connecticut,Class I,DEM,Christopher S. Murphy,446,
+2018,Connecticut,Class I,REP,Matthew M. Corey,3430,
+2018,Connecticut,Class I,GRE,Jeffery Russell,12777,x
+2018,Delaware,Class I,LIB,Nadine M. Frost,9579,x
+2018,Delaware,Class I,REP,Rob Arlett,9149,
+2018,Delaware,Class I,DEM,Thomas R. Carper,951,
+2018,Delaware,Class I,GRE,Demitri G. Theodoropoulos,9580,x
+2018,Florida,Class I,REP,Rick Scott,6506,
+2018,Florida,Class I,DEM,Bill Nelson,953,
+2018,Hawaii,Class I,REP,Ronald C. Curtis,10927,
+2018,Hawaii,Class I,DEM,Mazie K. Hirono,502,
+2018,Indiana,Class I,LIB,Lucy M. Brenton,8215,x
+2018,Indiana,Class I,REP,Mike Braun,8549,
+2018,Indiana,Class I,DEM,Joe Donnelly,547,
+2018,Maine,Class I,IND,Angus S. King Jr.,1187,
+2018,Maine,Class I,DEM,Zak Ringelstein,8679,x
+2018,Maine,Class I,REP,Eric L. Brakey,8680,
+2018,Maryland,Class I,LIB,Arvin Vohra,4293,x
+2018,Maryland,Class I,IND,Neal Simon,9208,x
+2018,Maryland,Class I,DEM,Benjamin L. Cardin,981,
+2018,Maryland,Class I,REP,Tony Campbell,9207,
+2018,Massachusetts,Class I,DEM,Elizabeth Ann Warren,975,
+2018,Massachusetts,Class I,IND,Shiva Ayyadurai,9151,x
+2018,Massachusetts,Class I,REP,Geoff Diehl,9150,
+2018,Michigan,Class I,GRE,Marcia Squier,9635,x
+2018,Michigan,Class I,DEM,Debbie Stabenow,984,
+2018,Michigan,Class I,UST,George E. Huffman,9634,x
+2018,Michigan,Class I,REP,John James,8689,
+2018,Michigan,Class I,NLP,John Howard Wilhelm,9636,x
+2018,Minnesota,Class II,IND,Jerry Trooien,9115,x
+2018,Minnesota,Class II,DEM,Tina Smith,9090,
+2018,Minnesota,Class I,DEM,Amy Klobuchar,992,
+2018,Minnesota,Class I,IND,Dennis Schuller,9113,x
+2018,Minnesota,Class I,GRE,Paula M. Overby,3419,x
+2018,Minnesota,Class I,REP,Jim Newberger,9092,
+2018,Minnesota,Class II,IND,Sarah Wellington,9114,x
+2018,Minnesota,Class II,REP,Karin Housley,9091,
+2018,Mississippi,Class II,DEM,Mike Espy,9116,
+2018,Mississippi,Class II,REP,Cindy Hyde-Smith,9117,
+2018,Mississippi,Class II,REP,Chris McDaniel,4698,x
+2018,Mississippi,Class II,DEM,Tobey Bartee,9133,x
+2018,Mississippi,Class I,REF,Shawn R. O'Hara,4699,x
+2018,Mississippi,Class I,DEM,David Baria,8693,
+2018,Mississippi,Class I,LIB,Danny Bedwell,4452,x
+2018,Mississippi,Class I,REP,Roger F. Wicker,1001,
+2018,Missouri,Class I,LIB,Japheth R. Campbell,9134,x
+2018,Missouri,Class I,REP,Josh Hawley,8690,
+2018,Missouri,Class I,IND,Craig S. O'Dear,9178,x
+2018,Missouri,Class I,DEM,Claire McCaskill,997,
+2018,Missouri,Class I,GRE,Jo Crain,9135,x
+2018,Montana,Class I,REP,Matt Rosendale,3291,
+2018,Montana,Class I,LIB,Rick Breckenridge,9597,x
+2018,Montana,Class I,DEM,Jon Tester,1002,
+2018,Nebraska,Class I,DEM,Jane Raybould,8552,
+2018,Nebraska,Class I,LIB,Jim Schultz,12939,x
+2018,Nebraska,Class I,REP,Deb Fischer,1007,
+2018,Nevada,Class I,REP,Dean Heller,1021,
+2018,Nevada,Class I,IAP,Kamau Akil Bakari,4305,x
+2018,Nevada,Class I,IND,Barry Michaels,5888,x
+2018,Nevada,Class I,DEM,Jacky S. Rosen,8322,
+2018,Nevada,Class I,LIB,Timothy Rex Hagan,9167,x
+2018,New Jersey,Class I,OTH,Patricia Flanagan,12942,x
+2018,New Jersey,Class I,OTH,Natalie Lynn Rivera,12940,x
+2018,New Jersey,Class I,DEM,Bob Menendez,1012,
+2018,New Jersey,Class I,OTH,Hank Schroeder,4693,x
+2018,New Jersey,Class I,OTH,Kevin Kimple,12941,x
+2018,New Jersey,Class I,LIB,Murray Sabrin,4692,x
+2018,New Jersey,Class I,GRE,Madelyn R. Hoffman,9613,x
+2018,New Jersey,Class I,REP,Bob Hugin,8553,
+2018,New Mexico,Class I,LIB,Gary Johnson,12,x
+2018,New Mexico,Class I,DEM,Martin Heinrich,707,
+2018,New Mexico,Class I,REP,Mick Rich,8556,
+2018,New York,Class I,DEM,Kirsten E. Gillibrand,748,
+2018,New York,Class I,REP,Chele Farley,8584,
+2018,North Dakota,Class I,DEM,Heidi Heitkamp,1005,
+2018,North Dakota,Class I,REP,Kevin Cramer,3110,
+2018,Ohio,Class I,REP,Jim Renacci,2964,
+2018,Ohio,Class I,DEM,Sherrod Brown,1025,
+2018,Pennsylvania,Class I,REP,Lou Barletta,2718,
+2018,Pennsylvania,Class I,DEM,Robert P. Casey Jr.,1032,
+2018,Pennsylvania,Class I,LIB,Dale R. Kerns,9128,x
+2018,Pennsylvania,Class I,GRE,Neal Taylor Gale,9129,x
+2018,Rhode Island,Class I,REP,Bob Flanders,9190,
+2018,Rhode Island,Class I,DEM,Sheldon Whitehouse,1038,
+2018,Tennessee,Class I,IND,Kris L. Todd,12944,x
+2018,Tennessee,Class I,IND,Breton Phillips,12946,x
+2018,Tennessee,Class I,DEM,Phil Bredesen,8671,
+2018,Tennessee,Class I,REP,Marsha Blackburn,2729,
+2018,Tennessee,Class I,IND,Kevin Lee McCants,12947,x
+2018,Tennessee,Class I,IND,Trudy A. Austin,12943,x
+2018,Tennessee,Class I,IND,G. Dean Hill,10846,x
+2018,Tennessee,Class I,IND,John Carico,12945,x
+2018,Texas,Class I,DEM,Beto O'Rourke,3128,
+2018,Texas,Class I,REP,Ted Cruz,1052,
+2018,Texas,Class I,LIB,Neal M. Dikeman,8611,x
+2018,Utah,Class I,REP,Mitt Romney,9,
+2018,Utah,Class I,DEM,Jenny Wilson,8597,
+2018,Utah,Class I,CON,Timothy Noel Aalders,4109,x
+2018,Utah,Class I,IAP,Reed C. McCandless,3299,x
+2018,Utah,Class I,LIB,Craig R. Bowden,4111,x
+2018,Vermont,Class I,IND,Russell Beste,9623,x
+2018,Vermont,Class I,IND,Brad J. Peacock,11161,x
+2018,Vermont,Class I,LBU,Reid Kane,11163,x
+2018,Vermont,Class I,IND,Bruce Busa,9624,x
+2018,Vermont,Class I,IND,Jon Svitavsky,12949,x
+2018,Vermont,Class I,IND,Edward S. Gilbert,11162,x
+2018,Vermont,Class I,IND,Folasade Adeluola,12948,x
+2018,Vermont,Class I,IND,Bernie Sanders,37,
+2018,Vermont,Class I,REP,Lawrence Zupan,9595,
+2018,Virginia,Class I,REP,Corey Stewart,8554,
+2018,Virginia,Class I,LIB,Matt J. Waters,8678,x
+2018,Virginia,Class I,DEM,Timothy Michael Kaine,80,
+2018,Washington,Class I,DEM,Maria Cantwell,1066,
+2018,Washington,Class I,REP,Susan Hutchison,9106,
+2018,West Virginia,Class I,REP,Patrick Morrisey,6828,
+2018,West Virginia,Class I,LIB,Rusty Hollen,8551,x
+2018,West Virginia,Class I,DEM,"Joe Manchin, III",925,
+2018,Wisconsin,Class I,REP,Leah Vukmir,9105,
+2018,Wisconsin,Class I,DEM,Tammy Baldwin,1067,
+2018,Wyoming,Class I,DEM,Gary Trauner,6432,
+2018,Wyoming,Class I,LIB,Joseph Porambo,6376,x
+2018,Wyoming,Class I,REP,John Barrasso,1069,
+2020,Alabama,Class II,REP,Tommy Tuberville,9772,
+2020,Alabama,Class II,DEM,Gordon Douglas Jones,8316,
+2020,Alaska,Class II,AKI,John Wayne Howe,11093,x
+2020,Alaska,Class II,DEM,Al Gross,10296,
+2020,Alaska,Class II,REP,Dan Sullivan,4545,
+2020,Arizona,Class III,REP,Martha McSally,3888,
+2020,Arizona,Class III,DEM,Mark Kelly,9705,
+2020,Arkansas,Class II,LIB,Ricky Dale Harrington Jr.,10797,x
+2020,Arkansas,Class II,REP,Tom Cotton,3066,
+2020,Colorado,Class II,LIB,Raymon Anthony Doane,10800,x
+2020,Colorado,Class II,DEM,John Wright Hickenlooper,6617,
+2020,Colorado,Class II,GRE,Bruce Edward Lohmiller,11104,x
+2020,Colorado,Class II,W,Danny Skelly,10803,x
+2020,Colorado,Class II,OTH,Daniel Doyle,11103,x
+2020,Colorado,Class II,REP,Cory Gardner,2816,
+2020,Colorado,Class II,OTH,Stephen Dale Evans,10802,x
+2020,Colorado,Class II,IND,Michael Sanchez,11105,x
+2020,Delaware,Class II,DEM,Christopher A. Coons,1299,
+2020,Delaware,Class II,LIB,Nadine M. Frost,9579,x
+2020,Delaware,Class II,REP,Lauren E. Witzke,11113,
+2020,Delaware,Class II,IP,Mark W. Turley,10804,x
+2020,Georgia,Class III,GRE,John Fortuin,10809,x
+2020,Georgia,Class III,DEM,Matt Lieberman,9814,x
+2020,Georgia,Class II,DEM,Jon Ossoff,8280,
+2020,Georgia,Class III,DEM,Ed Tarver,10221,x
+2020,Georgia,Class III,REP,Kelly Loeffler,6440,
+2020,Georgia,Class III,DEM,Tamara Y. Johnson-Shealey,10808,x
+2020,Georgia,Class II,REP,David A. Perdue,4489,
+2020,Georgia,Class III,DEM,Joy Felicia Slade,10807,x
+2020,Georgia,Class III,IND,Michael Todd Greene,10810,x
+2020,Georgia,Class III,REP,Annette L. Davis Jackson,10812,x
+2020,Georgia,Class III,REP,A. Wayne Johnson,10210,x
+2020,Georgia,Class III,DEM,Raphael Warnock,10220,
+2020,Georgia,Class III,IND,Valencia Stovall,10811,x
+2020,Georgia,Class III,REP,Derrick E. Grayson,4485,x
+2020,Georgia,Class III,DEM,Jamesia James,10806,x
+2020,Georgia,Class III,REP,Kandiss Taylor,10813,x
+2020,Georgia,Class III,DEM,Deborah A. Jackson,10805,x
+2020,Georgia,Class III,IND,Allen Buckley,1550,x
+2020,Georgia,Class III,LIB,Brian Richard Slowinski,3331,x
+2020,Georgia,Class III,IND,Al Bartell,17978,x
+2020,Georgia,Class III,REP,Doug Collins,3088,x
+2020,Georgia,Class III,DEM,Richard Dien Winfield,10224,x
+2020,Georgia,Class II,LIB,Shane Hazel,10253,x
+2020,Idaho,Class II,CON,Ray J. Writz,8142,x
+2020,Idaho,Class II,IND,Natalie M. Fleming,10816,x
+2020,Idaho,Class II,DEM,Paulette E. Jordan,8656,
+2020,Idaho,Class II,REP,James E. Risch,2710,
+2020,Illinois,Class II,GRE,David F. Black,10947,x
+2020,Illinois,Class II,DEM,Richard J. Durbin,1574,
+2020,Illinois,Class II,LIB,Danny Malouf,10818,x
+2020,Illinois,Class II,REP,Mark C. Curran,10819,
+2020,Illinois,Class II,IND,WIllie Wilson,7954,x
+2020,Iowa,Class II,DEM,Theresa Greenfield,9710,
+2020,Iowa,Class II,LIB,Rick Stewart,6356,x
+2020,Iowa,Class II,IND,Suzanne Herzog,10815,x
+2020,Iowa,Class II,REP,Joni K. Ernst,4518,
+2020,Kansas,Class II,DEM,Barbara Goolsbee Bollier,9840,
+2020,Kansas,Class II,LIB,Jason Buckley,10820,x
+2020,Kansas,Class II,REP,Roger Marshall,8842,
+2020,Kentucky,Class II,DEM,Amy McGrath,8565,
+2020,Kentucky,Class II,REP,Mitch McConnell,1585,
+2020,Kentucky,Class II,LIB,Brad Barron,10209,x
+2020,Louisiana,Class II,NNE,John Paul Bourgeois,10950,x
+2020,Louisiana,Class II,DEM,Adrian Perkins,10953,
+2020,Louisiana,Class II,DEM,Antoine Pierce,10822,x
+2020,Louisiana,Class II,REP,Dustin Murphy,10827,x
+2020,Louisiana,Class II,IND,"M.V. ""Vinny"" Mendoza",6077,x
+2020,Louisiana,Class II,OTH,Xan John,10952,x
+2020,Louisiana,Class II,IND,Jamar Montgomery,10826,x
+2020,Louisiana,Class II,DEM,David Drew Knight,10824,x
+2020,Louisiana,Class II,REP,Bill Cassidy,2753,
+2020,Louisiana,Class II,DEM,Derrick Edwards,8156,x
+2020,Louisiana,Class II,NOP,Beryl A. Billiot,10949,x
+2020,Louisiana,Class II,LIB,Aaron C. Sigler,10955,x
+2020,Louisiana,Class II,DEM,Peter Wenstrup,10825,x
+2020,Louisiana,Class II,OTH,Melinda Mary Price,10954,x
+2020,Louisiana,Class II,NPA,Reno Jean Daret,10951,x
+2020,Maine,Class II,IND,Lisa Savage,10294,x
+2020,Maine,Class II,DEM,Sara I. Gideon,9706,
+2020,Maine,Class II,REP,Susan M. Collins,1602,
+2020,Maine,Class II,IND,Max Linn,9267,x
+2020,Massachusetts,Class II,DEM,Edward J. Markey,2711,
+2020,Massachusetts,Class II,REP,Kevin J. O'Connor,11078,
+2020,Michigan,Class II,UST,Valerie Willis,10957,x
+2020,Michigan,Class II,GRE,Marcia Squier,9635,x
+2020,Michigan,Class II,REP,John James,8689,
+2020,Michigan,Class II,DEM,Gary C. Peters,2948,
+2020,Michigan,Class II,NLP,Doug Dern,10956,x
+2020,Minnesota,Class II,OTH,Oliver Steinberg,10830,x
+2020,Minnesota,Class II,REP,Jason Lewis,6446,
+2020,Minnesota,Class II,OTH,Kevin O'Connor,10832,x
+2020,Minnesota,Class II,DEM,Tina Smith,9090,
+2020,Mississippi,Class II,REP,Cindy Hyde-Smith,9117,
+2020,Mississippi,Class II,LIB,Jimmy Edwards,10254,x
+2020,Mississippi,Class II,DEM,Mike Espy,9116,
+2020,Montana,Class II,DEM,Steve Bullock,6807,
+2020,Montana,Class II,REP,Steve Daines,3105,
+2020,Nebraska,Class II,REP,Ben Sasse,4659,
+2020,Nebraska,Class II,DEM,Chris E. Janicek,10834,
+2020,Nebraska,Class II,LIB,Gene Siadek,10835,x
+2020,New Hampshire,Class II,DEM,Jeanne Shaheen,1649,
+2020,New Hampshire,Class II,REP,Bryant Messner,10223,
+2020,New Hampshire,Class II,LIB,Justin F. O'Donnell,9611,x
+2020,New Jersey,Class II,DEM,Cory A. Booker,2713,
+2020,New Jersey,Class II,GRE,Madelyn R. Hoffman,9613,x
+2020,New Jersey,Class II,IND,Daniel Burke,10836,x
+2020,New Jersey,Class II,IND,Veronica Fernandez,10838,x
+2020,New Jersey,Class II,REP,Rikin Mehta,10250,
+2020,New Mexico,Class II,DEM,Ben Ray Luján,2897,
+2020,New Mexico,Class II,LIB,Bob Walsh,8547,x
+2020,New Mexico,Class II,REP,Mark V. Ronchetti,10276,
+2020,North Carolina,Class II,REP,Thomas Roland Tillis,4539,
+2020,North Carolina,Class II,LIB,Shannon W. Bray,10246,x
+2020,North Carolina,Class II,DEM,Cal Cunningham,664,
+2020,North Carolina,Class II,CON,Kevin Eugene Hayes,10247,x
+2020,Oklahoma,Class II,LIB,Robert Murphy,4186,x
+2020,Oklahoma,Class II,REP,James M. Inhofe,1663,
+2020,Oklahoma,Class II,DEM,Abby Broyles,10232,
+2020,Oklahoma,Class II,IND,A. D. Nesbit,11141,x
+2020,Oklahoma,Class II,IND,Joan E. Farr,4640,x
+2020,Oregon,Class II,REP,Jo Rae Perkins,4569,
+2020,Oregon,Class II,LIB,Gary Dye,11129,x
+2020,Oregon,Class II,PG,Ibrahim Ali Taher,10840,x
+2020,Oregon,Class II,DEM,Jeff Merkley,1667,
+2020,Rhode Island,Class II,DEM,Jack Reed,1675,
+2020,Rhode Island,Class II,REP,Allen R. Waters,10841,
+2020,South Carolina,Class II,DEM,Jaime Harrison,9707,
+2020,South Carolina,Class II,CON,Bill Bledsoe,8164,x
+2020,South Carolina,Class II,REP,Lindsey Graham,1680,
+2020,South Dakota,Class II,REP,M. Michael Rounds,4593,
+2020,South Dakota,Class II,DEM,Daniel P. Ahlers,10842,
+2020,Tennessee,Class II,REP,Bill Hagerty,9836,
+2020,Tennessee,Class II,IND,Jeffrey Alan Grunau,10847,x
+2020,Tennessee,Class II,IND,Steven J. Hooper,10850,x
+2020,Tennessee,Class II,IND,Ronnie Henley,10849,x
+2020,Tennessee,Class II,IND,Eric William Stansberry,10845,x
+2020,Tennessee,Class II,DEM,Marquita Bradshaw,10958,
+2020,Tennessee,Class II,IND,Elizabeth McLeod,10844,x
+2020,Tennessee,Class II,IND,Kacey Morgan,10848,x
+2020,Tennessee,Class II,IND,G. Dean Hill,10846,x
+2020,Tennessee,Class II,IND,Aaron James,10843,x
+2020,Tennessee,Class II,IND,Yomi Faparusi,4084,x
+2020,Texas,Class II,LIB,Kerry Douglas McKennon,10945,x
+2020,Texas,Class II,REP,John Cornyn,1699,
+2020,Texas,Class II,GRE,David B. Collins,1220,x
+2020,Texas,Class II,DEM,Mary Jennings Hegar,8614,
+2020,Virginia,Class II,DEM,Mark R. Warner,67,
+2020,Virginia,Class II,REP,Daniel M. Gade,10858,
+2020,West Virginia,Class II,DEM,Paula Jean Swearengin,10859,
+2020,West Virginia,Class II,REP,Shelley Moore Capito,2708,
+2020,West Virginia,Class II,LIB,David Moran,8182,x
+2020,Wyoming,Class II,REP,Cynthia M. Lummis,2898,
+2020,Wyoming,Class II,DEM,Merav Ben-David,11070,
+2022,Alabama,Class III,REP,Katie Britt,18466,
+2022,Alabama,Class III,LIB,John Sophocleus,9362,x
+2022,Alabama,Class III,DEM,Will Boyd,16112,
+2022,Alaska,Class III,REP,Kelly C. Tshibaka,14487,x
+2022,Alaska,Class III,REP,Lisa Murkowski,350,
+2022,Alaska,Class III,DEM,Patricia R. Chesbro,18440,x
+2022,Alaska,Class III,REP,Buzz A. Kelley,18848,x
+2022,Arizona,Class III,REP,Blake Masters,17695,
+2022,Arizona,Class III,LIB,Marc Victor,6196,x
+2022,Arizona,Class III,DEM,Mark Kelly,9705,
+2022,Arkansas,Class III,DEM,Natalie James,18465,
+2022,Arkansas,Class III,LIB,Kenneth Cates,17792,x
+2022,Arkansas,Class III,REP,John Boozman,376,
+2022,California,Class III,REP,Mark P. Meuser,17867,
+2022,California,Class III,DEM,Alex Padilla,17803,
+2022,Colorado,Class III,OTH,Frank Atwood,3849,x
+2022,Colorado,Class III,REP,Joe O'Dea,18627,
+2022,Colorado,Class III,OTH,T.J. Cole,18861,x
+2022,Colorado,Class III,DEM,Michael Bennet,429,
+2022,Colorado,Class III,LIB,Brian Peotter,18496,x
+2022,Connecticut,Class III,DEM,Richard Blumenthal,447,
+2022,Connecticut,Class III,REP,Leora R. Levy,18449,
+2022,Florida,Class III,NPA,Steven B. Grant,17941,x
+2022,Florida,Class III,IND,Moses Quiles,18453,x
+2022,Florida,Class III,REP,Marco Rubio,481,
+2022,Florida,Class III,DEM,Val Demings,4735,
+2022,Florida,Class III,NPA,Tuan T.Q. Nguyen,17943,x
+2022,Florida,Class III,LIB,Dennis Misigoy,17945,x
+2022,Georgia,Class III,DEM,Raphael Warnock,10220,
+2022,Georgia,Class III,LIB,Chase Oliver,11724,x
+2022,Georgia,Class III,REP,Herschel Junior Walker,11490,
+2022,Hawaii,Class III,DEM,Brian Schatz,2654,
+2022,Hawaii,Class III,OTH,Dan Decker,18662,x
+2022,Hawaii,Class III,REP,Bob McDermott,14961,
+2022,Hawaii,Class III,GRE,Emma Jane Avila Pohlman,18663,x
+2022,Hawaii,Class III,LIB,Feena Bonoan,17992,x
+2022,Idaho,Class III,DEM,David Roth,17997,
+2022,Idaho,Class III,LIB,Idaho Sierra Law,10430,x
+2022,Idaho,Class III,REP,Mike Crapo,525,
+2022,Idaho,Class III,IND,Scott Oh Cleveland,17998,x
+2022,Idaho,Class III,CON,Ray J. Writz,8142,x
+2022,Illinois,Class III,REP,Kathy Salvi,18619,
+2022,Illinois,Class III,DEM,Tammy Duckworth,3090,
+2022,Illinois,Class III,OTH,Constant G. Vlakancic,12620,x
+2022,Illinois,Class III,LIB,Bill Redpath,4385,x
+2022,Indiana,Class III,LIB,James Sceniak,18026,x
+2022,Indiana,Class III,DEM,Thomas McDermott,18027,
+2022,Indiana,Class III,REP,Todd Young,3050,
+2022,Iowa,Class III,DEM,Michael Franken,18383,
+2022,Iowa,Class III,REP,Chuck Grassley,517,
+2022,Kansas,Class III,DEM,Mark R. Holland,18040,
+2022,Kansas,Class III,REP,Jerry Moran,566,
+2022,Kansas,Class III,LIB,David C. Graham,18521,x
+2022,Kentucky,Class III,REP,Rand Paul,30,
+2022,Kentucky,Class III,DEM,Charles Booker,10283,
+2022,Louisiana,Class III,DEM,Syrita Steib,17925,x
+2022,Louisiana,Class III,OTH,Xan John,10952,x
+2022,Louisiana,Class III,IND,Bradley McMorris,18785,x
+2022,Louisiana,Class III,DEM,"M.V. ""Vinny"" Mendoza",6077,x
+2022,Louisiana,Class III,DEM,Gary Chambers,13110,
+2022,Louisiana,Class III,LIB,Aaron C. Sigler,10955,x
+2022,Louisiana,Class III,DEM,Luke Mixon,17924,x
+2022,Louisiana,Class III,REP,Devin Lance Graham,16642,x
+2022,Louisiana,Class III,REP,John Kennedy,1595,
+2022,Louisiana,Class III,NPA,W. Thomas La Fontaine Olson,18784,x
+2022,Louisiana,Class III,DEM,Salvador P. Rodriguez,18786,x
+2022,Louisiana,Class III,OTH,Thomas Wenn,18787,x
+2022,Louisiana,Class III,NPA,Beryl A. Billiot,10949,x
+2022,Maryland,Class III,DEM,Chris Van Hollen,3028,
+2022,Maryland,Class III,REP,Chris Chaffee,4264,
+2022,Missouri,Class III,DEM,Trudy Busch Valentine,18422,
+2022,Missouri,Class III,REP,Eric Schmitt,13297,
+2022,Missouri,Class III,IND,Steve Price,18099,x
+2022,Missouri,Class III,LIB,Jonathan Dine,1198,x
+2022,Missouri,Class III,CON,Paul Venable,11949,x
+2022,Nevada,Class III,IAP,Barry Rubinson,10561,x
+2022,Nevada,Class III,DEM,Catherine Cortez Masto,6829,
+2022,Nevada,Class III,REP,Adam Paul Laxalt,6830,
+2022,Nevada,Class III,NPA,Barry Lindemann,18123,x
+2022,Nevada,Class III,LIB,Neil Scott,11511,x
+2022,New Hampshire,Class III,REP,Donald C. Bolduc,9712,
+2022,New Hampshire,Class III,DEM,Maggie Hassan,6712,
+2022,New Hampshire,Class III,LIB,Jeremy Kauffman,18133,x
+2022,New York,Class III,DEM,Charles E. Schumer,744,
+2022,New York,Class III,IND,Diane Sare,4436,x
+2022,New York,Class III,REP,Joe Pinion,18148,
+2022,North Carolina,Class III,DEM,Cheri Beasley,17724,
+2022,North Carolina,Class III,LIB,Shannon W. Bray,10246,x
+2022,North Carolina,Class III,GRE,Matthew Hoh,18471,x
+2022,North Carolina,Class III,REP,Ted Budd,8570,
+2022,North Dakota,Class III,REP,John Hoeven,669,
+2022,North Dakota,Class III,IND,Rick Becker,18864,x
+2022,North Dakota,Class III,DEM,Katrina Christiansen,18197,
+2022,Ohio,Class III,REP,JD Vance,13265,
+2022,Ohio,Class III,DEM,Tim Ryan,2984,
+2022,Oklahoma,Class III,REP,James Lankford,2881,
+2022,Oklahoma,Class II,DEM,Kendra Horn,8968,
+2022,Oklahoma,Class II,IND,Ray Woods,4650,x
+2022,Oklahoma,Class II,REP,Markwayne Mullin,3122,
+2022,Oklahoma,Class III,DEM,Madison Horn,18705,
+2022,Oklahoma,Class III,IND,Micahael L. Delaney,18395,x
+2022,Oklahoma,Class II,LIB,Robert Murphy,4186,x
+2022,Oklahoma,Class III,LIB,Kenneth D. Blevins,18394,x
+2022,Oregon,Class III,PG,Dan Pulju,18566,x
+2022,Oregon,Class III,DEM,Ron Wyden,788,
+2022,Oregon,Class III,PRO,Chris Henry,6638,x
+2022,Oregon,Class III,REP,Jo Rae Perkins,4569,
+2022,Pennsylvania,Class III,OTH,Daniel Wassmer,18806,x
+2022,Pennsylvania,Class III,REP,Mehmet Oz,17731,
+2022,Pennsylvania,Class III,DEM,John Fetterman,8074,
+2022,Pennsylvania,Class III,GRE,Richard L. Weiss,18239,x
+2022,Pennsylvania,Class III,LIB,Erik Gerhardt,18238,x
+2022,South Carolina,Class III,REP,Tim Scott,2712,
+2022,South Carolina,Class III,DEM,Krystle Matthews,18263,
+2022,South Dakota,Class III,REP,John R. Thune,22,
+2022,South Dakota,Class III,DEM,Brian L. Bengs,18275,
+2022,South Dakota,Class III,LIB,Tamara J. Lesnar,18749,x
+2022,Utah,Class III,REP,Mike Lee,873,
+2022,Utah,Class III,LIB,James Arthur Hansen,18305,x
+2022,Utah,Class III,IND,Evan McMullin,8172,
+2022,Utah,Class III,IAP,Tommy Williams,18307,x
+2022,Vermont,Class III,IND,Dawn Marie Ellis,18829,x
+2022,Vermont,Class III,GRE,Natasha Diamondstone-Kohout,18859,x
+2022,Vermont,Class III,IND,Stephen Duke,18828,x
+2022,Vermont,Class III,REP,Gerald Malloy,18827,
+2022,Vermont,Class III,IND,Cris Ericson,6318,x
+2022,Vermont,Class III,DEM,Peter Welch,3038,
+2022,Vermont,Class III,IND,Kerry Patrick Raheb,18318,x
+2022,Vermont,Class III,AIP,Mark Coester,18317,x
+2022,Washington,Class III,REP,Tiffany Smiley,14330,
+2022,Washington,Class III,DEM,Patty Murray,907,
+2022,Wisconsin,Class III,REP,Ron Johnson,919,
+2022,Wisconsin,Class III,DEM,Mandela Barnes,17690,
+2024,Arizona,Class I,REP,Kari Lake,14238,
+2024,Arizona,Class I,DEM,Ruben Gallego,3883,
+2024,Arizona,Class I,GRE,Eduardo Quintana,22548,x
+2024,California,Class I,DEM,Adam B. Schiff,2990,
+2024,California,Class I,REP,Steve Garvey,19106,
+2024,Connecticut,Class I,REP,Matthew M. Corey,3430,
+2024,Connecticut,Class I,IND,Robert Hyde,23050,x
+2024,Connecticut,Class I,GRE,Justin Paglino,10398,x
+2024,Connecticut,Class I,DEM,Christopher S. Murphy,446,
+2024,Delaware,Class I,REP,Eric Hansen,22761,
+2024,Delaware,Class I,IND,"Michael ""Dr. Mike"" Katz",23005,x
+2024,Delaware,Class I,DEM,Lisa Blunt Rochester,8348,
+2024,Florida,Class I,REP,Rick Scott,6506,
+2024,Florida,Class I,NPA,Tuan T.Q. Nguyen,17943,x
+2024,Florida,Class I,NPA,Ben Everidge,22963,x
+2024,Florida,Class I,LIB,Feena Bonoan,17992,x
+2024,Florida,Class I,DEM,Debbie Mucarsel-Powell,8791,
+2024,Hawaii,Class I,WTP,Shelby Billionaire,23066,x
+2024,Hawaii,Class I,GRE,Emma Jane Avila Pohlman,18663,x
+2024,Hawaii,Class I,REP,Bob McDermott,14961,
+2024,Hawaii,Class I,DEM,Mazie K. Hirono,502,
+2024,Indiana,Class I,DEM,Valerie McCray,11667,
+2024,Indiana,Class I,REP,Jim Banks,8593,
+2024,Indiana,Class I,LIB,Andrew Horning,1181,x
+2024,Maine,Class I,REP,Demi Kouzounas,22420,
+2024,Maine,Class I,DEM,David Allen Costello,22419,x
+2024,Maine,Class I,IND,Angus S. King Jr.,1187,
+2024,Maine,Class I,IND,Jason S. Cherry,22838,x
+2024,Maryland,Class I,REP,Larry Hogan,6719,
+2024,Maryland,Class I,DEM,Angela Alsobrooks,19218,
+2024,Maryland,Class I,LIB,Mike Scott,22549,x
+2024,Massachusetts,Class I,DEM,Elizabeth Ann Warren,975,
+2024,Massachusetts,Class I,REP,John Deaton,19481,
+2024,Michigan,Class I,NLP,Doug Dern,10956,x
+2024,Michigan,Class I,UST,Dave Stein,22915,x
+2024,Michigan,Class I,LIB,Joseph Solis-Mullen,22914,x
+2024,Michigan,Class I,REP,Mike Rogers,2971,
+2024,Michigan,Class I,GRE,Douglas P. Marsh,22916,x
+2024,Michigan,Class I,DEM,Elissa Slotkin,8685,
+2024,Minnesota,Class I,IDP,Joyce Lynne Lacey,22942,x
+2024,Minnesota,Class I,LIB,Rebecca Whiting,22941,x
+2024,Minnesota,Class I,DEM,Amy Klobuchar,992,
+2024,Minnesota,Class I,REP,Royce White,22475,
+2024,Mississippi,Class I,REP,Roger F. Wicker,1001,
+2024,Mississippi,Class I,DEM,Ty Pinkins,22519,
+2024,Missouri,Class I,GRE,Nathan Kline,23012,x
+2024,Missouri,Class I,OTH,Jared Young,23011,x
+2024,Missouri,Class I,LIB,W.C. Young,22840,x
+2024,Missouri,Class I,REP,Josh Hawley,8690,
+2024,Missouri,Class I,DEM,Lucas Kunce,17709,
+2024,Montana,Class I,LIB,Sid Daoud,22482,x
+2024,Montana,Class I,REP,Tim Sheehy,19033,
+2024,Montana,Class I,GRE,Robert Barb,11115,x
+2024,Montana,Class I,DEM,Jon Tester,1002,
+2024,Nebraska,Class II,REP,Pete Ricketts,1819,x
+2024,Nebraska,Class II,DEM,Preston Love Jr.,11707,x
+2024,Nebraska,Class I,REP,Deb Fischer,1007,
+2024,Nebraska,Class I,IND,Dan Osborn,19066,
+2024,Nevada,Class I,DEM,Jacky S. Rosen,8322,
+2024,Nevada,Class I,REP,Sam Brown,18353,
+2024,Nevada,Class I,IAP,Janine Hansen,4314,x
+2024,Nevada,Class I,LIB,Chris Cunningham,20800,x
+2024,New Jersey,Class I,DEM,Andy Kim,8567,
+2024,New Jersey,Class I,OTH,Patricia G. Mooneyham,22853,x
+2024,New Jersey,Class I,REP,Curtis Bashaw,19461,
+2024,New Jersey,Class I,LIB,Kenneth R. Kaplan,6335,x
+2024,New Jersey,Class I,GRE,Christina Khalil,22852,x
+2024,New Jersey,Class I,SWP,Joanne Kuniansky,17684,x
+2024,New Mexico,Class I,DEM,Martin Heinrich,707,
+2024,New Mexico,Class I,REP,Nella Louise Domenici,19350,
+2024,New York,Class I,REP,Michael D. Sapraicone,19068,
+2024,New York,Class I,OTH,Diane Sare,4436,x
+2024,New York,Class I,DEM,Kirsten E. Gillibrand,748,
+2024,North Dakota,Class I,REP,Kevin Cramer,3110,
+2024,North Dakota,Class I,DEM,Katrina Christiansen,18197,
+2024,Ohio,Class I,LIB,Donald C. Kissick,13169,x
+2024,Ohio,Class I,REP,Bernie Moreno,19025,
+2024,Ohio,Class I,DEM,Sherrod Brown,1025,
+2024,Pennsylvania,Class I,LIB,John C. Thomas,22774,x
+2024,Pennsylvania,Class I,DEM,Robert P. Casey Jr.,1032,
+2024,Pennsylvania,Class I,CON,Bernard Selker,22836,x
+2024,Pennsylvania,Class I,GRE,Leila Hazou,22776,x
+2024,Pennsylvania,Class I,REP,Dave McCormick,18240,
+2024,Rhode Island,Class I,REP,Patricia Morgan,22762,
+2024,Rhode Island,Class I,DEM,Sheldon Whitehouse,1038,
+2024,Tennessee,Class I,DEM,Gloria Johnson,19050,
+2024,Tennessee,Class I,IND,Tharon Chandler,15230,x
+2024,Tennessee,Class I,REP,Marsha Blackburn,2729,
+2024,Tennessee,Class I,IND,Hastina Robinson,22979,x
+2024,Tennessee,Class I,IND,"Pamela Jeanine ""P."" Moses",22978,x
+2024,Texas,Class I,LIB,Ted Brown,10708,x
+2024,Texas,Class I,REP,Ted Cruz,1052,
+2024,Texas,Class I,DEM,Colin Allred,9038,
+2024,Utah,Class I,IAP,Carlton E. Bowen,11582,x
+2024,Utah,Class I,DEM,Caroline Gleich,22670,
+2024,Utah,Class I,REP,John Curtis,9049,
+2024,Vermont,Class I,OTH,Mark Stewart Greenstein,10038,x
+2024,Vermont,Class I,IND,Steve Berry,22898,x
+2024,Vermont,Class I,REP,Gerald Malloy,18827,
+2024,Vermont,Class I,IND,Bernie Sanders,37,
+2024,Vermont,Class I,OTH,Justin Schoville,22897,x
+2024,Vermont,Class I,LIB,Matt Hill,22896,x
+2024,Virginia,Class I,REP,Hung Cao,18584,
+2024,Virginia,Class I,DEM,Timothy Michael Kaine,80,
+2024,Washington,Class I,REP,Raul Garcia,7995,
+2024,Washington,Class I,DEM,Maria Cantwell,1066,
+2024,West Virginia,Class I,REP,Jim Justice,8062,
+2024,West Virginia,Class I,LIB,David Moran,8182,x
+2024,West Virginia,Class I,DEM,Glenn Elliott,21989,
+2024,Wisconsin,Class I,DEM,Tammy Baldwin,1067,
+2024,Wisconsin,Class I,REP,Eric D. Hovde,1239,
+2024,Wisconsin,Class I,OTH,Phil Anderson,8131,x
+2024,Wisconsin,Class I,OTH,Thomas Leager,22806,x
+2024,Wyoming,Class I,REP,John Barrasso,1069,
+2024,Wyoming,Class I,DEM,Scott D. Morrow,22681,
