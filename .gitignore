@@ -216,4 +216,8 @@ tmp.*
 temp.*
 tmp*
 temp*
+
+# R-specific files
 .Rproj.user
+.Rhistory
+*.Rproj

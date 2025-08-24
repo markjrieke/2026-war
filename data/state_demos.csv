@@ -1,0 +1,3201 @@
+year,state,variable,value
+1984,Alabama,income,45510
+1985,Alabama,income,46610
+1986,Alabama,income,47860
+1987,Alabama,income,47750
+1988,Alabama,income,46550
+1989,Alabama,income,47570
+1990,Alabama,income,49790
+1991,Alabama,income,50080
+1992,Alabama,income,51770
+1993,Alabama,income,49100
+1994,Alabama,income,52100
+1995,Alabama,income,48640
+1996,Alabama,income,55250
+1997,Alabama,income,57010
+1998,Alabama,income,63860
+1999,Alabama,income,62540
+2000,Alabama,income,59070
+2001,Alabama,income,57340
+2002,Alabama,income,60570
+2003,Alabama,income,58790
+2004,Alabama,income,56390
+2005,Alabama,income,55580
+2006,Alabama,income,55180
+2007,Alabama,income,59840
+2008,Alabama,income,60810
+2009,Alabama,income,54890
+2010,Alabama,income,55440
+2011,Alabama,income,55940
+2012,Alabama,income,56010
+2013,Alabama,income,60250
+2014,Alabama,income,53070
+2015,Alabama,income,55920
+2016,Alabama,income,58800
+2017,Alabama,income,62250
+2018,Alabama,income,59900
+2019,Alabama,income,66430
+2020,Alabama,income,63980
+2021,Alabama,income,63750
+2022,Alabama,income,62290
+2023,Alabama,income,60660
+1984,Alaska,income,85070
+1985,Alaska,income,88440
+1986,Alaska,income,78440
+1987,Alaska,income,80410
+1988,Alaska,income,77240
+1989,Alaska,income,80480
+1990,Alaska,income,83770
+1991,Alaska,income,83530
+1992,Alaska,income,83850
+1993,Alaska,income,84030
+1994,Alaska,income,86900
+1995,Alaska,income,89740
+1996,Alaska,income,96220
+1997,Alaska,income,85660
+1998,Alaska,income,89260
+1999,Alaska,income,88670
+2000,Alaska,income,88130
+2001,Alaska,income,93550
+2002,Alaska,income,85010
+2003,Alaska,income,81790
+2004,Alaska,income,84760
+2005,Alaska,income,83620
+2006,Alaska,income,82020
+2007,Alaska,income,89290
+2008,Alaska,income,87500
+2009,Alaska,income,84570
+2010,Alaska,income,78340
+2011,Alaska,income,75440
+2012,Alaska,income,82020
+2013,Alaska,income,92270
+2014,Alaska,income,84900
+2015,Alaska,income,94360
+2016,Alaska,income,94290
+2017,Alaska,income,95440
+2018,Alaska,income,82450
+2019,Alaska,income,92670
+2020,Alaska,income,87440
+2021,Alaska,income,90850
+2022,Alaska,income,93310
+2023,Alaska,income,98190
+1984,Arizona,income,56330
+1985,Arizona,income,60710
+1986,Arizona,income,63790
+1987,Arizona,income,64720
+1988,Arizona,income,61680
+1989,Arizona,income,63820
+1990,Arizona,income,62290
+1991,Arizona,income,63220
+1992,Arizona,income,58890
+1993,Arizona,income,59720
+1994,Arizona,income,59940
+1995,Arizona,income,57750
+1996,Arizona,income,57680
+1997,Arizona,income,58440
+1998,Arizona,income,65310
+1999,Arizona,income,63820
+2000,Arizona,income,66340
+2001,Arizona,income,69640
+2002,Arizona,income,64000
+2003,Arizona,income,64960
+2004,Arizona,income,67500
+2005,Arizona,income,67690
+2006,Arizona,income,67830
+2007,Arizona,income,66930
+2008,Arizona,income,64150
+2009,Arizona,income,62790
+2010,Arizona,income,63510
+2011,Arizona,income,63860
+2012,Arizona,income,60620
+2013,Arizona,income,66980
+2014,Arizona,income,61830
+2015,Arizona,income,65640
+2016,Arizona,income,71100
+2017,Arizona,income,73060
+2018,Arizona,income,74710
+2019,Arizona,income,83540
+2020,Arizona,income,78480
+2021,Arizona,income,79310
+2022,Arizona,income,76370
+2023,Arizona,income,82660
+1984,Arkansas,income,41210
+1985,Arkansas,income,44370
+1986,Arkansas,income,46850
+1987,Arkansas,income,45550
+1988,Arkansas,income,47070
+1989,Arkansas,income,47910
+1990,Arkansas,income,48570
+1991,Arkansas,income,48200
+1992,Arkansas,income,47900
+1993,Arkansas,income,45100
+1994,Arkansas,income,48970
+1995,Arkansas,income,48310
+1996,Arkansas,income,49450
+1997,Arkansas,income,46700
+1998,Arkansas,income,48710
+1999,Arkansas,income,51210
+2000,Arkansas,income,49520
+2001,Arkansas,income,54370
+2002,Arkansas,income,52170
+2003,Arkansas,income,50500
+2004,Arkansas,income,53850
+2005,Arkansas,income,54840
+2006,Arkansas,income,53880
+2007,Arkansas,income,57830
+2008,Arkansas,income,54130
+2009,Arkansas,income,50160
+2010,Arkansas,income,52260
+2011,Arkansas,income,54250
+2012,Arkansas,income,50280
+2013,Arkansas,income,50130
+2014,Arkansas,income,56390
+2015,Arkansas,income,53770
+2016,Arkansas,income,57170
+2017,Arkansas,income,60880
+2018,Arkansas,income,59720
+2019,Arkansas,income,64470
+2020,Arkansas,income,59400
+2021,Arkansas,income,56870
+2022,Arkansas,income,56120
+2023,Arkansas,income,63250
+1984,California,income,66480
+1985,California,income,68600
+1986,California,income,72570
+1987,California,income,72940
+1988,California,income,70670
+1989,California,income,73780
+1990,California,income,70960
+1991,California,income,69240
+1992,California,income,70010
+1993,California,income,66700
+1994,California,income,67680
+1995,California,income,69250
+1996,California,income,70760
+1997,California,income,70850
+1998,California,income,72080
+1999,California,income,75270
+2000,California,income,78070
+2001,California,income,77080
+2002,California,income,76410
+2003,California,income,77790
+2004,California,income,75770
+2005,California,income,77430
+2006,California,income,80430
+2007,California,income,79000
+2008,California,income,77960
+2009,California,income,77070
+2010,California,income,73520
+2011,California,income,70100
+2012,California,income,73480
+2013,California,income,77400
+2014,California,income,75930
+2015,California,income,79940
+2016,California,income,82980
+2017,California,income,85710
+2018,California,income,84560
+2019,California,income,92330
+2020,California,income,90840
+2021,California,income,91350
+2022,California,income,88690
+2023,California,income,89870
+1984,Colorado,income,67830
+1985,Colorado,income,71660
+1986,Colorado,income,68020
+1987,Colorado,income,64060
+1988,Colorado,income,61170
+1989,Colorado,income,59920
+1990,Colorado,income,65510
+1991,Colorado,income,64790
+1992,Colorado,income,65160
+1993,Colorado,income,67510
+1994,Colorado,income,72470
+1995,Colorado,income,76170
+1996,Colorado,income,74660
+1997,Colorado,income,77170
+1998,Colorado,income,82050
+1999,Colorado,income,83110
+2000,Colorado,income,80450
+2001,Colorado,income,80560
+2002,Colorado,income,77790
+2003,Colorado,income,78800
+2004,Colorado,income,78330
+2005,Colorado,income,75470
+2006,Colorado,income,80970
+2007,Colorado,income,86670
+2008,Colorado,income,83330
+2009,Colorado,income,76790
+2010,Colorado,income,81570
+2011,Colorado,income,77010
+2012,Colorado,income,73780
+2013,Colorado,income,86470
+2014,Colorado,income,76500
+2015,Colorado,income,83660
+2016,Colorado,income,87870
+2017,Colorado,income,91760
+2018,Colorado,income,87610
+2019,Colorado,income,85700
+2020,Colorado,income,98010
+2021,Colorado,income,95130
+2022,Colorado,income,93510
+2023,Colorado,income,96640
+1984,Connecticut,income,78740
+1985,Connecticut,income,79050
+1986,Connecticut,income,81850
+1987,Connecticut,income,79510
+1988,Connecticut,income,84500
+1989,Connecticut,income,94600
+1990,Connecticut,income,82850
+1991,Connecticut,income,86700
+1992,Connecticut,income,81920
+1993,Connecticut,income,77350
+1994,Connecticut,income,78720
+1995,Connecticut,income,75310
+1996,Connecticut,income,76790
+1997,Connecticut,income,78510
+1998,Connecticut,income,81890
+1999,Connecticut,income,87280
+2000,Connecticut,income,83670
+2001,Connecticut,income,87000
+2002,Connecticut,income,86000
+2003,Connecticut,income,86730
+2004,Connecticut,income,84820
+2005,Connecticut,income,85030
+2006,Connecticut,income,90730
+2007,Connecticut,income,90920
+2008,Connecticut,income,88440
+2009,Connecticut,income,89030
+2010,Connecticut,income,89380
+2011,Connecticut,income,85920
+2012,Connecticut,income,82790
+2013,Connecticut,income,88220
+2014,Connecticut,income,88080
+2015,Connecticut,income,91570
+2016,Connecticut,income,94540
+2017,Connecticut,income,90930
+2018,Connecticut,income,87340
+2019,Connecticut,income,103200
+2020,Connecticut,income,92930
+2021,Connecticut,income,90660
+2022,Connecticut,income,94340
+2023,Connecticut,income,92240
+1984,Delaware,income,67880
+1985,Delaware,income,58430
+1986,Delaware,income,64100
+1987,Delaware,income,70760
+1988,Delaware,income,71180
+1989,Delaware,income,71680
+1990,Delaware,income,65660
+1991,Delaware,income,67020
+1992,Delaware,income,71570
+1993,Delaware,income,70590
+1994,Delaware,income,68720
+1995,Delaware,income,65360
+1996,Delaware,income,71670
+1997,Delaware,income,76810
+1998,Delaware,income,73000
+1999,Delaware,income,80440
+2000,Delaware,income,83990
+2001,Delaware,income,80890
+2002,Delaware,income,79980
+2003,Delaware,income,77350
+2004,Delaware,income,73970
+2005,Delaware,income,76650
+2006,Delaware,income,76240
+2007,Delaware,income,77380
+2008,Delaware,income,69330
+2009,Delaware,income,71550
+2010,Delaware,income,74780
+2011,Delaware,income,71800
+2012,Delaware,income,63110
+2013,Delaware,income,68870
+2014,Delaware,income,72210
+2015,Delaware,income,72560
+2016,Delaware,income,72280
+2017,Delaware,income,79500
+2018,Delaware,income,77990
+2019,Delaware,income,87700
+2020,Delaware,income,81920
+2021,Delaware,income,76920
+2022,Delaware,income,83960
+2023,Delaware,income,86340
+1984,Florida,income,52020
+1985,Florida,income,54270
+1986,Florida,income,57160
+1987,Florida,income,59250
+1988,Florida,income,59280
+1989,Florida,income,58310
+1990,Florida,income,56880
+1991,Florida,income,56050
+1992,Florida,income,54860
+1993,Florida,income,55880
+1994,Florida,income,56110
+1995,Florida,income,55660
+1996,Florida,income,55860
+1997,Florida,income,57930
+1998,Florida,income,61470
+1999,Florida,income,61810
+2000,Florida,income,64800
+2001,Florida,income,59400
+2002,Florida,income,61250
+2003,Florida,income,61490
+2004,Florida,income,62400
+2005,Florida,income,64310
+2006,Florida,income,66410
+2007,Florida,income,64910
+2008,Florida,income,61340
+2009,Florida,income,62650
+2010,Florida,income,59680
+2011,Florida,income,59250
+2012,Florida,income,59370
+2013,Florida,income,61790
+2014,Florida,income,57920
+2015,Florida,income,61340
+2016,Florida,income,63730
+2017,Florida,income,64960
+2018,Florida,income,65550
+2019,Florida,income,69000
+2020,Florida,income,67570
+2021,Florida,income,66890
+2022,Florida,income,67960
+2023,Florida,income,72200
+1984,Georgia,income,52540
+1985,Georgia,income,53520
+1986,Georgia,income,60960
+1987,Georgia,income,64640
+1988,Georgia,income,61990
+1989,Georgia,income,61560
+1990,Georgia,income,58750
+1991,Georgia,income,55970
+1992,Georgia,income,57760
+1993,Georgia,income,61980
+1994,Georgia,income,60280
+1995,Georgia,income,63810
+1996,Georgia,income,59250
+1997,Georgia,income,65440
+1998,Georgia,income,68080
+1999,Georgia,income,68010
+2000,Georgia,income,69880
+2001,Georgia,income,69440
+2002,Georgia,income,69170
+2003,Georgia,income,66960
+2004,Georgia,income,63090
+2005,Georgia,income,68710
+2006,Georgia,income,71740
+2007,Georgia,income,68950
+2008,Georgia,income,63210
+2009,Georgia,income,59500
+2010,Georgia,income,59750
+2011,Georgia,income,60390
+2012,Georgia,income,62010
+2013,Georgia,income,59830
+2014,Georgia,income,62210
+2015,Georgia,income,63780
+2016,Georgia,income,66650
+2017,Georgia,income,70960
+2018,Georgia,income,66960
+2019,Georgia,income,66940
+2020,Georgia,income,69330
+2021,Georgia,income,68860
+2022,Georgia,income,70420
+2023,Georgia,income,72420
+1984,Hawaii,income,75920
+1985,Hawaii,income,73640
+1986,Hawaii,income,72550
+1987,Hawaii,income,84740
+1988,Hawaii,income,77060
+1989,Hawaii,income,78310
+1990,Hawaii,income,82960
+1991,Hawaii,income,76610
+1992,Hawaii,income,84470
+1993,Hawaii,income,83510
+1994,Hawaii,income,80940
+1995,Hawaii,income,80190
+1996,Hawaii,income,76160
+1997,Hawaii,income,73060
+1998,Hawaii,income,71890
+1999,Hawaii,income,76780
+2000,Hawaii,income,85960
+2001,Hawaii,income,77370
+2002,Hawaii,income,76200
+2003,Hawaii,income,81790
+2004,Hawaii,income,86580
+2005,Hawaii,income,89140
+2006,Hawaii,income,87910
+2007,Hawaii,income,90750
+2008,Hawaii,income,84120
+2009,Hawaii,income,76400
+2010,Hawaii,income,80630
+2011,Hawaii,income,77560
+2012,Hawaii,income,72500
+2013,Hawaii,income,81780
+2014,Hawaii,income,89410
+2015,Hawaii,income,81050
+2016,Hawaii,income,89820
+2017,Hawaii,income,90070
+2018,Hawaii,income,96100
+2019,Hawaii,income,104000
+2020,Hawaii,income,94560
+2021,Hawaii,income,92050
+2022,Hawaii,income,94620
+2023,Hawaii,income,97360
+1984,Idaho,income,55450
+1985,Idaho,income,52790
+1986,Idaho,income,51900
+1987,Idaho,income,50220
+1988,Idaho,income,54720
+1989,Idaho,income,55110
+1990,Idaho,income,53940
+1991,Idaho,income,53720
+1992,Idaho,income,55570
+1993,Idaho,income,60700
+1994,Idaho,income,60410
+1995,Idaho,income,61150
+1996,Idaho,income,63280
+1997,Idaho,income,59620
+1998,Idaho,income,64590
+1999,Idaho,income,61760
+2000,Idaho,income,62720
+2001,Idaho,income,62370
+2002,Idaho,income,60750
+2003,Idaho,income,66860
+2004,Idaho,income,68280
+2005,Idaho,income,66090
+2006,Idaho,income,67190
+2007,Idaho,income,69720
+2008,Idaho,income,64840
+2009,Idaho,income,64220
+2010,Idaho,income,63720
+2011,Idaho,income,62340
+2012,Idaho,income,61750
+2013,Idaho,income,61710
+2014,Idaho,income,67080
+2015,Idaho,income,64850
+2016,Idaho,income,70440
+2017,Idaho,income,72810
+2018,Idaho,income,70450
+2019,Idaho,income,78000
+2020,Idaho,income,78060
+2021,Idaho,income,86130
+2022,Idaho,income,75460
+2023,Idaho,income,73910
+1984,Illinois,income,62450
+1985,Illinois,income,63230
+1986,Illinois,income,66320
+1987,Illinois,income,65530
+1988,Illinois,income,68890
+1989,Illinois,income,69960
+1990,Illinois,income,69370
+1991,Illinois,income,65580
+1992,Illinois,income,63290
+1993,Illinois,income,64320
+1994,Illinois,income,67200
+1995,Illinois,income,71240
+1996,Illinois,income,72110
+1997,Illinois,income,73690
+1998,Illinois,income,76030
+1999,Illinois,income,79930
+2000,Illinois,income,76820
+2001,Illinois,income,75300
+2002,Illinois,income,68800
+2003,Illinois,income,71250
+2004,Illinois,income,70930
+2005,Illinois,income,72410
+2006,Illinois,income,70760
+2007,Illinois,income,74430
+2008,Illinois,income,72820
+2009,Illinois,income,72580
+2010,Illinois,income,68700
+2011,Illinois,income,66510
+2012,Illinois,income,66670
+2013,Illinois,income,68670
+2014,Illinois,income,68940
+2015,Illinois,income,75900
+2016,Illinois,income,76440
+2017,Illinois,income,80730
+2018,Illinois,income,84140
+2019,Illinois,income,87950
+2020,Illinois,income,86960
+2021,Illinois,income,88750
+2022,Illinois,income,81120
+2023,Illinois,income,87820
+1984,Indiana,income,59860
+1985,Indiana,income,57650
+1986,Indiana,income,56850
+1987,Indiana,income,54490
+1988,Indiana,income,61350
+1989,Indiana,income,57890
+1990,Indiana,income,57400
+1991,Indiana,income,55720
+1992,Indiana,income,57230
+1993,Indiana,income,57700
+1994,Indiana,income,53360
+1995,Indiana,income,62470
+1996,Indiana,income,64080
+1997,Indiana,income,69410
+1998,Indiana,income,69960
+1999,Indiana,income,70450
+2000,Indiana,income,68150
+2001,Indiana,income,65850
+2002,Indiana,income,66120
+2003,Indiana,income,66940
+2004,Indiana,income,65160
+2005,Indiana,income,63490
+2006,Indiana,income,66010
+2007,Indiana,income,67260
+2008,Indiana,income,63610
+2009,Indiana,income,60830
+2010,Indiana,income,62490
+2011,Indiana,income,58380
+2012,Indiana,income,59480
+2013,Indiana,income,62970
+2014,Indiana,income,60330
+2015,Indiana,income,65310
+2016,Indiana,income,69850
+2017,Indiana,income,71920
+2018,Indiana,income,71850
+2019,Indiana,income,78840
+2020,Indiana,income,78150
+2021,Indiana,income,78600
+2022,Indiana,income,72810
+2023,Indiana,income,76910
+1984,Iowa,income,52220
+1985,Iowa,income,53210
+1986,Iowa,income,56180
+1987,Iowa,income,53690
+1988,Iowa,income,56710
+1989,Iowa,income,58710
+1990,Iowa,income,58170
+1991,Iowa,income,58730
+1992,Iowa,income,57660
+1993,Iowa,income,56110
+1994,Iowa,income,63360
+1995,Iowa,income,66470
+1996,Iowa,income,60550
+1997,Iowa,income,60300
+1998,Iowa,income,65190
+1999,Iowa,income,70900
+2000,Iowa,income,68360
+2001,Iowa,income,66830
+2002,Iowa,income,66120
+2003,Iowa,income,65300
+2004,Iowa,income,66790
+2005,Iowa,income,69570
+2006,Iowa,income,69970
+2007,Iowa,income,69330
+2008,Iowa,income,68560
+2009,Iowa,income,69630
+2010,Iowa,income,66380
+2011,Iowa,income,65960
+2012,Iowa,income,68870
+2013,Iowa,income,76590
+2014,Iowa,income,72570
+2015,Iowa,income,76450
+2016,Iowa,income,73590
+2017,Iowa,income,77670
+2018,Iowa,income,82430
+2019,Iowa,income,78080
+2020,Iowa,income,80510
+2021,Iowa,income,81110
+2022,Iowa,income,79350
+2023,Iowa,income,80860
+1984,Kansas,income,64750
+1985,Kansas,income,57940
+1986,Kansas,income,59850
+1987,Kansas,income,61900
+1988,Kansas,income,59650
+1989,Kansas,income,60040
+1990,Kansas,income,63770
+1991,Kansas,income,60250
+1992,Kansas,income,60870
+1993,Kansas,income,58270
+1994,Kansas,income,54250
+1995,Kansas,income,56780
+1996,Kansas,income,59410
+1997,Kansas,income,65100
+1998,Kansas,income,64640
+1999,Kansas,income,64430
+2000,Kansas,income,68470
+2001,Kansas,income,67540
+2002,Kansas,income,68650
+2003,Kansas,income,69790
+2004,Kansas,income,63220
+2005,Kansas,income,62870
+2006,Kansas,income,66230
+2007,Kansas,income,68740
+2008,Kansas,income,65470
+2009,Kansas,income,61390
+2010,Kansas,income,62370
+2011,Kansas,income,60610
+2012,Kansas,income,64440
+2013,Kansas,income,60880
+2014,Kansas,income,67090
+2015,Kansas,income,68930
+2016,Kansas,income,70740
+2017,Kansas,income,69630
+2018,Kansas,income,76700
+2019,Kansas,income,86470
+2020,Kansas,income,85500
+2021,Kansas,income,85080
+2022,Kansas,income,75950
+2023,Kansas,income,84830
+1984,Kentucky,income,46480
+1985,Kentucky,income,44140
+1986,Kentucky,income,49710
+1987,Kentucky,income,50020
+1988,Kentucky,income,46450
+1989,Kentucky,income,52040
+1990,Kentucky,income,52820
+1991,Kentucky,income,48880
+1992,Kentucky,income,47110
+1993,Kentucky,income,47710
+1994,Kentucky,income,50940
+1995,Kentucky,income,55780
+1996,Kentucky,income,59090
+1997,Kentucky,income,59710
+1998,Kentucky,income,63840
+1999,Kentucky,income,58200
+2000,Kentucky,income,60480
+2001,Kentucky,income,62690
+2002,Kentucky,income,59220
+2003,Kentucky,income,58280
+2004,Kentucky,income,54820
+2005,Kentucky,income,54900
+2006,Kentucky,income,57410
+2007,Kentucky,income,55920
+2008,Kentucky,income,56260
+2009,Kentucky,income,58570
+2010,Kentucky,income,55670
+2011,Kentucky,income,52350
+2012,Kentucky,income,52940
+2013,Kentucky,income,57140
+2014,Kentucky,income,53710
+2015,Kentucky,income,53250
+2016,Kentucky,income,56500
+2017,Kentucky,income,60790
+2018,Kentucky,income,65440
+2019,Kentucky,income,65800
+2020,Kentucky,income,66400
+2021,Kentucky,income,62290
+2022,Kentucky,income,58090
+2023,Kentucky,income,61980
+1984,Louisiana,income,49820
+1985,Louisiana,income,53850
+1986,Louisiana,income,52260
+1987,Louisiana,income,51660
+1988,Louisiana,income,47830
+1989,Louisiana,income,51100
+1990,Louisiana,income,47760
+1991,Louisiana,income,52040
+1992,Louisiana,income,51030
+1993,Louisiana,income,51500
+1994,Louisiana,income,49180
+1995,Louisiana,income,52300
+1996,Louisiana,income,55170
+1997,Louisiana,income,59370
+1998,Louisiana,income,55880
+1999,Louisiana,income,56330
+2000,Louisiana,income,51230
+2001,Louisiana,income,54340
+2002,Louisiana,income,54780
+2003,Louisiana,income,52870
+2004,Louisiana,income,56080
+2005,Louisiana,income,55710
+2006,Louisiana,income,53050
+2007,Louisiana,income,58560
+2008,Louisiana,income,54100
+2009,Louisiana,income,62370
+2010,Louisiana,income,53220
+2011,Louisiana,income,53400
+2012,Louisiana,income,50370
+2013,Louisiana,income,59110
+2014,Louisiana,income,53230
+2015,Louisiana,income,57690
+2016,Louisiana,income,52540
+2017,Louisiana,income,53310
+2018,Louisiana,income,59950
+2019,Louisiana,income,61120
+2020,Louisiana,income,59880
+2021,Louisiana,income,64060
+2022,Louisiana,income,60640
+2023,Louisiana,income,57650
+1984,Maine,income,54280
+1985,Maine,income,52170
+1986,Maine,income,58590
+1987,Maine,income,57100
+1988,Maine,income,61600
+1989,Maine,income,63080
+1990,Maine,income,58540
+1991,Maine,income,57320
+1992,Maine,income,59410
+1993,Maine,income,53710
+1994,Maine,income,58070
+1995,Maine,income,63360
+1996,Maine,income,63260
+1997,Maine,income,58490
+1998,Maine,income,62760
+1999,Maine,income,67040
+2000,Maine,income,62150
+2001,Maine,income,59710
+2002,Maine,income,59360
+2003,Maine,income,58560
+2004,Maine,income,63620
+2005,Maine,income,65710
+2006,Maine,income,66360
+2007,Maine,income,67890
+2008,Maine,income,64580
+2009,Maine,income,65210
+2010,Maine,income,64910
+2011,Maine,income,65270
+2012,Maine,income,63350
+2013,Maine,income,69970
+2014,Maine,income,64910
+2015,Maine,income,63760
+2016,Maine,income,63330
+2017,Maine,income,65240
+2018,Maine,income,70370
+2019,Maine,income,78660
+2020,Maine,income,74510
+2021,Maine,income,79660
+2022,Maine,income,78150
+2023,Maine,income,75740
+1984,Maryland,income,78100
+1985,Maryland,income,76620
+1986,Maryland,income,76560
+1987,Maryland,income,84610
+1988,Maryland,income,85290
+1989,Maryland,income,80500
+1990,Maryland,income,82830
+1991,Maryland,income,76000
+1992,Maryland,income,74630
+1993,Maryland,income,78180
+1994,Maryland,income,75090
+1995,Maryland,income,76800
+1996,Maryland,income,80210
+1997,Maryland,income,83330
+1998,Maryland,income,88070
+1999,Maryland,income,90060
+2000,Maryland,income,90950
+2001,Maryland,income,87300
+2002,Maryland,income,90860
+2003,Maryland,income,82550
+2004,Maryland,income,87900
+2005,Maryland,income,90530
+2006,Maryland,income,92560
+2007,Maryland,income,93030
+2008,Maryland,income,87120
+2009,Maryland,income,88120
+2010,Maryland,income,86950
+2011,Maryland,income,90470
+2012,Maryland,income,92570
+2013,Maryland,income,88300
+2014,Maryland,income,95610
+2015,Maryland,income,92450
+2016,Maryland,income,91850
+2017,Maryland,income,100500
+2018,Maryland,income,103400
+2019,Maryland,income,113000
+2020,Maryland,income,110900
+2021,Maryland,income,109000
+2022,Maryland,income,112500
+2023,Maryland,income,102000
+1984,Massachusetts,income,70880
+1985,Massachusetts,income,71720
+1986,Massachusetts,income,75890
+1987,Massachusetts,income,78010
+1988,Massachusetts,income,77500
+1989,Massachusetts,income,80660
+1990,Massachusetts,income,77260
+1991,Massachusetts,income,73460
+1992,Massachusetts,income,72930
+1993,Massachusetts,income,72550
+1994,Massachusetts,income,77580
+1995,Massachusetts,income,72180
+1996,Massachusetts,income,72000
+1997,Massachusetts,income,75010
+1998,Massachusetts,income,74560
+1999,Massachusetts,income,75920
+2000,Massachusetts,income,77970
+2001,Massachusetts,income,85220
+2002,Massachusetts,income,80310
+2003,Massachusetts,income,80400
+2004,Massachusetts,income,80080
+2005,Massachusetts,income,83800
+2006,Massachusetts,income,80440
+2007,Massachusetts,income,82870
+2008,Massachusetts,income,82480
+2009,Massachusetts,income,81510
+2010,Massachusetts,income,82520
+2011,Massachusetts,income,83160
+2012,Massachusetts,income,82030
+2013,Massachusetts,income,79610
+2014,Massachusetts,income,79280
+2015,Massachusetts,income,85250
+2016,Massachusetts,income,89990
+2017,Massachusetts,income,93300
+2018,Massachusetts,income,103600
+2019,Massachusetts,income,103700
+2020,Massachusetts,income,102700
+2021,Massachusetts,income,96940
+2022,Massachusetts,income,97260
+2023,Massachusetts,income,106500
+1984,Michigan,income,60380
+1985,Michigan,income,61640
+1986,Michigan,income,66550
+1987,Michigan,income,67030
+1988,Michigan,income,68770
+1989,Michigan,income,68790
+1990,Michigan,income,63810
+1991,Michigan,income,66060
+1992,Michigan,income,64720
+1993,Michigan,income,63930
+1994,Michigan,income,67590
+1995,Michigan,income,68160
+1996,Michigan,income,71510
+1997,Michigan,income,69150
+1998,Michigan,income,73640
+1999,Michigan,income,79510
+2000,Michigan,income,75900
+2001,Michigan,income,73470
+2002,Michigan,income,68810
+2003,Michigan,income,71040
+2004,Michigan,income,65050
+2005,Michigan,income,68720
+2006,Michigan,income,70730
+2007,Michigan,income,69980
+2008,Michigan,income,68080
+2009,Michigan,income,63140
+2010,Michigan,income,62670
+2011,Michigan,income,64200
+2012,Michigan,income,64450
+2013,Michigan,income,72020
+2014,Michigan,income,65280
+2015,Michigan,income,68090
+2016,Michigan,income,71090
+2017,Michigan,income,69030
+2018,Michigan,income,72510
+2019,Michigan,income,75790
+2020,Michigan,income,75330
+2021,Michigan,income,72210
+2022,Michigan,income,71730
+2023,Michigan,income,76960
+1984,Minnesota,income,64240
+1985,Minnesota,income,60660
+1986,Minnesota,income,66150
+1987,Minnesota,income,67950
+1988,Minnesota,income,67870
+1989,Minnesota,income,67470
+1990,Minnesota,income,67070
+1991,Minnesota,income,60630
+1992,Minnesota,income,62140
+1993,Minnesota,income,65930
+1994,Minnesota,income,64450
+1995,Minnesota,income,70980
+1996,Minnesota,income,74730
+1997,Minnesota,income,75970
+1998,Minnesota,income,84390
+1999,Minnesota,income,81150
+2000,Minnesota,income,90470
+2001,Minnesota,income,85920
+2002,Minnesota,income,87980
+2003,Minnesota,income,83350
+2004,Minnesota,income,86360
+2005,Minnesota,income,81110
+2006,Minnesota,income,81720
+2007,Minnesota,income,82300
+2008,Minnesota,income,75100
+2009,Minnesota,income,77000
+2010,Minnesota,income,70860
+2011,Minnesota,income,75950
+2012,Minnesota,income,79630
+2013,Minnesota,income,81900
+2014,Minnesota,income,84410
+2015,Minnesota,income,86340
+2016,Minnesota,income,87440
+2017,Minnesota,income,85630
+2018,Minnesota,income,86150
+2019,Minnesota,income,96250
+2020,Minnesota,income,92130
+2021,Minnesota,income,90080
+2022,Minnesota,income,93980
+2023,Minnesota,income,90340
+1984,Mississippi,income,40570
+1985,Mississippi,income,41730
+1986,Mississippi,income,41310
+1987,Mississippi,income,44790
+1988,Mississippi,income,42390
+1989,Mississippi,income,44520
+1990,Mississippi,income,43010
+1991,Mississippi,income,40060
+1992,Mississippi,income,41260
+1993,Mississippi,income,43440
+1994,Mississippi,income,48650
+1995,Mississippi,income,49660
+1996,Mississippi,income,48640
+1997,Mississippi,income,50870
+1998,Mississippi,income,51280
+1999,Mississippi,income,56030
+2000,Mississippi,income,57200
+2001,Mississippi,income,49190
+2002,Mississippi,income,49740
+2003,Mississippi,income,51640
+2004,Mississippi,income,53500
+2005,Mississippi,income,49180
+2006,Mississippi,income,50500
+2007,Mississippi,income,52840
+2008,Mississippi,income,49830
+2009,Mississippi,income,48160
+2010,Mississippi,income,51680
+2011,Mississippi,income,53970
+2012,Mississippi,income,47220
+2013,Mississippi,income,41170
+2014,Mississippi,income,44590
+2015,Mississippi,income,50300
+2016,Mississippi,income,51180
+2017,Mississippi,income,52960
+2018,Mississippi,income,51320
+2019,Mississippi,income,52940
+2020,Mississippi,income,52800
+2021,Mississippi,income,52230
+2022,Mississippi,income,50540
+2023,Mississippi,income,55060
+1984,Missouri,income,54620
+1985,Missouri,income,55780
+1986,Missouri,income,54840
+1987,Missouri,income,57390
+1988,Missouri,income,54700
+1989,Missouri,income,59230
+1990,Missouri,income,58260
+1991,Missouri,income,57440
+1992,Missouri,income,54880
+1993,Missouri,income,56140
+1994,Missouri,income,57830
+1995,Missouri,income,65170
+1996,Missouri,income,62470
+1997,Missouri,income,65240
+1998,Missouri,income,70790
+1999,Missouri,income,71390
+2000,Missouri,income,75210
+2001,Missouri,income,67420
+2002,Missouri,income,68900
+2003,Missouri,income,69050
+2004,Missouri,income,64860
+2005,Missouri,income,64310
+2006,Missouri,income,64810
+2007,Missouri,income,65210
+2008,Missouri,income,62950
+2009,Missouri,income,66950
+2010,Missouri,income,62050
+2011,Missouri,income,60120
+2012,Missouri,income,64130
+2013,Missouri,income,58950
+2014,Missouri,income,71090
+2015,Missouri,income,74370
+2016,Missouri,income,68510
+2017,Missouri,income,69180
+2018,Missouri,income,74050
+2019,Missouri,income,71630
+2020,Missouri,income,72740
+2021,Missouri,income,71210
+2022,Missouri,income,74360
+2023,Missouri,income,78290
+1984,Montana,income,51360
+1985,Montana,income,51450
+1986,Montana,income,50850
+1987,Montana,income,49540
+1988,Montana,income,51870
+1989,Montana,income,52960
+1990,Montana,income,49830
+1991,Montana,income,51060
+1992,Montana,income,53210
+1993,Montana,income,51810
+1994,Montana,income,52930
+1995,Montana,income,51940
+1996,Montana,income,52300
+1997,Montana,income,52140
+1998,Montana,income,55600
+1999,Montana,income,53550
+2000,Montana,income,54660
+2001,Montana,income,52390
+2002,Montana,income,56110
+2003,Montana,income,53820
+2004,Montana,income,52270
+2005,Montana,income,55820
+2006,Montana,income,59760
+2007,Montana,income,61880
+2008,Montana,income,58660
+2009,Montana,income,55520
+2010,Montana,income,55910
+2011,Montana,income,52900
+2012,Montana,income,58100
+2013,Montana,income,55000
+2014,Montana,income,64150
+2015,Montana,income,64570
+2016,Montana,income,71070
+2017,Montana,income,70250
+2018,Montana,income,69190
+2019,Montana,income,71150
+2020,Montana,income,66380
+2021,Montana,income,72790
+2022,Montana,income,75870
+2023,Montana,income,79220
+1984,Nebraska,income,56250
+1985,Nebraska,income,55430
+1986,Nebraska,income,54460
+1987,Nebraska,income,56300
+1988,Nebraska,income,58700
+1989,Nebraska,income,58830
+1990,Nebraska,income,58580
+1991,Nebraska,income,60780
+1992,Nebraska,income,60270
+1993,Nebraska,income,60700
+1994,Nebraska,income,60900
+1995,Nebraska,income,61620
+1996,Nebraska,income,62010
+1997,Nebraska,income,61920
+1998,Nebraska,income,64120
+1999,Nebraska,income,66640
+2000,Nebraska,income,69620
+2001,Nebraska,income,71120
+2002,Nebraska,income,68940
+2003,Nebraska,income,69390
+2004,Nebraska,income,67400
+2005,Nebraska,income,71690
+2006,Nebraska,income,70000
+2007,Nebraska,income,69700
+2008,Nebraska,income,69360
+2009,Nebraska,income,68090
+2010,Nebraska,income,71110
+2011,Nebraska,income,73050
+2012,Nebraska,income,67260
+2013,Nebraska,income,73370
+2014,Nebraska,income,71390
+2015,Nebraska,income,75970
+2016,Nebraska,income,73930
+2017,Nebraska,income,72910
+2018,Nebraska,income,81060
+2019,Nebraska,income,86370
+2020,Nebraska,income,84520
+2021,Nebraska,income,87470
+2022,Nebraska,income,81480
+2023,Nebraska,income,89190
+1984,Nevada,income,67770
+1985,Nevada,income,59180
+1986,Nevada,income,65580
+1987,Nevada,income,65030
+1988,Nevada,income,65290
+1989,Nevada,income,65580
+1990,Nevada,income,68260
+1991,Nevada,income,67750
+1992,Nevada,income,64000
+1993,Nevada,income,70100
+1994,Nevada,income,68710
+1995,Nevada,income,67520
+1996,Nevada,income,70260
+1997,Nevada,income,69350
+1998,Nevada,income,70010
+1999,Nevada,income,71530
+2000,Nevada,income,76310
+2001,Nevada,income,74050
+2002,Nevada,income,72420
+2003,Nevada,income,71300
+2004,Nevada,income,72660
+2005,Nevada,income,72120
+2006,Nevada,income,76010
+2007,Nevada,income,76630
+2008,Nevada,income,74850
+2009,Nevada,income,70610
+2010,Nevada,income,69340
+2011,Nevada,income,61790
+2012,Nevada,income,61000
+2013,Nevada,income,66010
+2014,Nevada,income,62610
+2015,Nevada,income,65340
+2016,Nevada,income,69020
+2017,Nevada,income,71030
+2018,Nevada,income,74210
+2019,Nevada,income,83820
+2020,Nevada,income,71550
+2021,Nevada,income,72050
+2022,Nevada,income,75200
+2023,Nevada,income,81310
+1984,New Hampshire,income,68130
+1985,New Hampshire,income,67130
+1986,New Hampshire,income,76410
+1987,New Hampshire,income,78250
+1988,New Hampshire,income,80790
+1989,New Hampshire,income,83890
+1990,New Hampshire,income,86980
+1991,New Hampshire,income,74110
+1992,New Hampshire,income,79100
+1993,New Hampshire,income,74310
+1994,New Hampshire,income,67510
+1995,New Hampshire,income,73300
+1996,New Hampshire,income,71840
+1997,New Hampshire,income,73180
+1998,New Hampshire,income,79170
+1999,New Hampshire,income,79450
+2000,New Hampshire,income,84930
+2001,New Hampshire,income,83710
+2002,New Hampshire,income,89110
+2003,New Hampshire,income,87680
+2004,New Hampshire,income,87460
+2005,New Hampshire,income,85250
+2006,New Hampshire,income,90090
+2007,New Hampshire,income,95790
+2008,New Hampshire,income,90490
+2009,New Hampshire,income,88040
+2010,New Hampshire,income,90240
+2011,New Hampshire,income,86530
+2012,New Hampshire,income,87390
+2013,New Hampshire,income,87980
+2014,New Hampshire,income,92140
+2015,New Hampshire,income,95070
+2016,New Hampshire,income,94960
+2017,New Hampshire,income,92550
+2018,New Hampshire,income,97580
+2019,New Hampshire,income,102700
+2020,New Hampshire,income,104000
+2021,New Hampshire,income,99490
+2022,New Hampshire,income,88350
+2023,New Hampshire,income,98780
+1984,New Jersey,income,73020
+1985,New Jersey,income,78770
+1986,New Jersey,income,79330
+1987,New Jersey,income,82850
+1988,New Jersey,income,84670
+1989,New Jersey,income,87440
+1990,New Jersey,income,82560
+1991,New Jersey,income,82370
+1992,New Jersey,income,78230
+1993,New Jersey,income,79280
+1994,New Jersey,income,80990
+1995,New Jersey,income,82190
+1996,New Jersey,income,86540
+1997,New Jersey,income,85710
+1998,New Jersey,income,87740
+1999,New Jersey,income,85800
+2000,New Jersey,income,84060
+2001,New Jersey,income,84430
+2002,New Jersey,income,87900
+2003,New Jersey,income,88430
+2004,New Jersey,income,85090
+2005,New Jersey,income,94800
+2006,New Jersey,income,98950
+2007,New Jersey,income,85770
+2008,New Jersey,income,89300
+2009,New Jersey,income,88930
+2010,New Jersey,income,85280
+2011,New Jersey,income,81880
+2012,New Jersey,income,85940
+2013,New Jersey,income,81170
+2014,New Jersey,income,81900
+2015,New Jersey,income,85880
+2016,New Jersey,income,85260
+2017,New Jersey,income,87180
+2018,New Jersey,income,88980
+2019,New Jersey,income,103700
+2020,New Jersey,income,100100
+2021,New Jersey,income,99170
+2022,New Jersey,income,96010
+2023,New Jersey,income,91590
+1984,New Mexico,income,54240
+1985,New Mexico,income,51930
+1986,New Mexico,income,49640
+1987,New Mexico,income,50230
+1988,New Mexico,income,45020
+1989,New Mexico,income,50520
+1990,New Mexico,income,53370
+1991,New Mexico,income,54590
+1992,New Mexico,income,51870
+1993,New Mexico,income,52380
+1994,New Mexico,income,51540
+1995,New Mexico,income,48640
+1996,New Mexico,income,45740
+1997,New Mexico,income,53700
+1998,New Mexico,income,55540
+1999,New Mexico,income,56200
+2000,New Mexico,income,58520
+2001,New Mexico,income,54020
+2002,New Mexico,income,57110
+2003,New Mexico,income,55390
+2004,New Mexico,income,60900
+2005,New Mexico,income,58270
+2006,New Mexico,income,58190
+2007,New Mexico,income,62870
+2008,New Mexico,income,57570
+2009,New Mexico,income,59780
+2010,New Mexico,income,61120
+2011,New Mexico,income,55140
+2012,New Mexico,income,55960
+2013,New Mexico,income,51140
+2014,New Mexico,income,58610
+2015,New Mexico,income,56680
+2016,New Mexico,income,60330
+2017,New Mexico,income,55800
+2018,New Mexico,income,57920
+2019,New Mexico,income,62780
+2020,New Mexico,income,59550
+2021,New Mexico,income,59870
+2022,New Mexico,income,58660
+2023,New Mexico,income,60980
+1984,New York,income,57910
+1985,New York,income,60100
+1986,New York,income,62600
+1987,New York,income,63840
+1988,New York,income,67470
+1989,New York,income,70400
+1990,New York,income,67340
+1991,New York,income,65390
+1992,New York,income,62290
+1993,New York,income,62040
+1994,New York,income,61100
+1995,New York,income,61800
+1996,New York,income,64560
+1997,New York,income,63900
+1998,New York,income,65850
+1999,New York,income,68990
+2000,New York,income,67950
+2001,New York,income,68680
+2002,New York,income,67600
+2003,New York,income,67520
+2004,New York,income,68730
+2005,New York,income,70580
+2006,New York,income,70110
+2007,New York,income,69380
+2008,New York,income,69000
+2009,New York,income,68940
+2010,New York,income,67420
+2011,New York,income,66510
+2012,New York,income,61440
+2013,New York,income,63620
+2014,New York,income,68180
+2015,New York,income,72870
+2016,New York,income,76500
+2017,New York,income,75310
+2018,New York,income,80700
+2019,New York,income,84940
+2020,New York,income,80320
+2021,New York,income,81660
+2022,New York,income,78920
+2023,New York,income,81600
+1984,North Carolina,income,54080
+1985,North Carolina,income,54540
+1986,North Carolina,income,54680
+1987,North Carolina,income,55070
+1988,North Carolina,income,56970
+1989,North Carolina,income,59020
+1990,North Carolina,income,56120
+1991,North Carolina,income,55230
+1992,North Carolina,income,55710
+1993,North Carolina,income,56410
+1994,North Carolina,income,57680
+1995,North Carolina,income,59840
+1996,North Carolina,income,64910
+1997,North Carolina,income,63970
+1998,North Carolina,income,63110
+1999,North Carolina,income,64270
+2000,North Carolina,income,63900
+2001,North Carolina,income,62240
+2002,North Carolina,income,58820
+2003,North Carolina,income,58820
+2004,North Carolina,income,61940
+2005,North Carolina,income,62920
+2006,North Carolina,income,57860
+2007,North Carolina,income,61680
+2008,North Carolina,income,58700
+2009,North Carolina,income,57530
+2010,North Carolina,income,59360
+2011,North Carolina,income,59380
+2012,North Carolina,income,53550
+2013,North Carolina,income,59000
+2014,North Carolina,income,58730
+2015,North Carolina,income,63820
+2016,North Carolina,income,66950
+2017,North Carolina,income,60630
+2018,North Carolina,income,64020
+2019,North Carolina,income,72290
+2020,North Carolina,income,70700
+2021,North Carolina,income,70430
+2022,North Carolina,income,67660
+2023,North Carolina,income,68610
+1984,North Dakota,income,54610
+1985,North Dakota,income,53920
+1986,North Dakota,income,53800
+1987,North Dakota,income,54630
+1988,North Dakota,income,56210
+1989,North Dakota,income,56390
+1990,North Dakota,income,53850
+1991,North Dakota,income,53260
+1992,North Dakota,income,54080
+1993,North Dakota,income,55040
+1994,North Dakota,income,54170
+1995,North Dakota,income,54430
+1996,North Dakota,income,57370
+1997,North Dakota,income,56510
+1998,North Dakota,income,53360
+1999,North Dakota,income,56350
+2000,North Dakota,income,60030
+2001,North Dakota,income,58370
+2002,North Dakota,income,58310
+2003,North Dakota,income,63760
+2004,North Dakota,income,60370
+2005,North Dakota,income,63120
+2006,North Dakota,income,59680
+2007,North Dakota,income,66910
+2008,North Dakota,income,67860
+2009,North Dakota,income,68750
+2010,North Dakota,income,69080
+2011,North Dakota,income,74030
+2012,North Dakota,income,71860
+2013,North Dakota,income,75310
+2014,North Dakota,income,76240
+2015,North Dakota,income,72130
+2016,North Dakota,income,74940
+2017,North Dakota,income,73630
+2018,North Dakota,income,79780
+2019,North Dakota,income,82780
+2020,North Dakota,income,75010
+2021,North Dakota,income,77140
+2022,North Dakota,income,81840
+2023,North Dakota,income,76960
+1984,Ohio,income,60790
+1985,Ohio,income,64010
+1986,Ohio,income,62820
+1987,Ohio,income,62360
+1988,Ohio,income,64730
+1989,Ohio,income,64870
+1990,Ohio,income,63980
+1991,Ohio,income,61270
+1992,Ohio,income,62990
+1993,Ohio,income,61240
+1994,Ohio,income,61020
+1995,Ohio,income,65380
+1996,Ohio,income,62110
+1997,Ohio,income,64500
+1998,Ohio,income,68540
+1999,Ohio,income,68120
+2000,Ohio,income,71650
+2001,Ohio,income,68150
+2002,Ohio,income,68760
+2003,Ohio,income,68670
+2004,Ohio,income,66280
+2005,Ohio,income,66130
+2006,Ohio,income,66730
+2007,Ohio,income,69600
+2008,Ohio,income,64180
+2009,Ohio,income,62990
+2010,Ohio,income,62140
+2011,Ohio,income,58650
+2012,Ohio,income,57180
+2013,Ohio,income,64610
+2014,Ohio,income,62320
+2015,Ohio,income,66960
+2016,Ohio,income,67220
+2017,Ohio,income,74270
+2018,Ohio,income,73930
+2019,Ohio,income,76440
+2020,Ohio,income,70640
+2021,Ohio,income,70200
+2022,Ohio,income,70200
+2023,Ohio,income,73770
+1984,Oklahoma,income,55600
+1985,Oklahoma,income,53920
+1986,Oklahoma,income,52400
+1987,Oklahoma,income,52480
+1988,Oklahoma,income,55220
+1989,Oklahoma,income,52900
+1990,Oklahoma,income,51980
+1991,Oklahoma,income,52370
+1992,Oklahoma,income,50720
+1993,Oklahoma,income,51400
+1994,Oklahoma,income,51700
+1995,Oklahoma,income,49240
+1996,Oklahoma,income,50020
+1997,Oklahoma,income,55960
+1998,Oklahoma,income,59390
+1999,Oklahoma,income,56380
+2000,Oklahoma,income,54090
+2001,Oklahoma,income,58070
+2002,Oklahoma,income,58730
+2003,Oklahoma,income,56650
+2004,Oklahoma,income,60980
+2005,Oklahoma,income,56320
+2006,Oklahoma,income,56460
+2007,Oklahoma,income,61260
+2008,Oklahoma,income,63050
+2009,Oklahoma,income,62990
+2010,Oklahoma,income,58370
+2011,Oklahoma,income,63650
+2012,Oklahoma,income,62380
+2013,Oklahoma,income,58770
+2014,Oklahoma,income,59250
+2015,Oklahoma,income,59140
+2016,Oklahoma,income,63440
+2017,Oklahoma,income,63490
+2018,Oklahoma,income,65300
+2019,Oklahoma,income,70210
+2020,Oklahoma,income,61380
+2021,Oklahoma,income,67300
+2022,Oklahoma,income,65960
+2023,Oklahoma,income,67330
+1984,Oregon,income,56260
+1985,Oregon,income,55670
+1986,Oregon,income,61970
+1987,Oregon,income,60580
+1988,Oregon,income,64750
+1989,Oregon,income,63770
+1990,Oregon,income,62410
+1991,Oregon,income,62100
+1992,Oregon,income,64040
+1993,Oregon,income,64870
+1994,Oregon,income,60260
+1995,Oregon,income,68070
+1996,Oregon,income,64710
+1997,Oregon,income,66480
+1998,Oregon,income,68790
+1999,Oregon,income,70070
+2000,Oregon,income,70870
+2001,Oregon,income,67310
+2002,Oregon,income,67330
+2003,Oregon,income,65700
+2004,Oregon,income,63100
+2005,Oregon,income,66060
+2006,Oregon,income,68460
+2007,Oregon,income,71210
+2008,Oregon,income,70730
+2009,Oregon,income,67410
+2010,Oregon,income,68530
+2011,Oregon,income,67680
+2012,Oregon,income,66720
+2013,Oregon,income,62390
+2014,Oregon,income,73910
+2015,Oregon,income,76420
+2016,Oregon,income,73640
+2017,Oregon,income,76480
+2018,Oregon,income,82970
+2019,Oregon,income,87960
+2020,Oregon,income,89910
+2021,Oregon,income,91660
+2022,Oregon,income,90230
+2023,Oregon,income,88740
+1984,Pennsylvania,income,53490
+1985,Pennsylvania,income,58170
+1986,Pennsylvania,income,59550
+1987,Pennsylvania,income,61520
+1988,Pennsylvania,income,62400
+1989,Pennsylvania,income,64130
+1990,Pennsylvania,income,61830
+1991,Pennsylvania,income,62460
+1992,Pennsylvania,income,59940
+1993,Pennsylvania,income,60670
+1994,Pennsylvania,income,61420
+1995,Pennsylvania,income,64600
+1996,Pennsylvania,income,63630
+1997,Pennsylvania,income,66960
+1998,Pennsylvania,income,68700
+1999,Pennsylvania,income,65140
+2000,Pennsylvania,income,70330
+2001,Pennsylvania,income,70940
+2002,Pennsylvania,income,68460
+2003,Pennsylvania,income,67740
+2004,Pennsylvania,income,67900
+2005,Pennsylvania,income,69270
+2006,Pennsylvania,income,70480
+2007,Pennsylvania,income,68660
+2008,Pennsylvania,income,70290
+2009,Pennsylvania,income,66130
+2010,Pennsylvania,income,65430
+2011,Pennsylvania,income,65560
+2012,Pennsylvania,income,66890
+2013,Pennsylvania,income,70220
+2014,Pennsylvania,income,69260
+2015,Pennsylvania,income,75870
+2016,Pennsylvania,income,75930
+2017,Pennsylvania,income,75000
+2018,Pennsylvania,income,77400
+2019,Pennsylvania,income,83430
+2020,Pennsylvania,income,82810
+2021,Pennsylvania,income,81330
+2022,Pennsylvania,income,75070
+2023,Pennsylvania,income,79820
+1984,Rhode Island,income,56820
+1985,Rhode Island,income,62610
+1986,Rhode Island,income,66390
+1987,Rhode Island,income,68460
+1988,Rhode Island,income,69630
+1989,Rhode Island,income,67330
+1990,Rhode Island,income,68140
+1991,Rhode Island,income,63420
+1992,Rhode Island,income,61040
+1993,Rhode Island,income,65590
+1994,Rhode Island,income,61160
+1995,Rhode Island,income,66170
+1996,Rhode Island,income,67430
+1997,Rhode Island,income,62110
+1998,Rhode Island,income,71640
+1999,Rhode Island,income,73700
+2000,Rhode Island,income,70370
+2001,Rhode Island,income,74570
+2002,Rhode Island,income,68330
+2003,Rhode Island,income,70550
+2004,Rhode Island,income,73790
+2005,Rhode Island,income,74030
+2006,Rhode Island,income,78120
+2007,Rhode Island,income,76840
+2008,Rhode Island,income,72800
+2009,Rhode Island,income,70890
+2010,Rhode Island,income,69910
+2011,Rhode Island,income,64410
+2012,Rhode Island,income,72250
+2013,Rhode Island,income,71710
+2014,Rhode Island,income,73600
+2015,Rhode Island,income,69980
+2016,Rhode Island,income,76620
+2017,Rhode Island,income,80030
+2018,Rhode Island,income,74690
+2019,Rhode Island,income,82920
+2020,Rhode Island,income,93790
+2021,Rhode Island,income,83970
+2022,Rhode Island,income,83860
+2023,Rhode Island,income,81860
+1984,South Carolina,income,53390
+1985,South Carolina,income,50940
+1986,South Carolina,income,54950
+1987,South Carolina,income,60610
+1988,South Carolina,income,59580
+1989,South Carolina,income,53190
+1990,South Carolina,income,61250
+1991,South Carolina,income,56490
+1992,South Carolina,income,55320
+1993,South Carolina,income,51000
+1994,South Carolina,income,57170
+1995,South Carolina,income,54400
+1996,South Carolina,income,63200
+1997,South Carolina,income,61150
+1998,South Carolina,income,58580
+1999,South Carolina,income,62900
+2000,South Carolina,income,62650
+2001,South Carolina,income,61540
+2002,South Carolina,income,60910
+2003,South Carolina,income,60720
+2004,South Carolina,income,59560
+2005,South Carolina,income,60190
+2006,South Carolina,income,57600
+2007,South Carolina,income,62670
+2008,South Carolina,income,57640
+2009,South Carolina,income,56430
+2010,South Carolina,income,56470
+2011,South Carolina,income,52650
+2012,South Carolina,income,57220
+2013,South Carolina,income,55460
+2014,South Carolina,income,56400
+2015,South Carolina,income,58240
+2016,South Carolina,income,67660
+2017,South Carolina,income,66740
+2018,South Carolina,income,68910
+2019,South Carolina,income,73320
+2020,South Carolina,income,70590
+2021,South Carolina,income,70040
+2022,South Carolina,income,64220
+2023,South Carolina,income,69100
+1984,South Dakota,income,51030
+1985,South Dakota,income,46130
+1986,South Dakota,income,49770
+1987,South Dakota,income,51180
+1988,South Dakota,income,52020
+1989,South Dakota,income,53890
+1990,South Dakota,income,52380
+1991,South Dakota,income,50680
+1992,South Dakota,income,52670
+1993,South Dakota,income,54290
+1994,South Dakota,income,56950
+1995,South Dakota,income,55350
+1996,South Dakota,income,53830
+1997,South Dakota,income,53000
+1998,South Dakota,income,57730
+1999,South Dakota,income,61810
+2000,South Dakota,income,60830
+2001,South Dakota,income,64700
+2002,South Dakota,income,61010
+2003,South Dakota,income,62360
+2004,South Dakota,income,63280
+2005,South Dakota,income,64560
+2006,South Dakota,income,66040
+2007,South Dakota,income,65800
+2008,South Dakota,income,70560
+2009,South Dakota,income,62910
+2010,South Dakota,income,61420
+2011,South Dakota,income,62030
+2012,South Dakota,income,63680
+2013,South Dakota,income,68010
+2014,South Dakota,income,66600
+2015,South Dakota,income,69180
+2016,South Dakota,income,71540
+2017,South Dakota,income,69650
+2018,South Dakota,income,71330
+2019,South Dakota,income,75950
+2020,South Dakota,income,82110
+2021,South Dakota,income,82750
+2022,South Dakota,income,69850
+2023,South Dakota,income,81740
+1984,Tennessee,income,44120
+1985,Tennessee,income,45200
+1986,Tennessee,income,45670
+1987,Tennessee,income,51250
+1988,Tennessee,income,48660
+1989,Tennessee,income,50540
+1990,Tennessee,income,48160
+1991,Tennessee,income,50300
+1992,Tennessee,income,48780
+1993,Tennessee,income,49140
+1994,Tennessee,income,54860
+1995,Tennessee,income,54300
+1996,Tennessee,income,56130
+1997,Tennessee,income,54680
+1998,Tennessee,income,60030
+1999,Tennessee,income,63010
+2000,Tennessee,income,56860
+2001,Tennessee,income,58360
+2002,Tennessee,income,59650
+2003,Tennessee,income,59210
+2004,Tennessee,income,58610
+2005,Tennessee,income,58950
+2006,Tennessee,income,59160
+2007,Tennessee,income,58390
+2008,Tennessee,income,54290
+2009,Tennessee,income,55630
+2010,Tennessee,income,52260
+2011,Tennessee,income,55530
+2012,Tennessee,income,55400
+2013,Tennessee,income,55210
+2014,Tennessee,income,54880
+2015,Tennessee,income,59460
+2016,Tennessee,income,63940
+2017,Tennessee,income,67680
+2018,Tennessee,income,67250
+2019,Tennessee,income,66940
+2020,Tennessee,income,64310
+2021,Tennessee,income,69610
+2022,Tennessee,income,67980
+2023,Tennessee,income,72700
+1984,Texas,income,60530
+1985,Texas,income,60370
+1986,Texas,income,60440
+1987,Texas,income,59820
+1988,Texas,income,58250
+1989,Texas,income,57860
+1990,Texas,income,60170
+1991,Texas,income,57040
+1992,Texas,income,56070
+1993,Texas,income,56230
+1994,Texas,income,58910
+1995,Texas,income,59950
+1996,Texas,income,60300
+1997,Texas,income,62610
+1998,Texas,income,63010
+1999,Texas,income,66740
+2000,Texas,income,64390
+2001,Texas,income,66640
+2002,Texas,income,64670
+2003,Texas,income,61970
+2004,Texas,income,63730
+2005,Texas,income,61970
+2006,Texas,income,62960
+2007,Texas,income,65280
+2008,Texas,income,63570
+2009,Texas,income,65180
+2010,Texas,income,64010
+2011,Texas,income,64420
+2012,Texas,income,66910
+2013,Texas,income,65450
+2014,Texas,income,67630
+2015,Texas,income,70950
+2016,Texas,income,72410
+2017,Texas,income,73540
+2018,Texas,income,71720
+2019,Texas,income,79720
+2020,Texas,income,80020
+2021,Texas,income,75480
+2022,Texas,income,77600
+2023,Texas,income,79060
+1984,Utah,income,60620
+1985,Utah,income,64170
+1986,Utah,income,65740
+1987,Utah,income,64190
+1988,Utah,income,61400
+1989,Utah,income,68660
+1990,Utah,income,64250
+1991,Utah,income,57620
+1992,Utah,income,68700
+1993,Utah,income,70050
+1994,Utah,income,68420
+1995,Utah,income,68260
+1996,Utah,income,67530
+1997,Utah,income,76350
+1998,Utah,income,78000
+1999,Utah,income,79440
+2000,Utah,income,79300
+2001,Utah,income,77210
+2002,Utah,income,77090
+2003,Utah,income,77750
+2004,Utah,income,78310
+2005,Utah,income,82000
+2006,Utah,income,79420
+2007,Utah,income,75880
+2008,Utah,income,85510
+2009,Utah,income,80300
+2010,Utah,income,76790
+2011,Utah,income,72890
+2012,Utah,income,75180
+2013,Utah,income,77730
+2014,Utah,income,79570
+2015,Utah,income,83240
+2016,Utah,income,84030
+2017,Utah,income,85400
+2018,Utah,income,92450
+2019,Utah,income,99910
+2020,Utah,income,98260
+2021,Utah,income,98150
+2022,Utah,income,99610
+2023,Utah,income,101200
+1984,Vermont,income,59360
+1985,Vermont,income,66110
+1986,Vermont,income,61530
+1987,Vermont,income,61490
+1988,Vermont,income,67640
+1989,Vermont,income,69950
+1990,Vermont,income,66290
+1991,Vermont,income,59970
+1992,Vermont,income,65700
+1993,Vermont,income,60810
+1994,Vermont,income,68580
+1995,Vermont,income,63290
+1996,Vermont,income,58990
+1997,Vermont,income,62570
+1998,Vermont,income,69330
+1999,Vermont,income,71740
+2000,Vermont,income,66030
+2001,Vermont,income,66530
+2002,Vermont,income,69260
+2003,Vermont,income,68260
+2004,Vermont,income,72860
+2005,Vermont,income,75860
+2006,Vermont,income,75570
+2007,Vermont,income,67180
+2008,Vermont,income,69330
+2009,Vermont,income,71830
+2010,Vermont,income,75740
+2011,Vermont,income,68120
+2012,Vermont,income,71620
+2013,Vermont,income,83410
+2014,Vermont,income,76210
+2015,Vermont,income,74740
+2016,Vermont,income,75760
+2017,Vermont,income,77930
+2018,Vermont,income,84050
+2019,Vermont,income,87830
+2020,Vermont,income,78680
+2021,Vermont,income,85190
+2022,Vermont,income,75060
+2023,Vermont,income,85190
+1984,Virginia,income,69740
+1985,Virginia,income,72280
+1986,Virginia,income,74330
+1987,Virginia,income,72580
+1988,Virginia,income,76180
+1989,Virginia,income,76260
+1990,Virginia,income,74760
+1991,Virginia,income,74330
+1992,Virginia,income,76620
+1993,Virginia,income,71310
+1994,Virginia,income,72110
+1995,Virginia,income,67780
+1996,Virginia,income,71490
+1997,Virginia,income,76670
+1998,Virginia,income,76340
+1999,Virginia,income,78830
+2000,Virginia,income,78650
+2001,Virginia,income,81940
+2002,Virginia,income,79950
+2003,Virginia,income,86440
+2004,Virginia,income,78720
+2005,Virginia,income,77670
+2006,Virginia,income,83040
+2007,Virginia,income,83860
+2008,Virginia,income,84760
+2009,Virginia,income,83060
+2010,Virginia,income,81750
+2011,Virginia,income,82250
+2012,Virginia,income,83290
+2013,Virginia,income,83910
+2014,Virginia,income,83050
+2015,Virginia,income,77240
+2016,Virginia,income,82750
+2017,Virginia,income,86650
+2018,Virginia,income,92550
+2019,Virginia,income,96120
+2020,Virginia,income,96180
+2021,Virginia,income,89890
+2022,Virginia,income,88550
+2023,Virginia,income,96490
+1984,Washington,income,65770
+1985,Washington,income,61020
+1986,Washington,income,67240
+1987,Washington,income,66100
+1988,Washington,income,75430
+1989,Washington,income,71440
+1990,Washington,income,68450
+1991,Washington,income,69870
+1992,Washington,income,68000
+1993,Washington,income,69790
+1994,Washington,income,64230
+1995,Washington,income,66560
+1996,Washington,income,66870
+1997,Washington,income,79540
+1998,Washington,income,83500
+1999,Washington,income,78450
+2000,Washington,income,70920
+2001,Washington,income,69300
+2002,Washington,income,72780
+2003,Washington,income,74960
+2004,Washington,income,76850
+2005,Washington,income,75770
+2006,Washington,income,79560
+2007,Washington,income,82330
+2008,Washington,income,77440
+2009,Washington,income,82910
+2010,Washington,income,76060
+2011,Washington,income,74670
+2012,Washington,income,80140
+2013,Washington,income,81390
+2014,Washington,income,74150
+2015,Washington,income,84480
+2016,Washington,income,87550
+2017,Washington,income,87550
+2018,Washington,income,95640
+2019,Washington,income,97470
+2020,Washington,income,95180
+2021,Washington,income,98150
+2022,Washington,income,92980
+2023,Washington,income,93440
+1984,West Virginia,income,44280
+1985,West Virginia,income,40640
+1986,West Virginia,income,41180
+1987,West Virginia,income,41630
+1988,West Virginia,income,45160
+1989,West Virginia,income,48450
+1990,West Virginia,income,47190
+1991,West Virginia,income,47610
+1992,West Virginia,income,40660
+1993,West Virginia,income,43890
+1994,West Virginia,income,45140
+1995,West Virginia,income,46560
+1996,West Virginia,income,46030
+1997,West Virginia,income,49060
+1998,West Virginia,income,47020
+1999,West Virginia,income,50540
+2000,West Virginia,income,49050
+2001,West Virginia,income,48390
+2002,West Virginia,income,47290
+2003,West Virginia,income,51700
+2004,West Virginia,income,51370
+2005,West Virginia,income,54520
+2006,West Virginia,income,55860
+2007,West Virginia,income,59660
+2008,West Virginia,income,51950
+2009,West Virginia,income,55590
+2010,West Virginia,income,57930
+2011,West Virginia,income,54930
+2012,West Virginia,income,56120
+2013,West Virginia,income,54840
+2014,West Virginia,income,49650
+2015,West Virginia,income,53800
+2016,West Virginia,income,55230
+2017,West Virginia,income,57460
+2018,West Virginia,income,60670
+2019,West Virginia,income,63480
+2020,West Virginia,income,60800
+2021,West Virginia,income,52450
+2022,West Virginia,income,54540
+2023,West Virginia,income,60410
+1984,Wisconsin,income,54530
+1985,Wisconsin,income,59110
+1986,Wisconsin,income,66110
+1987,Wisconsin,income,63800
+1988,Wisconsin,income,69010
+1989,Wisconsin,income,65100
+1990,Wisconsin,income,65460
+1991,Wisconsin,income,64040
+1992,Wisconsin,income,66810
+1993,Wisconsin,income,62180
+1994,Wisconsin,income,67790
+1995,Wisconsin,income,76640
+1996,Wisconsin,income,72930
+1997,Wisconsin,income,70670
+1998,Wisconsin,income,72770
+1999,Wisconsin,income,78780
+2000,Wisconsin,income,75190
+2001,Wisconsin,income,73950
+2002,Wisconsin,income,73940
+2003,Wisconsin,income,73010
+2004,Wisconsin,income,70400
+2005,Wisconsin,income,66800
+2006,Wisconsin,income,75150
+2007,Wisconsin,income,72690
+2008,Wisconsin,income,70010
+2009,Wisconsin,income,70340
+2010,Wisconsin,income,68190
+2011,Wisconsin,income,68380
+2012,Wisconsin,income,68400
+2013,Wisconsin,income,65860
+2014,Wisconsin,income,72910
+2015,Wisconsin,income,69630
+2016,Wisconsin,income,74490
+2017,Wisconsin,income,77690
+2018,Wisconsin,income,75130
+2019,Wisconsin,income,79620
+2020,Wisconsin,income,78860
+2021,Wisconsin,income,78320
+2022,Wisconsin,income,76240
+2023,Wisconsin,income,79690
+1984,Wyoming,income,62610
+1985,Wyoming,income,56140
+1986,Wyoming,income,58930
+1987,Wyoming,income,66760
+1988,Wyoming,income,61640
+1989,Wyoming,income,65990
+1990,Wyoming,income,62800
+1991,Wyoming,income,59750
+1992,Wyoming,income,60600
+1993,Wyoming,income,57630
+1994,Wyoming,income,63480
+1995,Wyoming,income,59000
+1996,Wyoming,income,56430
+1997,Wyoming,income,59660
+1998,Wyoming,income,62070
+1999,Wyoming,income,64260
+2000,Wyoming,income,66090
+2001,Wyoming,income,64780
+2002,Wyoming,income,64050
+2003,Wyoming,income,67150
+2004,Wyoming,income,69880
+2005,Wyoming,income,66900
+2006,Wyoming,income,68390
+2007,Wyoming,income,69090
+2008,Wyoming,income,72930
+2009,Wyoming,income,72040
+2010,Wyoming,income,70700
+2011,Wyoming,income,71600
+2012,Wyoming,income,74110
+2013,Wyoming,income,85870
+2014,Wyoming,income,69910
+2015,Wyoming,income,76540
+2016,Wyoming,income,72010
+2017,Wyoming,income,72860
+2018,Wyoming,income,75020
+2019,Wyoming,income,76990
+2020,Wyoming,income,76570
+2021,Wyoming,income,79570
+2022,Wyoming,income,76000
+2023,Wyoming,income,77200
+2022,Alabama,colplus,0.2924655515525614
+2022,Alaska,colplus,0.30745018269814584
+2022,Arizona,colplus,0.3332023828730792
+2022,Arkansas,colplus,0.25775128997604513
+2022,California,colplus,0.37245010361255165
+2022,Colorado,colplus,0.4646320213646426
+2022,Connecticut,colplus,0.4224343423646689
+2022,Delaware,colplus,0.3685699204238748
+2022,Florida,colplus,0.3466968171551012
+2022,Georgia,colplus,0.35081897666541756
+2022,Hawaii,colplus,0.35555346683041356
+2022,Idaho,colplus,0.32711877201199024
+2022,Illinois,colplus,0.3806063581715751
+2022,Indiana,colplus,0.29918638684513704
+2022,Iowa,colplus,0.3244840609230787
+2022,Kansas,colplus,0.36085724563073757
+2022,Kentucky,colplus,0.2822450714884387
+2022,Louisiana,colplus,0.2757413062868623
+2022,Maine,colplus,0.3652029673317053
+2022,Maryland,colplus,0.44095263111049193
+2022,Massachusetts,colplus,0.468392969463135
+2022,Michigan,colplus,0.32347920279861014
+2022,Minnesota,colplus,0.3949357929383571
+2022,Mississippi,colplus,0.25121069318391753
+2022,Missouri,colplus,0.32511814979437464
+2022,Montana,colplus,0.3488072603612728
+2022,Nebraska,colplus,0.3487335112150085
+2022,Nevada,colplus,0.272269714304851
+2022,New Hampshire,colplus,0.41631539297895176
+2022,New Jersey,colplus,0.43823003019559253
+2022,New Mexico,colplus,0.3089806786783474
+2022,New York,colplus,0.40127565651769853
+2022,North Carolina,colplus,0.36300371101590084
+2022,North Dakota,colplus,0.3217278661770706
+2022,Ohio,colplus,0.32267242144831654
+2022,Oklahoma,colplus,0.28936951924043497
+2022,Oregon,colplus,0.3671962842292574
+2022,Pennsylvania,colplus,0.35469522494274475
+2022,Rhode Island,colplus,0.3988449793689142
+2022,South Carolina,colplus,0.32833991387072803
+2022,South Dakota,colplus,0.31971273420659924
+2022,Tennessee,colplus,0.3134154544161006
+2022,Texas,colplus,0.3445543988239111
+2022,Utah,colplus,0.3837506210973642
+2022,Vermont,colplus,0.4453086433296401
+2022,Virginia,colplus,0.42476629739378463
+2022,Washington,colplus,0.39672827693752283
+2022,West Virginia,colplus,0.24909631772668756
+2022,Wisconsin,colplus,0.33548672856721024
+2022,Wyoming,colplus,0.3009686866411354
+2010,Alabama,colplus,0.22179295053113876
+2010,Alaska,colplus,0.28225806451612906
+2010,Arizona,colplus,0.2621520961325562
+2010,Arkansas,colplus,0.19780964739454585
+2010,California,colplus,0.30414293140572013
+2010,Colorado,colplus,0.36870822521879765
+2010,Connecticut,colplus,0.3606944181392457
+2010,Delaware,colplus,0.2816763801335531
+2010,Florida,colplus,0.26077440023842613
+2010,Georgia,colplus,0.27690633004265436
+2010,Hawaii,colplus,0.2977677698372344
+2010,Idaho,colplus,0.24682487388036653
+2010,Illinois,colplus,0.31141411245905243
+2010,Indiana,colplus,0.22979081718821628
+2010,Iowa,colplus,0.25291940280406183
+2010,Kansas,colplus,0.3009796273858519
+2010,Kentucky,colplus,0.20915531959589787
+2010,Louisiana,colplus,0.21823488519138262
+2010,Maine,colplus,0.27056545531686454
+2010,Maryland,colplus,0.3644439946691081
+2010,Massachusetts,colplus,0.3938870032164672
+2010,Michigan,colplus,0.2548364248358964
+2010,Minnesota,colplus,0.3214202518263478
+2010,Mississippi,colplus,0.19831051901625485
+2010,Missouri,colplus,0.2597953911601784
+2010,Montana,colplus,0.290831924666834
+2010,Nebraska,colplus,0.28908248426020827
+2010,Nevada,colplus,0.2183790790670456
+2010,New Hampshire,colplus,0.33078598107138507
+2010,New Jersey,colplus,0.3578901020438521
+2010,New Mexico,colplus,0.25282654809620764
+2010,New York,colplus,0.32935349771644107
+2010,North Carolina,colplus,0.2674071429901224
+2010,North Dakota,colplus,0.2804198264766614
+2010,Ohio,colplus,0.24944322771685923
+2010,Oklahoma,colplus,0.23227534950576764
+2010,Oregon,colplus,0.2899414678700789
+2010,Pennsylvania,colplus,0.27468732049356065
+2010,Rhode Island,colplus,0.3041035040431267
+2010,South Carolina,colplus,0.2484291020886375
+2010,South Dakota,colplus,0.26660379874277035
+2010,Tennessee,colplus,0.23418391955357074
+2010,Texas,colplus,0.26352556811592753
+2010,Utah,colplus,0.2956965901965117
+2010,Vermont,colplus,0.33839171982006966
+2010,Virginia,colplus,0.3453253046082537
+2010,Washington,colplus,0.3134668686274953
+2010,West Virginia,colplus,0.17776542085191802
+2010,Wisconsin,colplus,0.26679335524901215
+2010,Wyoming,colplus,0.24336026841730984
+2000,Alabama,colplus,0.19
+2000,Alaska,colplus,0.247
+2000,Arizona,colplus,0.235
+2000,Arkansas,colplus,0.16699999999999998
+2000,California,colplus,0.266
+2000,Colorado,colplus,0.327
+2000,Connecticut,colplus,0.314
+2000,Delaware,colplus,0.25
+2000,Florida,colplus,0.223
+2000,Georgia,colplus,0.243
+2000,Hawaii,colplus,0.262
+2000,Idaho,colplus,0.217
+2000,Illinois,colplus,0.261
+2000,Indiana,colplus,0.19399999999999998
+2000,Iowa,colplus,0.212
+2000,Kansas,colplus,0.258
+2000,Kentucky,colplus,0.171
+2000,Louisiana,colplus,0.187
+2000,Maine,colplus,0.22899999999999998
+2000,Maryland,colplus,0.314
+2000,Massachusetts,colplus,0.332
+2000,Michigan,colplus,0.218
+2000,Minnesota,colplus,0.27399999999999997
+2000,Mississippi,colplus,0.16899999999999998
+2000,Missouri,colplus,0.21600000000000003
+2000,Montana,colplus,0.244
+2000,Nebraska,colplus,0.237
+2000,Nevada,colplus,0.182
+2000,New Hampshire,colplus,0.287
+2000,New Jersey,colplus,0.298
+2000,New Mexico,colplus,0.235
+2000,New York,colplus,0.27399999999999997
+2000,North Carolina,colplus,0.225
+2000,North Dakota,colplus,0.22
+2000,Ohio,colplus,0.21100000000000002
+2000,Oklahoma,colplus,0.203
+2000,Oregon,colplus,0.251
+2000,Pennsylvania,colplus,0.22399999999999998
+2000,Rhode Island,colplus,0.256
+2000,South Carolina,colplus,0.204
+2000,South Dakota,colplus,0.215
+2000,Tennessee,colplus,0.196
+2000,Texas,colplus,0.23199999999999998
+2000,Utah,colplus,0.261
+2000,Vermont,colplus,0.294
+2000,Virginia,colplus,0.295
+2000,Washington,colplus,0.27699999999999997
+2000,West Virginia,colplus,0.14800000000000002
+2000,Wisconsin,colplus,0.22399999999999998
+2000,Wyoming,colplus,0.21899999999999997
+1990,Alabama,colplus,0.157
+1990,Alaska,colplus,0.23
+1990,Arizona,colplus,0.203
+1990,Arkansas,colplus,0.133
+1990,California,colplus,0.23399999999999999
+1990,Colorado,colplus,0.27
+1990,Connecticut,colplus,0.272
+1990,Delaware,colplus,0.214
+1990,Florida,colplus,0.183
+1990,Georgia,colplus,0.193
+1990,Hawaii,colplus,0.22899999999999998
+1990,Idaho,colplus,0.177
+1990,Illinois,colplus,0.21
+1990,Indiana,colplus,0.156
+1990,Iowa,colplus,0.16899999999999998
+1990,Kansas,colplus,0.21100000000000002
+1990,Kentucky,colplus,0.136
+1990,Louisiana,colplus,0.161
+1990,Maine,colplus,0.188
+1990,Maryland,colplus,0.265
+1990,Massachusetts,colplus,0.272
+1990,Michigan,colplus,0.174
+1990,Minnesota,colplus,0.218
+1990,Mississippi,colplus,0.147
+1990,Missouri,colplus,0.17800000000000002
+1990,Montana,colplus,0.198
+1990,Nebraska,colplus,0.18899999999999997
+1990,Nevada,colplus,0.153
+1990,New Hampshire,colplus,0.244
+1990,New Jersey,colplus,0.249
+1990,New Mexico,colplus,0.204
+1990,New York,colplus,0.231
+1990,North Carolina,colplus,0.174
+1990,North Dakota,colplus,0.18100000000000002
+1990,Ohio,colplus,0.17
+1990,Oklahoma,colplus,0.17800000000000002
+1990,Oregon,colplus,0.20600000000000002
+1990,Pennsylvania,colplus,0.179
+1990,Rhode Island,colplus,0.213
+1990,South Carolina,colplus,0.166
+1990,South Dakota,colplus,0.172
+1990,Tennessee,colplus,0.16
+1990,Texas,colplus,0.203
+1990,Utah,colplus,0.223
+1990,Vermont,colplus,0.243
+1990,Virginia,colplus,0.245
+1990,Washington,colplus,0.22899999999999998
+1990,West Virginia,colplus,0.12300000000000001
+1990,Wisconsin,colplus,0.177
+1990,Wyoming,colplus,0.188
+1990,Alabama,urban,0.6037610376908108
+1990,Alaska,urban,0.6749199608030645
+1990,Arizona,urban,0.8749723073162161
+1990,Arkansas,urban,0.5351629816333259
+1990,California,urban,0.9264550250149353
+1990,Colorado,urban,0.8242842234413977
+1990,Connecticut,urban,0.7914378439945533
+1990,Delaware,urban,0.7302977627265195
+1990,Florida,urban,0.8476882616270954
+1990,Georgia,urban,0.6324795283145854
+1990,Hawaii,urban,0.8898621133357817
+1990,Idaho,urban,0.5743377942267636
+1990,Illinois,urban,0.8458480139541207
+1990,Indiana,urban,0.648989143348883
+1990,Iowa,urban,0.6061265758052115
+1990,Kansas,urban,0.6912261752827564
+1990,Kentucky,urban,0.5183640608515571
+1990,Louisiana,urban,0.6805159653865084
+1990,Maine,urban,0.44613690704992476
+1990,Maryland,urban,0.8132291170828708
+1990,Massachusetts,urban,0.8426271415333857
+1990,Michigan,urban,0.7052859096379599
+1990,Minnesota,urban,0.6986068200970995
+1990,Mississippi,urban,0.47051199743822514
+1990,Missouri,urban,0.6871133165385759
+1990,Montana,urban,0.5253965572262582
+1990,Nebraska,urban,0.6614254443624338
+1990,Nevada,urban,0.8831875976113154
+1990,New Hampshire,urban,0.5099562588122446
+1990,New Jersey,urban,0.893926512524663
+1990,New Mexico,urban,0.7297694032417006
+1990,New York,urban,0.8428940235252527
+1990,North Carolina,urban,0.5035391136971296
+1990,North Dakota,urban,0.532778647463995
+1990,Ohio,urban,0.7411564273080907
+1990,Oklahoma,urban,0.6771837352988395
+1990,Oregon,urban,0.7048011114860003
+1990,Pennsylvania,urban,0.6891551109556144
+1990,Rhode Island,urban,0.860400572417147
+1990,South Carolina,urban,0.5464698312417203
+1990,South Dakota,urban,0.49985775943816413
+1990,Tennessee,urban,0.6089471693200074
+1990,Texas,urban,0.8026673519163148
+1990,Utah,urban,0.8701169573671532
+1990,Vermont,urban,0.3218950241489237
+1990,Virginia,urban,0.6939057025631942
+1990,Washington,urban,0.7639579410408549
+1990,West Virginia,urban,0.3614119389320298
+1990,Wisconsin,urban,0.6566041855206164
+1990,Wyoming,urban,0.649565244230447
+1990,Alabama,age,33
+1990,Alaska,age,29.4
+1990,Arizona,age,32.2
+1990,Arkansas,age,33.8
+1990,California,age,31.4
+1990,Colorado,age,32.5
+1990,Connecticut,age,34.4
+1990,Delaware,age,32.8
+1990,Florida,age,36.3
+1990,Georgia,age,31.5
+1990,Hawaii,age,32.6
+1990,Idaho,age,31.5
+1990,Illinois,age,32.8
+1990,Indiana,age,32.8
+1990,Iowa,age,34
+1990,Kansas,age,32.9
+1990,Kentucky,age,33
+1990,Louisiana,age,31
+1990,Maine,age,33.9
+1990,Maryland,age,33
+1990,Massachusetts,age,33.5
+1990,Michigan,age,32.6
+1990,Minnesota,age,32.4
+1990,Mississippi,age,31.1
+1990,Missouri,age,33.5
+1990,Montana,age,33.8
+1990,Nebraska,age,33
+1990,Nevada,age,33.3
+1990,New Hampshire,age,32.8
+1990,New Jersey,age,34.4
+1990,New Mexico,age,31.2
+1990,New York,age,33.8
+1990,North Carolina,age,33.1
+1990,North Dakota,age,32.4
+1990,Ohio,age,33.3
+1990,Oklahoma,age,33.1
+1990,Oregon,age,34.6
+1990,Pennsylvania,age,35
+1990,Rhode Island,age,33.9
+1990,South Carolina,age,32
+1990,South Dakota,age,32.5
+1990,Tennessee,age,33.5
+1990,Texas,age,30.7
+1990,Utah,age,26.3
+1990,Vermont,age,33
+1990,Virginia,age,32.6
+1990,Washington,age,33.1
+1990,West Virginia,age,35.4
+1990,Wisconsin,age,32.9
+1990,Wyoming,age,32.1
+1990,Alabama,hispanic,0.006095401484982256
+1990,Alabama,black,0.25261304854962907
+1990,Alabama,asian,0.005394513222954982
+1990,Alaska,hispanic,0.032366560432548
+1990,Alaska,black,0.04081680886767035
+1990,Alaska,asian,0.03586628681757608
+1990,Arizona,hispanic,0.18780223222129702
+1990,Arizona,black,0.030154740714629487
+1990,Arizona,asian,0.015062091635227058
+1990,Arkansas,hispanic,0.008455263801593126
+1990,Arkansas,black,0.1590624169139308
+1990,Arkansas,asian,0.005330270448478661
+1990,California,hispanic,0.2583310677099321
+1990,California,black,0.0742204113364033
+1990,California,asian,0.09562019462284653
+1990,Colorado,hispanic,0.12879515929181512
+1990,Colorado,black,0.04041593082066079
+1990,Colorado,asian,0.01817086845107173
+1990,Connecticut,hispanic,0.06483373267021912
+1990,Connecticut,black,0.0834375787164189
+1990,Connecticut,asian,0.015423246395928833
+1990,Delaware,hispanic,0.023747763326968572
+1990,Delaware,black,0.1688162745733809
+1990,Delaware,asian,0.013595669560831502
+1990,Florida,hispanic,0.12166888263234772
+1990,Florida,black,0.1359981499353142
+1990,Florida,asian,0.011926331932954323
+1990,Georgia,hispanic,0.016813579541034136
+1990,Georgia,black,0.26960586062582664
+1990,Georgia,asian,0.011697819276171095
+1990,Hawaii,hispanic,0.07344149990660775
+1990,Hawaii,black,0.024539152106649437
+1990,Hawaii,asian,0.6183162505222296
+1990,Idaho,hispanic,0.05257219028774799
+1990,Idaho,black,0.0033474083411058763
+1990,Idaho,asian,0.00930221932179719
+1990,Illinois,hispanic,0.07912496647158217
+1990,Illinois,black,0.1482225520580631
+1990,Illinois,asian,0.02496027768266273
+1990,Indiana,hispanic,0.017818392293583212
+1990,Indiana,black,0.07793643724864312
+1990,Indiana,asian,0.006784978569337568
+1990,Iowa,hispanic,0.011757249019088829
+1990,Iowa,black,0.017318776773608043
+1990,Iowa,asian,0.009174738138582626
+1990,Kansas,hispanic,0.03780714521544059
+1990,Kansas,black,0.05774842648494051
+1990,Kansas,asian,0.012814955274797039
+1990,Kentucky,hispanic,0.005965328158172369
+1990,Kentucky,black,0.07133945278751015
+1990,Kentucky,asian,0.004833261697296499
+1990,Louisiana,hispanic,0.02204848230071614
+1990,Louisiana,black,0.3078884627934823
+1990,Louisiana,asian,0.00973916183823925
+1990,Maine,hispanic,0.0055614009941951
+1990,Maine,black,0.00418428442058492
+1990,Maine,asian,0.005442501514746793
+1990,Maryland,hispanic,0.026163931244546655
+1990,Maryland,black,0.24885641815442455
+1990,Maryland,asian,0.029220942187629405
+1990,Massachusetts,hispanic,0.04779399726581816
+1990,Massachusetts,black,0.04988510618847571
+1990,Massachusetts,asian,0.023833422672101787
+1990,Michigan,hispanic,0.02168795682375722
+1990,Michigan,black,0.13896339191743953
+1990,Michigan,asian,0.011294206091532094
+1990,Minnesota,hispanic,0.012316064162205244
+1990,Minnesota,black,0.021700994651778164
+1990,Minnesota,asian,0.017802111449363774
+1990,Mississippi,hispanic,0.006191085396639847
+1990,Mississippi,black,0.35560831271063137
+1990,Mississippi,asian,0.0050582617238506215
+1990,Missouri,hispanic,0.012058065225960231
+1990,Missouri,black,0.10713312082903645
+1990,Missouri,asian,0.008066525531294942
+1990,Montana,hispanic,0.01523530626419628
+1990,Montana,black,0.002979732562432343
+1990,Montana,asian,0.0053299794134394575
+1990,Nebraska,hispanic,0.023422042150679334
+1990,Nebraska,black,0.03636882002806666
+1990,Nebraska,asian,0.0078700697231664
+1990,Nevada,hispanic,0.10352436653012523
+1990,Nevada,black,0.06554238400842713
+1990,Nevada,asian,0.031724041526568166
+1990,New Hampshire,hispanic,0.010216794740960575
+1990,New Hampshire,black,0.006489057490993931
+1990,New Hampshire,asian,0.008422793017276506
+1990,New Jersey,hispanic,0.09571060884935786
+1990,New Jersey,black,0.13412675086298032
+1990,New Jersey,asian,0.03525412318561981
+1990,New Mexico,hispanic,0.38230866052965246
+1990,New Mexico,black,0.019939685915294946
+1990,New Mexico,asian,0.009322347695055473
+1990,New York,hispanic,0.12306670398275085
+1990,New York,black,0.15892066098383836
+1990,New York,asian,0.038562671149784705
+1990,North Carolina,hispanic,0.011574928601460602
+1990,North Carolina,black,0.2197017275195489
+1990,North Carolina,asian,0.007869792839764796
+1990,North Dakota,hispanic,0.0073027551659361305
+1990,North Dakota,black,0.0055165936130244205
+1990,North Dakota,asian,0.005419536631183469
+1990,Ohio,hispanic,0.012878631783658605
+1990,Ohio,black,0.10646388463660614
+1990,Ohio,asian,0.008405829568507387
+1990,Oklahoma,hispanic,0.02739077150990992
+1990,Oklahoma,black,0.07432671506254003
+1990,Oklahoma,asian,0.01066987539678629
+1990,Oregon,hispanic,0.039653156698346174
+1990,Oregon,black,0.016246581578927926
+1990,Oregon,asian,0.024370576018683324
+1990,Pennsylvania,hispanic,0.019547969923014857
+1990,Pennsylvania,black,0.09172090088887538
+1990,Pennsylvania,asian,0.011567255471318235
+1990,Rhode Island,hispanic,0.0455940621686478
+1990,Rhode Island,black,0.03872685019093859
+1990,Rhode Island,asian,0.01826174132803967
+1990,South Carolina,hispanic,0.008762145786434921
+1990,South Carolina,black,0.29824278121767184
+1990,South Carolina,asian,0.006419244770776289
+1990,South Dakota,hispanic,0.007545933644059517
+1990,South Dakota,black,0.004681007580416205
+1990,South Dakota,asian,0.004487043177912771
+1990,Tennessee,hispanic,0.006713093721070659
+1990,Tennessee,black,0.15952542296427139
+1990,Tennessee,asian,0.006528150972333426
+1990,Texas,hispanic,0.25549126924836235
+1990,Texas,black,0.11901397049776558
+1990,Texas,asian,0.018806629495994175
+1990,Utah,hispanic,0.04910293989610239
+1990,Utah,black,0.006719099167077807
+1990,Utah,asian,0.01936964912789854
+1990,Vermont,hispanic,0.0065054606065129235
+1990,Vermont,black,0.003466854313932454
+1990,Vermont,asian,0.005712935222600123
+1990,Virginia,hispanic,0.02590572583645556
+1990,Virginia,black,0.1879629399171666
+1990,Virginia,asian,0.025706125296128007
+1990,Washington,hispanic,0.044089496520429074
+1990,Washington,black,0.030780867168088713
+1990,Washington,asian,0.04334730860305111
+1990,West Virginia,hispanic,0.004733263933688584
+1990,West Virginia,black,0.031388749339969234
+1990,West Virginia,asian,0.004158960499632836
+1990,Wisconsin,hispanic,0.01905118577757862
+1990,Wisconsin,black,0.049989891182514956
+1990,Wisconsin,asian,0.010953706113269044
+1990,Wyoming,hispanic,0.05677178408599875
+1990,Wyoming,black,0.007949945765761
+1990,Wyoming,asian,0.006186230676296551
+2020,Alabama,age,39.7
+2020,Alabama,asian,0.015110227756062114
+2020,Alabama,black,0.2563868367978769
+2020,Alabama,hispanic,0.03320993917734266
+2020,Alabama,urban,0.577372395123758
+2020,Alaska,age,35.6
+2020,Alaska,asian,0.05924397763266798
+2020,Alaska,black,0.02826732261508527
+2020,Alaska,hispanic,0.045597777992912376
+2020,Alaska,urban,0.6489948744939602
+2020,Arizona,age,38.9
+2020,Arizona,asian,0.034795068224828855
+2020,Arizona,black,0.04434886545511698
+2020,Arizona,hispanic,0.20829428559203367
+2020,Arizona,urban,0.8928515995660772
+2020,Arkansas,age,38.8
+2020,Arkansas,asian,0.017004679358358095
+2020,Arkansas,black,0.14938748620299888
+2020,Arkansas,hispanic,0.05379402588191228
+2020,Arkansas,urban,0.5547613102203403
+2020,California,age,37.5
+2020,California,asian,0.15121557182779813
+2020,California,black,0.05360094205548894
+2020,California,hispanic,0.28031846550109246
+2020,California,urban,0.9423663273890686
+2020,Colorado,age,37.2
+2020,Colorado,asian,0.03381185836361136
+2020,Colorado,black,0.038330613535758784
+2020,Colorado,hispanic,0.14967765982173692
+2020,Colorado,urban,0.8602670655318223
+2020,Connecticut,age,41.1
+2020,Connecticut,asian,0.04727167144026641
+2020,Connecticut,black,0.10009500979493859
+2020,Connecticut,hispanic,0.11944029080873136
+2020,Connecticut,urban,0.8625072935131549
+2020,Delaware,age,41.1
+2020,Delaware,asian,0.04282851220468146
+2020,Delaware,black,0.21512241047004488
+2020,Delaware,hispanic,0.06859552218904427
+2020,Delaware,urban,0.8261211700008485
+2020,Florida,age,43
+2020,Florida,asian,0.02923300833073833
+2020,Florida,black,0.1451864077510331
+2020,Florida,hispanic,0.20116293910903457
+2020,Florida,urban,0.9153419459121606
+2020,Georgia,age,37.5
+2020,Georgia,asian,0.04440665472481653
+2020,Georgia,black,0.30602568655369333
+2020,Georgia,hispanic,0.06935440446277172
+2020,Georgia,urban,0.7406697294263543
+2020,Hawaii,age,40.8
+2020,Hawaii,asian,0.3652639267875193
+2020,Hawaii,black,0.015032938882173835
+2020,Hawaii,hispanic,0.06397914890078893
+2020,Hawaii,urban,0.8606300819572437
+2020,Idaho,age,36.8
+2020,Idaho,asian,0.01415687839635127
+2020,Idaho,black,0.00803923210516414
+2020,Idaho,hispanic,0.08248572947943185
+2020,Idaho,urban,0.6924217527429087
+2020,Illinois,age,38.8
+2020,Illinois,asian,0.05832425626583023
+2020,Illinois,black,0.13858426468884935
+2020,Illinois,hispanic,0.12646329664730746
+2020,Illinois,urban,0.8692747743064824
+2020,Indiana,age,38.2
+2020,Indiana,asian,0.024559768967131225
+2020,Indiana,black,0.0939499475943508
+2020,Indiana,hispanic,0.0517172724068046
+2020,Indiana,urban,0.7117627397602663
+2020,Iowa,age,38.6
+2020,Iowa,asian,0.023513581030908965
+2020,Iowa,black,0.04053480960979749
+2020,Iowa,hispanic,0.04203400923216092
+2020,Iowa,urban,0.6315354117345047
+2020,Kansas,age,37.4
+2020,Kansas,asian,0.029009013302109005
+2020,Kansas,black,0.05560199872016556
+2020,Kansas,hispanic,0.08223140495867769
+2020,Kansas,urban,0.7229903876264517
+2020,Kentucky,age,39.4
+2020,Kentucky,asian,0.016388301749109376
+2020,Kentucky,black,0.07940013795442177
+2020,Kentucky,hispanic,0.029533920009516546
+2020,Kentucky,urban,0.5869845240705609
+2020,Louisiana,age,38.1
+2020,Louisiana,asian,0.018321264935032035
+2020,Louisiana,black,0.3118282040046314
+2020,Louisiana,hispanic,0.04801925046755337
+2020,Louisiana,urban,0.7154166694398183
+2020,Maine,age,45.1
+2020,Maine,asian,0.012234660614419548
+2020,Maine,black,0.01843493528504601
+2020,Maine,hispanic,0.012959873278629202
+2020,Maine,urban,0.38632181385376396
+2020,Maryland,age,38.8
+2020,Maryland,asian,0.06766178464630715
+2020,Maryland,black,0.29058797284994037
+2020,Maryland,hispanic,0.07968984126202967
+2020,Maryland,urban,0.8561709920184212
+2020,Massachusetts,age,39.9
+2020,Massachusetts,asian,0.07182161610158413
+2020,Massachusetts,black,0.06501570359934548
+2020,Massachusetts,hispanic,0.08840900966540573
+2020,Massachusetts,urban,0.9127981169621207
+2020,Michigan,age,40.1
+2020,Michigan,asian,0.032973810228124886
+2020,Michigan,black,0.13480335219712442
+2020,Michigan,hispanic,0.03648237812174672
+2020,Michigan,urban,0.734743951548282
+2020,Minnesota,age,38.4
+2020,Minnesota,asian,0.052126577194333334
+2020,Minnesota,black,0.06884262035498503
+2020,Minnesota,hispanic,0.038336498732847175
+2020,Minnesota,urban,0.7187870520848704
+2020,Mississippi,age,39
+2020,Mississippi,asian,0.010909137571974812
+2020,Mississippi,black,0.36436992259088047
+2020,Mississippi,hispanic,0.023178160517803286
+2020,Mississippi,urban,0.46290471110624837
+2020,Missouri,age,39
+2020,Missouri,asian,0.02147195256862282
+2020,Missouri,black,0.11255626196503508
+2020,Missouri,hispanic,0.03203505882211495
+2020,Missouri,urban,0.694674806938782
+2020,Montana,age,40.5
+2020,Montana,asian,0.007449560746155087
+2020,Montana,black,0.004682607392377043
+2020,Montana,hispanic,0.027584680301597917
+2020,Montana,urban,0.5341852475270354
+2020,Nebraska,age,36.9
+2020,Nebraska,asian,0.02669329249392303
+2020,Nebraska,black,0.048128884774132505
+2020,Nebraska,hispanic,0.07407428177561708
+2020,Nebraska,urban,0.7300535711372498
+2020,Nevada,age,38.6
+2020,Nevada,asian,0.0856760292905978
+2020,Nevada,black,0.09404067623221438
+2020,Nevada,hispanic,0.19628720349776171
+2020,Nevada,urban,0.9409230905999909
+2020,New Hampshire,age,43.6
+2020,New Hampshire,asian,0.025846279824236006
+2020,New Hampshire,black,0.01354236462535453
+2020,New Hampshire,hispanic,0.028892313700836787
+2020,New Hampshire,urban,0.5832327304906103
+2020,New Jersey,age,39.9
+2020,New Jersey,asian,0.1015094853113265
+2020,New Jersey,black,0.12424833087415063
+2020,New Jersey,hispanic,0.15459144445566442
+2020,New Jersey,urban,0.9375373694934026
+2020,New Mexico,age,39.2
+2020,New Mexico,asian,0.01665201117154863
+2020,New Mexico,black,0.018101346762867163
+2020,New Mexico,hispanic,0.34321437982698644
+2020,New Mexico,urban,0.7454713575585047
+2020,New York,age,39
+2020,New York,asian,0.09486190680586136
+2020,New York,black,0.13657680275115663
+2020,New York,hispanic,0.1448368860757075
+2020,New York,urban,0.8744590990388763
+2020,North Carolina,age,39.4
+2020,North Carolina,asian,0.03257461069556951
+2020,North Carolina,black,0.2018821409837435
+2020,North Carolina,hispanic,0.06938251552677226
+2020,North Carolina,urban,0.6671585537389739
+2020,North Dakota,age,35.8
+2020,North Dakota,asian,0.01675022526165007
+2020,North Dakota,black,0.033567194715913615
+2020,North Dakota,hispanic,0.027728361404400496
+2020,North Dakota,urban,0.6096684097169276
+2020,Ohio,age,39.8
+2020,Ohio,asian,0.025137108108786107
+2020,Ohio,black,0.12349560759113477
+2020,Ohio,hispanic,0.028478281356890595
+2020,Ohio,urban,0.7628406854286743
+2020,Oklahoma,age,37.3
+2020,Oklahoma,asian,0.0226433460214333
+2020,Oklahoma,black,0.07153744563821413
+2020,Oklahoma,hispanic,0.07466396656221358
+2020,Oklahoma,urban,0.6462194707064512
+2020,Oregon,age,39.9
+2020,Oregon,asian,0.0452644352854772
+2020,Oregon,black,0.018563428785043905
+2020,Oregon,hispanic,0.09189768095201234
+2020,Oregon,urban,0.8049983291073279
+2020,Pennsylvania,age,41
+2020,Pennsylvania,asian,0.038966829966083964
+2020,Pennsylvania,black,0.10528413329539249
+2020,Pennsylvania,hispanic,0.054162443184876986
+2020,Pennsylvania,urban,0.7645389034585125
+2020,Rhode Island,age,40.5
+2020,Rhode Island,asian,0.0349623967653837
+2020,Rhode Island,black,0.05047116811967424
+2020,Rhode Island,hispanic,0.1148081018499534
+2020,Rhode Island,urban,0.9105249872651108
+2020,South Carolina,age,40.5
+2020,South Carolina,asian,0.017465138201692904
+2020,South Carolina,black,0.24793388591217025
+2020,South Carolina,hispanic,0.04515529679540093
+2020,South Carolina,urban,0.6794803088840805
+2020,South Dakota,age,37.7
+2020,South Dakota,asian,0.015036084572900536
+2020,South Dakota,black,0.019670293357032572
+2020,South Dakota,hispanic,0.026904125224013073
+2020,South Dakota,urban,0.5721956495505077
+2020,Tennessee,age,39.1
+2020,Tennessee,asian,0.0194335276174821
+2020,Tennessee,black,0.15682203610559642
+2020,Tennessee,hispanic,0.04423731413258012
+2020,Tennessee,urban,0.6623336671084846
+2020,Texas,age,35.6
+2020,Texas,asian,0.05357663214276095
+2020,Texas,black,0.11819016345745254
+2020,Texas,hispanic,0.2713049233492437
+2020,Texas,urban,0.8372027521911183
+2020,Utah,age,31.3
+2020,Utah,asian,0.02403032629746278
+2020,Utah,black,0.01136808231772922
+2020,Utah,hispanic,0.09677480486707486
+2020,Utah,urban,0.8978141077681489
+2020,Vermont,age,43.5
+2020,Vermont,asian,0.01781590695981974
+2020,Vermont,black,0.013449400305095657
+2020,Vermont,hispanic,0.017280978794141293
+2020,Vermont,urban,0.3512021111002259
+2020,Virginia,age,38.7
+2020,Virginia,asian,0.0707431581437666
+2020,Virginia,black,0.18283143867971252
+2020,Virginia,hispanic,0.07117205762731461
+2020,Virginia,urban,0.7563452388276145
+2020,Washington,age,38.1
+2020,Washington,asian,0.09383979636823109
+2020,Washington,black,0.03843727438363377
+2020,Washington,hispanic,0.08963644544566253
+2020,Washington,urban,0.8337184588076672
+2020,West Virginia,age,42.9
+2020,West Virginia,asian,0.008308450167139056
+2020,West Virginia,black,0.03609768770530006
+2020,West Virginia,hispanic,0.013091816095747598
+2020,West Virginia,urban,0.44647926427595
+2020,Wisconsin,age,40.1
+2020,Wisconsin,asian,0.029568262343057473
+2020,Wisconsin,black,0.062186212506265146
+2020,Wisconsin,hispanic,0.04819860739858948
+2020,Wisconsin,urban,0.6708313835171619
+2020,Wyoming,age,38.7
+2020,Wyoming,asian,0.008731890904236969
+2020,Wyoming,black,0.008208358830963281
+2020,Wyoming,hispanic,0.06614012977354637
+2020,Wyoming,urban,0.6201774808399396
+2010,Alabama,age,37.9
+2010,Alabama,asian,0.011852537462320095
+2010,Alabama,black,0.2617950029039261
+2010,Alabama,hispanic,0.03883101493471606
+2010,Alabama,urban,0.5903681709617435
+2010,Alaska,age,33.8
+2010,Alaska,asian,0.06412561546877002
+2010,Alaska,black,0.032754132106314705
+2010,Alaska,hispanic,0.05526230198343919
+2010,Alaska,urban,0.6601978792815295
+2010,Arizona,age,35.9
+2010,Arizona,asian,0.029621792307498555
+2010,Arizona,black,0.04052054304611518
+2010,Arizona,hispanic,0.29648685227213883
+2010,Arizona,urban,0.8980982059340581
+2010,Arkansas,age,37.4
+2010,Arkansas,asian,0.014391694142290695
+2010,Arkansas,black,0.15428931814955016
+2010,Arkansas,hispanic,0.063804949247544
+2010,Arkansas,urban,0.5616032412434094
+2010,California,age,35.2
+2010,California,asian,0.1343586973689452
+2010,California,black,0.06171349963477704
+2010,California,hispanic,0.3761672720073004
+2010,California,urban,0.9495261657580741
+2010,Colorado,age,36.1
+2010,Colorado,asian,0.028961090400930884
+2010,Colorado,black,0.04011317117089889
+2010,Colorado,hispanic,0.20653142172227926
+2010,Colorado,urban,0.8615216030554387
+2010,Connecticut,age,40
+2010,Connecticut,asian,0.03832940180414801
+2010,Connecticut,black,0.10136714252579043
+2010,Connecticut,hispanic,0.13404420752990195
+2010,Connecticut,urban,0.8799263142550412
+2010,Delaware,age,38.8
+2010,Delaware,asian,0.03223956326411518
+2010,Delaware,black,0.2136170364414311
+2010,Delaware,hispanic,0.0815438551163003
+2010,Delaware,urban,0.8329665654714044
+2010,Florida,age,40.7
+2010,Florida,asian,0.024844385843326874
+2010,Florida,black,0.15955600966102895
+2010,Florida,hispanic,0.22465487777181484
+2010,Florida,urban,0.9116303066116138
+2010,Georgia,age,35.3
+2010,Georgia,asian,0.03316241818322766
+2010,Georgia,black,0.3045562222346321
+2010,Georgia,hispanic,0.08812134373516475
+2010,Georgia,urban,0.7506617959995058
+2010,Hawaii,age,38.6
+2010,Hawaii,asian,0.48555430011445994
+2010,Hawaii,black,0.01574945545140377
+2010,Hawaii,hispanic,0.08883475054418102
+2010,Hawaii,urban,0.919273748971735
+2010,Idaho,age,34.6
+2010,Idaho,asian,0.013642667496819944
+2010,Idaho,black,0.006258045831095279
+2010,Idaho,hispanic,0.11221167377527938
+2010,Idaho,urban,0.7057812605656355
+2010,Illinois,age,36.6
+2010,Illinois,asian,0.046060396713115924
+2010,Illinois,black,0.1454654766811175
+2010,Illinois,hispanic,0.15802635443055338
+2010,Illinois,urban,0.884878702779411
+2010,Indiana,age,37
+2010,Indiana,asian,0.016166749077161827
+2010,Indiana,black,0.0912114527864978
+2010,Indiana,hispanic,0.060104703999289306
+2010,Indiana,urban,0.7244360639020131
+2010,Iowa,age,38.1
+2010,Iowa,asian,0.018086204660980088
+2010,Iowa,black,0.029263825128719403
+2010,Iowa,hispanic,0.04974600793407203
+2010,Iowa,urban,0.6401932801659689
+2010,Kansas,age,36
+2010,Kansas,asian,0.02453456183726015
+2010,Kansas,black,0.05883528126071196
+2010,Kansas,hispanic,0.1051628428967887
+2010,Kansas,urban,0.7419815794509725
+2010,Kentucky,age,38.1
+2010,Kentucky,asian,0.011852189501371974
+2010,Kentucky,black,0.07778092979920805
+2010,Kentucky,hispanic,0.03061183808606186
+2010,Kentucky,urban,0.5838047346536949
+2010,Louisiana,age,35.8
+2010,Louisiana,asian,0.015903173178817002
+2010,Louisiana,black,0.3203787379460587
+2010,Louisiana,hispanic,0.042476108292017506
+2010,Louisiana,urban,0.7318625076433172
+2010,Maine,age,42.7
+2010,Maine,asian,0.01047380945390598
+2010,Maine,black,0.011824345942104594
+2010,Maine,hispanic,0.012748793437928395
+2010,Maine,urban,0.38659822141722017
+2010,Maryland,age,38
+2010,Maryland,asian,0.05577329172751887
+2010,Maryland,black,0.29449773726814965
+2010,Maryland,hispanic,0.08151515739357677
+2010,Maryland,urban,0.8719642604760466
+2010,Massachusetts,age,39.1
+2010,Massachusetts,asian,0.053758543741558966
+2010,Massachusetts,black,0.06634432097481394
+2010,Massachusetts,hispanic,0.09585973792956198
+2010,Massachusetts,urban,0.9197205583883876
+2010,Michigan,age,38.9
+2010,Michigan,asian,0.024363797143562495
+2010,Michigan,black,0.14168484485472962
+2010,Michigan,hispanic,0.04414952385963066
+2010,Michigan,urban,0.7456723433876588
+2010,Minnesota,age,37.4
+2010,Minnesota,asian,0.04079808820826086
+2010,Minnesota,black,0.05173753399605009
+2010,Minnesota,hispanic,0.04718354803282475
+2010,Minnesota,urban,0.7327235962046975
+2010,Mississippi,age,36
+2010,Mississippi,asian,0.009075262772819842
+2010,Mississippi,black,0.37016348548864503
+2010,Mississippi,hispanic,0.027459671209184654
+2010,Mississippi,urban,0.49345380661255006
+2010,Missouri,age,37.9
+2010,Missouri,asian,0.017422820481865952
+2010,Missouri,black,0.11577883650944484
+2010,Missouri,hispanic,0.035477139728034755
+2010,Missouri,urban,0.7043617329114213
+2010,Montana,age,39.8
+2010,Montana,asian,0.006995042525128485
+2010,Montana,black,0.004070081816022599
+2010,Montana,hispanic,0.028870595250728968
+2010,Montana,urban,0.5589302769818529
+2010,Nebraska,age,36.2
+2010,Nebraska,asian,0.01838210936511856
+2010,Nebraska,black,0.045383091109491604
+2010,Nebraska,hispanic,0.09166141481793379
+2010,Nebraska,urban,0.73134535116936
+2010,Nevada,age,36.3
+2010,Nevada,asian,0.07861617869834711
+2010,Nevada,black,0.08095607155724888
+2010,Nevada,hispanic,0.2653165965019731
+2010,Nevada,urban,0.9419548084816766
+2010,New Hampshire,age,41.1
+2010,New Hampshire,asian,0.021869848914141607
+2010,New Hampshire,black,0.011420693217467925
+2010,New Hampshire,hispanic,0.027880620143261904
+2010,New Hampshire,urban,0.6030308324534551
+2010,New Jersey,age,39
+2010,New Jersey,asian,0.08289101301721791
+2010,New Jersey,black,0.13703827639414215
+2010,New Jersey,hispanic,0.17688384323104897
+2010,New Jersey,urban,0.9467955368888661
+2010,New Mexico,age,36.7
+2010,New Mexico,asian,0.014577654492397212
+2010,New Mexico,black,0.0206635751432974
+2010,New Mexico,hispanic,0.46300151662385836
+2010,New Mexico,urban,0.7742702309998305
+2010,New York,age,38
+2010,New York,asian,0.07374354825875104
+2010,New York,black,0.1586223459862065
+2010,New York,hispanic,0.1763290336690353
+2010,New York,urban,0.8787292480966402
+2010,North Carolina,age,37.4
+2010,North Carolina,asian,0.022606720603455536
+2010,North Carolina,black,0.21484260419739618
+2010,North Carolina,hispanic,0.08390975056009224
+2010,North Carolina,urban,0.6608743364127438
+2010,North Dakota,age,37
+2010,North Dakota,asian,0.010747988004597147
+2010,North Dakota,black,0.011834829785114579
+2010,North Dakota,hispanic,0.02002256943670076
+2010,North Dakota,urban,0.5989851187422965
+2010,Ohio,age,38.8
+2010,Ohio,asian,0.017015466730649076
+2010,Ohio,black,0.12201972105240895
+2010,Ohio,hispanic,0.030743629092487637
+2010,Ohio,urban,0.7792390138294929
+2010,Oklahoma,age,36.2
+2010,Oklahoma,asian,0.01851199741106604
+2010,Oklahoma,black,0.07401173603856318
+2010,Oklahoma,hispanic,0.08850331520564192
+2010,Oklahoma,urban,0.6624357464817342
+2010,Oregon,age,38.4
+2010,Oregon,asian,0.040371707776983685
+2010,Oregon,black,0.018064386122533787
+2010,Oregon,hispanic,0.11747671801693206
+2010,Oregon,urban,0.810316376034501
+2010,Pennsylvania,age,40.1
+2010,Pennsylvania,asian,0.02776967999458999
+2010,Pennsylvania,black,0.10845913194685815
+2010,Pennsylvania,hispanic,0.05665552885801943
+2010,Pennsylvania,urban,0.7865681696318462
+2010,Rhode Island,age,39.4
+2010,Rhode Island,asian,0.029462257509498206
+2010,Rhode Island,black,0.05718305818061938
+2010,Rhode Island,hispanic,0.12412986536724029
+2010,Rhode Island,urban,0.9073465157087387
+2010,South Carolina,age,37.9
+2010,South Carolina,asian,0.013351814041013854
+2010,South Carolina,black,0.2790448492270014
+2010,South Carolina,hispanic,0.05095426003229151
+2010,South Carolina,urban,0.6632578538683658
+2010,South Dakota,age,36.9
+2010,South Dakota,asian,0.009830749957011962
+2010,South Dakota,black,0.012536539831486894
+2010,South Dakota,hispanic,0.02716721118180255
+2010,South Dakota,urban,0.5665172320617062
+2010,Tennessee,age,38
+2010,Tennessee,asian,0.014951533263316634
+2010,Tennessee,black,0.16660849450174556
+2010,Tennessee,hispanic,0.04570661846912397
+2010,Tennessee,urban,0.6639103828253708
+2010,Texas,age,33.6
+2010,Texas,asian,0.03922171392398046
+2010,Texas,black,0.11849399581898372
+2010,Texas,hispanic,0.37624616925428706
+2010,Texas,urban,0.8469900114775725
+2010,Utah,age,29.2
+2010,Utah,asian,0.028886513006148952
+2010,Utah,black,0.010596316416927622
+2010,Utah,hispanic,0.12965083568961805
+2010,Utah,urban,0.9058245911099775
+2010,Vermont,age,41.5
+2010,Vermont,asian,0.01295583955662167
+2010,Vermont,black,0.010031306882560037
+2010,Vermont,hispanic,0.014715353476917766
+2010,Vermont,urban,0.38895485512376526
+2010,Virginia,age,37.5
+2010,Virginia,asian,0.05572661699302489
+2010,Virginia,black,0.19390005579285852
+2010,Virginia,hispanic,0.07896801709381199
+2010,Virginia,urban,0.7545401688583862
+2010,Washington,age,37.3
+2010,Washington,asian,0.0775580188384633
+2010,Washington,black,0.03569641938333328
+2010,Washington,hispanic,0.11239281794739864
+2010,Washington,urban,0.8404841074631128
+2010,West Virginia,age,41.3
+2010,West Virginia,asian,0.006926088265801184
+2010,West Virginia,black,0.03406594948499563
+2010,West Virginia,hispanic,0.01201730820499149
+2010,West Virginia,urban,0.4872169041022259
+2010,Wisconsin,age,38.5
+2010,Wisconsin,asian,0.023045775037955078
+2010,Wisconsin,black,0.06315260842913979
+2010,Wisconsin,hispanic,0.05909210959900376
+2010,Wisconsin,urban,0.7015382137392284
+2010,Wyoming,age,36.8
+2010,Wyoming,asian,0.00861031960910249
+2010,Wyoming,black,0.008424025861120673
+2010,Wyoming,hispanic,0.08912115480833034
+2010,Wyoming,urban,0.6475801329250247
+2000,Alabama,age,35.8
+2000,Alabama,asian,0.006968361404061074
+2000,Alabama,black,0.25861257898405704
+2000,Alabama,hispanic,0.017051561691889098
+2000,Alabama,urban,0.5544451440264442
+2000,Alaska,age,32.4
+2000,Alaska,asian,0.039463610088494444
+2000,Alaska,black,0.03361289581645218
+2000,Alaska,hispanic,0.04123573210491728
+2000,Alaska,urban,0.6559834240396087
+2000,Arizona,age,34.2
+2000,Arizona,asian,0.01740818674970257
+2000,Arizona,black,0.029224664719668066
+2000,Arizona,hispanic,0.2525258096858243
+2000,Arizona,urban,0.881672082503676
+2000,Arkansas,age,36
+2000,Arkansas,asian,0.007440712201690731
+2000,Arkansas,black,0.1558371362310167
+2000,Arkansas,hispanic,0.032492705917558165
+2000,Arkansas,urban,0.5252408917483354
+2000,California,age,33.3
+2000,California,asian,0.10772608406889443
+2000,California,black,0.06441747387077239
+2000,California,hispanic,0.32376800798118827
+2000,California,urban,0.9444377492349945
+2000,Colorado,age,34.3
+2000,Colorado,asian,0.021685966045771228
+2000,Colorado,black,0.03683640681186285
+2000,Colorado,hispanic,0.17101984743543813
+2000,Colorado,urban,0.8446790371474784
+2000,Connecticut,age,37.4
+2000,Connecticut,asian,0.02395021090479847
+2000,Connecticut,black,0.08679059128221014
+2000,Connecticut,hispanic,0.09405869510639203
+2000,Connecticut,urban,0.877404777180879
+2000,Delaware,age,36
+2000,Delaware,asian,0.02055895865237366
+2000,Delaware,black,0.18942700357325165
+2000,Delaware,hispanic,0.047571465033180195
+2000,Delaware,urban,0.8011204696273609
+2000,Florida,age,38.7
+2000,Florida,asian,0.016373846244907987
+2000,Florida,black,0.14167278486342896
+2000,Florida,hispanic,0.16785455831416327
+2000,Florida,urban,0.8928596232675763
+2000,Georgia,age,33.4
+2000,Georgia,asian,0.02095083181934838
+2000,Georgia,black,0.28479550300966733
+2000,Georgia,hispanic,0.05316429471958124
+2000,Georgia,urban,0.7163252509969824
+2000,Hawaii,age,36.2
+2000,Hawaii,asian,0.407869507906073
+2000,Hawaii,black,0.01719221121600083
+2000,Hawaii,hispanic,0.07238656351394963
+2000,Hawaii,urban,0.9147265003049845
+2000,Idaho,age,33.2
+2000,Idaho,asian,0.008996462777241523
+2000,Idaho,black,0.003778344344810051
+2000,Idaho,hispanic,0.0785886349813324
+2000,Idaho,urban,0.664241282334057
+2000,Illinois,age,34.7
+2000,Illinois,asian,0.03381158653717244
+2000,Illinois,black,0.14945713898528684
+2000,Illinois,hispanic,0.12321651482093224
+2000,Illinois,urban,0.8784332570300096
+2000,Indiana,age,35.2
+2000,Indiana,asian,0.0096084440632614
+2000,Indiana,black,0.08312856622456925
+2000,Indiana,hispanic,0.03528271182315226
+2000,Indiana,urban,0.7078400818355772
+2000,Iowa,age,36.6
+2000,Iowa,asian,0.012420019109298902
+2000,Iowa,black,0.020757783485355688
+2000,Iowa,hispanic,0.02818314034946233
+2000,Iowa,urban,0.6108113797378554
+2000,Kansas,age,35.2
+2000,Kansas,asian,0.017222396219635488
+2000,Kansas,black,0.05631825110529687
+2000,Kansas,hispanic,0.07002333714474461
+2000,Kansas,urban,0.7144235011073427
+2000,Kentucky,age,35.9
+2000,Kentucky,asian,0.0072661253030541825
+2000,Kentucky,black,0.07265110895748866
+2000,Kentucky,hispanic,0.014829892554473053
+2000,Kentucky,urban,0.5576271182247179
+2000,Louisiana,age,34
+2000,Louisiana,asian,0.012140588806026257
+2000,Louisiana,black,0.3229800294295606
+2000,Louisiana,hispanic,0.02410798357386569
+2000,Louisiana,urban,0.7262659275860958
+2000,Maine,age,38.6
+2000,Maine,asian,0.007070230908062683
+2000,Maine,black,0.005051285450180128
+2000,Maine,hispanic,0.007341619846845652
+2000,Maine,urban,0.40228154955240436
+2000,Maryland,age,36
+2000,Maryland,asian,0.03959946273812486
+2000,Maryland,black,0.27654845118065075
+2000,Maryland,hispanic,0.043031549597223516
+2000,Maryland,urban,0.8606966958847809
+2000,Massachusetts,age,36.5
+2000,Massachusetts,asian,0.037294437303446455
+2000,Massachusetts,black,0.05013768099621096
+2000,Massachusetts,hispanic,0.06752598046619858
+2000,Massachusetts,urban,0.9137310392328232
+2000,Michigan,age,35.5
+2000,Michigan,asian,0.017639682831638432
+2000,Michigan,black,0.14107308950978645
+2000,Michigan,hispanic,0.03258830054282139
+2000,Michigan,urban,0.7465411084471574
+2000,Minnesota,age,35.4
+2000,Minnesota,asian,0.028678443388009178
+2000,Minnesota,black,0.03431521915227202
+2000,Minnesota,hispanic,0.029145769297927688
+2000,Minnesota,urban,0.7094367106760695
+2000,Mississippi,age,33.8
+2000,Mississippi,asian,0.006450336033364995
+2000,Mississippi,black,0.3615453949121476
+2000,Mississippi,hispanic,0.01390993223086923
+2000,Mississippi,urban,0.4877039700378745
+2000,Missouri,age,36.1
+2000,Missouri,asian,0.01090950814902244
+2000,Missouri,black,0.11182187767360337
+2000,Missouri,hispanic,0.021195268596662396
+2000,Missouri,urban,0.6940653355163907
+2000,Montana,age,37.5
+2000,Montana,asian,0.005064315364195102
+2000,Montana,black,0.0028087054350777827
+2000,Montana,hispanic,0.020041121930403073
+2000,Montana,urban,0.5407677941021619
+2000,Nebraska,age,35.3
+2000,Nebraska,asian,0.012667252199106742
+2000,Nebraska,black,0.03946617206122028
+2000,Nebraska,hispanic,0.05517854356694441
+2000,Nebraska,urban,0.6975695728827188
+2000,Nevada,age,35
+2000,Nevada,asian,0.044335138072830474
+2000,Nevada,black,0.0658118550316601
+2000,Nevada,hispanic,0.1971568221705216
+2000,Nevada,urban,0.9151205275397509
+2000,New Hampshire,age,37.1
+2000,New Hampshire,asian,0.012787812776645795
+2000,New Hampshire,black,0.006760070109226031
+2000,New Hampshire,hispanic,0.016579731442175262
+2000,New Hampshire,urban,0.59260664872397
+2000,New Jersey,age,36.7
+2000,New Jersey,asian,0.056690296933215284
+2000,New Jersey,black,0.1302739962088575
+2000,New Jersey,hispanic,0.1327721095509457
+2000,New Jersey,urban,0.9435175622597111
+2000,New Mexico,age,34.6
+2000,New Mexico,asian,0.010036579613709604
+2000,New Mexico,black,0.016851690391556894
+2000,New Mexico,hispanic,0.4207623116732617
+2000,New Mexico,urban,0.7495692797213485
+2000,New York,age,35.9
+2000,New York,asian,0.05459006388811146
+2000,New York,black,0.14821644525108138
+2000,New York,hispanic,0.1511126655518467
+2000,New York,urban,0.8749042036666802
+2000,North Carolina,age,35.3
+2000,North Carolina,asian,0.013965912370409748
+2000,North Carolina,black,0.21409292942143013
+2000,North Carolina,hispanic,0.047080166965801924
+2000,North Carolina,urban,0.6024715401177715
+2000,North Dakota,age,36.2
+2000,North Dakota,asian,0.005552787293677982
+2000,North Dakota,black,0.005856431018374338
+2000,North Dakota,hispanic,0.012123948925568359
+2000,North Dakota,urban,0.5589504827156649
+2000,Ohio,age,36.2
+2000,Ohio,asian,0.011597672538170057
+2000,Ohio,black,0.1136832629563275
+2000,Ohio,hispanic,0.01912448890791446
+2000,Ohio,urban,0.7735594734144035
+2000,Oklahoma,age,35.5
+2000,Oklahoma,asian,0.013380651899610914
+2000,Oklahoma,black,0.07476292899838698
+2000,Oklahoma,hispanic,0.051962323663861984
+2000,Oklahoma,urban,0.6533726650078507
+2000,Oregon,age,36.3
+2000,Oregon,asian,0.029325138634809914
+2000,Oregon,black,0.015585729697120973
+2000,Oregon,hispanic,0.08046825289888727
+2000,Oregon,urban,0.7874392901850968
+2000,Pennsylvania,age,38
+2000,Pennsylvania,asian,0.017775021590166445
+2000,Pennsylvania,black,0.09790991880664314
+2000,Pennsylvania,hispanic,0.03208910245000144
+2000,Pennsylvania,urban,0.7706261205267887
+2000,Rhode Island,age,36.7
+2000,Rhode Island,asian,0.02233671239384195
+2000,Rhode Island,black,0.039989735948695
+2000,Rhode Island,hispanic,0.08663393489958686
+2000,Rhode Island,urban,0.909213703080837
+2000,South Carolina,age,35.4
+2000,South Carolina,asian,0.008865377272052027
+2000,South Carolina,black,0.2937394005800581
+2000,South Carolina,hispanic,0.02369783540029292
+2000,South Carolina,urban,0.604964292230432
+2000,South Dakota,age,35.6
+2000,South Dakota,asian,0.005717737704744291
+2000,South Dakota,black,0.00604495763363026
+2000,South Dakota,hispanic,0.01444404406738346
+2000,South Dakota,urban,0.5185535024455384
+2000,Tennessee,age,35.9
+2000,Tennessee,asian,0.009856602317023077
+2000,Tennessee,black,0.1631495568070704
+2000,Tennessee,hispanic,0.02176689048514549
+2000,Tennessee,urban,0.6362872087748139
+2000,Texas,age,32.3
+2000,Texas,asian,0.026589765305858194
+2000,Texas,black,0.11338362790394316
+2000,Texas,hispanic,0.3198601369089125
+2000,Texas,urban,0.8250733509113353
+2000,Utah,age,27.1
+2000,Utah,asian,0.016336873743097814
+2000,Utah,black,0.007226054096219319
+2000,Utah,hispanic,0.09025693980168989
+2000,Utah,urban,0.8823085041929205
+2000,Vermont,age,37.7
+2000,Vermont,asian,0.008475314005456393
+2000,Vermont,black,0.004797750428282583
+2000,Vermont,hispanic,0.009040334939153486
+2000,Vermont,urban,0.3817964709186682
+2000,Virginia,age,35.7
+2000,Virginia,asian,0.03662872791821448
+2000,Virginia,black,0.19444445621715853
+2000,Virginia,hispanic,0.046554962446219296
+2000,Virginia,urban,0.7303728253736836
+2000,Washington,age,35.3
+2000,Washington,asian,0.05418975959265173
+2000,Washington,black,0.031324602939098126
+2000,Washington,hispanic,0.07490667395528527
+2000,Washington,urban,0.819648256287918
+2000,West Virginia,age,38.9
+2000,West Virginia,asian,0.005173794366558575
+2000,West Virginia,black,0.031423777776794684
+2000,West Virginia,hispanic,0.0067901903620107675
+2000,West Virginia,urban,0.4605207858681755
+2000,Wisconsin,age,36
+2000,Wisconsin,asian,0.016405729280763656
+2000,Wisconsin,black,0.05597747812833551
+2000,Wisconsin,hispanic,0.03596806294191949
+2000,Wisconsin,urban,0.6830471644907643
+2000,Wyoming,age,36.2
+2000,Wyoming,asian,0.0054072444925088396
+2000,Wyoming,black,0.007096248951966658
+2000,Wyoming,hispanic,0.06413559019972377
+2000,Wyoming,urban,0.6507811139328692
