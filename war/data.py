@@ -142,7 +142,7 @@ class WARData:
                 starts_with('is_incumbent').fill_null(False)
             )
             .join(
-                read_csv('data/jungle_primaries.csv'),
+                read_csv('data/house_jungle_primaries.csv'),
                 on=['cycle', 'state_name', 'district'],
                 how='left'
             )

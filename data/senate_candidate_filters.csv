@@ -431,8 +431,8 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2004,Arizona,Class III,LIB,Ernest T. Hancock,13220,x
 2004,Arizona,Class III,REP,John McCain,43,
 2004,Arizona,Class III,DEM,Stuart Starky,13216,
-2004,Arkansas,Class III,DEM,Blanche Lincoln,379,x
-2004,Arkansas,Class III,REP,Jim Holt,1252,x
+2004,Arkansas,Class III,DEM,Blanche Lincoln,379,
+2004,Arkansas,Class III,REP,Jim Holt,1252,
 2004,California,Class III,PAF,Marsha J. Feinland,6171,x
 2004,California,Class III,AIP,Don J. Grundmann,6174,x
 2004,California,Class III,LIB,James P. Gray,11252,x
@@ -561,11 +561,11 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2006,California,Class I,LIB,Michael S. Metti,12729,x
 2006,California,Class I,GRE,Todd Chretien,12728,x
 2006,California,Class I,REP,Richard Dick Mountjoy,1719,
-2006,Connecticut,Class I,DEM,Edward Lamont,433,
+2006,Connecticut,Class I,DEM,Edward Lamont,433,x
 2006,Connecticut,Class I,CNC,Timothy A. Knibbs,12699,x
 2006,Connecticut,Class I,REP,Alan Schlesinger,1726,x
 2006,Connecticut,Class I,GRE,Ralph A. Ferrucci,12730,x
-2006,Connecticut,Class I,IND,Joseph I. Lieberman,79,
+2006,Connecticut,Class I,DEM,Joseph I. Lieberman,79,
 2006,Delaware,Class I,LIB,William E. Morris,12731,x
 2006,Delaware,Class I,DEM,Thomas R. Carper,951,
 2006,Delaware,Class I,REP,Jan Ting,1729,
@@ -664,7 +664,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2006,Vermont,Class I,IND,Cris Ericson,6318,x
 2006,Vermont,Class I,REP,Rich Tarrant,1869,
 2006,Vermont,Class I,LBU,Pete Diamondstone,6317,x
-2006,Vermont,Class I,IND,Bernie Sanders,37,
+2006,Vermont,Class I,DEM,Bernie Sanders,37,
 2006,Vermont,Class I,GRE,Craig Barclay Hill,12747,x
 2006,Vermont,Class I,OTH,Peter D. Moss,6321,x
 2006,Virginia,Class I,IGR,Glenda Gail Parker,4383,x
@@ -804,7 +804,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2010,Alaska,Class III,DEM,Scott T. McAdams,352,
 2010,Alaska,Class III,UN,Robert Timothy Carter,12766,x
 2010,Alaska,Class III,UN,Ted Gianoutsos,6358,x
-2010,Alaska,Class III,W,Lisa Murkowski,350,
+2010,Alaska,Class III,REP,Lisa Murkowski,350,
 2010,Alaska,Class III,LIB,Fredrick David Haase,11248,x
 2010,Arizona,Class III,REP,John McCain,43,
 2010,Arizona,Class III,LIB,David F. Nolan,11158,x
@@ -990,7 +990,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2012,Indiana,Class I,DEM,Joe Donnelly,547,
 2012,Maine,Class I,IND,Andrew Ian Dodge,6280,x
 2012,Maine,Class I,DEM,Cynthia Dill,1183,x
-2012,Maine,Class I,IND,Angus S. King Jr.,1187,
+2012,Maine,Class I,DEM,Angus S. King Jr.,1187,
 2012,Maine,Class I,REP,Charlie Summers,1186,
 2012,Maine,Class I,NON,Danny Francis Dalton,6278,x
 2012,Maine,Class I,IND,Stephen M. Woods,6288,x
@@ -1379,13 +1379,13 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2016,New Hampshire,Class III,DEM,Maggie Hassan,6712,
 2016,New Hampshire,Class III,IND,Aaron Day,8214,x
 2016,New Hampshire,Class III,REP,Kelly Ayotte,688,
-2016,New York,Class III,REP,Wendy E. Long,1209,x
+2016,New York,Class III,REP,Wendy E. Long,1209,
 2016,New York,Class III,GRE,Robin Laverne Wilson,12912,x
 2016,New York,Class III,LIB,Alex Merced,12913,x
 2016,New York,Class III,DEM,Charles E. Schumer,744,
 2016,North Carolina,Class III,REP,Richard Burr,663,
-2016,North Carolina,Class III,DEM,Deborah K. Ross,8095,x
-2016,North Carolina,Class III,LIB,Sean Newton Haugh,4534,
+2016,North Carolina,Class III,DEM,Deborah K. Ross,8095,
+2016,North Carolina,Class III,LIB,Sean Newton Haugh,4534,x
 2016,North Dakota,Class III,REP,John Hoeven,669,
 2016,North Dakota,Class III,IND,James Germalic,2206,x
 2016,North Dakota,Class III,LIB,Robert N. Marquette,12914,x
@@ -1449,7 +1449,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2018,Indiana,Class I,LIB,Lucy M. Brenton,8215,x
 2018,Indiana,Class I,REP,Mike Braun,8549,
 2018,Indiana,Class I,DEM,Joe Donnelly,547,
-2018,Maine,Class I,IND,Angus S. King Jr.,1187,
+2018,Maine,Class I,DEM,Angus S. King Jr.,1187,
 2018,Maine,Class I,DEM,Zak Ringelstein,8679,x
 2018,Maine,Class I,REP,Eric L. Brakey,8680,
 2018,Maryland,Class I,LIB,Arvin Vohra,4293,x
@@ -1542,7 +1542,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2018,Vermont,Class I,IND,Jon Svitavsky,12949,x
 2018,Vermont,Class I,IND,Edward S. Gilbert,11162,x
 2018,Vermont,Class I,IND,Folasade Adeluola,12948,x
-2018,Vermont,Class I,IND,Bernie Sanders,37,
+2018,Vermont,Class I,DEM,Bernie Sanders,37,
 2018,Vermont,Class I,REP,Lawrence Zupan,9595,
 2018,Virginia,Class I,REP,Corey Stewart,8554,
 2018,Virginia,Class I,LIB,Matt J. Waters,8678,x
@@ -1830,7 +1830,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2022,South Dakota,Class III,LIB,Tamara J. Lesnar,18749,x
 2022,Utah,Class III,REP,Mike Lee,873,
 2022,Utah,Class III,LIB,James Arthur Hansen,18305,x
-2022,Utah,Class III,IND,Evan McMullin,8172,
+2022,Utah,Class III,DEM,Evan McMullin,8172,
 2022,Utah,Class III,IAP,Tommy Williams,18307,x
 2022,Vermont,Class III,IND,Dawn Marie Ellis,18829,x
 2022,Vermont,Class III,GRE,Natasha Diamondstone-Kohout,18859,x
@@ -1870,7 +1870,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2024,Indiana,Class I,LIB,Andrew Horning,1181,x
 2024,Maine,Class I,REP,Demi Kouzounas,22420,
 2024,Maine,Class I,DEM,David Allen Costello,22419,x
-2024,Maine,Class I,IND,Angus S. King Jr.,1187,
+2024,Maine,Class I,DEM,Angus S. King Jr.,1187,
 2024,Maine,Class I,IND,Jason S. Cherry,22838,x
 2024,Maryland,Class I,REP,Larry Hogan,6719,
 2024,Maryland,Class I,DEM,Angela Alsobrooks,19218,
@@ -1898,10 +1898,10 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2024,Montana,Class I,REP,Tim Sheehy,19033,
 2024,Montana,Class I,GRE,Robert Barb,11115,x
 2024,Montana,Class I,DEM,Jon Tester,1002,
-2024,Nebraska,Class II,REP,Pete Ricketts,1819,x
-2024,Nebraska,Class II,DEM,Preston Love Jr.,11707,x
+2024,Nebraska,Class II,REP,Pete Ricketts,1819,
+2024,Nebraska,Class II,DEM,Preston Love Jr.,11707,
 2024,Nebraska,Class I,REP,Deb Fischer,1007,
-2024,Nebraska,Class I,IND,Dan Osborn,19066,
+2024,Nebraska,Class I,DEM,Dan Osborn,19066,
 2024,Nevada,Class I,DEM,Jacky S. Rosen,8322,
 2024,Nevada,Class I,REP,Sam Brown,18353,
 2024,Nevada,Class I,IAP,Janine Hansen,4314,x
@@ -1943,7 +1943,7 @@ cycle,state_name,district,party,candidate,politician_id,exclusions
 2024,Vermont,Class I,OTH,Mark Stewart Greenstein,10038,x
 2024,Vermont,Class I,IND,Steve Berry,22898,x
 2024,Vermont,Class I,REP,Gerald Malloy,18827,
-2024,Vermont,Class I,IND,Bernie Sanders,37,
+2024,Vermont,Class I,DEM,Bernie Sanders,37,
 2024,Vermont,Class I,OTH,Justin Schoville,22897,x
 2024,Vermont,Class I,LIB,Matt Hill,22896,x
 2024,Virginia,Class I,REP,Hung Cao,18584,
