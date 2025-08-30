@@ -3,7 +3,17 @@ from typing import Literal
 from polars import DataFrame, col, lit, read_csv, when
 from polars.selectors import all, exclude, starts_with
 
-from war.utils.constants import STATES
+from war.utils.constants import STATES, RAW_VARIABLE_NAMES
+
+# Map state abbreviations to names
+states = (
+    DataFrame(STATES)
+    .unpivot(
+        all(),
+        variable_name='state',
+        value_name='state_name'
+    )
+)
 
 class WARData:
 
@@ -43,8 +53,8 @@ class WARData:
                 infer_schema_length=1000
             )
         if chamber == 'senate':
-            raise NotImplementedError(
-                'Senate model not yet implemented!'
+            self.raw_data = read_csv(
+                'data/private/senate_forecast_data_updated.csv'
             )
 
         self.chamber = chamber
@@ -79,16 +89,6 @@ class WARData:
 
         house = self.raw_data
 
-        # State DataFrame for converting abbreviations to names
-        states = (
-            DataFrame(STATES)
-            .unpivot(
-                all(),
-                variable_name='state',
-                value_name='state_name'
-            )
-        )
-
         # Create holistic set of candidate experience mappings
         candidate_experience = (
             read_csv('data/private/house_candidates_updated.csv')
@@ -118,12 +118,7 @@ class WARData:
         # Model dataframe with candidates in wide format
         house = (
             house
-            .select([
-                'cycle', 'state_name', 'district', 'pct', 'uncontested',
-                'age', 'income', 'colplus', 'urban', 'asian', 'black', 'hispanic',
-                'dem_pres_twop_lag_lean_one', 'dem_share_fec',
-                'redistricted', 'incumbent_party', 'has_fec'
-            ])
+            .select(RAW_VARIABLE_NAMES)
             .join(
                 mappings.select(exclude('politician_id')),
                 on=['cycle', 'state_name', 'district'],
@@ -141,8 +136,42 @@ class WARData:
                 starts_with('candidate').fill_null('Uncontested'),
                 starts_with('is_incumbent').fill_null(False)
             )
+            .pipe(self._jungle_primary)
+            .pipe(self._dem_share_fec)
+            .pipe(self._national_cols)
+        )
+
+        # Map candidates to candidate IDs
+        cids = self._create_cids(house, mappings)
+
+        # Join in mapping ids
+        house = self._join_cids(
+            chamber=house,
+            mappings=mappings,
+            cids=cids
+        )
+
+        prepped_data = (
+            house
+            .filter(col.uncontested == 0)
+            .select(exclude('uncontested'))
+        )
+
+        self.full_data = house
+        self.prepped_data = prepped_data
+        self.cids = cids
+
+    def _jungle_primary(
+        self,
+        df: DataFrame
+    ) -> DataFrame:
+
+        """Small util function for mapping jungle primaries to races"""
+
+        out = (
+            df
             .join(
-                read_csv('data/house_jungle_primaries.csv'),
+                read_csv(f'data/{self.chamber}_jungle_primaries.csv'),
                 on=['cycle', 'state_name', 'district'],
                 how='left'
             )
@@ -151,6 +180,20 @@ class WARData:
                  col.n_republican_candidates.is_not_null())
                  .alias('jungle_primary')
             )
+            .select(exclude(starts_with('n_')))
+        )
+
+        return out
+
+    def _dem_share_fec(
+        self,
+        df: DataFrame
+    ) -> DataFrame:
+
+        """Small util function for creating `dem_share_fec`"""
+
+        out = (
+            df
             .with_columns(col.dem_share_fec.add(0.5))
             .with_columns(
                 when((~col.jungle_primary) & (col.has_fec == 1) & (col.uncontested == 0))
@@ -158,7 +201,19 @@ class WARData:
                 .otherwise(lit(0.5))
                 .alias('dem_share_fec')
             )
-            .select(exclude(starts_with('n_')))
+        )
+
+        return out
+
+    def _national_cols(
+        self,
+        df: DataFrame
+    ) -> DataFrame:
+
+        """Small util function for adding columns associated with national environment"""
+
+        out = (
+            df
             .join(
                 read_csv('data/presidential_party.csv'),
                 on='cycle',
@@ -176,7 +231,6 @@ class WARData:
                 .otherwise(lit(0))
                 .alias('inc_party_same_party_pres_midterm')
             )
-            .select(exclude('incumbent_party'))
             .with_columns(
                 when(col.presidential_party == 'DEM')
                 .then(lit(1))
@@ -195,14 +249,24 @@ class WARData:
             )
         )
 
+        return out
+
+    def _create_cids(
+        self,
+        chamber: DataFrame,
+        mappings: DataFrame
+    ) -> DataFrame:
+
+        """Util function for creating a DataFrame mapping candidates to IDs"""
+
         # Set of candidates who have won a race during the modeled period
         winners = (
-            house
+            chamber
             .select(
                 col.cycle,
                 col.state_name,
                 col.district,
-                when(col.pct >= 0.50)
+                when(col.pct >= 0.5)
                 .then(col.candidate_DEM)
                 .otherwise(col.candidate_REP)
                 .alias('candidate')
@@ -216,7 +280,7 @@ class WARData:
 
         # Set of incumbents during the modeled period
         incumbents = (
-            house
+            chamber
             .select(
                 col.cycle,
                 col.state_name,
@@ -237,7 +301,7 @@ class WARData:
 
         # Set of politicians who appear in the dataset multiple times
         repeat_candidates = (
-            house
+            chamber
             .select(['cycle', 'state_name', 'district', 'candidate_DEM', 'candidate_REP'])
             .unpivot(
                 on=['candidate_DEM', 'candidate_REP'],
@@ -254,8 +318,7 @@ class WARData:
             .filter(col.politician_id.count().over('candidate') > 1)
         )
 
-        # Politician IDs of candidates who either were incumbents or won a race
-        # during the modeled time period
+        # Politician IDs of candidates who meet the above criteria
         named_candidates = (
             winners
             .vstack(incumbents)
@@ -266,7 +329,8 @@ class WARData:
         )
 
         # Create a Stan-friendly mapping of candidates
-        # Generic challengers are mapped to position 1
+        # Generic republicans are mapped to position 1
+        # Generic democrats are mapped to position 2
         cids = (
             mappings
             .unique('politician_id')
@@ -284,10 +348,20 @@ class WARData:
             .select(exclude('party'))
         )
 
-        # Join in mapping ids
+        return cids
+
+    def _join_cids(
+        self,
+        chamber: DataFrame,
+        mappings: DataFrame,
+        cids: DataFrame
+    ) -> DataFrame:
+
+        """Util function for joining candidate IDs to model frame"""
+
         base_cols = ['cycle', 'state_name', 'district']
-        house = (
-            house
+        out = (
+            chamber
             .join(
                 mappings.select(base_cols + ['candidate', 'politician_id']),
                 left_on=base_cols + ['candidate_DEM'],
@@ -323,13 +397,4 @@ class WARData:
             )
         )
 
-        prepped_data = (
-            house
-            .filter(col.uncontested == 0)
-            .select(exclude('uncontested'))
-        )
-
-        self.full_data = house
-        self.prepped_data = prepped_data
-        self.cids = cids
-
+        return out
