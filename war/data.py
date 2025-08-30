@@ -1,6 +1,6 @@
 from typing import Literal
 
-from polars import DataFrame, col, lit, read_csv, when
+from polars import DataFrame, col, lit, read_csv, when, concat_str
 from polars.selectors import all, exclude, starts_with
 
 from war.utils.constants import STATES, RAW_VARIABLE_NAMES
@@ -80,8 +80,142 @@ class WARData:
 
         if self.chamber == 'house':
             self._prep_house_data()
+        elif self.chamber == 'senate':
+            self._prep_senate_data()
 
         return self
+
+    def _prep_senate_data(self):
+
+        """Internal method that performs prep for senate datasets"""
+
+        senate = self.raw_data
+
+        # Stack candidate experience and incumbency
+        candidate_experience = (
+            read_csv('data/private/senate_candidates_updated.csv')
+            .vstack(read_csv('data/private/senate_candidates_historical_updated.csv'))
+            .rename({'seat': 'district'})
+            .join(states, on='state', how='left')
+            .select([
+                'cycle', 'state_name', 'district', 'party', 'candidate', 'politician_id',
+                'experience', 'incumbent'
+            ])
+            .rename({'incumbent': 'is_incumbent'})
+            .with_columns(
+                concat_str(lit('Class'), col.district, separator=' ').alias('district'),
+                col.is_incumbent == 1
+            )
+            .with_columns(col.is_incumbent.fill_null(False))
+        )
+
+        # Map candidates to races
+        mappings = (
+            read_csv('data/senate_candidate_filters.csv')
+            .with_columns(col.exclusions.fill_null('y'))
+            .filter(col.exclusions != 'x')
+            .select(exclude('exclusions'))
+        )
+
+        # Import state demographic variables
+        state_demos = (
+            read_csv('data/state_demos.csv', infer_schema_length=10_000)
+            .with_columns(
+                when((col.variable == 'colplus') & (col.year == 2022))
+                .then(lit(2020))
+                .otherwise(col.year)
+                .alias('year')
+            )
+            .filter(col.year.is_in([1990, 2000, 2010, 2020]))
+            .with_columns(col.year.add(2))
+        )
+
+        # Fill in non-census years with previous census demo variables
+        state_demos = (
+            DataFrame({'year': range(1992, 2025, 2)})
+            .join(
+                states.select('state_name').rename({'state_name': 'state'}),
+                how='cross'
+            )
+            .join(
+                state_demos.select('variable').unique('variable'),
+                how='cross'
+            )
+            .filter(~col.state.str.contains('District'))
+            .join(
+                state_demos,
+                on=['year', 'state', 'variable'],
+                how='left'
+            )
+            .sort(['year', 'state', 'variable'])
+            .with_columns(col.value.forward_fill().over(['state', 'variable']))
+            .pivot(
+                on='variable',
+                values='value'
+            )
+            .rename({
+                'year': 'cycle',
+                'state': 'state_name'
+            })
+        )
+
+        # Model dataframe with candidates in wide format
+        senate = (
+            senate
+            .join(
+                state_demos,
+                on=['cycle', 'state_name'],
+                how='left'
+            )
+            .select(RAW_VARIABLE_NAMES)
+            .join(
+                mappings,
+                on=['cycle', 'state_name', 'district'],
+                how='inner'
+            )
+            .join(
+                candidate_experience.select([
+                    'cycle', 'state_name', 'district', 'politician_id', 'experience', 'is_incumbent'
+                ]),
+                on=['cycle', 'state_name', 'district', 'politician_id'],
+                how='left'
+            )
+            .select(exclude('politician_id'))
+            .pivot(on='party', values=['candidate', 'is_incumbent', 'experience'])
+            .with_columns(col('experience_DEM', 'experience_REP')).fill_null(0)
+            .with_columns(
+                when(col.experience_DEM > 0).then(lit(1)).otherwise(lit(0)).alias('experience_DEM'),
+                when(col.experience_REP > 0).then(lit(1)).otherwise(lit(0)).alias('experience_REP')
+            )
+            .with_columns(
+                (col.experience_DEM > col.experience_REP).alias('exp_advantage'),
+                (col.experience_DEM < col.experience_REP).alias('exp_disadvantage')
+            )
+            .with_columns(starts_with('candidate').fill_null('Uncontested'))
+            .pipe(self._jungle_primary)
+            .pipe(self._dem_share_fec)
+            .pipe(self._national_cols)
+        )
+
+        # Map candidates to candidate IDs
+        cids = self._create_cids(senate, mappings)
+
+        # Join in mapping ids
+        senate = self._join_cids(
+            chamber=senate,
+            mappings=mappings,
+            cids=cids
+        )
+
+        prepped_data = (
+            senate
+            .filter(col.uncontested == 0)
+            .select(exclude('uncontested'))
+        )
+
+        self.full_data = senate
+        self.prepped_data = prepped_data
+        self.cids = cids
 
     def _prep_house_data(self):
 
