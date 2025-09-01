@@ -207,6 +207,15 @@ class WARData:
             cids=cids
         )
 
+        # Enforce 0 for redistricting, replace nulls for incumbents
+        senate = (
+            senate
+            .with_columns(
+                lit(0).alias('redistricted'),
+                starts_with('is_incumbent').fill_null(False)
+            )
+        )
+
         prepped_data = (
             senate
             .filter(col.uncontested == 0)
@@ -252,7 +261,7 @@ class WARData:
         # Model dataframe with candidates in wide format
         house = (
             house
-            .select(RAW_VARIABLE_NAMES)
+            .select(RAW_VARIABLE_NAMES + ['redistricted'])
             .join(
                 mappings.select(exclude('politician_id')),
                 on=['cycle', 'state_name', 'district'],
