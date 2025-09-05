@@ -89,12 +89,21 @@ class WARResults:
             summarizing candidate WAR.
         """
 
-        (
-            self._extract_topline(cred_level)
-            .filter(col.cycle == 2024)
-            .select(exclude('cycle'))
-            .write_csv(join(path, self.chamber, 'current_topline.csv'))
-        )
+        if self.chamber == 'house':
+            (
+                self._extract_topline(cred_level)
+                .filter(col.cycle == 2024)
+                .select(exclude('cycle'))
+                .write_csv(join(path, self.chamber, 'current_topline.csv'))
+            )
+        else:
+            (
+                self._extract_topline(cred_level)
+                .filter(col.cycle == col.cycle.max().over(['state_name', 'district']))
+                .select(exclude('cycle'))
+                .sort(['state_name', 'district'])
+                .write_csv(join(path, self.chamber, 'current_topline.csv'))
+            )
 
     def write_parameter_summaries(
         self,
