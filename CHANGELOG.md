@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## war 1.2.0
+
+* Add support for modeling senate results.
+* Rearrange contents of `out/` to support both house and senate results.
+
 ## war 1.1.0
 
 * Split the "generic challenger" candidate by partisan affiliation.

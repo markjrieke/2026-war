@@ -1,4 +1,4 @@
-from typing import Optional, List, Literal
+from typing import Optional, Literal
 
 from polars import DataFrame, col
 from polars import len as pl_len

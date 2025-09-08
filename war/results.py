@@ -42,6 +42,7 @@ class WARResults:
         """
 
         self.war_fit = war_fit
+        self.chamber = war_fit.war_data.chamber
         self.idata = self._extract_idata()
 
     def write_full_topline(
@@ -65,7 +66,7 @@ class WARResults:
             summarizing candidate WAR.
         """
 
-        self._extract_topline(cred_level).write_parquet(join(path, 'full_topline.parquet'))
+        self._extract_topline(cred_level).write_parquet(join(path, self.chamber, 'full_topline.parquet'))
 
     def write_publication_topline(
         self,
@@ -88,16 +89,25 @@ class WARResults:
             summarizing candidate WAR.
         """
 
-        (
-            self._extract_topline(cred_level)
-            .filter(col.cycle == 2024)
-            .select(exclude('cycle'))
-            .write_csv(join(path, 'current_topline.csv'))
-        )
+        if self.chamber == 'house':
+            (
+                self._extract_topline(cred_level)
+                .filter(col.cycle == 2024)
+                .select(exclude('cycle'))
+                .write_csv(join(path, self.chamber, 'current_topline.csv'))
+            )
+        else:
+            (
+                self._extract_topline(cred_level)
+                .filter(col.cycle == col.cycle.max().over(['state_name', 'district']))
+                .select(exclude('cycle'))
+                .sort(['state_name', 'district'])
+                .write_csv(join(path, self.chamber, 'current_topline.csv'))
+            )
 
     def write_parameter_summaries(
         self,
-        path: str = 'out/summary/variables',
+        path: str = 'out/summary',
         cred_levels: Union[List[float], float] = [0.66, 0.8, 0.95]
     ):
 
@@ -121,14 +131,14 @@ class WARResults:
         for variable in self.idata.posterior.data_vars:
             self._write_parameter_summary(
                 posterior=self.idata.posterior,
-                file=join(path, f'{variable}.parquet'),
+                file=join(path, self.chamber, f'variables/{variable}.parquet'),
                 variable=variable,
                 cred_levels=cred_levels
             )
 
         # Calculate and write WARP manually
         WARP = self._extract_WARP()
-        WARP.write_parquet(join(path, 'WARP.parquet'))
+        WARP.write_parquet(join(path, self.chamber, 'variables/WARP.parquet'))
 
     def plot_holdout(
         self,
@@ -245,7 +255,7 @@ class WARResults:
             .with_columns(lit(self.war_fit.holdout).alias('holdout_year'))
         )
 
-        filepath = join(path, 'fit_summary.parquet')
+        filepath = join(path, f'{self.chamber}_fit_summary.parquet')
         if reset or not exists(filepath):
             fit_summary.write_parquet(filepath)
         else:
@@ -258,7 +268,7 @@ class WARResults:
 
     def write_mappings(
         self,
-        path: str = 'out/summary/mappings'
+        path: str = 'out/summary'
     ):
 
         """
@@ -281,7 +291,7 @@ class WARResults:
         (
             self.war_fit.full_data
             .select(['M'] + cols)
-            .write_parquet(join(path, 'full_data.parquet'))
+            .write_parquet(join(path, self.chamber, 'mappings/full_data.parquet'))
         )
 
         cols.remove('uncontested')
@@ -289,7 +299,7 @@ class WARResults:
         (
             self.war_fit.model_data
             .select(['N'] + cols)
-            .write_parquet(join(path, 'model_data.parquet'))
+            .write_parquet(join(path, self.chamber, 'mappings/model_data.parquet'))
         )
 
     def _extract_topline(

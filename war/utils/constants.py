@@ -97,3 +97,22 @@ STATES = {
 CYCLES = Literal[
     2000, 2002, 2004, 2006, 2008, 2010, 2012, 2014, 2016, 2018, 2020, 2022, 2024
 ]
+
+RAW_VARIABLE_NAMES = [
+    'cycle',
+    'state_name',
+    'district',
+    'pct',
+    'uncontested',
+    'age',
+    'income',
+    'colplus',
+    'urban',
+    'asian',
+    'black',
+    'hispanic',
+    'dem_pres_twop_lag_lean_one',
+    'dem_share_fec',
+    'incumbent_party',
+    'has_fec'
+]

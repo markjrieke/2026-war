@@ -12,9 +12,13 @@ matrix standardize(matrix X) {
     vector[F] X_mean;
     vector[F] X_sd;
     for (f in 1:F) {
-        X_mean[f] = mean(X[:,f]);
-        X_sd[f] = sd(X[:,f]);
-        Xc[:,f] = (X[:,f] - X_mean[f]) / X_sd[f];
+        if (sum(X[:,f]) == 0) {
+            Xc[:,f] = X[:,f];
+        } else {
+            X_mean[f] = mean(X[:,f]);
+            X_sd[f] = sd(X[:,f]);
+            Xc[:,f] = (X[:,f] - X_mean[f]) / X_sd[f];
+        }
     }
     return Xc;
 }
@@ -36,9 +40,13 @@ matrix standardize(matrix X,
     vector[F] Z_mean;
     vector[F] Z_sd;
     for (f in 1:F) {
-        Z_mean[f] = mean(Z[:,f]);
-        Z_sd[f] = sd(Z[:,f]);
-        Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
+        if (sum(Z[:,f]) == 0) {
+            Xc[:,f] = X[:,f];
+        } else {
+            Z_mean[f] = mean(Z[:,f]);
+            Z_sd[f] = sd(Z[:,f]);
+            Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
+        }
     }
     return Xc;
 }
@@ -71,9 +79,13 @@ matrix standardize_cf(matrix X,
 
     // Create centered design matrix
     for (f in 1:F) {
-        Z_mean[f] = mean(Z[:,f]);
-        Z_sd[f] = sd(Z[:,f]);
-        Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
+        if (sum(Z[:,f]) == 0) {
+            Xc[:,f] = X[:,f];
+        } else {
+            Z_mean[f] = mean(Z[:,f]);
+            Z_sd[f] = sd(Z[:,f]);
+            Xc[:,f] = (X[:,f] - Z_mean[f]) / Z_sd[f];
+        }
     }
 
     // Replace columns in iid with centered zeroes
