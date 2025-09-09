@@ -1,4 +1,4 @@
-from typing import Optional, Literal
+from typing import Optional, Literal, List
 
 from polars import DataFrame, col
 from polars import len as pl_len
@@ -53,7 +53,11 @@ class WARModel:
         self,
         holdout: Optional[CYCLES] = None,
         priors: Optional[dict] = None,
-        prior_check: bool = False
+        prior_check: bool = False,
+        time_varying_vars: List[str] = TIME_VARYING_VARIABLES,
+        time_invariant_vars: List[str] = TIME_INVARIANT_VARIABLES,
+        sd_vars: List[str] = SD_VARIABLES,
+        fec_vars: List[str] = FEC_VARIABLES
     ):
 
         """
@@ -71,6 +75,20 @@ class WARModel:
         prior_check : bool
             If `True`, the model will sample from the prior predictive
             distribution rather than fit to the data.
+        time_varying_vars : List[str]
+            A list of strings identifying which variables in the model are
+            allowed to vary over time. See `war.utils.constants` for defaults.
+        time_invariant_vars : List[str]
+            A list of strings identifying which variables in the model are not
+            allowed to vary over time. See `war.utils.constants` for defaults.
+        sd_vars : List[str]
+            A list of strings identifying which variables in the model are used
+            to estimate the standard deviation. See `war.utils.constants` for
+            defaults.
+        fec_vars : List[str]
+            A list of strings identifying which variables in the model are used
+            to estimate the democratic share of FEC contributions. See
+            `war.utils.constants` for defaults.
         """
 
         model_data = self.war_data.prepped_data
@@ -87,10 +105,10 @@ class WARModel:
 
         # Extract variable names from the model frame
         cols = model_data.columns
-        time_varying_variables = [x for x in cols if x in TIME_VARYING_VARIABLES]
-        time_invariant_variables = [x for x in cols if x in TIME_INVARIANT_VARIABLES]
-        sd_variables = [x for x in cols if x in SD_VARIABLES]
-        fec_variables = [x for x in cols if x in FEC_VARIABLES]
+        time_varying_variables = [x for x in cols if x in time_varying_vars]
+        time_invariant_variables = [x for x in cols if x in time_invariant_vars]
+        sd_variables = [x for x in cols if x in sd_vars]
+        fec_variables = [x for x in cols if x in fec_vars]
 
         # Find locations of incumbent ID columns
         iid = [
