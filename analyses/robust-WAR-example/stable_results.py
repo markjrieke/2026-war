@@ -95,6 +95,13 @@ for variable in variables:
 
     # Write fit results from each model
     war_results = WARResults(war_fit)
+    war_results._write_parameter_summary(
+        posterior=war_results.idata.posterior,
+        file=f'analyses/robust-WAR-example/variables/Y_rep-excluding-{variable}.parquet',
+        variable='Y_rep'
+    )
+
+    # Write RMSE results
     write_rmse(war_results=war_results, variable=variable)
 
 # Fit one last time to all variables to use 'None' as a comparison point
