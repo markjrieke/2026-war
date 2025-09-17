@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## war 1.2.1
+
+* Add new arguments to `WARModel().prep_stan_data()` that allow for using a subset of default variables to fit the model.
+
 ## war 1.2.0
 
 * Add support for modeling senate results.

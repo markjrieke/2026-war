@@ -108,7 +108,7 @@ class WARResults:
     def write_parameter_summaries(
         self,
         path: str = 'out/summary',
-        cred_levels: Union[List[float], float] = [0.66, 0.8, 0.95]
+        cred_levels: Union[List[float], float] = [0.66, 0.8, 0.9, 0.95]
     ):
 
         """
