@@ -1,21 +1,23 @@
 [project]
 name = "war"
 version = "1.2.1"
-description = ""
-authors = [
-    {name = "markjrieke",email = "markjrieke@gmail.com"}
-]
+description = "Bayesian estimation of a 'Wins Above Replacement' (WAR) metric"
 readme = "README.md"
-requires-python = "3.13.2"
-dependencies = [
-    "polars==1.30.0",
-    "cmdstanpy==1.2.5",
-    "arviz==0.21.0",
-    "pyarrow==20.0.0",
-    "plotnine==0.14.6"
+authors = [
+    { name = "markjrieke", email = "markjrieke@gmail.com" }
 ]
+requires-python = ">=3.13.2"
+dependencies = [
+    "arviz>=1.3.0",
+    "cmdstanpy>=1.3.2",
+    "plotnine>=0.15.9",
+    "polars>=2.1.0",
+    "pyarrow>=26.0.1",
+]
+
+[project.scripts]
+war = "war:main"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-
+requires = ["uv_build>=0.13.5,<0.14.0"]
+build-backend = "uv_build"

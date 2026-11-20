@@ -2,7 +2,7 @@ from typing import List, Union
 from os.path import join, exists
 
 from arviz import InferenceData, from_cmdstanpy
-from polars import DataFrame, col, implode, lit, when, read_parquet, len
+from polars import DataFrame, Float64, col, implode, lit, when, read_parquet, len
 from polars.selectors import exclude
 from plotnine import ggplot, aes, geom_pointrange, geom_abline, facet_wrap
 from xarray import Dataset
@@ -345,9 +345,9 @@ class WARResults:
                 when(col.pct >= 0.5).then(col.WAR_DEM).otherwise(col.WAR_REP).alias('WAR')
             )
             .with_columns(
-                col.WAR.map_elements(lambda x: x[0]).alias('WAR'),
-                col.WAR.map_elements(lambda x: x[1]).alias('WAR_lower'),
-                col.WAR.map_elements(lambda x: x[2]).alias('WAR_upper')
+                col.WAR.map_elements(lambda x: x[0], return_dtype=Float64).alias('WAR'),
+                col.WAR.map_elements(lambda x: x[1], return_dtype=Float64).alias('WAR_lower'),
+                col.WAR.map_elements(lambda x: x[2], return_dtype=Float64).alias('WAR_upper')
             )
             .select([
                 'cycle', 'state_name', 'district', 'uncontested', 'pct',
