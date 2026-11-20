@@ -1,6 +1,6 @@
 from typing import Optional, Literal, List
 
-from polars import DataFrame, col
+from polars import DataFrame, Int32, col
 from polars import len as pl_len
 
 from war.data import WARData
@@ -148,6 +148,7 @@ class WARModel:
             .unique(['cycle', 'fec_exists'])
             .sort('cycle')
             ['fec_exists']
+            .cast(Int32)
             .to_numpy()
         )
 
@@ -261,7 +262,7 @@ class WARModel:
 
         out = (
             df
-            .filter(~col(f'is_incumbent_{party}'))
+            .filter(col(f'is_incumbent_{party}') == 0)
             .group_by('cycle')
             .agg(
                 col(f'experience_{party}').sum().alias(f'Ye_{party}'),

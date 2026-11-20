@@ -13,6 +13,7 @@ dependencies = [
     "plotnine>=0.15.9",
     "polars>=2.1.0",
     "pyarrow>=26.0.1",
+    "stanli>=0.30.0",
 ]
 
 [project.scripts]

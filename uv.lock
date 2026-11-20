@@ -820,6 +820,21 @@ wheels = [
 ]
 
 [[package]]
+name = "stanli"
+version = "0.30.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ce/41/44fd6ae02abc5a53a1965a7b27cf96bb4a1621fa76513ea8958f750ceac3/stanli-0.30.0-py3-none-macosx_10_15_x86_64.whl", hash = "sha256:03e4d68c17d9239f6fdece52ca3f247537ab63346f8d5c2653a339d771ec7e00", size = 15811774, upload-time = "2026-11-20T11:55:36.852Z" },
+    { url = "https://files.pythonhosted.org/packages/be/47/be11dc2d57e46c71e6b3ae3d94b904f292f0a02bb5ee5d9aedfbc77435a2/stanli-0.30.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:26ad3755c7e3781a0b1e6d1f1224925e6e59446c7843cf751d56b360dd950017", size = 12394251, upload-time = "2026-11-20T11:55:39.393Z" },
+    { url = "https://files.pythonhosted.org/packages/ab/82/5307134d2ebe3e8ffe22c3638556ade922a9cf980a17e916c49d89e3ce53/stanli-0.30.0-py3-none-manylinux_2_28_aarch64.whl", hash = "sha256:977d850bdb4ac302b5408d30daca75aaeecb4c843c2cba5e38d91122822227ea", size = 15244867, upload-time = "2026-11-20T11:55:41.419Z" },
+    { url = "https://files.pythonhosted.org/packages/69/3a/dcf531925d367be4875bb1218cc20112db37328070bb57f784c24df06afb/stanli-0.30.0-py3-none-manylinux_2_28_x86_64.whl", hash = "sha256:a4b0444685a8ad476110fd0c6c5fd89ec4dfc752ef8c394a3b83c1be6f968889", size = 16820800, upload-time = "2026-11-20T11:55:43.913Z" },
+    { url = "https://files.pythonhosted.org/packages/30/b7/49e502d0fd689b5c24caac9228add7886cd91a0d9fa758f484cae1b0ae49/stanli-0.30.0-py3-none-win_amd64.whl", hash = "sha256:8d107b203b8cdbc827ea878d6d62db93915c39856111d70c373c01f69a899850", size = 18701233, upload-time = "2026-11-20T11:55:46.52Z" },
+]
+
+[[package]]
 name = "statsmodels"
 version = "0.14.4"
 source = { registry = "https://pypi.org/simple" }
@@ -934,6 +949,7 @@ dependencies = [
     { name = "plotnine" },
     { name = "polars" },
     { name = "pyarrow" },
+    { name = "stanli" },
 ]
 
 [package.metadata]
@@ -943,6 +959,7 @@ requires-dist = [
     { name = "plotnine", specifier = ">=0.15.9" },
     { name = "polars", specifier = ">=2.1.0" },
     { name = "pyarrow", specifier = ">=26.0.1" },
+    { name = "stanli", specifier = ">=0.30.0" },
 ]
 
 [[package]]

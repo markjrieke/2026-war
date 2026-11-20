@@ -1,6 +1,6 @@
 from typing import Literal
 
-from polars import DataFrame, col, lit, read_csv, when, concat_str
+from polars import DataFrame, Int32, col, lit, read_csv, when, concat_str
 from polars.selectors import all, exclude, starts_with
 
 from war.utils.constants import STATES, RAW_VARIABLE_NAMES
@@ -188,8 +188,8 @@ class WARData:
                 when(col.experience_REP > 0).then(lit(1)).otherwise(lit(0)).alias('experience_REP')
             )
             .with_columns(
-                (col.experience_DEM > col.experience_REP).alias('exp_advantage'),
-                (col.experience_DEM < col.experience_REP).alias('exp_disadvantage')
+                (col.experience_DEM > col.experience_REP).cast(Int32).alias('exp_advantage'),
+                (col.experience_DEM < col.experience_REP).cast(Int32).alias('exp_disadvantage')
             )
             .with_columns(starts_with('candidate').fill_null('Uncontested'))
             .pipe(self._jungle_primary)
@@ -212,7 +212,7 @@ class WARData:
             senate
             .with_columns(
                 lit(0).alias('redistricted'),
-                starts_with('is_incumbent').fill_null(False)
+                starts_with('is_incumbent').cast(Int32).fill_null(0)
             )
         )
 
@@ -249,7 +249,7 @@ class WARData:
             .filter(col.exclusions != 'x')
             .select(exclude('exclusions'))
             .with_columns(col.is_incumbent == 'x')
-            .with_columns(col.is_incumbent.fill_null(False))
+            .with_columns(col.is_incumbent.cast(Int32).fill_null(0))
             .select(exclude(['state', 'seat']))
             .join(
                 candidate_experience,
@@ -272,12 +272,12 @@ class WARData:
                 col('experience_DEM', 'experience_REP').fill_null(0)
             )
             .with_columns(
-                (col.experience_DEM > col.experience_REP).alias('exp_advantage'),
-                (col.experience_DEM < col.experience_REP).alias('exp_disadvantage')
+                (col.experience_DEM > col.experience_REP).cast(Int32).alias('exp_advantage'),
+                (col.experience_DEM < col.experience_REP).cast(Int32).alias('exp_disadvantage')
             )
             .with_columns(
                 starts_with('candidate').fill_null('Uncontested'),
-                starts_with('is_incumbent').fill_null(False)
+                starts_with('is_incumbent').cast(Int32).fill_null(0)
             )
             .pipe(self._jungle_primary)
             .pipe(self._dem_share_fec)
@@ -428,9 +428,9 @@ class WARData:
                 col.cycle,
                 col.state_name,
                 col.district,
-                when(col.is_incumbent_DEM)
+                when(col.is_incumbent_DEM == 1)
                 .then(col.candidate_DEM)
-                .when(col.is_incumbent_REP)
+                .when(col.is_incumbent_REP == 1)
                 .then(col.candidate_REP)
                 .alias('candidate')
             )
